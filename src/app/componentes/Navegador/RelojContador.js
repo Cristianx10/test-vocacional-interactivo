@@ -27,7 +27,7 @@ export class RelojContador extends React.Component {
   onProgress(segundos, minutos) {
     this.deafualTime = "";
     if (this.refs.tiempo) {
-      console.log(segundos, minutos);
+    
       let s = segundos;
       let m = minutos;
       if (segundos < 10) {

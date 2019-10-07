@@ -96,7 +96,7 @@ export class ManagerStyle {
       if (this.etiqueta.props.align != null) {
         this.className = this.className + " " + this.etiqueta.props.align;
       }
-      console.log(this.className)
+     
       if (this.className.includes("horizontal") === false) {
         this.className = this.className + " vertical";
       }

@@ -33,7 +33,7 @@ export class Escribir extends React.Component {
 
     /**Configuracion de resultados */
 
-    this.tipoId = "Opcion";
+    resultados.setId(this.pregunta, "Escritura");
     this.propiedades = {};
     this.acciones = {};
 
@@ -71,8 +71,7 @@ export class Escribir extends React.Component {
 
   
   validar(id, accion, descripcion, valorMaximo) {
-    console.log("Escriiendo")
-    console.log(resultados)
+  
     resultados.agregarCondicion(
       this,
       this.pregunta,

@@ -10,26 +10,164 @@ import { Relacionar, Relacion } from "../actividades/Relacionar/Relacionar";
 import { RelojContador } from "../componentes/Navegador/RelojContador";
 import { TarjetasR, Carta } from "../actividades/TarjetasR/TarjetasR";
 import { TIntroduccion } from "../plantillas/templete-introduccion";
+import { D } from "../configuraciones/dato";
 
 export class Linguistica extends React.Component {
   render() {
     return (
-      <Navegador width="100%" image="/includes/background/claro.png">
+      <Navegador width="100%">
+        <Pantalla>
+          <Pregunta orientacion="horizontal">
+            <Contenedor>
+            <D t>
+                <img src="/img/persona-e1533759204552.jpg" alt="" />
+              </D>
+              <D t>
+                <img src="/img/penguin.jpg" alt="" />
+              </D>
+              <D t>
+                <img src="/img/persona-e1533759204552.jpg" alt="" />
+              </D>
+              <D t>
+                <img src="/img/penguin.jpg" alt="" />
+              </D>
+              <D t>
+                <img src="/img/persona-e1533759204552.jpg" alt="" />
+              </D>
+              <D t>
+                <img src="/img/penguin.jpg" alt="" />
+              </D>
+              <D t>
+                <img src="/img/persona-e1533759204552.jpg" alt="" />
+              </D>
+              <D t>
+                <img src="/img/penguin.jpg" alt="" />
+              </D>
+            </Contenedor>
 
-        <TIntroduccion fondo="/includes/background/oscuro.png">
+            <Contenedor height="30%">
+              <h1>
+                <D t>¿Cuantos años tienes?</D>
+              </h1>
+
+              <Contenedor allType="boton" grid>
+                <Opcion resultados={[{ id: "a", valor: 10 }]}>
+                  <D>10</D>
+                  <D><img src="/img/persona-e1533759204552.jpg" alt="" /></D>
+                </Opcion>
+                <Opcion resultados={[{ id: "a", valor: 2 }]}>
+                  <D>30</D>
+                </Opcion>
+                <Opcion>
+                  <D>40</D>
+                </Opcion>
+                <Opcion>
+                  <D>60</D>
+                </Opcion>
+              </Contenedor>
+            </Contenedor>
+          </Pregunta>
+          <Continuar height="15%" align="center" disabled></Continuar>
+        </Pantalla>
+
+        <TIntroduccion fondo="/includes/background/oscuro-personajes.png">
           <h1>Inteligencia Lingüística</h1>
           <p>
-          En esta sección de la prueba se evaluará tus conocimientos en el área Lingüística.
+            En esta sección de la prueba se evaluará tus conocimientos en el
+            área Lingüística.
           </p>
         </TIntroduccion>
 
-        <Pantalla padding="50px">
+        <Pantalla fondo="/includes/background/claro.png">
+          <Contenedor width="80%" height="15%">
+            <h2 className="text-center">
+              <D t>
+                1. Las palabras están al azar , por favor enlaza una palabra de
+                la izquierda con otra palabra de la derecha según sea su
+                antónimo.
+              </D>
+            </h2>
+          </Contenedor>
+          <Contenedor height="70%">
+            <Relacionar
+              width="650"
+              height="450"
+              config={function(o, tablero) {
+                tablero.setStyleA(250, 450, "20px Heebo", 170, 25);
+                tablero.setStyleB(450, 450, "20px Heebo", 170, 25);
+                tablero.distancia(300);
+
+                tablero.validar(
+                  "Aciertos",
+                  function(p, a) {
+                    if (p.aciertos > 3) {
+                      a.setValor("arte", 15);
+                      return true;
+                    }
+                  },
+                  "Si no termina la prueba",
+                  [{ id: "arte", valor: "200" }],
+                  tablero
+                );
+
+                tablero.validar(
+                  "Aciertos",
+                  function(p, a) {
+                    if (p.aciertos > 0) {
+                      a.setValor("arte", 5);
+
+                      return true;
+                    }
+                  },
+                  "Si completa todas sin errores",
+                  [{ id: "arte", valor: "100" }]
+                );
+
+                tablero.setIntento((p, a) => {
+                  // console.log(p, a);
+                });
+
+                tablero.setIntentoAcierto(p => {
+                  console.log("bien");
+                  //tablero.ocultar();
+                  o.pantalla.continuar.habilitar();
+                });
+
+                tablero.setIntentoFallo(() => {
+                  //tablero.reset();
+                  console.log("mal");
+                });
+
+                tablero.setValidacion(() => {
+                  console.log("Gano");
+                  o.pantalla.continuar.habilitar();
+                });
+              }}
+            >
+              <Relacion tipo="Facilidad" categoria="Dificultad" />
+              <Relacion tipo="Evaporar" categoria="Solidificar" />
+              <Relacion tipo="Implícito" categoria="Explícito" />
+              <Relacion tipo="Derrumbar" categoria="Construir" />
+              <Relacion tipo="Idéntico" categoria="Distinto" />
+              <Relacion tipo="Fallido" categoria="Acertado" />
+              <Relacion tipo="Orden" categoria="Caos" />
+              <Relacion tipo="Denegar" categoria="Acceder" />
+              <Relacion tipo="Sabio" categoria="Ignorante" />
+              <Relacion tipo="Flexible" categoria="Rígido" />
+            </Relacionar>
+          </Contenedor>
+          <Continuar height="15%" align="center" disabled></Continuar>
+        </Pantalla>
+
+        <Pantalla padding="50px" fondo="/includes/background/claro.png">
           <RelojContador></RelojContador>
           <Pregunta padding="30px">
             <h2>
-              En el fragmento hay unos cuantos errores de ortografía,
-              encuentralos y corrigelos. Cuando sientas que no hay más errores,
-              haz click sobre el botón siguiente.
+              <D t>
+                En el fragmento hay unos cuantos errores de ortografía,
+                encuentralos y corrigelos. Cuando sientas que no hay más
+                errores, haz click sobre el botón siguiente.
+              </D>
             </h2>
             <br></br>
             <Escribir
@@ -78,12 +216,22 @@ export class Linguistica extends React.Component {
             </Contenedor>
 
             <Contenedor height="30%">
-              <h1>¿Cuantos años tienes?</h1>
+              <h1>
+                <D t>¿Cuantos años tienes?</D>
+              </h1>
               <Likert>
-                <Opcion resultados={[{ id: "a", valor: 10 }]}>10</Opcion>
-                <Opcion resultados={[{ id: "a", valor: 2 }]}>30</Opcion>
-                <Opcion>40</Opcion>
-                <Opcion>60</Opcion>
+                <Opcion resultados={[{ id: "a", valor: 10 }]}>
+                  <D>10</D>
+                </Opcion>
+                <Opcion resultados={[{ id: "a", valor: 2 }]}>
+                  <D>30</D>
+                </Opcion>
+                <Opcion>
+                  <D>40</D>
+                </Opcion>
+                <Opcion>
+                  <D>60</D>
+                </Opcion>
               </Likert>
             </Contenedor>
           </Pregunta>
@@ -93,99 +241,31 @@ export class Linguistica extends React.Component {
         <Pantalla>
           <Pregunta orientacion="horizontal">
             <Contenedor>
-              <img src="/img/persona-e1533759204552.jpg" alt="" />
+              <D t>
+                <img src="/img/persona-e1533759204552.jpg" alt="" />
+              </D>
             </Contenedor>
 
             <Contenedor height="30%">
-              <h1>¿Cuantos años tienes?</h1>
+              <h1>
+                <D t>¿Cuantos años tienes?</D>
+              </h1>
               <Contenedor allType="boton" grid>
-                <Opcion resultados={[{ id: "a", valor: 10 }]}>10</Opcion>
-                <Opcion resultados={[{ id: "a", valor: 2 }]}>30</Opcion>
-                <Opcion>40</Opcion>
-                <Opcion>60</Opcion>
+                <Opcion resultados={[{ id: "a", valor: 10 }]}>
+                  <D>10</D>
+                </Opcion>
+                <Opcion resultados={[{ id: "a", valor: 2 }]}>
+                  <D>30</D>
+                </Opcion>
+                <Opcion>
+                  <D>40</D>
+                </Opcion>
+                <Opcion>
+                  <D>60</D>
+                </Opcion>
               </Contenedor>
             </Contenedor>
           </Pregunta>
-          <Continuar height="15%" align="center" disabled></Continuar>
-        </Pantalla>
-
-        <Pantalla fondo="/includes/background/claro.png">
-          <Contenedor width="80%" height="15%">
-            <h2 className="text-center">
-              1. Las palabras están al azar , por favor enlaza una palabra de la
-              izquierda con otra palabra de la derecha según sea su antónimo.
-            </h2>
-          </Contenedor>
-          <Contenedor height="70%">
-            <Relacionar
-              width="650"
-              height="450"
-              config={function(o, tablero) {
-                tablero.setStyleA(250, 450, "20px Heebo", 170, 25);
-                tablero.setStyleB(450, 450, "20px Heebo", 170, 25);
-                tablero.distancia(300);
-
-                tablero.validar(
-                  "Aciertos",
-                  function(p, a) {
-                    if (p.aciertos > 3) {
-                      console.log(a);
-                      a.setValor("arte", 15);
-                      return true;
-                    }
-                  },
-                  "Si no termina la prueba",
-                  [{ id: "arte", valor: "200" }],
-                  tablero
-                );
-
-                tablero.validar(
-                  "Aciertos",
-                  function(p, a) {
-                    if (p.aciertos > 0) {
-                      console.log(a);
-                      a.setValor("arte", 5);
-
-                      return true;
-                    }
-                  },
-                  "Si completa todas sin errores",
-                  [{ id: "arte", valor: "100" }]
-                );
-
-                tablero.setIntento((p, a) => {
-                  // console.log(p, a);
-                });
-
-                tablero.setIntentoAcierto(p => {
-                  console.log("bien");
-                  //tablero.ocultar();
-                  o.pantalla.continuar.habilitar();
-                });
-
-                tablero.setIntentoFallo(() => {
-                  //tablero.reset();
-                  console.log("mal");
-                });
-
-                tablero.setValidacion(() => {
-                  console.log("Gano");
-                  o.pantalla.continuar.habilitar();
-                });
-              }}
-            >
-              <Relacion tipo="Facilidad" categoria="Dificultad" />
-              <Relacion tipo="Evaporar" categoria="Solidificar" />
-              <Relacion tipo="Implícito" categoria="Explícito" />
-              <Relacion tipo="Derrumbar" categoria="Construir" />
-              <Relacion tipo="Idéntico" categoria="Distinto" />
-              <Relacion tipo="Fallido" categoria="Acertado" />
-              <Relacion tipo="Orden" categoria="Caos" />
-              <Relacion tipo="Denegar" categoria="Acceder" />
-              <Relacion tipo="Sabio" categoria="Ignorante" />
-              <Relacion tipo="Flexible" categoria="Rígido" />
-            </Relacionar>
-          </Contenedor>
           <Continuar height="15%" align="center" disabled></Continuar>
         </Pantalla>
 
@@ -197,8 +277,10 @@ export class Linguistica extends React.Component {
           <Contenedor align="left" className="introduccion">
             <h1>Inteligencia Lingüística</h1>
             <p>
-              En esta sección de la prueba se evaluará tus conocimientos en el
-              área Lingüística.
+              <D>
+                En esta sección de la prueba se evaluará tus conocimientos en el
+                área Lingüística.
+              </D>
             </p>
             <Continuar className="left">Comenzar</Continuar>
           </Contenedor>
@@ -206,11 +288,19 @@ export class Linguistica extends React.Component {
 
         <Pantalla>
           <Pregunta orientacion="vertical" height="50%">
-            <h1 className="titulo">¿What is your name?</h1>
+            <h1 className="titulo">
+              <D>¿What is your name?</D>
+            </h1>
             <Likert min="Lo peor" max="Lo mejor" width="60%">
-              <Opcion>1</Opcion>
-              <Opcion>2</Opcion>
-              <Opcion>3</Opcion>
+              <Opcion>
+                <D>1</D>
+              </Opcion>
+              <Opcion>
+                <D>2</D>
+              </Opcion>
+              <Opcion>
+                <D>3</D>
+              </Opcion>
             </Likert>
           </Pregunta>
 

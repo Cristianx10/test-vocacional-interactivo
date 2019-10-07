@@ -19,6 +19,7 @@ export class Relacionar extends React.Component {
     this.opciones = [];
 
     this.tablero = new ARelacionar();
+
   }
 
   componentDidMount() {
@@ -61,11 +62,11 @@ export class Relacionar extends React.Component {
       this.tablero.update();
      
     }, 1000);
+
   }
 
   onFinal(){
     this.tablero.registro.evaluar();
-    console.log(JSON.stringify(this.tablero.registro));
   }
 
   render() {

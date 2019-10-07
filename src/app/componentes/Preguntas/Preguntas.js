@@ -9,6 +9,7 @@ import { resizeClass, ManagerStyle } from "../../utilidades/AutoClases";
 import { resultados } from "../../resultados/resultados";
 
 import "./Preguntas.scss";
+import { tags } from "../../configuraciones/dato";
 
 
 /* Clase encargada de la navegación entre actividades*/
@@ -33,6 +34,8 @@ export class Pregunta extends React.Component {
     this.registro = resultados.agregar(this);
 
     this.onStateObject = [];
+
+    this.propiedades.titulares = [];
   }
 
   onAddEventos(objeto) {
@@ -67,12 +70,30 @@ export class Pregunta extends React.Component {
     this.imprimir();
   }
 
+  componentDidMount(){
+    let contenedor = this.refs.contenedor;
+ 
+    let titulares = contenedor.querySelectorAll(tags.t);
+    
+    titulares.forEach((t)=>{
+      let fotos = t.querySelectorAll("img");
+      
+      if(fotos.length > 0){
+        fotos.forEach((f)=>{
+          this.propiedades.titulares.push({type:"img", contenido:f.src});
+        });
+      }else{
+        this.propiedades.titulares.push({type:"text", contenido:t.innerHTML});
+      }      
+    });
+  }
+
   render() {
 
     let style = this.styleManager.getProps();
 
     return (
-      <div ref="print_container" className={style.className} style={style.style}>
+      <div ref="contenedor" className={style.className} style={style.style}>
         {React.Children.map(this.props.children, (view, index) => {
           //return <div className="pregunta__bloque">{view}</div>;
 
@@ -131,6 +152,8 @@ export class Opcion extends React.Component {
       "Selecciono una opcion",
       []
     );
+
+    this.propiedades.respuestas = [];
   }
 
   seleccionar(estado) {
@@ -154,6 +177,23 @@ export class Opcion extends React.Component {
     if (this.value) {
       this.registro.setResultados(this.value);
     }
+
+    let contenedor = this.refs.contenedor;
+ 
+    let respuestas = contenedor.querySelectorAll(tags.default);
+    
+    respuestas.forEach((t)=>{
+      let fotos = t.querySelectorAll("img");
+      
+      if(fotos.length > 0){
+        fotos.forEach((f)=>{
+          this.propiedades.respuestas.push({type:"img", contenido:f.src});
+        });
+      }else{
+        this.propiedades.respuestas.push({type:"text", contenido:t.innerHTML});
+      }      
+    });
+
   }
 
   render() {
@@ -234,6 +274,8 @@ export class Likert extends React.Component {
     this.opciones = this.pregunta.opciones;
 
     this.valueInit = 0;
+
+    resultados.setId(this.pregunta, "Likert");
 
     this.state = {
       value: -1,

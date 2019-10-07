@@ -48,7 +48,6 @@ class Resultados {
 
             if (encontro === false) {
                 refObject = new GResultados(objeto);
-                console.log("fsdfsdfsdfsdfsd", refObject)
                 this.pruebas.push(refObject);
             }
         }
@@ -65,6 +64,11 @@ class Resultados {
         objeto.registro = referencia.registro.agregarCondicion(id, accion, descripcion, valorMaximo, objeto);
     }
 
+    setId(objeto:any, id:string) {
+        console.log(objeto.registro)
+        objeto.registro.id = id;
+    }
+
     setValor(objeto: any, id: string, valor: number) {
         objeto.registro.setValor(id, valor);
     }
@@ -74,7 +78,7 @@ class Resultados {
     }
 }
 
-localStorage.clear();
+//localStorage.clear();
 export var resultados = new Resultados("resultados");
 
 document.addEventListener("keypress", (e)=>{
