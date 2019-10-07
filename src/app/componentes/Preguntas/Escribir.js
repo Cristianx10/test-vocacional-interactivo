@@ -7,9 +7,7 @@ import { Texto_validar } from "./TS-Escribir";
 import comunicador from "../../comunicacion/Comunicacion";
 
 import { resizeClass } from "../../utilidades/AutoClases";
-
-import resultados from "../../resultados/resultados";
-
+import { resultados } from "../../resultados/resultados";
 
 
 /* Clase encargada de la navegación entre actividades*/
@@ -71,7 +69,10 @@ export class Escribir extends React.Component {
     }
   }
 
+  
   validar(id, accion, descripcion, valorMaximo) {
+    console.log("Escriiendo")
+    console.log(resultados)
     resultados.agregarCondicion(
       this,
       this.pregunta,

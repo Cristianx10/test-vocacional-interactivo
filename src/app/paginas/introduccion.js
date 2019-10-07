@@ -6,25 +6,25 @@ import Navegador, {
 import { Pregunta, Opcion } from "../componentes/Preguntas/Preguntas";
 import Contenedor from "../componentes/Contenedor/Contenedor";
 
-import "./introduccion.css";
+import "./css/introduccion.css";
 import {
   Tpreguntacajonbotones,
   TCTitular,
   TCTitular2
-} from "../componentes/Template/templete-preguntas";
+} from "../plantillas/templete-preguntas";
+import { TIntroduccion } from "../plantillas/templete-introduccion";
 
 export class Introduccion extends React.Component {
   render() {
     return (
       <Navegador image="/includes/background/oscuro-personajes.png">
-        
-        <Pantalla padding="200px 250px">
-          <Contenedor align="left" className="introduccion">
-            <h1>¡Rompamos el hielo!</h1>
-            <p>Queremos conocerte mejor. Sigue las instrucciones usando el mouse y el teclado.</p>
-            <Continuar className="left"></Continuar>
-          </Contenedor>
-        </Pantalla>
+        <TIntroduccion>
+          <h1>¡Rompamos el hielo!</h1>
+          <p>
+            Queremos conocerte mejor. Sigue las instrucciones usando el mouse y
+            el teclado.
+          </p>
+        </TIntroduccion>
 
         <Pantalla fondo="/includes/background/claro.png">
           <Contenedor orientacion="vertical" padding="100px">
@@ -36,7 +36,9 @@ export class Introduccion extends React.Component {
             </Pregunta>
             <Pregunta orientacion="horizontal left">
               <Contenedor width="60%" align="left">
-                <h2 className="titulo">2. 2 y 2 son 4. 4 y 2 son 6. 6 y 2 son 8 y 8...?</h2>
+                <h2 className="titulo">
+                  2. 2 y 2 son 4. 4 y 2 son 6. 6 y 2 son 8 y 8...?
+                </h2>
               </Contenedor>
               <Contenedor
                 width="40%"
@@ -66,7 +68,9 @@ export class Introduccion extends React.Component {
             </Pregunta>
             <Pregunta orientacion="horizontal left">
               <Contenedor width="60%" align="left">
-                <h2 className="titulo">4. ¿Cuál de los siguientes números no es par?</h2>
+                <h2 className="titulo">
+                  4. ¿Cuál de los siguientes números no es par?
+                </h2>
               </Contenedor>
               <Contenedor
                 width="40%"
@@ -81,7 +85,9 @@ export class Introduccion extends React.Component {
             </Pregunta>
             <Pregunta orientacion="horizontal left">
               <Contenedor width="60%" align="left">
-                <h2 className="titulo">5. ¿Cuál de los siguientes numeros es múltiplo de 5?</h2>
+                <h2 className="titulo">
+                  5. ¿Cuál de los siguientes numeros es múltiplo de 5?
+                </h2>
               </Contenedor>
               <Contenedor
                 width="40%"
@@ -96,7 +102,9 @@ export class Introduccion extends React.Component {
             </Pregunta>
             <Pregunta orientacion="horizontal left">
               <Contenedor width="60%" align="left">
-                <h2 className="titulo">6. Selecciona el símbolo químico del AGUA</h2>
+                <h2 className="titulo">
+                  6. Selecciona el símbolo químico del AGUA
+                </h2>
               </Contenedor>
               <Contenedor
                 width="40%"
@@ -129,7 +137,9 @@ export class Introduccion extends React.Component {
               <img className="imagen" src="/img/arte/pintura1.png" alt="" />
             </TCTitular>
             <TCTitular2>
-              <h2 className="titulo">¿Qué técnica es utilizada en esta obra?</h2>
+              <h2 className="titulo">
+                ¿Qué técnica es utilizada en esta obra?
+              </h2>
             </TCTitular2>
             <Opcion>Pastel</Opcion>
             <Opcion resultados={[{ id: "Arte", valor: 20 }]}>Acuarela</Opcion>
@@ -145,7 +155,9 @@ export class Introduccion extends React.Component {
               <img className="imagen" src="/img/arte/pintura1.png" alt="" />
             </TCTitular>
             <TCTitular2>
-              <h2 className="titulo">¿Qué sentimiento te genera el observar esta obra?</h2>
+              <h2 className="titulo">
+                ¿Qué sentimiento te genera el observar esta obra?
+              </h2>
             </TCTitular2>
             <Opcion>Tristeza</Opcion>
             <Opcion>Felicidad</Opcion>
@@ -161,7 +173,9 @@ export class Introduccion extends React.Component {
               <img className="imagen" src="/img/arte/pintura2.png" alt=""></img>
             </TCTitular>
             <TCTitular2>
-              <h2 className="titulo">¿Qué técnica es utilizada en esta obra?</h2>
+              <h2 className="titulo">
+                ¿Qué técnica es utilizada en esta obra?
+              </h2>
             </TCTitular2>
             <Opcion>Vinilo</Opcion>
             <Opcion>Pastel</Opcion>
@@ -177,7 +191,9 @@ export class Introduccion extends React.Component {
               <img className="imagen" src="/img/arte/pintura2.png" alt="" />
             </TCTitular>
             <TCTitular2>
-              <h2 className="titulo">¿Qué sentimiento te genera el observar esta obra?</h2>
+              <h2 className="titulo">
+                ¿Qué sentimiento te genera el observar esta obra?
+              </h2>
             </TCTitular2>
             <Opcion>Tranquilidad</Opcion>
             <Opcion>Felicidad</Opcion>
@@ -193,7 +209,9 @@ export class Introduccion extends React.Component {
               <img className="imagen" src="/img/arte/pintura3.png" alt="" />
             </TCTitular>
             <TCTitular2>
-              <h2 className="titulo">¿Qué técnica es utilizada en esta obra?</h2>
+              <h2 className="titulo">
+                ¿Qué técnica es utilizada en esta obra?
+              </h2>
             </TCTitular2>
             <Opcion>Carboncillo</Opcion>
             <Opcion>Mixta</Opcion>
@@ -209,7 +227,9 @@ export class Introduccion extends React.Component {
               <img className="imagen" src="/img/arte/pintura3.png" alt="" />
             </TCTitular>
             <TCTitular2>
-              <h2 className="titulo">¿Qué sentimiento te genera el observar esta obra?</h2>
+              <h2 className="titulo">
+                ¿Qué sentimiento te genera el observar esta obra?
+              </h2>
             </TCTitular2>
             <Opcion>Desolación</Opcion>
             <Opcion>Esperanza</Opcion>
@@ -225,7 +245,9 @@ export class Introduccion extends React.Component {
               <img className="imagen" src="/img/arte/pintura4.png" alt="" />
             </TCTitular>
             <TCTitular2>
-              <h2 className="titulo">¿Qué técnica es utilizada en esta obra?</h2>
+              <h2 className="titulo">
+                ¿Qué técnica es utilizada en esta obra?
+              </h2>
             </TCTitular2>
             <Opcion>Carboncillo</Opcion>
             <Opcion>Óleo</Opcion>
@@ -241,7 +263,9 @@ export class Introduccion extends React.Component {
               <img className="imagen" src="/img/arte/pintura4.png" alt="" />
             </TCTitular>
             <TCTitular2>
-              <h2 className="titulo">¿Qué sentimiento te genera el observar esta obra?</h2>
+              <h2 className="titulo">
+                ¿Qué sentimiento te genera el observar esta obra?
+              </h2>
             </TCTitular2>
             <Opcion>Felicidad</Opcion>
             <Opcion>Esperanza</Opcion>
@@ -257,7 +281,9 @@ export class Introduccion extends React.Component {
               <img className="imagen" src="/img/arte/pintura5.png" alt="" />
             </TCTitular>
             <TCTitular2>
-              <h2 className="titulo">¿Qué técnica es utilizada en esta obra?</h2>
+              <h2 className="titulo">
+                ¿Qué técnica es utilizada en esta obra?
+              </h2>
             </TCTitular2>
             <Opcion resultados={[{ id: "Arte", valor: 20 }]}>Mixta</Opcion>
             <Opcion>Tempera</Opcion>
@@ -273,7 +299,9 @@ export class Introduccion extends React.Component {
               <img className="imagen" src="/img/arte/pintura5.png" alt="" />
             </TCTitular>
             <TCTitular2>
-              <h2 className="titulo">¿Qué sentimiento te genera el observar esta obra?</h2>
+              <h2 className="titulo">
+                ¿Qué sentimiento te genera el observar esta obra?
+              </h2>
             </TCTitular2>
             <Opcion>Felicidad</Opcion>
             <Opcion>Esperanza</Opcion>

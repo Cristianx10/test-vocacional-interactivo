@@ -6,23 +6,22 @@ import Navegador, {
 import { Pregunta, Opcion, Likert } from "../componentes/Preguntas/Preguntas";
 import { Escribir } from "../componentes/Preguntas/Escribir";
 import Contenedor from "../componentes/Contenedor/Contenedor";
-import {
-  Relacionar,
-  Relacion
-} from "../actividades/Relacionar/Relacionar";
+import { Relacionar, Relacion } from "../actividades/Relacionar/Relacionar";
 import { RelojContador } from "../componentes/Navegador/RelojContador";
 import { TarjetasR, Carta } from "../actividades/TarjetasR/TarjetasR";
+import { TIntroduccion } from "../plantillas/templete-introduccion";
 
 export class Linguistica extends React.Component {
   render() {
     return (
       <Navegador width="100%" image="/includes/background/claro.png">
 
-        <Pantalla>
-          <TarjetasR>
-            <Carta> </Carta>
-          </TarjetasR>
-        </Pantalla>
+        <TIntroduccion fondo="/includes/background/oscuro.png">
+          <h1>Inteligencia Lingüística</h1>
+          <p>
+          En esta sección de la prueba se evaluará tus conocimientos en el área Lingüística.
+          </p>
+        </TIntroduccion>
 
         <Pantalla padding="50px">
           <RelojContador></RelojContador>
@@ -216,6 +215,53 @@ export class Linguistica extends React.Component {
           </Pregunta>
 
           <Continuar></Continuar>
+        </Pantalla>
+
+        <Pantalla>
+          <TarjetasR>
+            <Carta img="/img/emparejados/card-1.png" posA="0" posB="2"></Carta>
+            <Carta img="/img/emparejados/card-2.png" posA="4" posB="5"></Carta>
+            <Carta img="/img/emparejados/card-3.png" posA="1" posB="3"></Carta>
+          </TarjetasR>
+        </Pantalla>
+        <Pantalla>
+          <TarjetasR>
+            <Carta img="/img/emparejados/card-1.png" posA="0" posB="2"></Carta>
+            <Carta img="/img/emparejados/card-2.png" posA="6" posB="4"></Carta>
+            <Carta img="/img/emparejados/card-3.png" posA="3" posB="8"></Carta>
+            <Carta img="/img/emparejados/card-4.png" posA="7" posB="5"></Carta>
+            <Carta img="/img/emparejados/card-5.png" posA="9" posB="1"></Carta>
+          </TarjetasR>
+        </Pantalla>
+        <Pantalla>
+          <TarjetasR>
+            <Carta img="/img/emparejados/card-1.png" posA="0" posB="2"></Carta>
+            <Carta img="/img/emparejados/card-2.png" posA="4" posB="6"></Carta>
+            <Carta
+              img="/img/emparejados/card-3.png"
+              posA="10"
+              posB="12"
+            ></Carta>
+            <Carta img="/img/emparejados/card-4.png" posA="18" posB="1"></Carta>
+            <Carta img="/img/emparejados/card-5.png" posA="3" posB="17"></Carta>
+            <Carta
+              img="/img/emparejados/card-6.png"
+              posA="11"
+              posB="14"
+            ></Carta>
+            <Carta
+              img="/img/emparejados/card-7.png"
+              posA="13"
+              posB="19"
+            ></Carta>
+            <Carta img="/img/emparejados/card-8.png" posA="9" posB="5"></Carta>
+            <Carta img="/img/emparejados/card-9.png" posA="7" posB="8"></Carta>
+            <Carta
+              img="/img/emparejados/card-10.png"
+              posA="15"
+              posB="16"
+            ></Carta>
+          </TarjetasR>
         </Pantalla>
       </Navegador>
     );

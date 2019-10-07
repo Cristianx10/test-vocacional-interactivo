@@ -8,7 +8,7 @@ export var Names = {
     relacionar:"relacionar",
     relacion:"relacion",
 
-    cartasParejas:"cartasParejas",
+    tableroR:"tableroR",
     carta:"cartas__pareja"
 }
 

@@ -15,42 +15,38 @@ export class TarjetasR extends React.Component {
   constructor() {
     super();
     this.comunicador = comunicador;
-    this.comunicador.add(Names.cartasParejas).push(this);
+    this.comunicador.add(Names.tableroR).push(this);
     this.opciones = [];
+
+    this.tablero = new Tablero_tarjetas();
 
     resultados.agregar(this);
   }
 
+  onInicial(){
+
+  }
+
+  onFinal(){
+    
+  }
+
   componentDidMount() {
-    this.tablero = new Tablero_tarjetas();
 
-
-    this.tablero.agregar(
-      "/img/emparejados/card-1.png",
-      0,
-      "/img/emparejados/card-1.png",
-      2
-    );
-    this.tablero.agregar(
-      "/img/emparejados/card-2.png",
-      4,
-      "/img/emparejados/card-2.png",
-      5
-    );
-    this.tablero.agregar(
-      "/img/emparejados/card-3.png",
-      1,
-      "/img/emparejados/card-3.png",
-      3
-    );
-
+    this.tablero.incluirEn(this.refs.contenedor);
     this.tablero.iniciar();
 
   }
 
   render() {
     let c = resizeClass(this, "tarjetas__contenedor interaccion");
-    return <div className={c.className} style={c.style}></div>;
+    return (
+      <div ref="contenedor" className={c.className} style={c.style}>
+        {React.Children.map(this.props.children, view => {
+          return view;
+        })}
+      </div>
+    );
   }
 }
 
@@ -60,8 +56,20 @@ export class Carta extends React.Component {
     super();
     this.comunicador = comunicador;
     this.comunicador.add(Names.carta).push(this);
-    this.tablero = this.comunicador.getPropiedadActual(Names.cartasParejas);
-    this.tablero.opciones.push(this);
+    this.View_tablero = this.comunicador.getPropiedadActual(Names.tableroR);
+    this.tablero = this.View_tablero.tablero;
+    console.log(this.tablero);
+    this.View_tablero.opciones.push(this);
+  }
+
+  componentDidMount() {
+    console.log("una tarjeta");
+
+    let img = this.props.img;
+    let posA = this.props.posA;
+    let posB = this.props.posB;
+
+    this.tablero.agregar(img, posA, img, posB);
   }
 
   render() {

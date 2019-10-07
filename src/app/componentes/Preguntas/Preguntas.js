@@ -1,15 +1,14 @@
 import React from "react";
-//import Slider from "@material-ui/core/Slider";
-//import { withStyles } from "@material-ui/core/styles";
+import Slider from "@material-ui/core/Slider";
+import { withStyles } from '@material-ui/core/styles';
 
 import comunicador from "../../comunicacion/Comunicacion";
 
-import { resizeClass } from "../../utilidades/AutoClases";
+import { resizeClass, ManagerStyle } from "../../utilidades/AutoClases";
 
 import { resultados } from "../../resultados/resultados";
 
 import "./Preguntas.scss";
-
 
 
 /* Clase encargada de la navegación entre actividades*/
@@ -21,6 +20,8 @@ export class Pregunta extends React.Component {
     this.comunicador.add("pregunta").push(this);
     this.pantalla = this.comunicador.getPropiedadActual("pantallas");
 
+    this.styleManager = new ManagerStyle(this, "pregunta");
+
     this.opciones = [];
 
     this.pantalla.onAddEventos(this);
@@ -28,13 +29,12 @@ export class Pregunta extends React.Component {
 
     this.tipoId = "Pregunta";
     this.propiedades = {};
-    
+
     this.registro = resultados.agregar(this);
 
     this.onStateObject = [];
-
   }
-  
+
   onAddEventos(objeto) {
     this.onStateObject.push(objeto);
   }
@@ -49,13 +49,13 @@ export class Pregunta extends React.Component {
   }
 
   onFinal() {
-      this.onStateObject.forEach(propiedad => {
-        if (propiedad.onFinal) propiedad.onFinal();
-      });
-      if (this.props.onFinal) {
-        this.props.onFinal().bind(this);
-      }
-      resultados.evaluar(this);
+    this.onStateObject.forEach(propiedad => {
+      if (propiedad.onFinal) propiedad.onFinal();
+    });
+    if (this.props.onFinal) {
+      this.props.onFinal().bind(this);
+    }
+    resultados.evaluar(this);
   }
 
   seleccionar(seleccion) {
@@ -68,10 +68,11 @@ export class Pregunta extends React.Component {
   }
 
   render() {
-    let size = resizeClass(this, "pregunta");
+
+    let style = this.styleManager.getProps();
 
     return (
-      <div ref="print_container" className={size.className} style={size.style}>
+      <div ref="print_container" className={style.className} style={style.style}>
         {React.Children.map(this.props.children, (view, index) => {
           //return <div className="pregunta__bloque">{view}</div>;
 
@@ -117,17 +118,19 @@ export class Opcion extends React.Component {
     this.tipoId = "Opcion";
     this.propiedades = {};
 
- 
-    resultados.agregarCondicion(this, this.pregunta, "Seleccion",
+    resultados.agregarCondicion(
+      this,
+      this.pregunta,
+      "Seleccion",
 
-    (p, r) => {
-      if (this.pregunta.seleccion === this) {
-        return true;
-      }
-    },
-    "Selecciono una opcion",
-    []);
-   
+      (p, r) => {
+        if (this.pregunta.seleccion === this) {
+          return true;
+        }
+      },
+      "Selecciono una opcion",
+      []
+    );
   }
 
   seleccionar(estado) {
@@ -188,7 +191,7 @@ export class Opcion extends React.Component {
     );
   }
 }
-/*
+
 const PrettoSlider = withStyles({
   root: {
     color: "#00DED3",
@@ -220,7 +223,7 @@ const PrettoSlider = withStyles({
   }
 })(Slider);
 
-*/
+
 export class Likert extends React.Component {
   constructor() {
     super();
@@ -255,7 +258,6 @@ export class Likert extends React.Component {
     if (value !== this.state.value || this.state.value === -1) {
       this.setState({ value: value });
       this.pregunta.seleccion = this.opciones[value];
-     
     }
   }
 
@@ -271,11 +273,10 @@ export class Likert extends React.Component {
           <div className="likert__min">{this.props.min}</div>
           <div className="likert__progreso">
             <div className="likert__barra">
-             {/* <PrettoSlider
+              <PrettoSlider
                 onChange={this.onChange.bind(this)}
                 defaultValue={valor}
-                max={max}
-             />*/}
+                max={max} />
             </div>
             <div className="likert__opciones">
               {React.Children.map(this.props.children, (view, index) => {

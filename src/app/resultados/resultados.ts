@@ -5,32 +5,6 @@ interface ResultadoA {
     valor: number;
 }
 
-
-interface RRegistro {
-    id: string;
-    pruebas: Array<RPruebaS>;
-}
-
-interface RPrueba {
-    id: string;
-    valor: number;
-}
-
-interface RPruebaS {
-    id: string;
-    valor: string;
-}
-
-interface Respuesta {
-    id: string;
-    valores: Array<ResultadoA>;
-}
-
-
-interface IUResultda {
-
-}
-
 class Resultados {
 
     id: string;
@@ -61,11 +35,25 @@ class Resultados {
     }
 
     agregar(objeto: any) {
-        objeto.registro = new GResultados(objeto);
-        if(this.pruebas){
-            this.pruebas.push(objeto.registro);
+        
+        let refObject = null;
+        if (this.pruebas) {
+            let encontro = false;
+            this.pruebas.forEach((p) => {
+                if (objeto.registro !== null && p === objeto.registro) {
+                    encontro = true;
+                    refObject = objeto.registro;
+                }
+            });
+
+            if (encontro === false) {
+                refObject = new GResultados(objeto);
+                console.log("fsdfsdfsdfsdfsd", refObject)
+                this.pruebas.push(refObject);
+            }
         }
-        return objeto.registro;
+
+        return refObject;
     }
 
     evaluar(objeto: any) {
@@ -73,11 +61,11 @@ class Resultados {
         this.save();
     }
 
-    agregarCondicion(objeto: any, referencia:any, id: string, accion: Function, descripcion: string, valorMaximo: Array<ICategoria>){
-        objeto.registro = referencia.registro.agregarCondicion(id, accion, descripcion, valorMaximo, objeto);   
+    agregarCondicion(objeto: any, referencia: any, id: string, accion: Function, descripcion: string, valorMaximo: Array<ICategoria>) {
+        objeto.registro = referencia.registro.agregarCondicion(id, accion, descripcion, valorMaximo, objeto);
     }
 
-    setValor(objeto:any, id:string, valor:number){
+    setValor(objeto: any, id: string, valor: number) {
         objeto.registro.setValor(id, valor);
     }
 
@@ -86,7 +74,15 @@ class Resultados {
     }
 }
 
+localStorage.clear();
 export var resultados = new Resultados("resultados");
+
+document.addEventListener("keypress", (e)=>{
+    if(e.key === "Enter"){
+        console.log("Imprimiendo resultados");
+        console.log(resultados);
+    }
+})
 
 
 export interface ICategoria {
@@ -108,8 +104,123 @@ export interface IObjectValidable {
     tipoId: string;
     propiedades: any;
     acciones: any;
-
 }
+
+
+export class GResultados {
+
+    id: string;
+    propiedades: any;
+
+    result: Array<ICategoria>;
+    maximos: Array<ICategoria>;
+    opciones: Array<OResultado>;
+    defaultResult: OResultado;
+    seleccion: OResultado;
+
+    constructor(objeto: any) {
+        if (objeto) {
+            if (objeto.tipoId) {
+                this.id = objeto.tipoId;
+            } else {
+                this.id = "defaul";
+            }
+
+            if (objeto.propiedades) {
+                this.propiedades = objeto.propiedades;
+            } else {
+                this.propiedades = {};
+            }
+        } else {
+            this.id = "defaul";
+            this.propiedades = {};
+        }
+        this.result = [];
+        this.maximos = [];
+        this.opciones = [];
+
+        this.defaultResult = new OResultado(null);
+        this.seleccion = this.defaultResult;
+    }
+
+    agregarCondicion(id: string, accion: Function, descripcion: string, valorMaximo: Array<ICategoria>, objeto: any) {
+
+        valorMaximo.forEach((v) => {
+            v.id = v.id.toLowerCase();
+        });
+
+        let valores: Array<ICategoria> = [];
+        valorMaximo.forEach((v) => {
+            valores.push(Object.assign({}, v));
+        });
+
+        let opcion = new OResultado(objeto);
+
+        if (id !== "" && id !== null) {
+            opcion.id = id;
+        }
+
+        opcion.id = id;
+        opcion.accion = accion;
+        opcion.descripcion = descripcion;
+        opcion.valorMaximo = valorMaximo;
+        opcion.valor = valores;
+
+        this.opciones.push(opcion);
+
+        return opcion;
+    }
+
+    calcularMaximo() {
+        this.maximos = [];
+        this.opciones.forEach((opcion) => {
+
+            opcion.valorMaximo.forEach((result) => {
+
+                let encontrado = false;
+
+                this.maximos.forEach((valor) => {
+                    if (result.id === valor.id) {
+                        encontrado = true;
+                        if (result.valor > valor.valor) {
+                            valor.valor = result.valor;
+                        }
+                    }
+                });
+
+                if (encontrado === false) {
+                    this.maximos.push(result)
+                }
+
+            });
+
+        });
+
+    }
+
+    evaluar() {
+
+        let encontro = false;
+        this.opciones.forEach((opcion) => {
+            let value = opcion.acciones();
+            opcion.setValidacion(value);
+
+            if (value || opcion.validacion === true) {
+                encontro = true;
+                this.seleccion = opcion;
+            }
+        });
+
+        if (encontro === false) {
+            this.seleccion = this.defaultResult;
+        }
+
+        this.result = this.seleccion.valor;
+
+        this.calcularMaximo();
+    }
+}
+
 
 class OResultado {
     id: string;
@@ -172,7 +283,7 @@ class OResultado {
 
         let valores: Array<ICategoria> = [];
         this.valor.forEach((v) => {
-            
+
             valores.push(Object.assign({}, v));
         });
 
@@ -191,123 +302,6 @@ class OResultado {
             return val;
         }
     }
-}
-
-export class GResultados {
-
-    id: string;
-    propiedades: any;
-
-    result: Array<ICategoria>;
-    maximos: Array<ICategoria>;
-    opciones: Array<OResultado>;
-    defaultResult: OResultado;
-    seleccion: OResultado;
-
-    constructor(objeto: any) {
-        if (objeto) {
-            if (objeto.tipoId) {
-                this.id = objeto.tipoId;
-            } else {
-                this.id = "defaul";
-            }
-
-            if (objeto.propiedades) {
-                this.propiedades = objeto.propiedades;
-            } else {
-                this.propiedades = {};
-            }
-        } else {
-            this.id = "defaul";
-            this.propiedades = {};
-        }
-        this.result = [];
-        this.maximos = [];
-        this.opciones = [];
-
-        this.defaultResult = new OResultado(null);
-        this.seleccion = this.defaultResult;
-    }
-
-    agregarCondicion(id: string, accion: Function, descripcion: string, valorMaximo: Array<ICategoria>, objeto: any) {
-
-        valorMaximo.forEach((v) => {
-            v.id = v.id.toLowerCase();
-        });
-
-        let valores: Array<ICategoria> = [];
-        valorMaximo.forEach((v) => {
-            valores.push(Object.assign({}, v));
-        });
-
-        let opcion = new OResultado(objeto);
-
-        if(id !== "" && id !== null){
-            opcion.id = id; 
-        }
-
-        opcion.id = id;
-        opcion.accion = accion;
-        opcion.descripcion = descripcion;
-        opcion.valorMaximo = valorMaximo;
-        opcion.valor = valores;
-
-        this.opciones.push(opcion);
-
-        return opcion;
-    }
-
-    calcularMaximo() {
-        this.maximos = [];
-        this.opciones.forEach((opcion) => {
-
-            opcion.valorMaximo.forEach((result) => {
-
-                let encontrado = false;
-
-                this.maximos.forEach((valor) => {
-                    if (result.id === valor.id) {
-                        encontrado = true;
-                        if (result.valor > valor.valor) {
-                            valor.valor = result.valor;
-                        }
-                    }
-                });
-
-                if (encontrado === false) {
-                    this.maximos.push(result)
-                }
-
-            });
-
-        });
-
-    }
-
-    evaluar() {
-
-        let encontro = false;
-        this.opciones.forEach((opcion) => {
-            let value = opcion.acciones();
-            opcion.setValidacion(value);
-
-            if (value || opcion.validacion === true) {
-                encontro = true;
-                this.seleccion = opcion;
-            }
-        });
-
-        if (encontro === false) {
-            this.seleccion = this.defaultResult;
-        }
-
-        this.result = this.seleccion.valor;
-
-        this.calcularMaximo();
-    }
-
-
-
 }
 
 /*
@@ -585,9 +579,9 @@ export class Resultados {
 
         anchor.download = "resultadoDictado.json";
         anchor.href = (/*window.webkitURL ||*/ /*window.URL).createObjectURL(blob);
-        anchor.dataset.downloadurl = ['text/plain', anchor.download, anchor.href].join(':');
-        anchor.click();
-    }
+anchor.dataset.downloadurl = ['text/plain', anchor.download, anchor.href].join(':');
+anchor.click();
+}
 
 }
 

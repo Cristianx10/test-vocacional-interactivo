@@ -41,7 +41,7 @@ export class Tablero_tarjetas extends Interaccion {
         //shuffle(this.tarjetas);
 
         for (let i = 0; i < this.tarjetas.length; i++) {
-            this.tarjetas[this.posiciones[i]].draggable = false;
+            //this.tarjetas[this.posiciones[i]].draggable = false;
             this.elemento.append(this.tarjetas[this.posiciones[i]]);
         }
     }

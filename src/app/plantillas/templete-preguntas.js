@@ -1,6 +1,6 @@
 import React from "react";
-import Pregunta from "../Preguntas/Preguntas";
-import Contenedor from "../Contenedor/Contenedor";
+import Pregunta from "../componentes/Preguntas/Preguntas";
+import Contenedor from "../componentes/Contenedor/Contenedor";
 
 /*Titular del Componente* TC */
 export class TCTitular extends React.Component {

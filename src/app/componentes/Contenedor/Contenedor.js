@@ -23,6 +23,8 @@ export class Contenedor extends React.Component {
       clas.className = clas.className + " vertical";
     }
 
+    
+
     if (this.props.grid) {
       clas.style.display = "grid";
       clas.style.gridTemplateColumns = "50% 50%";

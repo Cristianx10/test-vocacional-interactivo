@@ -24,11 +24,11 @@ export class Interaccion implements IObjectValidable {
     validacion?: Function;
     intentoFallo?: Function;
     intentoAcierto?: Function;
-    intento?:Function;
+    intento?: Function;
     validar?: Function;
 
     tipoId: string;
-    
+
 
     constructor() {
         this.aciertos = 0;
@@ -86,7 +86,7 @@ export class Interaccion implements IObjectValidable {
         return this.elemento;
     }
 
-  
+
 
 }
 
@@ -96,13 +96,13 @@ export class Interaccion implements IObjectValidable {
 --------------------------------------------------------------*/
 
 export class Actividad implements IObjectValidable {
-    
+
 
     stage: createjs.Stage;
     contenedor: createjs.Container;
     canvas: HTMLCanvasElement;
     elemento: HTMLElement;
- 
+
     // aciertos: number;
     // fallos: number;
     // intentos: number;
@@ -118,7 +118,7 @@ export class Actividad implements IObjectValidable {
     propiedades: any;
     acciones: any;
 
-    registro:GResultados;
+    registro?: GResultados;
 
 
     constructor() {
@@ -138,16 +138,21 @@ export class Actividad implements IObjectValidable {
         this.propiedades = {};
 
         this.acciones = {};
-        
-        this.registro = resultados.agregar(this);
 
-        this.acciones.validar = (id: string, accion: Function, descripcion: string, valorMaximo: Array<ICategoria>)=>{
+        let tempRegister = resultados.agregar(this);
+        if (tempRegister !== null) {
+            this.registro = tempRegister;
+        }
+
+        this.acciones.validar = (id: string, accion: Function, descripcion: string, valorMaximo: Array<ICategoria>) => {
             this.validar(id, accion, descripcion, valorMaximo);
         };
     }
 
-    validar(id: string, accion: Function, descripcion: string, valorMaximo: Array<ICategoria>){
-        this.registro.agregarCondicion(id, accion, descripcion, valorMaximo, this);
+    validar(id: string, accion: Function, descripcion: string, valorMaximo: Array<ICategoria>) {
+        if(this.registro !== undefined){
+            this.registro.agregarCondicion(id, accion, descripcion, valorMaximo, this);
+        }
     }
 
     update() {
@@ -190,7 +195,7 @@ export class Actividad implements IObjectValidable {
         }
     }
 
-   /**Cambio de comportamientos */
+    /**Cambio de comportamientos */
 
 
     setValidacion(validacion: Function) {
