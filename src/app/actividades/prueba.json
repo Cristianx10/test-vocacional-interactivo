@@ -1,0 +1,3503 @@
+{
+    "id": "resultados",
+    "pruebas": [
+        {
+            "id": "Pregunta",
+            "propiedades": {},
+            "result": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "maximos": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "opciones": [
+                {
+                    "id": "Mayusculas",
+                    "propiedades": {
+                        "error_general": 0,
+                        "error_estricto": 0,
+                        "error_mayuscula": 0,
+                        "error_puntuacion": 0,
+                        "error_falto": 0,
+                        "numero_palabras": 196
+                    },
+                    "descripcion": "No tuvo errores con mayuscula",
+                    "valorMaximo": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "valor": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "validacion": true
+                }
+            ],
+            "defaultResult": {
+                "id": "defaul",
+                "propiedades": {},
+                "descripcion": "No se encontro condicion",
+                "valorMaximo": [],
+                "valor": [],
+                "validacion": false
+            },
+            "seleccion": {
+                "id": "Mayusculas",
+                "propiedades": {
+                    "error_general": 0,
+                    "error_estricto": 0,
+                    "error_mayuscula": 0,
+                    "error_puntuacion": 0,
+                    "error_falto": 0,
+                    "numero_palabras": 196
+                },
+                "descripcion": "No tuvo errores con mayuscula",
+                "valorMaximo": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "valor": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "validacion": true
+            }
+        },
+        {
+            "id": "Pregunta",
+            "propiedades": {},
+            "result": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "maximos": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "opciones": [
+                {
+                    "id": "Mayusculas",
+                    "propiedades": {
+                        "error_general": 0,
+                        "error_estricto": 0,
+                        "error_mayuscula": 0,
+                        "error_puntuacion": 0,
+                        "error_falto": 0,
+                        "numero_palabras": 196
+                    },
+                    "descripcion": "No tuvo errores con mayuscula",
+                    "valorMaximo": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "valor": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "validacion": true
+                }
+            ],
+            "defaultResult": {
+                "id": "defaul",
+                "propiedades": {},
+                "descripcion": "No se encontro condicion",
+                "valorMaximo": [],
+                "valor": [],
+                "validacion": false
+            },
+            "seleccion": {
+                "id": "Mayusculas",
+                "propiedades": {
+                    "error_general": 0,
+                    "error_estricto": 0,
+                    "error_mayuscula": 0,
+                    "error_puntuacion": 0,
+                    "error_falto": 0,
+                    "numero_palabras": 196
+                },
+                "descripcion": "No tuvo errores con mayuscula",
+                "valorMaximo": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "valor": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "validacion": true
+            }
+        },
+        {
+            "id": "Pregunta",
+            "propiedades": {},
+            "result": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "maximos": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "opciones": [
+                {
+                    "id": "Mayusculas",
+                    "propiedades": {
+                        "error_general": 0,
+                        "error_estricto": 0,
+                        "error_mayuscula": 0,
+                        "error_puntuacion": 0,
+                        "error_falto": 0,
+                        "numero_palabras": 196
+                    },
+                    "descripcion": "No tuvo errores con mayuscula",
+                    "valorMaximo": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "valor": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "validacion": true
+                }
+            ],
+            "defaultResult": {
+                "id": "defaul",
+                "propiedades": {},
+                "descripcion": "No se encontro condicion",
+                "valorMaximo": [],
+                "valor": [],
+                "validacion": false
+            },
+            "seleccion": {
+                "id": "Mayusculas",
+                "propiedades": {
+                    "error_general": 0,
+                    "error_estricto": 0,
+                    "error_mayuscula": 0,
+                    "error_puntuacion": 0,
+                    "error_falto": 0,
+                    "numero_palabras": 196
+                },
+                "descripcion": "No tuvo errores con mayuscula",
+                "valorMaximo": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "valor": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "validacion": true
+            }
+        },
+        {
+            "id": "Pregunta",
+            "propiedades": {},
+            "result": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "maximos": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "opciones": [
+                {
+                    "id": "Mayusculas",
+                    "propiedades": {
+                        "error_general": 0,
+                        "error_estricto": 0,
+                        "error_mayuscula": 0,
+                        "error_puntuacion": 0,
+                        "error_falto": 0,
+                        "numero_palabras": 196
+                    },
+                    "descripcion": "No tuvo errores con mayuscula",
+                    "valorMaximo": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "valor": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "validacion": true
+                }
+            ],
+            "defaultResult": {
+                "id": "defaul",
+                "propiedades": {},
+                "descripcion": "No se encontro condicion",
+                "valorMaximo": [],
+                "valor": [],
+                "validacion": false
+            },
+            "seleccion": {
+                "id": "Mayusculas",
+                "propiedades": {
+                    "error_general": 0,
+                    "error_estricto": 0,
+                    "error_mayuscula": 0,
+                    "error_puntuacion": 0,
+                    "error_falto": 0,
+                    "numero_palabras": 196
+                },
+                "descripcion": "No tuvo errores con mayuscula",
+                "valorMaximo": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "valor": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "validacion": true
+            }
+        },
+        {
+            "id": "Pregunta",
+            "propiedades": {},
+            "result": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "maximos": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "opciones": [
+                {
+                    "id": "Mayusculas",
+                    "propiedades": {
+                        "error_general": 0,
+                        "error_estricto": 0,
+                        "error_mayuscula": 0,
+                        "error_puntuacion": 0,
+                        "error_falto": 0,
+                        "numero_palabras": 196
+                    },
+                    "descripcion": "No tuvo errores con mayuscula",
+                    "valorMaximo": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "valor": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "validacion": true
+                }
+            ],
+            "defaultResult": {
+                "id": "defaul",
+                "propiedades": {},
+                "descripcion": "No se encontro condicion",
+                "valorMaximo": [],
+                "valor": [],
+                "validacion": false
+            },
+            "seleccion": {
+                "id": "Mayusculas",
+                "propiedades": {
+                    "error_general": 0,
+                    "error_estricto": 0,
+                    "error_mayuscula": 0,
+                    "error_puntuacion": 0,
+                    "error_falto": 0,
+                    "numero_palabras": 196
+                },
+                "descripcion": "No tuvo errores con mayuscula",
+                "valorMaximo": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "valor": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "validacion": true
+            }
+        },
+        {
+            "id": "Pregunta",
+            "propiedades": {},
+            "result": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "maximos": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "opciones": [
+                {
+                    "id": "Mayusculas",
+                    "propiedades": {
+                        "error_general": 0,
+                        "error_estricto": 0,
+                        "error_mayuscula": 0,
+                        "error_puntuacion": 0,
+                        "error_falto": 0,
+                        "numero_palabras": 196
+                    },
+                    "descripcion": "No tuvo errores con mayuscula",
+                    "valorMaximo": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "valor": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "validacion": true
+                }
+            ],
+            "defaultResult": {
+                "id": "defaul",
+                "propiedades": {},
+                "descripcion": "No se encontro condicion",
+                "valorMaximo": [],
+                "valor": [],
+                "validacion": false
+            },
+            "seleccion": {
+                "id": "Mayusculas",
+                "propiedades": {
+                    "error_general": 0,
+                    "error_estricto": 0,
+                    "error_mayuscula": 0,
+                    "error_puntuacion": 0,
+                    "error_falto": 0,
+                    "numero_palabras": 196
+                },
+                "descripcion": "No tuvo errores con mayuscula",
+                "valorMaximo": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "valor": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "validacion": true
+            }
+        },
+        {
+            "id": "Pregunta",
+            "propiedades": {},
+            "result": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "maximos": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "opciones": [
+                {
+                    "id": "Mayusculas",
+                    "propiedades": {
+                        "error_general": 0,
+                        "error_estricto": 0,
+                        "error_mayuscula": 0,
+                        "error_puntuacion": 0,
+                        "error_falto": 0,
+                        "numero_palabras": 196
+                    },
+                    "descripcion": "No tuvo errores con mayuscula",
+                    "valorMaximo": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "valor": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "validacion": true
+                }
+            ],
+            "defaultResult": {
+                "id": "defaul",
+                "propiedades": {},
+                "descripcion": "No se encontro condicion",
+                "valorMaximo": [],
+                "valor": [],
+                "validacion": false
+            },
+            "seleccion": {
+                "id": "Mayusculas",
+                "propiedades": {
+                    "error_general": 0,
+                    "error_estricto": 0,
+                    "error_mayuscula": 0,
+                    "error_puntuacion": 0,
+                    "error_falto": 0,
+                    "numero_palabras": 196
+                },
+                "descripcion": "No tuvo errores con mayuscula",
+                "valorMaximo": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "valor": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "validacion": true
+            }
+        },
+        {
+            "id": "Pregunta",
+            "propiedades": {},
+            "result": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "maximos": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "opciones": [
+                {
+                    "id": "Mayusculas",
+                    "propiedades": {
+                        "error_general": 0,
+                        "error_estricto": 0,
+                        "error_mayuscula": 0,
+                        "error_puntuacion": 0,
+                        "error_falto": 0,
+                        "numero_palabras": 196
+                    },
+                    "descripcion": "No tuvo errores con mayuscula",
+                    "valorMaximo": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "valor": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "validacion": true
+                }
+            ],
+            "defaultResult": {
+                "id": "defaul",
+                "propiedades": {},
+                "descripcion": "No se encontro condicion",
+                "valorMaximo": [],
+                "valor": [],
+                "validacion": false
+            },
+            "seleccion": {
+                "id": "Mayusculas",
+                "propiedades": {
+                    "error_general": 0,
+                    "error_estricto": 0,
+                    "error_mayuscula": 0,
+                    "error_puntuacion": 0,
+                    "error_falto": 0,
+                    "numero_palabras": 196
+                },
+                "descripcion": "No tuvo errores con mayuscula",
+                "valorMaximo": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "valor": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "validacion": true
+            }
+        },
+        {
+            "id": "Pregunta",
+            "propiedades": {},
+            "result": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "maximos": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "opciones": [
+                {
+                    "id": "Mayusculas",
+                    "propiedades": {
+                        "error_general": 0,
+                        "error_estricto": 0,
+                        "error_mayuscula": 0,
+                        "error_puntuacion": 0,
+                        "error_falto": 0,
+                        "numero_palabras": 196
+                    },
+                    "descripcion": "No tuvo errores con mayuscula",
+                    "valorMaximo": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "valor": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "validacion": true
+                }
+            ],
+            "defaultResult": {
+                "id": "defaul",
+                "propiedades": {},
+                "descripcion": "No se encontro condicion",
+                "valorMaximo": [],
+                "valor": [],
+                "validacion": false
+            },
+            "seleccion": {
+                "id": "Mayusculas",
+                "propiedades": {
+                    "error_general": 0,
+                    "error_estricto": 0,
+                    "error_mayuscula": 0,
+                    "error_puntuacion": 0,
+                    "error_falto": 0,
+                    "numero_palabras": 196
+                },
+                "descripcion": "No tuvo errores con mayuscula",
+                "valorMaximo": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "valor": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "validacion": true
+            }
+        },
+        {
+            "id": "Pregunta",
+            "propiedades": {},
+            "result": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "maximos": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "opciones": [
+                {
+                    "id": "Mayusculas",
+                    "propiedades": {
+                        "error_general": 0,
+                        "error_estricto": 0,
+                        "error_mayuscula": 0,
+                        "error_puntuacion": 0,
+                        "error_falto": 0,
+                        "numero_palabras": 196
+                    },
+                    "descripcion": "No tuvo errores con mayuscula",
+                    "valorMaximo": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "valor": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "validacion": true
+                }
+            ],
+            "defaultResult": {
+                "id": "defaul",
+                "propiedades": {},
+                "descripcion": "No se encontro condicion",
+                "valorMaximo": [],
+                "valor": [],
+                "validacion": false
+            },
+            "seleccion": {
+                "id": "Mayusculas",
+                "propiedades": {
+                    "error_general": 0,
+                    "error_estricto": 0,
+                    "error_mayuscula": 0,
+                    "error_puntuacion": 0,
+                    "error_falto": 0,
+                    "numero_palabras": 196
+                },
+                "descripcion": "No tuvo errores con mayuscula",
+                "valorMaximo": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "valor": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "validacion": true
+            }
+        },
+        {
+            "id": "Pregunta",
+            "propiedades": {},
+            "result": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "maximos": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "opciones": [
+                {
+                    "id": "Mayusculas",
+                    "propiedades": {
+                        "error_general": 0,
+                        "error_estricto": 0,
+                        "error_mayuscula": 0,
+                        "error_puntuacion": 0,
+                        "error_falto": 0,
+                        "numero_palabras": 196
+                    },
+                    "descripcion": "No tuvo errores con mayuscula",
+                    "valorMaximo": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "valor": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "validacion": true
+                }
+            ],
+            "defaultResult": {
+                "id": "defaul",
+                "propiedades": {},
+                "descripcion": "No se encontro condicion",
+                "valorMaximo": [],
+                "valor": [],
+                "validacion": false
+            },
+            "seleccion": {
+                "id": "Mayusculas",
+                "propiedades": {
+                    "error_general": 0,
+                    "error_estricto": 0,
+                    "error_mayuscula": 0,
+                    "error_puntuacion": 0,
+                    "error_falto": 0,
+                    "numero_palabras": 196
+                },
+                "descripcion": "No tuvo errores con mayuscula",
+                "valorMaximo": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "valor": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "validacion": true
+            }
+        },
+        {
+            "id": "Pregunta",
+            "propiedades": {},
+            "result": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "maximos": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "opciones": [
+                {
+                    "id": "Mayusculas",
+                    "propiedades": {
+                        "error_general": 0,
+                        "error_estricto": 0,
+                        "error_mayuscula": 0,
+                        "error_puntuacion": 0,
+                        "error_falto": 0,
+                        "numero_palabras": 196
+                    },
+                    "descripcion": "No tuvo errores con mayuscula",
+                    "valorMaximo": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "valor": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "validacion": true
+                }
+            ],
+            "defaultResult": {
+                "id": "defaul",
+                "propiedades": {},
+                "descripcion": "No se encontro condicion",
+                "valorMaximo": [],
+                "valor": [],
+                "validacion": false
+            },
+            "seleccion": {
+                "id": "Mayusculas",
+                "propiedades": {
+                    "error_general": 0,
+                    "error_estricto": 0,
+                    "error_mayuscula": 0,
+                    "error_puntuacion": 0,
+                    "error_falto": 0,
+                    "numero_palabras": 196
+                },
+                "descripcion": "No tuvo errores con mayuscula",
+                "valorMaximo": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "valor": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "validacion": true
+            }
+        },
+        {
+            "id": "Pregunta",
+            "propiedades": {},
+            "result": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "maximos": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "opciones": [
+                {
+                    "id": "Mayusculas",
+                    "propiedades": {
+                        "error_general": 0,
+                        "error_estricto": 0,
+                        "error_mayuscula": 0,
+                        "error_puntuacion": 0,
+                        "error_falto": 0,
+                        "numero_palabras": 196
+                    },
+                    "descripcion": "No tuvo errores con mayuscula",
+                    "valorMaximo": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "valor": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "validacion": true
+                }
+            ],
+            "defaultResult": {
+                "id": "defaul",
+                "propiedades": {},
+                "descripcion": "No se encontro condicion",
+                "valorMaximo": [],
+                "valor": [],
+                "validacion": false
+            },
+            "seleccion": {
+                "id": "Mayusculas",
+                "propiedades": {
+                    "error_general": 0,
+                    "error_estricto": 0,
+                    "error_mayuscula": 0,
+                    "error_puntuacion": 0,
+                    "error_falto": 0,
+                    "numero_palabras": 196
+                },
+                "descripcion": "No tuvo errores con mayuscula",
+                "valorMaximo": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "valor": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "validacion": true
+            }
+        },
+        {
+            "id": "Pregunta",
+            "propiedades": {},
+            "result": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "maximos": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "opciones": [
+                {
+                    "id": "Mayusculas",
+                    "propiedades": {
+                        "error_general": 0,
+                        "error_estricto": 0,
+                        "error_mayuscula": 0,
+                        "error_puntuacion": 0,
+                        "error_falto": 0,
+                        "numero_palabras": 196
+                    },
+                    "descripcion": "No tuvo errores con mayuscula",
+                    "valorMaximo": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "valor": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "validacion": true
+                }
+            ],
+            "defaultResult": {
+                "id": "defaul",
+                "propiedades": {},
+                "descripcion": "No se encontro condicion",
+                "valorMaximo": [],
+                "valor": [],
+                "validacion": false
+            },
+            "seleccion": {
+                "id": "Mayusculas",
+                "propiedades": {
+                    "error_general": 0,
+                    "error_estricto": 0,
+                    "error_mayuscula": 0,
+                    "error_puntuacion": 0,
+                    "error_falto": 0,
+                    "numero_palabras": 196
+                },
+                "descripcion": "No tuvo errores con mayuscula",
+                "valorMaximo": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "valor": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "validacion": true
+            }
+        },
+        {
+            "id": "Pregunta",
+            "propiedades": {},
+            "result": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "maximos": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "opciones": [
+                {
+                    "id": "Mayusculas",
+                    "propiedades": {
+                        "error_general": 0,
+                        "error_estricto": 0,
+                        "error_mayuscula": 0,
+                        "error_puntuacion": 0,
+                        "error_falto": 0,
+                        "numero_palabras": 196
+                    },
+                    "descripcion": "No tuvo errores con mayuscula",
+                    "valorMaximo": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "valor": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "validacion": true
+                }
+            ],
+            "defaultResult": {
+                "id": "defaul",
+                "propiedades": {},
+                "descripcion": "No se encontro condicion",
+                "valorMaximo": [],
+                "valor": [],
+                "validacion": false
+            },
+            "seleccion": {
+                "id": "Mayusculas",
+                "propiedades": {
+                    "error_general": 0,
+                    "error_estricto": 0,
+                    "error_mayuscula": 0,
+                    "error_puntuacion": 0,
+                    "error_falto": 0,
+                    "numero_palabras": 196
+                },
+                "descripcion": "No tuvo errores con mayuscula",
+                "valorMaximo": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "valor": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "validacion": true
+            }
+        },
+        {
+            "id": "Pregunta",
+            "propiedades": {},
+            "result": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "maximos": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "opciones": [
+                {
+                    "id": "Mayusculas",
+                    "propiedades": {
+                        "error_general": 0,
+                        "error_estricto": 0,
+                        "error_mayuscula": 0,
+                        "error_puntuacion": 0,
+                        "error_falto": 0,
+                        "numero_palabras": 196
+                    },
+                    "descripcion": "No tuvo errores con mayuscula",
+                    "valorMaximo": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "valor": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "validacion": true
+                }
+            ],
+            "defaultResult": {
+                "id": "defaul",
+                "propiedades": {},
+                "descripcion": "No se encontro condicion",
+                "valorMaximo": [],
+                "valor": [],
+                "validacion": false
+            },
+            "seleccion": {
+                "id": "Mayusculas",
+                "propiedades": {
+                    "error_general": 0,
+                    "error_estricto": 0,
+                    "error_mayuscula": 0,
+                    "error_puntuacion": 0,
+                    "error_falto": 0,
+                    "numero_palabras": 196
+                },
+                "descripcion": "No tuvo errores con mayuscula",
+                "valorMaximo": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "valor": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "validacion": true
+            }
+        },
+        {
+            "id": "Pregunta",
+            "propiedades": {},
+            "result": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "maximos": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "opciones": [
+                {
+                    "id": "Mayusculas",
+                    "propiedades": {
+                        "error_general": 0,
+                        "error_estricto": 0,
+                        "error_mayuscula": 0,
+                        "error_puntuacion": 0,
+                        "error_falto": 0,
+                        "numero_palabras": 196
+                    },
+                    "descripcion": "No tuvo errores con mayuscula",
+                    "valorMaximo": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "valor": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "validacion": true
+                }
+            ],
+            "defaultResult": {
+                "id": "defaul",
+                "propiedades": {},
+                "descripcion": "No se encontro condicion",
+                "valorMaximo": [],
+                "valor": [],
+                "validacion": false
+            },
+            "seleccion": {
+                "id": "Mayusculas",
+                "propiedades": {
+                    "error_general": 0,
+                    "error_estricto": 0,
+                    "error_mayuscula": 0,
+                    "error_puntuacion": 0,
+                    "error_falto": 0,
+                    "numero_palabras": 196
+                },
+                "descripcion": "No tuvo errores con mayuscula",
+                "valorMaximo": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "valor": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "validacion": true
+            }
+        },
+        {
+            "id": "Pregunta",
+            "propiedades": {},
+            "result": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "maximos": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "opciones": [
+                {
+                    "id": "Mayusculas",
+                    "propiedades": {
+                        "error_general": 0,
+                        "error_estricto": 0,
+                        "error_mayuscula": 0,
+                        "error_puntuacion": 0,
+                        "error_falto": 0,
+                        "numero_palabras": 196
+                    },
+                    "descripcion": "No tuvo errores con mayuscula",
+                    "valorMaximo": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "valor": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "validacion": true
+                }
+            ],
+            "defaultResult": {
+                "id": "defaul",
+                "propiedades": {},
+                "descripcion": "No se encontro condicion",
+                "valorMaximo": [],
+                "valor": [],
+                "validacion": false
+            },
+            "seleccion": {
+                "id": "Mayusculas",
+                "propiedades": {
+                    "error_general": 0,
+                    "error_estricto": 0,
+                    "error_mayuscula": 0,
+                    "error_puntuacion": 0,
+                    "error_falto": 0,
+                    "numero_palabras": 196
+                },
+                "descripcion": "No tuvo errores con mayuscula",
+                "valorMaximo": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "valor": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "validacion": true
+            }
+        },
+        {
+            "id": "Pregunta",
+            "propiedades": {},
+            "result": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "maximos": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "opciones": [
+                {
+                    "id": "Mayusculas",
+                    "propiedades": {
+                        "error_general": 0,
+                        "error_estricto": 0,
+                        "error_mayuscula": 0,
+                        "error_puntuacion": 0,
+                        "error_falto": 0,
+                        "numero_palabras": 196
+                    },
+                    "descripcion": "No tuvo errores con mayuscula",
+                    "valorMaximo": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "valor": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "validacion": true
+                }
+            ],
+            "defaultResult": {
+                "id": "defaul",
+                "propiedades": {},
+                "descripcion": "No se encontro condicion",
+                "valorMaximo": [],
+                "valor": [],
+                "validacion": false
+            },
+            "seleccion": {
+                "id": "Mayusculas",
+                "propiedades": {
+                    "error_general": 0,
+                    "error_estricto": 0,
+                    "error_mayuscula": 0,
+                    "error_puntuacion": 0,
+                    "error_falto": 0,
+                    "numero_palabras": 196
+                },
+                "descripcion": "No tuvo errores con mayuscula",
+                "valorMaximo": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "valor": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "validacion": true
+            }
+        },
+        {
+            "id": "Pregunta",
+            "propiedades": {},
+            "result": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "maximos": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "opciones": [
+                {
+                    "id": "Mayusculas",
+                    "propiedades": {
+                        "error_general": 0,
+                        "error_estricto": 0,
+                        "error_mayuscula": 0,
+                        "error_puntuacion": 0,
+                        "error_falto": 0,
+                        "numero_palabras": 196
+                    },
+                    "descripcion": "No tuvo errores con mayuscula",
+                    "valorMaximo": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "valor": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "validacion": true
+                }
+            ],
+            "defaultResult": {
+                "id": "defaul",
+                "propiedades": {},
+                "descripcion": "No se encontro condicion",
+                "valorMaximo": [],
+                "valor": [],
+                "validacion": false
+            },
+            "seleccion": {
+                "id": "Mayusculas",
+                "propiedades": {
+                    "error_general": 0,
+                    "error_estricto": 0,
+                    "error_mayuscula": 0,
+                    "error_puntuacion": 0,
+                    "error_falto": 0,
+                    "numero_palabras": 196
+                },
+                "descripcion": "No tuvo errores con mayuscula",
+                "valorMaximo": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "valor": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "validacion": true
+            }
+        },
+        {
+            "id": "Pregunta",
+            "propiedades": {},
+            "result": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "maximos": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "opciones": [
+                {
+                    "id": "Mayusculas",
+                    "propiedades": {
+                        "error_general": 0,
+                        "error_estricto": 0,
+                        "error_mayuscula": 0,
+                        "error_puntuacion": 0,
+                        "error_falto": 0,
+                        "numero_palabras": 196
+                    },
+                    "descripcion": "No tuvo errores con mayuscula",
+                    "valorMaximo": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "valor": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "validacion": true
+                }
+            ],
+            "defaultResult": {
+                "id": "defaul",
+                "propiedades": {},
+                "descripcion": "No se encontro condicion",
+                "valorMaximo": [],
+                "valor": [],
+                "validacion": false
+            },
+            "seleccion": {
+                "id": "Mayusculas",
+                "propiedades": {
+                    "error_general": 0,
+                    "error_estricto": 0,
+                    "error_mayuscula": 0,
+                    "error_puntuacion": 0,
+                    "error_falto": 0,
+                    "numero_palabras": 196
+                },
+                "descripcion": "No tuvo errores con mayuscula",
+                "valorMaximo": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "valor": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "validacion": true
+            }
+        },
+        {
+            "id": "Pregunta",
+            "propiedades": {},
+            "result": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "maximos": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "opciones": [
+                {
+                    "id": "Mayusculas",
+                    "propiedades": {
+                        "error_general": 0,
+                        "error_estricto": 0,
+                        "error_mayuscula": 0,
+                        "error_puntuacion": 0,
+                        "error_falto": 0,
+                        "numero_palabras": 196
+                    },
+                    "descripcion": "No tuvo errores con mayuscula",
+                    "valorMaximo": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "valor": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "validacion": true
+                }
+            ],
+            "defaultResult": {
+                "id": "defaul",
+                "propiedades": {},
+                "descripcion": "No se encontro condicion",
+                "valorMaximo": [],
+                "valor": [],
+                "validacion": false
+            },
+            "seleccion": {
+                "id": "Mayusculas",
+                "propiedades": {
+                    "error_general": 0,
+                    "error_estricto": 0,
+                    "error_mayuscula": 0,
+                    "error_puntuacion": 0,
+                    "error_falto": 0,
+                    "numero_palabras": 196
+                },
+                "descripcion": "No tuvo errores con mayuscula",
+                "valorMaximo": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "valor": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "validacion": true
+            }
+        },
+        {
+            "id": "Pregunta",
+            "propiedades": {},
+            "result": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "maximos": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "opciones": [
+                {
+                    "id": "Mayusculas",
+                    "propiedades": {
+                        "error_general": 0,
+                        "error_estricto": 0,
+                        "error_mayuscula": 0,
+                        "error_puntuacion": 0,
+                        "error_falto": 0,
+                        "numero_palabras": 196
+                    },
+                    "descripcion": "No tuvo errores con mayuscula",
+                    "valorMaximo": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "valor": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "validacion": true
+                }
+            ],
+            "defaultResult": {
+                "id": "defaul",
+                "propiedades": {},
+                "descripcion": "No se encontro condicion",
+                "valorMaximo": [],
+                "valor": [],
+                "validacion": false
+            },
+            "seleccion": {
+                "id": "Mayusculas",
+                "propiedades": {
+                    "error_general": 0,
+                    "error_estricto": 0,
+                    "error_mayuscula": 0,
+                    "error_puntuacion": 0,
+                    "error_falto": 0,
+                    "numero_palabras": 196
+                },
+                "descripcion": "No tuvo errores con mayuscula",
+                "valorMaximo": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "valor": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "validacion": true
+            }
+        },
+        {
+            "id": "Pregunta",
+            "propiedades": {},
+            "result": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "maximos": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "opciones": [
+                {
+                    "id": "Mayusculas",
+                    "propiedades": {
+                        "error_general": 0,
+                        "error_estricto": 0,
+                        "error_mayuscula": 0,
+                        "error_puntuacion": 0,
+                        "error_falto": 0,
+                        "numero_palabras": 196
+                    },
+                    "descripcion": "No tuvo errores con mayuscula",
+                    "valorMaximo": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "valor": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "validacion": true
+                }
+            ],
+            "defaultResult": {
+                "id": "defaul",
+                "propiedades": {},
+                "descripcion": "No se encontro condicion",
+                "valorMaximo": [],
+                "valor": [],
+                "validacion": false
+            },
+            "seleccion": {
+                "id": "Mayusculas",
+                "propiedades": {
+                    "error_general": 0,
+                    "error_estricto": 0,
+                    "error_mayuscula": 0,
+                    "error_puntuacion": 0,
+                    "error_falto": 0,
+                    "numero_palabras": 196
+                },
+                "descripcion": "No tuvo errores con mayuscula",
+                "valorMaximo": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "valor": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "validacion": true
+            }
+        },
+        {
+            "id": "Pregunta",
+            "propiedades": {},
+            "result": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "maximos": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "opciones": [
+                {
+                    "id": "Mayusculas",
+                    "propiedades": {
+                        "error_general": 0,
+                        "error_estricto": 0,
+                        "error_mayuscula": 0,
+                        "error_puntuacion": 0,
+                        "error_falto": 0,
+                        "numero_palabras": 196
+                    },
+                    "descripcion": "No tuvo errores con mayuscula",
+                    "valorMaximo": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "valor": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "validacion": true
+                }
+            ],
+            "defaultResult": {
+                "id": "defaul",
+                "propiedades": {},
+                "descripcion": "No se encontro condicion",
+                "valorMaximo": [],
+                "valor": [],
+                "validacion": false
+            },
+            "seleccion": {
+                "id": "Mayusculas",
+                "propiedades": {
+                    "error_general": 0,
+                    "error_estricto": 0,
+                    "error_mayuscula": 0,
+                    "error_puntuacion": 0,
+                    "error_falto": 0,
+                    "numero_palabras": 196
+                },
+                "descripcion": "No tuvo errores con mayuscula",
+                "valorMaximo": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "valor": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "validacion": true
+            }
+        },
+        {
+            "id": "Pregunta",
+            "propiedades": {},
+            "result": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "maximos": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "opciones": [
+                {
+                    "id": "Mayusculas",
+                    "propiedades": {
+                        "error_general": 0,
+                        "error_estricto": 0,
+                        "error_mayuscula": 0,
+                        "error_puntuacion": 0,
+                        "error_falto": 0,
+                        "numero_palabras": 196
+                    },
+                    "descripcion": "No tuvo errores con mayuscula",
+                    "valorMaximo": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "valor": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "validacion": true
+                }
+            ],
+            "defaultResult": {
+                "id": "defaul",
+                "propiedades": {},
+                "descripcion": "No se encontro condicion",
+                "valorMaximo": [],
+                "valor": [],
+                "validacion": false
+            },
+            "seleccion": {
+                "id": "Mayusculas",
+                "propiedades": {
+                    "error_general": 0,
+                    "error_estricto": 0,
+                    "error_mayuscula": 0,
+                    "error_puntuacion": 0,
+                    "error_falto": 0,
+                    "numero_palabras": 196
+                },
+                "descripcion": "No tuvo errores con mayuscula",
+                "valorMaximo": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "valor": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "validacion": true
+            }
+        },
+        {
+            "id": "Pregunta",
+            "propiedades": {},
+            "result": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "maximos": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "opciones": [
+                {
+                    "id": "Mayusculas",
+                    "propiedades": {
+                        "error_general": 0,
+                        "error_estricto": 0,
+                        "error_mayuscula": 0,
+                        "error_puntuacion": 0,
+                        "error_falto": 0,
+                        "numero_palabras": 196
+                    },
+                    "descripcion": "No tuvo errores con mayuscula",
+                    "valorMaximo": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "valor": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "validacion": true
+                }
+            ],
+            "defaultResult": {
+                "id": "defaul",
+                "propiedades": {},
+                "descripcion": "No se encontro condicion",
+                "valorMaximo": [],
+                "valor": [],
+                "validacion": false
+            },
+            "seleccion": {
+                "id": "Mayusculas",
+                "propiedades": {
+                    "error_general": 0,
+                    "error_estricto": 0,
+                    "error_mayuscula": 0,
+                    "error_puntuacion": 0,
+                    "error_falto": 0,
+                    "numero_palabras": 196
+                },
+                "descripcion": "No tuvo errores con mayuscula",
+                "valorMaximo": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "valor": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "validacion": true
+            }
+        },
+        {
+            "id": "Pregunta",
+            "propiedades": {},
+            "result": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "maximos": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "opciones": [
+                {
+                    "id": "Mayusculas",
+                    "propiedades": {
+                        "error_general": 0,
+                        "error_estricto": 0,
+                        "error_mayuscula": 0,
+                        "error_puntuacion": 0,
+                        "error_falto": 0,
+                        "numero_palabras": 196
+                    },
+                    "descripcion": "No tuvo errores con mayuscula",
+                    "valorMaximo": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "valor": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "validacion": true
+                }
+            ],
+            "defaultResult": {
+                "id": "defaul",
+                "propiedades": {},
+                "descripcion": "No se encontro condicion",
+                "valorMaximo": [],
+                "valor": [],
+                "validacion": false
+            },
+            "seleccion": {
+                "id": "Mayusculas",
+                "propiedades": {
+                    "error_general": 0,
+                    "error_estricto": 0,
+                    "error_mayuscula": 0,
+                    "error_puntuacion": 0,
+                    "error_falto": 0,
+                    "numero_palabras": 196
+                },
+                "descripcion": "No tuvo errores con mayuscula",
+                "valorMaximo": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "valor": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "validacion": true
+            }
+        },
+        {
+            "id": "Pregunta",
+            "propiedades": {},
+            "result": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "maximos": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "opciones": [
+                {
+                    "id": "Mayusculas",
+                    "propiedades": {
+                        "error_general": 0,
+                        "error_estricto": 0,
+                        "error_mayuscula": 0,
+                        "error_puntuacion": 0,
+                        "error_falto": 0,
+                        "numero_palabras": 196
+                    },
+                    "descripcion": "No tuvo errores con mayuscula",
+                    "valorMaximo": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "valor": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "validacion": true
+                }
+            ],
+            "defaultResult": {
+                "id": "defaul",
+                "propiedades": {},
+                "descripcion": "No se encontro condicion",
+                "valorMaximo": [],
+                "valor": [],
+                "validacion": false
+            },
+            "seleccion": {
+                "id": "Mayusculas",
+                "propiedades": {
+                    "error_general": 0,
+                    "error_estricto": 0,
+                    "error_mayuscula": 0,
+                    "error_puntuacion": 0,
+                    "error_falto": 0,
+                    "numero_palabras": 196
+                },
+                "descripcion": "No tuvo errores con mayuscula",
+                "valorMaximo": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "valor": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "validacion": true
+            }
+        },
+        {
+            "id": "Pregunta",
+            "propiedades": {},
+            "result": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "maximos": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "opciones": [
+                {
+                    "id": "Mayusculas",
+                    "propiedades": {
+                        "error_general": 0,
+                        "error_estricto": 0,
+                        "error_mayuscula": 0,
+                        "error_puntuacion": 0,
+                        "error_falto": 0,
+                        "numero_palabras": 196
+                    },
+                    "descripcion": "No tuvo errores con mayuscula",
+                    "valorMaximo": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "valor": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "validacion": true
+                }
+            ],
+            "defaultResult": {
+                "id": "defaul",
+                "propiedades": {},
+                "descripcion": "No se encontro condicion",
+                "valorMaximo": [],
+                "valor": [],
+                "validacion": false
+            },
+            "seleccion": {
+                "id": "Mayusculas",
+                "propiedades": {
+                    "error_general": 0,
+                    "error_estricto": 0,
+                    "error_mayuscula": 0,
+                    "error_puntuacion": 0,
+                    "error_falto": 0,
+                    "numero_palabras": 196
+                },
+                "descripcion": "No tuvo errores con mayuscula",
+                "valorMaximo": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "valor": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "validacion": true
+            }
+        },
+        {
+            "id": "Pregunta",
+            "propiedades": {},
+            "result": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "maximos": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "opciones": [
+                {
+                    "id": "Mayusculas",
+                    "propiedades": {
+                        "error_general": 0,
+                        "error_estricto": 0,
+                        "error_mayuscula": 0,
+                        "error_puntuacion": 0,
+                        "error_falto": 0,
+                        "numero_palabras": 196
+                    },
+                    "descripcion": "No tuvo errores con mayuscula",
+                    "valorMaximo": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "valor": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "validacion": true
+                }
+            ],
+            "defaultResult": {
+                "id": "defaul",
+                "propiedades": {},
+                "descripcion": "No se encontro condicion",
+                "valorMaximo": [],
+                "valor": [],
+                "validacion": false
+            },
+            "seleccion": {
+                "id": "Mayusculas",
+                "propiedades": {
+                    "error_general": 0,
+                    "error_estricto": 0,
+                    "error_mayuscula": 0,
+                    "error_puntuacion": 0,
+                    "error_falto": 0,
+                    "numero_palabras": 196
+                },
+                "descripcion": "No tuvo errores con mayuscula",
+                "valorMaximo": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "valor": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "validacion": true
+            }
+        },
+        {
+            "id": "Pregunta",
+            "propiedades": {},
+            "result": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "maximos": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "opciones": [
+                {
+                    "id": "Mayusculas",
+                    "propiedades": {
+                        "error_general": 0,
+                        "error_estricto": 0,
+                        "error_mayuscula": 0,
+                        "error_puntuacion": 0,
+                        "error_falto": 0,
+                        "numero_palabras": 196
+                    },
+                    "descripcion": "No tuvo errores con mayuscula",
+                    "valorMaximo": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "valor": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "validacion": true
+                }
+            ],
+            "defaultResult": {
+                "id": "defaul",
+                "propiedades": {},
+                "descripcion": "No se encontro condicion",
+                "valorMaximo": [],
+                "valor": [],
+                "validacion": false
+            },
+            "seleccion": {
+                "id": "Mayusculas",
+                "propiedades": {
+                    "error_general": 0,
+                    "error_estricto": 0,
+                    "error_mayuscula": 0,
+                    "error_puntuacion": 0,
+                    "error_falto": 0,
+                    "numero_palabras": 196
+                },
+                "descripcion": "No tuvo errores con mayuscula",
+                "valorMaximo": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "valor": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "validacion": true
+            }
+        },
+        {
+            "id": "Pregunta",
+            "propiedades": {},
+            "result": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "maximos": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "opciones": [
+                {
+                    "id": "Mayusculas",
+                    "propiedades": {
+                        "error_general": 0,
+                        "error_estricto": 0,
+                        "error_mayuscula": 0,
+                        "error_puntuacion": 0,
+                        "error_falto": 0,
+                        "numero_palabras": 196
+                    },
+                    "descripcion": "No tuvo errores con mayuscula",
+                    "valorMaximo": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "valor": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "validacion": true
+                }
+            ],
+            "defaultResult": {
+                "id": "defaul",
+                "propiedades": {},
+                "descripcion": "No se encontro condicion",
+                "valorMaximo": [],
+                "valor": [],
+                "validacion": false
+            },
+            "seleccion": {
+                "id": "Mayusculas",
+                "propiedades": {
+                    "error_general": 0,
+                    "error_estricto": 0,
+                    "error_mayuscula": 0,
+                    "error_puntuacion": 0,
+                    "error_falto": 0,
+                    "numero_palabras": 196
+                },
+                "descripcion": "No tuvo errores con mayuscula",
+                "valorMaximo": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "valor": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "validacion": true
+            }
+        },
+        {
+            "id": "Pregunta",
+            "propiedades": {},
+            "result": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "maximos": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "opciones": [
+                {
+                    "id": "Mayusculas",
+                    "propiedades": {
+                        "error_general": 0,
+                        "error_estricto": 0,
+                        "error_mayuscula": 0,
+                        "error_puntuacion": 0,
+                        "error_falto": 0,
+                        "numero_palabras": 196
+                    },
+                    "descripcion": "No tuvo errores con mayuscula",
+                    "valorMaximo": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "valor": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "validacion": true
+                }
+            ],
+            "defaultResult": {
+                "id": "defaul",
+                "propiedades": {},
+                "descripcion": "No se encontro condicion",
+                "valorMaximo": [],
+                "valor": [],
+                "validacion": false
+            },
+            "seleccion": {
+                "id": "Mayusculas",
+                "propiedades": {
+                    "error_general": 0,
+                    "error_estricto": 0,
+                    "error_mayuscula": 0,
+                    "error_puntuacion": 0,
+                    "error_falto": 0,
+                    "numero_palabras": 196
+                },
+                "descripcion": "No tuvo errores con mayuscula",
+                "valorMaximo": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "valor": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "validacion": true
+            }
+        },
+        {
+            "id": "Pregunta",
+            "propiedades": {},
+            "result": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "maximos": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "opciones": [
+                {
+                    "id": "Mayusculas",
+                    "propiedades": {
+                        "error_general": 0,
+                        "error_estricto": 0,
+                        "error_mayuscula": 0,
+                        "error_puntuacion": 0,
+                        "error_falto": 0,
+                        "numero_palabras": 196
+                    },
+                    "descripcion": "No tuvo errores con mayuscula",
+                    "valorMaximo": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "valor": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "validacion": true
+                }
+            ],
+            "defaultResult": {
+                "id": "defaul",
+                "propiedades": {},
+                "descripcion": "No se encontro condicion",
+                "valorMaximo": [],
+                "valor": [],
+                "validacion": false
+            },
+            "seleccion": {
+                "id": "Mayusculas",
+                "propiedades": {
+                    "error_general": 0,
+                    "error_estricto": 0,
+                    "error_mayuscula": 0,
+                    "error_puntuacion": 0,
+                    "error_falto": 0,
+                    "numero_palabras": 196
+                },
+                "descripcion": "No tuvo errores con mayuscula",
+                "valorMaximo": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "valor": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "validacion": true
+            }
+        },
+        {
+            "id": "Pregunta",
+            "propiedades": {},
+            "result": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "maximos": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "opciones": [
+                {
+                    "id": "Mayusculas",
+                    "propiedades": {
+                        "error_general": 0,
+                        "error_estricto": 0,
+                        "error_mayuscula": 0,
+                        "error_puntuacion": 0,
+                        "error_falto": 0,
+                        "numero_palabras": 196
+                    },
+                    "descripcion": "No tuvo errores con mayuscula",
+                    "valorMaximo": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "valor": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "validacion": true
+                }
+            ],
+            "defaultResult": {
+                "id": "defaul",
+                "propiedades": {},
+                "descripcion": "No se encontro condicion",
+                "valorMaximo": [],
+                "valor": [],
+                "validacion": false
+            },
+            "seleccion": {
+                "id": "Mayusculas",
+                "propiedades": {
+                    "error_general": 0,
+                    "error_estricto": 0,
+                    "error_mayuscula": 0,
+                    "error_puntuacion": 0,
+                    "error_falto": 0,
+                    "numero_palabras": 196
+                },
+                "descripcion": "No tuvo errores con mayuscula",
+                "valorMaximo": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "valor": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "validacion": true
+            }
+        },
+        {
+            "id": "Pregunta",
+            "propiedades": {},
+            "result": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "maximos": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "opciones": [
+                {
+                    "id": "Mayusculas",
+                    "propiedades": {
+                        "error_general": 0,
+                        "error_estricto": 0,
+                        "error_mayuscula": 0,
+                        "error_puntuacion": 0,
+                        "error_falto": 0,
+                        "numero_palabras": 196
+                    },
+                    "descripcion": "No tuvo errores con mayuscula",
+                    "valorMaximo": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "valor": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "validacion": true
+                }
+            ],
+            "defaultResult": {
+                "id": "defaul",
+                "propiedades": {},
+                "descripcion": "No se encontro condicion",
+                "valorMaximo": [],
+                "valor": [],
+                "validacion": false
+            },
+            "seleccion": {
+                "id": "Mayusculas",
+                "propiedades": {
+                    "error_general": 0,
+                    "error_estricto": 0,
+                    "error_mayuscula": 0,
+                    "error_puntuacion": 0,
+                    "error_falto": 0,
+                    "numero_palabras": 196
+                },
+                "descripcion": "No tuvo errores con mayuscula",
+                "valorMaximo": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "valor": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "validacion": true
+            }
+        },
+        {
+            "id": "Pregunta",
+            "propiedades": {},
+            "result": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "maximos": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "opciones": [
+                {
+                    "id": "Mayusculas",
+                    "propiedades": {
+                        "error_general": 0,
+                        "error_estricto": 0,
+                        "error_mayuscula": 0,
+                        "error_puntuacion": 0,
+                        "error_falto": 0,
+                        "numero_palabras": 196
+                    },
+                    "descripcion": "No tuvo errores con mayuscula",
+                    "valorMaximo": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "valor": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "validacion": true
+                }
+            ],
+            "defaultResult": {
+                "id": "defaul",
+                "propiedades": {},
+                "descripcion": "No se encontro condicion",
+                "valorMaximo": [],
+                "valor": [],
+                "validacion": false
+            },
+            "seleccion": {
+                "id": "Mayusculas",
+                "propiedades": {
+                    "error_general": 0,
+                    "error_estricto": 0,
+                    "error_mayuscula": 0,
+                    "error_puntuacion": 0,
+                    "error_falto": 0,
+                    "numero_palabras": 196
+                },
+                "descripcion": "No tuvo errores con mayuscula",
+                "valorMaximo": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "valor": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "validacion": true
+            }
+        },
+        {
+            "id": "Pregunta",
+            "propiedades": {},
+            "result": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "maximos": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "opciones": [
+                {
+                    "id": "Mayusculas",
+                    "propiedades": {
+                        "error_general": 0,
+                        "error_estricto": 0,
+                        "error_mayuscula": 0,
+                        "error_puntuacion": 0,
+                        "error_falto": 0,
+                        "numero_palabras": 196
+                    },
+                    "descripcion": "No tuvo errores con mayuscula",
+                    "valorMaximo": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "valor": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "validacion": true
+                }
+            ],
+            "defaultResult": {
+                "id": "defaul",
+                "propiedades": {},
+                "descripcion": "No se encontro condicion",
+                "valorMaximo": [],
+                "valor": [],
+                "validacion": false
+            },
+            "seleccion": {
+                "id": "Mayusculas",
+                "propiedades": {
+                    "error_general": 0,
+                    "error_estricto": 0,
+                    "error_mayuscula": 0,
+                    "error_puntuacion": 0,
+                    "error_falto": 0,
+                    "numero_palabras": 196
+                },
+                "descripcion": "No tuvo errores con mayuscula",
+                "valorMaximo": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "valor": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "validacion": true
+            }
+        },
+        {
+            "id": "Pregunta",
+            "propiedades": {},
+            "result": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "maximos": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "opciones": [
+                {
+                    "id": "Mayusculas",
+                    "propiedades": {
+                        "error_general": 0,
+                        "error_estricto": 0,
+                        "error_mayuscula": 0,
+                        "error_puntuacion": 0,
+                        "error_falto": 0,
+                        "numero_palabras": 196
+                    },
+                    "descripcion": "No tuvo errores con mayuscula",
+                    "valorMaximo": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "valor": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "validacion": true
+                }
+            ],
+            "defaultResult": {
+                "id": "defaul",
+                "propiedades": {},
+                "descripcion": "No se encontro condicion",
+                "valorMaximo": [],
+                "valor": [],
+                "validacion": false
+            },
+            "seleccion": {
+                "id": "Mayusculas",
+                "propiedades": {
+                    "error_general": 0,
+                    "error_estricto": 0,
+                    "error_mayuscula": 0,
+                    "error_puntuacion": 0,
+                    "error_falto": 0,
+                    "numero_palabras": 196
+                },
+                "descripcion": "No tuvo errores con mayuscula",
+                "valorMaximo": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "valor": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "validacion": true
+            }
+        },
+        {
+            "id": "Pregunta",
+            "propiedades": {},
+            "result": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "maximos": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "opciones": [
+                {
+                    "id": "Mayusculas",
+                    "propiedades": {
+                        "error_general": 0,
+                        "error_estricto": 0,
+                        "error_mayuscula": 0,
+                        "error_puntuacion": 0,
+                        "error_falto": 0,
+                        "numero_palabras": 196
+                    },
+                    "descripcion": "No tuvo errores con mayuscula",
+                    "valorMaximo": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "valor": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "validacion": true
+                }
+            ],
+            "defaultResult": {
+                "id": "defaul",
+                "propiedades": {},
+                "descripcion": "No se encontro condicion",
+                "valorMaximo": [],
+                "valor": [],
+                "validacion": false
+            },
+            "seleccion": {
+                "id": "Mayusculas",
+                "propiedades": {
+                    "error_general": 0,
+                    "error_estricto": 0,
+                    "error_mayuscula": 0,
+                    "error_puntuacion": 0,
+                    "error_falto": 0,
+                    "numero_palabras": 196
+                },
+                "descripcion": "No tuvo errores con mayuscula",
+                "valorMaximo": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "valor": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "validacion": true
+            }
+        },
+        {
+            "id": "Pregunta",
+            "propiedades": {},
+            "result": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "maximos": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "opciones": [
+                {
+                    "id": "Mayusculas",
+                    "propiedades": {
+                        "error_general": 0,
+                        "error_estricto": 0,
+                        "error_mayuscula": 0,
+                        "error_puntuacion": 0,
+                        "error_falto": 0,
+                        "numero_palabras": 196
+                    },
+                    "descripcion": "No tuvo errores con mayuscula",
+                    "valorMaximo": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "valor": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "validacion": true
+                }
+            ],
+            "defaultResult": {
+                "id": "defaul",
+                "propiedades": {},
+                "descripcion": "No se encontro condicion",
+                "valorMaximo": [],
+                "valor": [],
+                "validacion": false
+            },
+            "seleccion": {
+                "id": "Mayusculas",
+                "propiedades": {
+                    "error_general": 0,
+                    "error_estricto": 0,
+                    "error_mayuscula": 0,
+                    "error_puntuacion": 0,
+                    "error_falto": 0,
+                    "numero_palabras": 196
+                },
+                "descripcion": "No tuvo errores con mayuscula",
+                "valorMaximo": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "valor": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "validacion": true
+            }
+        },
+        {
+            "id": "Pregunta",
+            "propiedades": {},
+            "result": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "maximos": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "opciones": [
+                {
+                    "id": "Mayusculas",
+                    "propiedades": {
+                        "error_general": 0,
+                        "error_estricto": 0,
+                        "error_mayuscula": 0,
+                        "error_puntuacion": 0,
+                        "error_falto": 0,
+                        "numero_palabras": 196
+                    },
+                    "descripcion": "No tuvo errores con mayuscula",
+                    "valorMaximo": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "valor": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "validacion": true
+                }
+            ],
+            "defaultResult": {
+                "id": "defaul",
+                "propiedades": {},
+                "descripcion": "No se encontro condicion",
+                "valorMaximo": [],
+                "valor": [],
+                "validacion": false
+            },
+            "seleccion": {
+                "id": "Mayusculas",
+                "propiedades": {
+                    "error_general": 0,
+                    "error_estricto": 0,
+                    "error_mayuscula": 0,
+                    "error_puntuacion": 0,
+                    "error_falto": 0,
+                    "numero_palabras": 196
+                },
+                "descripcion": "No tuvo errores con mayuscula",
+                "valorMaximo": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "valor": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "validacion": true
+            }
+        },
+        {
+            "id": "Pregunta",
+            "propiedades": {},
+            "result": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "maximos": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "opciones": [
+                {
+                    "id": "Mayusculas",
+                    "propiedades": {
+                        "error_general": 0,
+                        "error_estricto": 0,
+                        "error_mayuscula": 0,
+                        "error_puntuacion": 0,
+                        "error_falto": 0,
+                        "numero_palabras": 196
+                    },
+                    "descripcion": "No tuvo errores con mayuscula",
+                    "valorMaximo": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "valor": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "validacion": true
+                }
+            ],
+            "defaultResult": {
+                "id": "defaul",
+                "propiedades": {},
+                "descripcion": "No se encontro condicion",
+                "valorMaximo": [],
+                "valor": [],
+                "validacion": false
+            },
+            "seleccion": {
+                "id": "Mayusculas",
+                "propiedades": {
+                    "error_general": 0,
+                    "error_estricto": 0,
+                    "error_mayuscula": 0,
+                    "error_puntuacion": 0,
+                    "error_falto": 0,
+                    "numero_palabras": 196
+                },
+                "descripcion": "No tuvo errores con mayuscula",
+                "valorMaximo": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "valor": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "validacion": true
+            }
+        },
+        {
+            "id": "Pregunta",
+            "propiedades": {},
+            "result": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "maximos": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "opciones": [
+                {
+                    "id": "Mayusculas",
+                    "propiedades": {
+                        "error_general": 0,
+                        "error_estricto": 0,
+                        "error_mayuscula": 0,
+                        "error_puntuacion": 0,
+                        "error_falto": 0,
+                        "numero_palabras": 196
+                    },
+                    "descripcion": "No tuvo errores con mayuscula",
+                    "valorMaximo": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "valor": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "validacion": true
+                }
+            ],
+            "defaultResult": {
+                "id": "defaul",
+                "propiedades": {},
+                "descripcion": "No se encontro condicion",
+                "valorMaximo": [],
+                "valor": [],
+                "validacion": false
+            },
+            "seleccion": {
+                "id": "Mayusculas",
+                "propiedades": {
+                    "error_general": 0,
+                    "error_estricto": 0,
+                    "error_mayuscula": 0,
+                    "error_puntuacion": 0,
+                    "error_falto": 0,
+                    "numero_palabras": 196
+                },
+                "descripcion": "No tuvo errores con mayuscula",
+                "valorMaximo": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "valor": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "validacion": true
+            }
+        },
+        {
+            "id": "Pregunta",
+            "propiedades": {},
+            "result": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "maximos": [
+                {
+                    "id": "area",
+                    "valor": 5
+                }
+            ],
+            "opciones": [
+                {
+                    "id": "Mayusculas",
+                    "propiedades": {
+                        "error_general": 0,
+                        "error_estricto": 0,
+                        "error_mayuscula": 0,
+                        "error_puntuacion": 0,
+                        "error_falto": 0,
+                        "numero_palabras": 196
+                    },
+                    "descripcion": "No tuvo errores con mayuscula",
+                    "valorMaximo": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "valor": [
+                        {
+                            "id": "area",
+                            "valor": 5
+                        }
+                    ],
+                    "validacion": true
+                }
+            ],
+            "defaultResult": {
+                "id": "defaul",
+                "propiedades": {},
+                "descripcion": "No se encontro condicion",
+                "valorMaximo": [],
+                "valor": [],
+                "validacion": false
+            },
+            "seleccion": {
+                "id": "Mayusculas",
+                "propiedades": {
+                    "error_general": 0,
+                    "error_estricto": 0,
+                    "error_mayuscula": 0,
+                    "error_puntuacion": 0,
+                    "error_falto": 0,
+                    "numero_palabras": 196
+                },
+                "descripcion": "No tuvo errores con mayuscula",
+                "valorMaximo": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "valor": [
+                    {
+                        "id": "area",
+                        "valor": 5
+                    }
+                ],
+                "validacion": true
+            }
+        }
+    ],
+    "categorias": [],
+    "maximos": []
+}

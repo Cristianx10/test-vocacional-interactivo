@@ -13,19 +13,31 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "createjs-module": "^0.8.3",
     "express": "^4.16.3",
     "mongoose": "^5.1.4",
     "morgan": "^1.9.0"
   },
   "devDependencies": {
+    "@types/createjs": "0.0.29",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
+    "css-loader": "^3.2.0",
+    "extract-loader": "^3.1.0",
+    "file-loader": "^4.2.0",
+    "node-sass": "^4.12.0",
     "nodemon": "^1.17.5",
+    "postcss-loader": "^3.0.0",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
-    "webpack": "^4.11.1",
+    "react-router-dom": "^5.1.2",
+    "sass-loader": "^8.0.0",
+    "style-loader": "^1.0.0",
+    "ts-loader": "^6.2.0",
+    "typescript": "^3.6.3",
+    "webpack": "^4.40.2",
     "webpack-cli": "^3.0.3"
   }
 }

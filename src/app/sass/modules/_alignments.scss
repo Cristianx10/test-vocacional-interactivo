@@ -1,0 +1,64 @@
+.zona {
+    &__navegacion {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 10%;
+        z-index: 1000;
+    }
+}
+
+.descripcion {
+    width: 450px;
+}
+
+
+
+.elegir__resultado {
+    position: relative;
+    min-width: 20px;
+    min-height: 30px;
+    border: 3px dashed lightblue;
+
+    &:hover {
+        background: lightblue;
+        cursor: pointer;
+        /*
+        .elegir__opcion {
+            display: flex;
+        }
+        */
+    }
+
+
+}
+
+.elegir__lista {
+    display: none;
+    flex-direction: row;
+    position: absolute;
+    left: 0;
+    min-width: 40px;
+    background: lightgrey;
+    z-index: 100000;
+
+}
+
+.elegir__opcion {
+    display: flex;
+    min-width: 30px;
+
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: 1px dashed lightgreen;
+
+    &:hover {
+        background: grey;
+        cursor: pointer;
+        color: white;
+        //width: 100%;
+    }
+
+}
+

@@ -1,0 +1,24 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    clear: both;
+}
+
+
+
+p {
+    font-family: $font__second, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+
+    color: $color__p;
+    font-size: 24px;
+    line-height: 25px;
+}
+
+.text-center{
+    text-align: center;
+}

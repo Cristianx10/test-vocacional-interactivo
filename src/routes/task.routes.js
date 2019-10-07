@@ -8,12 +8,14 @@ const Task = require('../models/task');
 router.get('/', async (req, res) => {
   const tasks = await Task.find();
   res.json(tasks);
+
 });
 
 // GET all Tasks
 router.get('/:id', async (req, res) => {
   const task = await Task.findById(req.params.id);
   res.json(task);
+  
 });
 
 // ADD a new task
