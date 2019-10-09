@@ -5,14 +5,14 @@ interface ResultadoA {
     valor: number;
 }
 
-class Resultados {
+export class Resultados {
 
     id: string;
     usuario?: any;
     pruebas?: Array<GResultados>;
 
-    categorias?: Array<ResultadoA>;
-    maximos?: Array<ResultadoA>;
+    categorias?: Array<ICategoria>;
+    maximos?: Array<ICategoria>;
 
     constructor(id: string) {
         this.id = id;
@@ -24,6 +24,7 @@ class Resultados {
             this.categorias = variables.categorias;
             this.pruebas = variables.pruebas;
             this.maximos = variables.maximos;
+            this.usuario = variables.usuario;
             reconozido = true;
         }
 
@@ -31,11 +32,23 @@ class Resultados {
             this.categorias = [];
             this.pruebas = [];
             this.maximos = [];
+            this.usuario = {
+                nombre:"Nombre de usuario",
+                carrera:"Carrera",
+                edad:"edad",
+                mano:"mano"
+            }
         }
     }
 
     agregar(objeto: any) {
-        
+        /*
+                let refObject = new GResultados(objeto);
+                if (this.pruebas) {
+                this.pruebas.push(refObject);
+                }
+                */
+
         let refObject = null;
         if (this.pruebas) {
             let encontro = false;
@@ -55,8 +68,69 @@ class Resultados {
         return refObject;
     }
 
+    calcularMaximo() {
+        this.maximos = [];
+        if (this.pruebas) {
+            this.pruebas.forEach((prueba) => {
+                prueba.maximos.forEach((maximo) => {
+
+                    if (this.maximos != null) {
+
+                        let encontrado = false;
+                        this.maximos.forEach((valor) => {
+                            if (maximo.id === valor.id) {
+                                encontrado = true;
+
+                                valor.valor += maximo.valor * 1;
+
+                            }
+                        });
+                        if (encontrado === false) {
+                            this.maximos.push(Object.assign({}, maximo));
+                        }
+
+                    }
+                });
+            });
+/*
+            this.pruebas.forEach((prueba) => {
+                prueba.maximos.forEach((maximo) => {
+                    console.log("valor maximo", maximo)
+                });
+            });
+            */
+        }
+    }
+
+    calcularValor() {
+        this.categorias = [];
+        if (this.pruebas) {
+            this.pruebas.forEach((prueba) => {
+
+                prueba.result.forEach((resultado) => {
+                    if (this.categorias != null) {
+
+                        let encontrado = false;
+                        this.categorias.forEach((valor) => {
+                            if (resultado.id === valor.id) {
+                                encontrado = true;
+                                valor.valor += resultado.valor;
+                            }
+                        });
+                        if (encontrado === false) {
+                            this.categorias.push(Object.assign({}, resultado));
+                        }
+
+                    }
+                });
+            });
+        }
+    }
+
     evaluar(objeto: any) {
         objeto.registro.evaluar();
+        this.calcularMaximo();
+        this.calcularValor();
         this.save();
     }
 
@@ -64,7 +138,7 @@ class Resultados {
         objeto.registro = referencia.registro.agregarCondicion(id, accion, descripcion, valorMaximo, objeto);
     }
 
-    setId(objeto:any, id:string) {
+    setId(objeto: any, id: string) {
         console.log(objeto.registro)
         objeto.registro.id = id;
     }
@@ -80,9 +154,10 @@ class Resultados {
 
 //localStorage.clear();
 export var resultados = new Resultados("resultados");
+export var resultados2 = new Resultados("resultados");
 
-document.addEventListener("keypress", (e)=>{
-    if(e.key === "Enter"){
+document.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
         console.log("Imprimiendo resultados");
         console.log(resultados);
     }
@@ -188,17 +263,21 @@ export class GResultados {
                         encontrado = true;
                         if (result.valor > valor.valor) {
                             valor.valor = result.valor;
+
                         }
                     }
                 });
 
                 if (encontrado === false) {
-                    this.maximos.push(result)
+                    this.maximos.push(Object.assign({}, result))
+
                 }
 
             });
 
         });
+
+
 
     }
 
@@ -219,7 +298,8 @@ export class GResultados {
             this.seleccion = this.defaultResult;
         }
 
-        this.result = this.seleccion.valor;
+        this.result = Object.assign([], this.seleccion.valor);
+
 
         this.calcularMaximo();
     }

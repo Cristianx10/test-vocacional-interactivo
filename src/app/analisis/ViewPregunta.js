@@ -1,55 +1,121 @@
-import React from "react";
+import React, { Component } from "react";
 import "./ViewPregunta.scss";
 
-export class ViewPregunta extends React.Component {
+export class ViewPregunta extends Component {
   render() {
-    const { propiedades, opciones } = this.props.resultado;
+    let { pruebas, acumuladas } = this.props.resultado;
 
-    let text__titulares = [];
-    let img__titulares = [];
+    let { usuario, prueba } = pruebas[0];
+    let { propiedades, opciones, maximos } = prueba;
+
     let contieneImgT = false;
 
     propiedades.titulares.forEach(titular => {
       if (titular.type === "img") {
-        contieneImgT = TextTrackCueList;
-        img__titulares.push(titular.contenido);
-      } else {
-        text__titulares.push(titular.contenido);
+        contieneImgT = true;
+        return;
       }
     });
-    let viewT;
+
+    let arrayMaximos = [];
+    let viewMaximos;
+
+    pruebas[0].prueba.maximos.forEach(valor => {
+      arrayMaximos.push(
+        <div className="rv__pregunta__opciones__valor">
+            <div className="rv__pregunta__opciones__valor__area">
+              {valor.id + ":"}
+            </div>
+            <div className="rv__pregunta__opciones__valor__valor">
+              {valor.valor}
+            </div>
+          </div>
+      );
+    });
+
+    viewMaximos = (
+      <div>
+        {React.Children.map(arrayMaximos, max => {
+          return max;
+        })}
+      </div>
+    );
+
+    let classNamePrincipal = "rv__pregunta";
     if (contieneImgT) {
-      viewT = (
+      classNamePrincipal = "rv__pregunta__img";
+    }
+
+    return (
+      <div className={classNamePrincipal}>
+        <VPTitulares pruebas={pruebas} />
+        <VPOpciones pruebas={pruebas} />
+        <div>{viewMaximos}</div>
+      </div>
+    );
+  }
+}
+
+class VPTitulares extends Component {
+  render() {
+    let { usuario, prueba } = this.props.pruebas[0];
+    let { propiedades, opciones, maximos } = prueba;
+
+    let titulares__img = [];
+    let titulares__text = [];
+    let contieneImgT = false;
+
+    propiedades.titulares.forEach(titular => {
+      if (titular.type === "img") {
+        contieneImgT = true;
+        titulares__img.push(titular.contenido);
+      } else {
+        titulares__text.push(titular.contenido);
+      }
+    });
+
+    let viewImg;
+
+    if (contieneImgT) {
+      if (titulares__img.length === 1) {
+        viewImg = <img width="500px" src={titulares__img[0]} alt="foto" />;
+      } else {
+        viewImg = <VPGaleria img={titulares__img} />;
+      }
+    }
+
+    let viewTotal;
+
+    if (contieneImgT) {
+      viewTotal = (
         <div className="rv__pregunta__titulares__conimg">
           <div className="rv__pregunta__titulares">
-            {React.Children.map(text__titulares, view => {
+            {React.Children.map(titulares__text, view => {
               return <div>{view}</div>;
             })}
           </div>
-
-          <div className="rv__pregunta__titulares__img">
-            {/*
-            {React.Children.map(img__titulares, view => {
-               
-              return <img src={view} alt="foto"></img>;
-            })}
-
-        */}
-            <VPGaleria img={img__titulares} />
-          </div>
+          <div className="rv__pregunta__titulares__img">{viewImg}</div>
         </div>
       );
     } else {
-      viewT = (
+      viewTotal = (
         <div className="rv__pregunta__titulares__sinimg">
           <div className="rv__pregunta__titulares">
-            {React.Children.map(text__titulares, view => {
+            {React.Children.map(titulares__text, view => {
               return <div>{view}</div>;
             })}
           </div>
         </div>
       );
     }
+    return viewTotal;
+  }
+}
+
+class VPOpciones extends Component {
+  render() {
+    let { usuario, prueba } = this.props.pruebas[0];
+    let { propiedades, opciones, maximos } = prueba;
 
     let views__opciones = [];
 
@@ -76,13 +142,27 @@ export class ViewPregunta extends React.Component {
         }
       });
 
+      let arrayValor = [];
+      opcion.valor.forEach(valor => {
+        arrayValor.push(
+          <div className="rv__pregunta__opciones__valor">
+            <div className="rv__pregunta__opciones__valor__area">
+              {valor.id + ":"}
+            </div>
+            <div className="rv__pregunta__opciones__valor__valor">
+              {valor.valor}
+            </div>
+          </div>
+        );
+      });
+
       let classSeleccion = "rv__pregunta__opciones__contenedor";
       if (opcion.validacion && opcion.validacion === true) {
         classSeleccion = "rv__pregunta__opciones__contenedor seleccion";
       }
-
+      let view;
       if (contieneImg) {
-        let view = (
+        view = (
           <div className={classSeleccion}>
             <div className="rv__pregunta__opciones__contenedor__img">
               {React.Children.map(views.img, v => {
@@ -96,9 +176,9 @@ export class ViewPregunta extends React.Component {
             </div>
           </div>
         );
-        views__opciones.push(view);
+        //views__opciones.push(view);
       } else {
-        let view = (
+        view = (
           <div className={classSeleccion}>
             <div className="rv__pregunta__opciones__contenedor__text">
               {React.Children.map(views.text, v => {
@@ -107,18 +187,24 @@ export class ViewPregunta extends React.Component {
             </div>
           </div>
         );
-        views__opciones.push(view);
+        //views__opciones.push(view);
       }
+
+      let viewT = (
+        <div className="rv__pregunta__opciones__contenedor">
+          <div>{view}</div>
+          <div className="rv__pregunta__opciones__valor__contenedor">
+            {React.Children.map(arrayValor, v => {
+              return v;
+            })}
+          </div>
+        </div>
+      );
+      views__opciones.push(viewT);
     });
 
-    let classNamePrincipal = "rv__pregunta";
-    if (contieneImgT) {
-      classNamePrincipal = "rv__pregunta__img";
-    }
-
     return (
-      <div className={classNamePrincipal}>
-        {viewT}
+      <div className="rv__pregunta__opciones__contenedor">
         <div className="rv__pregunta__opciones">
           {React.Children.map(views__opciones, view => {
             return view;
@@ -129,7 +215,7 @@ export class ViewPregunta extends React.Component {
   }
 }
 
-class VPGaleria extends React.Component {
+class VPGaleria extends Component {
   constructor() {
     super();
     this.state = {

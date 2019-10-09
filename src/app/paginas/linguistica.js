@@ -13,30 +13,125 @@ import { TIntroduccion } from "../plantillas/templete-introduccion";
 import { D } from "../configuraciones/dato";
 
 export class Linguistica extends React.Component {
+  configTablero(o, tablero) {
+    tablero.setStyleA(250, 450, "20px Heebo", 170, 25);
+    tablero.setStyleB(450, 450, "20px Heebo", 170, 25);
+    tablero.distancia(300);
+
+    console.log("funcion de tablero", o, tablero)
+
+    tablero.validar(
+      "Aciertos",
+      function(p, a) {
+        if (p.aciertos > 3) {
+          a.setValor("arte", 15);
+          return true;
+        }
+      },
+      "Si no termina la prueba",
+      [{ id: "arte", valor: "200" }],
+      tablero
+    );
+
+    tablero.validar(
+      "Aciertos",
+      function(p, a) {
+        if (p.aciertos > 0) {
+          a.setValor("arte", 5);
+
+          return true;
+        }
+      },
+      "Si completa todas sin errores",
+      [{ id: "arte", valor: "100" }]
+    );
+
+    tablero.setIntento((p, a) => {
+      // console.log(p, a);
+    });
+
+    tablero.setIntentoAcierto(p => {
+      console.log("bien");
+      //tablero.ocultar();
+      o.pantalla.continuar.habilitar();
+    });
+
+    tablero.setIntentoFallo(() => {
+      //tablero.reset();
+      console.log("mal");
+    });
+
+    tablero.setValidacion(() => {
+      console.log("Gano");
+      o.pantalla.continuar.habilitar();
+    });
+  }
+
   render() {
     return (
       <Navegador width="100%">
         <Pantalla>
           <Pregunta orientacion="horizontal">
+
+            <Contenedor height="30%">
+              <h1>
+                <D t>¿Cuantos años tienes?</D>
+              </h1>
+
+              <Contenedor allType="boton" grid>
+                <Opcion resultados={[{ id: "a", valor: 10 }]}>
+                  <D>10</D>
+                </Opcion>
+                <Opcion resultados={[{ id: "b", valor: 2 }]}>
+                  <D>30</D>
+                </Opcion>
+                <Opcion>
+                  <D>40</D>
+                </Opcion>
+                <Opcion>
+                  <D>60</D>
+                </Opcion>
+              </Contenedor>
+            </Contenedor>
+          </Pregunta>
+          <Continuar height="15%" align="center" disabled></Continuar>
+        </Pantalla>
+
+        <Pantalla>
+          <Pregunta orientacion="horizontal">
             <Contenedor>
-            <D t>
-                <img src="/img/persona-e1533759204552.jpg" alt="" />
-              </D>
-              <D t>
-                <img src="/img/penguin.jpg" alt="" />
-              </D>
               <D t>
                 <img src="/img/persona-e1533759204552.jpg" alt="" />
               </D>
-              <D t>
-                <img src="/img/penguin.jpg" alt="" />
-              </D>
-              <D t>
-                <img src="/img/persona-e1533759204552.jpg" alt="" />
-              </D>
-              <D t>
-                <img src="/img/penguin.jpg" alt="" />
-              </D>
+            </Contenedor>
+
+            <Contenedor height="30%">
+              <h1>
+                <D t>¿Cuantos años tienes?</D>
+              </h1>
+
+              <Contenedor allType="boton" grid>
+                <Opcion resultados={[{ id: "a", valor: 10 }]}>
+                  <D>10</D>
+                </Opcion>
+                <Opcion resultados={[{ id: "b", valor: 2 }]}>
+                  <D>30</D>
+                </Opcion>
+                <Opcion>
+                  <D>40</D>
+                </Opcion>
+                <Opcion>
+                  <D>60</D>
+                </Opcion>
+              </Contenedor>
+            </Contenedor>
+          </Pregunta>
+          <Continuar height="15%" align="center" disabled></Continuar>
+        </Pantalla>
+
+        <Pantalla>
+          <Pregunta orientacion="horizontal">
+            <Contenedor>
               <D t>
                 <img src="/img/persona-e1533759204552.jpg" alt="" />
               </D>
@@ -53,9 +148,11 @@ export class Linguistica extends React.Component {
               <Contenedor allType="boton" grid>
                 <Opcion resultados={[{ id: "a", valor: 10 }]}>
                   <D>10</D>
-                  <D><img src="/img/persona-e1533759204552.jpg" alt="" /></D>
+                  <D>
+                    <img src="/img/persona-e1533759204552.jpg" alt="" />
+                  </D>
                 </Opcion>
-                <Opcion resultados={[{ id: "a", valor: 2 }]}>
+                <Opcion resultados={[{ id: "b", valor: 2 }]}>
                   <D>30</D>
                 </Opcion>
                 <Opcion>
@@ -89,61 +186,7 @@ export class Linguistica extends React.Component {
             </h2>
           </Contenedor>
           <Contenedor height="70%">
-            <Relacionar
-              width="650"
-              height="450"
-              config={function(o, tablero) {
-                tablero.setStyleA(250, 450, "20px Heebo", 170, 25);
-                tablero.setStyleB(450, 450, "20px Heebo", 170, 25);
-                tablero.distancia(300);
-
-                tablero.validar(
-                  "Aciertos",
-                  function(p, a) {
-                    if (p.aciertos > 3) {
-                      a.setValor("arte", 15);
-                      return true;
-                    }
-                  },
-                  "Si no termina la prueba",
-                  [{ id: "arte", valor: "200" }],
-                  tablero
-                );
-
-                tablero.validar(
-                  "Aciertos",
-                  function(p, a) {
-                    if (p.aciertos > 0) {
-                      a.setValor("arte", 5);
-
-                      return true;
-                    }
-                  },
-                  "Si completa todas sin errores",
-                  [{ id: "arte", valor: "100" }]
-                );
-
-                tablero.setIntento((p, a) => {
-                  // console.log(p, a);
-                });
-
-                tablero.setIntentoAcierto(p => {
-                  console.log("bien");
-                  //tablero.ocultar();
-                  o.pantalla.continuar.habilitar();
-                });
-
-                tablero.setIntentoFallo(() => {
-                  //tablero.reset();
-                  console.log("mal");
-                });
-
-                tablero.setValidacion(() => {
-                  console.log("Gano");
-                  o.pantalla.continuar.habilitar();
-                });
-              }}
-            >
+            <Relacionar width="650" height="450" config={this.configTablero}>
               <Relacion tipo="Facilidad" categoria="Dificultad" />
               <Relacion tipo="Evaporar" categoria="Solidificar" />
               <Relacion tipo="Implícito" categoria="Explícito" />

@@ -1,12 +1,12 @@
 .rv__pregunta {
 
-    .seleccion{
+    .seleccion {
         background: lightgreen;
     }
 
     border: 2px solid black;
 
-    &__titulares{
+    &__titulares {
         font-size: 2em;
     }
 
@@ -15,7 +15,7 @@
         justify-content: space-evenly;
         border: 2px solid black;
 
-        .seleccion{
+        .seleccion {
             background: lightgreen;
         }
     }
@@ -26,10 +26,27 @@
         flex-direction: column;
         justify-content: space-evenly;
 
-        &__opcion{
+        &__opcion {
 
-            &__img{
+            &__img {
                 display: flex;
+            }
+        }
+
+        &__valor {
+
+            display: flex;
+
+            &__area{
+                margin-right: 5px;
+            }
+            &__contenedor {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                min-width: 100px;
+                height: 100%;
             }
         }
 
@@ -37,23 +54,25 @@
             display: flex;
             padding: 10px;
 
-            &__img, &__text{
+            &__img,
+            &__text {
                 display: flex;
                 justify-content: center;
                 align-items: center;
             }
-            &__img{
-             
+
+            &__img {
+
                 width: 200px;
                 height: 100px;
             }
 
-            &__text{
+            &__text {
                 min-width: 100px;
                 min-height: 100px;
             }
 
-          
+
         }
     }
 

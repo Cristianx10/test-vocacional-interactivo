@@ -19,11 +19,9 @@ export class Relacionar extends React.Component {
     this.opciones = [];
 
     this.tablero = new ARelacionar();
-
   }
 
   componentDidMount() {
-
     this.tablero.size(this.props.width, this.props.height);
 
     React.Children.map(this.props.children, view => {
@@ -33,8 +31,13 @@ export class Relacionar extends React.Component {
       });
     });
 
-    if(this.props.config){
-      this.props.config(this, this.tablero, this.tablero.propiedades, this.tablero.accion);
+    if (this.props.config) {
+      this.props.config(
+        this,
+        this.tablero,
+        this.tablero.propiedades,
+        this.tablero.accion
+      );
     }
 
     let tipos = this.opciones;
@@ -56,25 +59,20 @@ export class Relacionar extends React.Component {
       this.tablero.baseB.agregar(e, e);
     }
 
-   this.tablero.incluirEn(this.refs.contenedor);
+    this.tablero.incluirEn(this.refs.contenedor);
 
     setTimeout(() => {
       this.tablero.update();
-     
     }, 1000);
-
   }
 
-  onFinal(){
+  onFinal() {
     this.tablero.registro.evaluar();
   }
 
   render() {
     let c = resizeClass(this, "actividad__relacionar");
-    return (
-      <div ref="contenedor" className={c.className} style={c.style}>
-      </div>
-    );
+    return <div ref="contenedor" className={c.className} style={c.style}></div>;
   }
 }
 
@@ -88,5 +86,4 @@ export class Relacion extends React.Component {
 
     this.relacionar.opciones.push(this);
   }
- 
 }
