@@ -30,6 +30,7 @@ export class UnificarResultados {
 
             if (pruebas) {
                 pruebas.forEach((prueba, j) => {
+                    
                     if (temp__pruebas[j] === null || temp__pruebas[j] === undefined) {
                         temp__pruebas[j] = [];
                         numPruebas++;

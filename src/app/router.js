@@ -6,7 +6,8 @@ import { Introduccion } from "./paginas/introduccion";
 import { Linguistica } from "./paginas/linguistica";
 import { Matematicas } from "./paginas/matematicas";
 import { Viewregistro } from "./paginas/viewregistro";
-import { ViewUsuario } from "./paginas/datosUsuario";
+import { ViewUsuario } from "./analisis/datosUsuario";
+
 
 
 

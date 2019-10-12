@@ -240,8 +240,9 @@ export class ViewAcumulada extends Component {
             m = ma.valor;
           }
         });
-        console.log(max);
+       // console.log(max);
         por = (c.maximo.valor / m) * 100;
+      
       }
 
       viewList.push(
@@ -267,7 +268,7 @@ export class ViewAcumulada extends Component {
                 className="ui__porcentaje__barra"
                 style={{ width: `${c.porcetaje}%` }}
               ></div>
-              <div className="ui__porcentaje__valor">{c.porcetaje}%</div>
+              <div className="ui__porcentaje__valor">{(c.porcetaje).toFixed(2)}%</div>
             </div>
           </td>
         </tr>

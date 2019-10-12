@@ -17,6 +17,16 @@ export class Navegador extends React.Component {
     this.comunicador.add("navegador").push(this);
 
     this.renderizado = false;
+
+    document.addEventListener("keypress", e => {
+      if (e.key === "a" || e.key === "A") {
+        this.atras();
+      }
+
+      if (e.key === "q" || e.key === "Q") {
+        console.log(this.comunicador);
+      }
+    });
   }
 
   continuar() {
@@ -28,6 +38,20 @@ export class Navegador extends React.Component {
     if (actual > this.props.children.length) {
     } else {
       actual += 1;
+    }
+
+    this.setState({ actual });
+
+    //console.log("Resultados", JSON.stringify(resultados));
+  }
+
+  atras() {
+    let actual = this.state.actual;
+
+    let pantallaActual = this.comunicador.getPropiedad("pantallas", actual);
+
+    if (actual > 0) {
+      actual -= 1;
     }
 
     this.setState({ actual });
@@ -72,10 +96,12 @@ export class Navegador extends React.Component {
         }
       });
     } else {
+      
       let contenido = null;
       if (this.state.actual < this.props.children.length) {
         contenido = this.props.children[this.state.actual];
       }
+
       return (
         <div
           ref="contenedor"
@@ -175,14 +201,14 @@ export class Pantalla extends React.Component {
     contenedor.classList.add("ocultar");
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.onInicial();
     if (this.navegador && this.props.fondo) {
       let temStyle = this.navegador.propiedades;
       temStyle.setStyle("backgroundImage", "url(" + this.props.fondo + ")");
       this.navegador.setState({ style: temStyle.getStyle() });
     }
-  };
+  }
 
   render() {
     let c = resizeClass(this, "pantalla__contenedor");

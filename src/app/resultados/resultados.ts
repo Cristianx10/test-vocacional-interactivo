@@ -37,6 +37,7 @@ export class Resultados {
             this.maximos = [];
             this.usuario = {
                 nombre: "Nombre de usuario",
+                genero: "No definido",
                 carrera: "Carrera",
                 edad: "edad",
                 mano: "mano"
@@ -52,7 +53,7 @@ export class Resultados {
                 this.pruebas.push(refObject);
                 }
                 */
-
+        
         let refObject = null;
         if (this.pruebas) {
             let encontro = false;
@@ -65,6 +66,7 @@ export class Resultados {
 
             if (encontro === false) {
                 refObject = new GResultados(objeto);
+                objeto.registro = refObject;
                 this.pruebas.push(refObject);
             }
         }
@@ -255,8 +257,13 @@ export class GResultados {
         this.maximos = [];
         this.opciones = [];
 
-        this.defaultResult = new OResultado(null);
+        let obj = {};
+
+        this.defaultResult = new OResultado(obj);
+        
         this.seleccion = this.defaultResult;
+
+        this.opciones.push(this.defaultResult);
     }
 
     agregarCondicion(id: string, accion: Function, descripcion: string, valorMaximo: Array<ICategoria>, objeto: any) {
@@ -333,6 +340,7 @@ export class GResultados {
 
         if (encontro === false) {
             this.seleccion = this.defaultResult;
+            this.seleccion.setValidacion(true);
         }
 
         this.result = Object.assign([], this.seleccion.valor);
@@ -359,7 +367,7 @@ class OResultado {
             if (objeto.tipoId) {
                 this.id = objeto.tipoId;
             } else {
-                this.id = "defaul";
+                this.id = "default";
             }
 
             if (objeto.propiedades) {
@@ -368,7 +376,7 @@ class OResultado {
                 this.propiedades = {};
             }
         } else {
-            this.id = "defaul";
+            this.id = "default";
             this.propiedades = {};
         }
 

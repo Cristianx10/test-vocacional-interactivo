@@ -69,7 +69,7 @@ export class Linguistica extends React.Component {
 
   render() {
     return (
-      <Navegador width="100%">
+      <Navegador width="100%" imagen="/includes/background/oscuro.png">
         {/*
         <Pantalla padding="50px" fondo="/includes/background/claro.png">
           <RelojContador></RelojContador>
@@ -121,7 +121,7 @@ export class Linguistica extends React.Component {
           <Continuar>Enviar</Continuar>
         </Pantalla>
             */}
-        <Pantalla>
+        <Pantalla fondo="/includes/background/claro.png">
           <Pregunta orientacion="horizontal">
             <Contenedor height="30%">
               <h1>
@@ -129,7 +129,7 @@ export class Linguistica extends React.Component {
               </h1>
 
               <Contenedor allType="boton" grid>
-                <Opcion resultados={[{ id: "Mate", valor: 10 }]}>
+                <Opcion resultados={[{ id: "Mate", valor: 10 },{ id: "Matematicas", valor: 10 }]}>
                   <D>Un texto mucho mas largo que otros es un problmea cierto</D>
                 </Opcion>
                 <Opcion resultados={[{ id: "Cein", valor: 10 }]}>
@@ -144,7 +144,7 @@ export class Linguistica extends React.Component {
               </Contenedor>
             </Contenedor>
           </Pregunta>
-          <Continuar height="15%" align="center" disabled></Continuar>
+          <Continuar height="15%" align="center"></Continuar>
         </Pantalla>
 
         <Pantalla>

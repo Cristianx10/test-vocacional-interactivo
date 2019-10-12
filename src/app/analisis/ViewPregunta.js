@@ -120,87 +120,89 @@ class VPOpciones extends Component {
     let views__opciones = [];
 
     opciones.forEach(opcion => {
-      let contieneImg = false;
-      let views = {
-        img: [],
-        text: []
-      };
-      opcion.propiedades.respuestas.forEach(respuesta => {
-        if (respuesta.type === "img") {
-          contieneImg = true;
-          views.img.push(
-            <div className="rv__pregunta__opciones__opcion__img">
-              <img src={respuesta.contenido} alt="opcion"></img>
+      if(opcion.id !== "default"){
+        let contieneImg = false;
+        let views = {
+          img: [],
+          text: []
+        };
+        opcion.propiedades.respuestas.forEach(respuesta => {
+          if (respuesta.type === "img") {
+            contieneImg = true;
+            views.img.push(
+              <div className="rv__pregunta__opciones__opcion__img">
+                <img src={respuesta.contenido} alt="opcion"></img>
+              </div>
+            );
+          } else {
+            views.text.push(
+              <div className="rv__pregunta__opciones__opcion__text">
+                <p>{respuesta.contenido}</p>
+              </div>
+            );
+          }
+        });
+  
+        let arrayValor = [];
+        opcion.valor.forEach(valor => {
+          arrayValor.push(
+            <div className="rv__pregunta__opciones__valor">
+              <div className="rv__pregunta__opciones__valor__area">
+                {valor.id + ":"}
+              </div>
+              <div className="rv__pregunta__opciones__valor__valor">
+                {valor.valor}
+              </div>
             </div>
           );
-        } else {
-          views.text.push(
-            <div className="rv__pregunta__opciones__opcion__text">
-              <p>{respuesta.contenido}</p>
-            </div>
-          );
+        });
+  
+        let classSeleccion = "rv__pregunta__opciones__contenedor__item";
+        if (opcion.validacion && opcion.validacion === true) {
+          classSeleccion = "rv__pregunta__opciones__contenedor__item seleccion";
         }
-      });
-
-      let arrayValor = [];
-      opcion.valor.forEach(valor => {
-        arrayValor.push(
-          <div className="rv__pregunta__opciones__valor">
-            <div className="rv__pregunta__opciones__valor__area">
-              {valor.id + ":"}
+        let view;
+        if (contieneImg) {
+          view = (
+            <div className={classSeleccion}>
+              <div className="rv__pregunta__opciones__contenedor__item__img">
+                {React.Children.map(views.img, v => {
+                  return v;
+                })}
+              </div>
+              <div className="rv__pregunta__opciones__contenedor__item__text">
+                {React.Children.map(views.text, v => {
+                  return v;
+                })}
+              </div>
             </div>
-            <div className="rv__pregunta__opciones__valor__valor">
-              {valor.valor}
+          );
+          //views__opciones.push(view);
+        } else {
+          view = (
+            <div className={classSeleccion}>
+              <div className="rv__pregunta__opciones__contenedor__item__text">
+                {React.Children.map(views.text, v => {
+                  return v;
+                })}
+              </div>
+            </div>
+          );
+          //views__opciones.push(view);
+        }
+  
+        let viewT = (
+          <div className="rv__pregunta__opciones__contenedor">
+            <div>{view}</div>
+            <div className="rv__pregunta__opciones__valor__contenedor">
+              {React.Children.map(arrayValor, v => {
+                return v;
+              })}
             </div>
           </div>
         );
-      });
-
-      let classSeleccion = "rv__pregunta__opciones__contenedor__item";
-      if (opcion.validacion && opcion.validacion === true) {
-        classSeleccion = "rv__pregunta__opciones__contenedor__item seleccion";
+        views__opciones.push(viewT);
       }
-      let view;
-      if (contieneImg) {
-        view = (
-          <div className={classSeleccion}>
-            <div className="rv__pregunta__opciones__contenedor__item__img">
-              {React.Children.map(views.img, v => {
-                return v;
-              })}
-            </div>
-            <div className="rv__pregunta__opciones__contenedor__item__text">
-              {React.Children.map(views.text, v => {
-                return v;
-              })}
-            </div>
-          </div>
-        );
-        //views__opciones.push(view);
-      } else {
-        view = (
-          <div className={classSeleccion}>
-            <div className="rv__pregunta__opciones__contenedor__item__text">
-              {React.Children.map(views.text, v => {
-                return v;
-              })}
-            </div>
-          </div>
-        );
-        //views__opciones.push(view);
-      }
-
-      let viewT = (
-        <div className="rv__pregunta__opciones__contenedor">
-          <div>{view}</div>
-          <div className="rv__pregunta__opciones__valor__contenedor">
-            {React.Children.map(arrayValor, v => {
-              return v;
-            })}
-          </div>
-        </div>
-      );
-      views__opciones.push(viewT);
     });
 
     return (
