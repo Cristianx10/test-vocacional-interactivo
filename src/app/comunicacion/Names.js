@@ -9,7 +9,8 @@ export var Names = {
     relacion:"relacion",
 
     tableroR:"tableroR",
-    carta:"cartas__pareja"
+    carta:"cartas__pareja",
+    dataUser:"user_data"
 }
 
 export default Names;

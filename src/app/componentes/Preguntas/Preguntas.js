@@ -139,7 +139,7 @@ export class Opcion extends React.Component {
     this.tipoId = "Opcion";
     this.propiedades = {};
 
-    resultados.agregarCondicion(
+    this.opcion = resultados.agregarCondicion(
       this,
       this.pregunta,
       "Seleccion",
@@ -190,6 +190,7 @@ export class Opcion extends React.Component {
           this.propiedades.respuestas.push({type:"img", contenido:f.src});
         });
       }else{
+        this.opcion.setDescripcion("Selecciono: " + t.innerHTML);
         this.propiedades.respuestas.push({type:"text", contenido:t.innerHTML});
       }      
     });

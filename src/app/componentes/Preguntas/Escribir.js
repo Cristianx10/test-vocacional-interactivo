@@ -64,6 +64,9 @@ export class Escribir extends React.Component {
     //Numero de palabras
     this.propiedades.numero_palabras = textoAnalisis.getNumPalabras();
 
+     //Numero de errores de tilde
+     this.propiedades.error__tilde = textoAnalisis.getErroresTilde();
+
     if (this.props.onFinal) {
       this.props.onFinal(this.propiedades, this.acciones);
     }

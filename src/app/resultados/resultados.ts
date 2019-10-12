@@ -7,12 +7,14 @@ interface ResultadoA {
 
 export class Resultados {
 
+    UID = "undefined";
     id: string;
     usuario?: any;
     pruebas?: Array<GResultados>;
 
     categorias?: Array<ICategoria>;
     maximos?: Array<ICategoria>;
+    ponderacion?: Array<ICategoria>;
 
     constructor(id: string) {
         this.id = id;
@@ -25,6 +27,7 @@ export class Resultados {
             this.pruebas = variables.pruebas;
             this.maximos = variables.maximos;
             this.usuario = variables.usuario;
+            this.ponderacion = variables.ponderacion;
             reconozido = true;
         }
 
@@ -33,11 +36,12 @@ export class Resultados {
             this.pruebas = [];
             this.maximos = [];
             this.usuario = {
-                nombre:"Nombre de usuario",
-                carrera:"Carrera",
-                edad:"edad",
-                mano:"mano"
+                nombre: "Nombre de usuario",
+                carrera: "Carrera",
+                edad: "edad",
+                mano: "mano"
             }
+            this.ponderacion = [];
         }
     }
 
@@ -92,13 +96,13 @@ export class Resultados {
                     }
                 });
             });
-/*
-            this.pruebas.forEach((prueba) => {
-                prueba.maximos.forEach((maximo) => {
-                    console.log("valor maximo", maximo)
-                });
-            });
-            */
+            /*
+                        this.pruebas.forEach((prueba) => {
+                            prueba.maximos.forEach((maximo) => {
+                                console.log("valor maximo", maximo)
+                            });
+                        });
+                        */
         }
     }
 
@@ -127,15 +131,48 @@ export class Resultados {
         }
     }
 
+    calcularPonederado() {
+        this.ponderacion = [];
+        if (this.categorias != null && this.maximos != null && this.ponderacion != null) {
+         
+            this.maximos.forEach(maximo => {
+                if (this.categorias != null) {
+                    let encontro = false;
+                    this.categorias.forEach((categoria) => {
+                        if (categoria.id === maximo.id) {
+                            encontro = true;
+                            if (this.ponderacion != null) {
+                                let resultado = categoria.valor * 100 / maximo.valor;
+                                this.ponderacion.push({ id: categoria.id, valor: (resultado) });
+                            }
+                        }
+                    });
+                    if(encontro === false){
+                        if (this.ponderacion != null) {
+                            let resultado = 0;
+                            this.ponderacion.push({ id: maximo.id, valor: (resultado) });
+                        }
+                    }
+                }
+
+            })
+
+
+        }
+    }
+
     evaluar(objeto: any) {
         objeto.registro.evaluar();
         this.calcularMaximo();
         this.calcularValor();
+        this.calcularPonederado();
         this.save();
     }
 
     agregarCondicion(objeto: any, referencia: any, id: string, accion: Function, descripcion: string, valorMaximo: Array<ICategoria>) {
-        objeto.registro = referencia.registro.agregarCondicion(id, accion, descripcion, valorMaximo, objeto);
+        let opcion = referencia.registro.agregarCondicion(id, accion, descripcion, valorMaximo, objeto);
+        objeto.registro = opcion;
+        return opcion;
     }
 
     setId(objeto: any, id: string) {
@@ -153,8 +190,8 @@ export class Resultados {
 }
 
 //localStorage.clear();
-export var resultados = new Resultados("resultados");
-export var resultados2 = new Resultados("resultados");
+export var resultados = new Resultados("resultados1");
+export var resultados2 = new Resultados("resultados2");
 
 document.addEventListener("keypress", (e) => {
     if (e.key === "Enter") {

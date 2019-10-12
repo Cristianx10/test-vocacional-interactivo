@@ -18,7 +18,7 @@ export class Linguistica extends React.Component {
     tablero.setStyleB(450, 450, "20px Heebo", 170, 25);
     tablero.distancia(300);
 
-    console.log("funcion de tablero", o, tablero)
+    console.log("funcion de tablero", o, tablero);
 
     tablero.validar(
       "Aciertos",
@@ -70,138 +70,7 @@ export class Linguistica extends React.Component {
   render() {
     return (
       <Navegador width="100%">
-        <Pantalla>
-          <Pregunta orientacion="horizontal">
-
-            <Contenedor height="30%">
-              <h1>
-                <D t>¿Cuantos años tienes?</D>
-              </h1>
-
-              <Contenedor allType="boton" grid>
-                <Opcion resultados={[{ id: "a", valor: 10 }]}>
-                  <D>10</D>
-                </Opcion>
-                <Opcion resultados={[{ id: "b", valor: 2 }]}>
-                  <D>30</D>
-                </Opcion>
-                <Opcion>
-                  <D>40</D>
-                </Opcion>
-                <Opcion>
-                  <D>60</D>
-                </Opcion>
-              </Contenedor>
-            </Contenedor>
-          </Pregunta>
-          <Continuar height="15%" align="center" disabled></Continuar>
-        </Pantalla>
-
-        <Pantalla>
-          <Pregunta orientacion="horizontal">
-            <Contenedor>
-              <D t>
-                <img src="/img/persona-e1533759204552.jpg" alt="" />
-              </D>
-            </Contenedor>
-
-            <Contenedor height="30%">
-              <h1>
-                <D t>¿Cuantos años tienes?</D>
-              </h1>
-
-              <Contenedor allType="boton" grid>
-                <Opcion resultados={[{ id: "a", valor: 10 }]}>
-                  <D>10</D>
-                </Opcion>
-                <Opcion resultados={[{ id: "b", valor: 2 }]}>
-                  <D>30</D>
-                </Opcion>
-                <Opcion>
-                  <D>40</D>
-                </Opcion>
-                <Opcion>
-                  <D>60</D>
-                </Opcion>
-              </Contenedor>
-            </Contenedor>
-          </Pregunta>
-          <Continuar height="15%" align="center" disabled></Continuar>
-        </Pantalla>
-
-        <Pantalla>
-          <Pregunta orientacion="horizontal">
-            <Contenedor>
-              <D t>
-                <img src="/img/persona-e1533759204552.jpg" alt="" />
-              </D>
-              <D t>
-                <img src="/img/penguin.jpg" alt="" />
-              </D>
-            </Contenedor>
-
-            <Contenedor height="30%">
-              <h1>
-                <D t>¿Cuantos años tienes?</D>
-              </h1>
-
-              <Contenedor allType="boton" grid>
-                <Opcion resultados={[{ id: "a", valor: 10 }]}>
-                  <D>10</D>
-                  <D>
-                    <img src="/img/persona-e1533759204552.jpg" alt="" />
-                  </D>
-                </Opcion>
-                <Opcion resultados={[{ id: "b", valor: 2 }]}>
-                  <D>30</D>
-                </Opcion>
-                <Opcion>
-                  <D>40</D>
-                </Opcion>
-                <Opcion>
-                  <D>60</D>
-                </Opcion>
-              </Contenedor>
-            </Contenedor>
-          </Pregunta>
-          <Continuar height="15%" align="center" disabled></Continuar>
-        </Pantalla>
-
-        <TIntroduccion fondo="/includes/background/oscuro-personajes.png">
-          <h1>Inteligencia Lingüística</h1>
-          <p>
-            En esta sección de la prueba se evaluará tus conocimientos en el
-            área Lingüística.
-          </p>
-        </TIntroduccion>
-
-        <Pantalla fondo="/includes/background/claro.png">
-          <Contenedor width="80%" height="15%">
-            <h2 className="text-center">
-              <D t>
-                1. Las palabras están al azar , por favor enlaza una palabra de
-                la izquierda con otra palabra de la derecha según sea su
-                antónimo.
-              </D>
-            </h2>
-          </Contenedor>
-          <Contenedor height="70%">
-            <Relacionar width="650" height="450" config={this.configTablero}>
-              <Relacion tipo="Facilidad" categoria="Dificultad" />
-              <Relacion tipo="Evaporar" categoria="Solidificar" />
-              <Relacion tipo="Implícito" categoria="Explícito" />
-              <Relacion tipo="Derrumbar" categoria="Construir" />
-              <Relacion tipo="Idéntico" categoria="Distinto" />
-              <Relacion tipo="Fallido" categoria="Acertado" />
-              <Relacion tipo="Orden" categoria="Caos" />
-              <Relacion tipo="Denegar" categoria="Acceder" />
-              <Relacion tipo="Sabio" categoria="Ignorante" />
-              <Relacion tipo="Flexible" categoria="Rígido" />
-            </Relacionar>
-          </Contenedor>
-          <Continuar height="15%" align="center" disabled></Continuar>
-        </Pantalla>
-
+        {/*
         <Pantalla padding="50px" fondo="/includes/background/claro.png">
           <RelojContador></RelojContador>
           <Pregunta padding="30px">
@@ -250,6 +119,137 @@ export class Linguistica extends React.Component {
             </Escribir>
           </Pregunta>
           <Continuar>Enviar</Continuar>
+        </Pantalla>
+            */}
+        <Pantalla>
+          <Pregunta orientacion="horizontal">
+            <Contenedor height="30%">
+              <h1>
+                <D t>¿Cuantos años tienes?</D>
+              </h1>
+
+              <Contenedor allType="boton" grid>
+                <Opcion resultados={[{ id: "Mate", valor: 10 }]}>
+                  <D>Un texto mucho mas largo que otros es un problmea cierto</D>
+                </Opcion>
+                <Opcion resultados={[{ id: "Cein", valor: 10 }]}>
+                  <D>30</D>
+                </Opcion>
+                <Opcion>
+                  <D>40</D>
+                </Opcion>
+                <Opcion>
+                  <D>60</D>
+                </Opcion>
+              </Contenedor>
+            </Contenedor>
+          </Pregunta>
+          <Continuar height="15%" align="center" disabled></Continuar>
+        </Pantalla>
+
+        <Pantalla>
+          <Pregunta orientacion="horizontal">
+            <Contenedor>
+              <D t>
+                <img src="/img/persona-e1533759204552.jpg" alt="" />
+              </D>
+            </Contenedor>
+
+            <Contenedor height="30%">
+              <h1>
+                <D t>¿Cuantos años tienes?</D>
+              </h1>
+
+              <Contenedor allType="boton" grid>
+                <Opcion resultados={[{ id: "Mate", valor: 10 }]}>
+                  <D>10</D>
+                </Opcion>
+                <Opcion resultados={[{ id: "Cien", valor: 10 }]}>
+                  <D>30</D>
+                </Opcion>
+                <Opcion>
+                  <D>40</D>
+                </Opcion>
+                <Opcion>
+                  <D>60</D>
+                </Opcion>
+              </Contenedor>
+            </Contenedor>
+          </Pregunta>
+          <Continuar height="15%" align="center" disabled></Continuar>
+        </Pantalla>
+
+        <Pantalla>
+          <Pregunta orientacion="horizontal">
+            <Contenedor>
+              <D t>
+                <img src="/img/persona-e1533759204552.jpg" alt="" />
+              </D>
+              <D t>
+                <img src="/img/penguin.jpg" alt="" />
+              </D>
+            </Contenedor>
+
+            <Contenedor height="30%">
+              <h1>
+                <D t>¿Cuantos años tienes?</D>
+              </h1>
+
+              <Contenedor allType="boton" grid>
+                <Opcion resultados={[{ id: "Mate", valor: 10 }]}>
+                  <D>10</D>
+                  <D>
+                    <img src="/img/persona-e1533759204552.jpg" alt="" />
+                  </D>
+                </Opcion>
+                <Opcion resultados={[{ id: "Cien", valor: 10 }]}>
+                  <D>30</D>
+                </Opcion>
+                <Opcion>
+                  <D>40</D>
+                </Opcion>
+                <Opcion>
+                  <D>60</D>
+                </Opcion>
+              </Contenedor>
+            </Contenedor>
+          </Pregunta>
+          <Continuar height="15%" align="center" disabled></Continuar>
+        </Pantalla>
+
+        <TIntroduccion fondo="/includes/background/oscuro-personajes.png">
+          <h1>Inteligencia Lingüística</h1>
+          <p>
+            En esta sección de la prueba se evaluará tus conocimientos en el
+            área Lingüística.
+          </p>
+        </TIntroduccion>
+
+        <Pantalla fondo="/includes/background/claro.png">
+          <Contenedor width="80%" height="15%">
+            <h2 className="text-center">
+              <D t>
+                1. Las palabras están al azar , por favor enlaza una palabra de
+                la izquierda con otra palabra de la derecha según sea su
+                antónimo.
+              </D>
+            </h2>
+          </Contenedor>
+          <Contenedor height="70%">
+            <Relacionar width="650" height="450" config={this.configTablero}>
+              <Relacion tipo="Facilidad" categoria="Dificultad" />
+              <Relacion tipo="Evaporar" categoria="Solidificar" />
+              <Relacion tipo="Implícito" categoria="Explícito" />
+              <Relacion tipo="Derrumbar" categoria="Construir" />
+              <Relacion tipo="Idéntico" categoria="Distinto" />
+              <Relacion tipo="Fallido" categoria="Acertado" />
+              <Relacion tipo="Orden" categoria="Caos" />
+              <Relacion tipo="Denegar" categoria="Acceder" />
+              <Relacion tipo="Sabio" categoria="Ignorante" />
+              <Relacion tipo="Flexible" categoria="Rígido" />
+            </Relacionar>
+          </Contenedor>
+          <Continuar height="15%" align="center" disabled></Continuar>
         </Pantalla>
 
         <Pantalla>

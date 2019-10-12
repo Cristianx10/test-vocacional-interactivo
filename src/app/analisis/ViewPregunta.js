@@ -3,9 +3,7 @@ import "./ViewPregunta.scss";
 
 export class ViewPregunta extends Component {
   render() {
-    let { pruebas, acumuladas } = this.props.resultado;
-
-    let { usuario, prueba } = pruebas[0];
+    let prueba = this.props.prueba;
     let { propiedades, opciones, maximos } = prueba;
 
     let contieneImgT = false;
@@ -20,16 +18,16 @@ export class ViewPregunta extends Component {
     let arrayMaximos = [];
     let viewMaximos;
 
-    pruebas[0].prueba.maximos.forEach(valor => {
+    prueba.maximos.forEach(valor => {
       arrayMaximos.push(
         <div className="rv__pregunta__opciones__valor">
-            <div className="rv__pregunta__opciones__valor__area">
-              {valor.id + ":"}
-            </div>
-            <div className="rv__pregunta__opciones__valor__valor">
-              {valor.valor}
-            </div>
+          <div className="rv__pregunta__opciones__valor__area">
+            {valor.id + ":"}
           </div>
+          <div className="rv__pregunta__opciones__valor__valor">
+            {valor.valor}
+          </div>
+        </div>
       );
     });
 
@@ -48,9 +46,11 @@ export class ViewPregunta extends Component {
 
     return (
       <div className={classNamePrincipal}>
-        <VPTitulares pruebas={pruebas} />
-        <VPOpciones pruebas={pruebas} />
-        <div>{viewMaximos}</div>
+        <VPTitulares prueba={prueba} />
+        <div className="rv__pregunta__opciones__contenedor__global">
+          <VPOpciones prueba={prueba} />
+          <div className="rv__pregunta__maximos"><h2>Maximos:</h2>{viewMaximos}</div>
+        </div>
       </div>
     );
   }
@@ -58,7 +58,7 @@ export class ViewPregunta extends Component {
 
 class VPTitulares extends Component {
   render() {
-    let { usuario, prueba } = this.props.pruebas[0];
+    let prueba = this.props.prueba;
     let { propiedades, opciones, maximos } = prueba;
 
     let titulares__img = [];
@@ -114,7 +114,7 @@ class VPTitulares extends Component {
 
 class VPOpciones extends Component {
   render() {
-    let { usuario, prueba } = this.props.pruebas[0];
+    let prueba = this.props.prueba;
     let { propiedades, opciones, maximos } = prueba;
 
     let views__opciones = [];
@@ -156,20 +156,20 @@ class VPOpciones extends Component {
         );
       });
 
-      let classSeleccion = "rv__pregunta__opciones__contenedor";
+      let classSeleccion = "rv__pregunta__opciones__contenedor__item";
       if (opcion.validacion && opcion.validacion === true) {
-        classSeleccion = "rv__pregunta__opciones__contenedor seleccion";
+        classSeleccion = "rv__pregunta__opciones__contenedor__item seleccion";
       }
       let view;
       if (contieneImg) {
         view = (
           <div className={classSeleccion}>
-            <div className="rv__pregunta__opciones__contenedor__img">
+            <div className="rv__pregunta__opciones__contenedor__item__img">
               {React.Children.map(views.img, v => {
                 return v;
               })}
             </div>
-            <div className="rv__pregunta__opciones__contenedor__text">
+            <div className="rv__pregunta__opciones__contenedor__item__text">
               {React.Children.map(views.text, v => {
                 return v;
               })}
@@ -180,7 +180,7 @@ class VPOpciones extends Component {
       } else {
         view = (
           <div className={classSeleccion}>
-            <div className="rv__pregunta__opciones__contenedor__text">
+            <div className="rv__pregunta__opciones__contenedor__item__text">
               {React.Children.map(views.text, v => {
                 return v;
               })}
@@ -204,7 +204,7 @@ class VPOpciones extends Component {
     });
 
     return (
-      <div className="rv__pregunta__opciones__contenedor">
+      <div className="rv__pregunta__opciones__contenedor__general">
         <div className="rv__pregunta__opciones">
           {React.Children.map(views__opciones, view => {
             return view;
