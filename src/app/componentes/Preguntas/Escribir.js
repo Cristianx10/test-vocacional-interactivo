@@ -33,6 +33,7 @@ export class Escribir extends React.Component {
     /**Configuracion de resultados */
 
     resultados.setId(this.pregunta, "Escritura");
+    
     this.propiedades = {};
     this.acciones = {};
 
@@ -42,6 +43,8 @@ export class Escribir extends React.Component {
   }
 
   onFinal() {
+
+    resultados.setTiempo(this.pregunta, this.pantalla.tiempo);
     let editado = this.refs.texto_edit.value;
     let textoAnalisis = new Texto_validar(this.original, editado);
 
@@ -68,6 +71,8 @@ export class Escribir extends React.Component {
 
     if (this.props.onFinal) {
       this.props.onFinal(this.pregunta.propiedades, this.acciones);
+    } else if(this.props.config){
+      this.props.config(this.pregunta.propiedades, this.acciones);
     }
   }
 

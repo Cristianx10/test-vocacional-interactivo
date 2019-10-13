@@ -184,6 +184,11 @@ export class Resultados {
         objeto.registro.id = id;
     }
 
+    setTiempo(objeto: any, tiempo: string) {
+        //console.log(objeto.registro)
+        objeto.registro.tiempo = tiempo;
+    }
+
     setValor(objeto: any, id: string, valor: number) {
         objeto.registro.setValor(id, valor);
     }
@@ -224,6 +229,7 @@ export interface IObjectValidable {
     tipoId: string;
     propiedades: any;
     acciones: any;
+   
 }
 
 
@@ -237,16 +243,25 @@ export class GResultados {
     opciones: Array<OResultado>;
     defaultResult: OResultado;
     seleccion: OResultado;
+    tiempo:any;
 
     constructor(objeto: any) {
+       
         if (objeto) {
             if (objeto.tipoId) {
                 this.id = objeto.tipoId;
             } else {
                 this.id = "defaul";
             }
+           
+            if (objeto.tiempo) {
+                this.tiempo = objeto.tiempo;
+            }else{
+                this.tiempo = 0;
+            }
 
             if (objeto.propiedades) {
+                
                 this.propiedades = objeto.propiedades;
             } else {
                 this.propiedades = {};
@@ -254,7 +269,10 @@ export class GResultados {
         } else {
             this.id = "defaul";
             this.propiedades = {};
+            this.tiempo = 0;
         }
+
+
         this.result = [];
         this.maximos = [];
         this.opciones = [];
@@ -363,6 +381,7 @@ class OResultado {
     valorMaximo: Array<ICategoria>;
     valor: Array<ICategoria>;
     validacion: boolean;
+    tiempo:any;
 
     constructor(objeto: any) {
 
@@ -371,6 +390,11 @@ class OResultado {
                 this.id = objeto.tipoId;
             } else {
                 this.id = "default";
+            }
+            if (objeto.tiempo) {
+                this.tiempo = objeto.tiempo;
+            }else{
+                this.tiempo = 0;
             }
 
             if (objeto.propiedades) {
@@ -381,6 +405,7 @@ class OResultado {
         } else {
             this.id = "default";
             this.propiedades = {};
+            this.tiempo = 0;
         }
 
         this.valor = [];

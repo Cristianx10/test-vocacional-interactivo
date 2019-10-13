@@ -3,7 +3,7 @@ import { Interaccion } from '../../configuraciones/main';
 
 export class Tablero_tarjetas extends Interaccion {
 
-    fichas: Array<Pareja>; 
+    fichas: Array<Pareja>;
     tarjetas: Array<HTMLElement>;
 
     posiciones: Array<number>;
@@ -18,9 +18,18 @@ export class Tablero_tarjetas extends Interaccion {
         this.tipoId = "Tablero Relacion";
         this.elemento.className = "tablero";
         this.bloqueador = false;
+
+        if (this.registro != null) {
+            this.registro.setId("Tarjetas__relacion");
+        }
+
+        this.propiedades.fallos = 0;
+        this.propiedades.aciertos = 0;
+        this.propiedades.intentos = 0;
     }
 
     agregar(url: string, orden: number, url2: string, orden2: number) {
+
 
         this.posiciones.push(orden);
 
@@ -129,61 +138,61 @@ class Bloque {
 
             if (this.valido == false) {
 
-                if (this.pareja.tablero.bloqueador == false && this.pareja.tablero.bloqueActual !== this) {
+                let tem__tablero = this.pareja.tablero;
+
+                if (tem__tablero.bloqueador == false && tem__tablero.bloqueActual !== this) {
 
                     if (this.bloque.style.transform === "rotateY(180deg)") {
                         this.ocultar();
                     } else {
                         this.mostrar();
 
+                        
 
-                        if (this.pareja.tablero.bloqueActual != null) {
+                        if (tem__tablero.bloqueActual != null) {
 
-                            if (this.pareja.validar(this.pareja.tablero.bloqueActual)) {
+                            if (this.pareja.validar(tem__tablero.bloqueActual)) {
 
                                 this.pareja.validado = true;
 
 
-                                this.pareja.tablero.aciertos++;
+                                tem__tablero.propiedades.aciertos++;
                                 this.valido = true;
-                                this.pareja.tablero.bloqueActual.valido = true;
-                                this.pareja.tablero.intentos++;
+                                tem__tablero.bloqueActual.valido = true;
+                                tem__tablero.propiedades.intentos++;
 
-                                if (this.pareja.tablero.intentoAcierto != null) {
-                                    this.pareja.tablero.intentoAcierto(this.pareja.tablero.intentos, this.pareja.tablero.aciertos, this.pareja.tablero.fallos, this.pareja.tablero.valido);
-                                }
+                                tem__tablero.doIntentoAcierto();
+                                tem__tablero.doIntento();
 
-                                this.pareja.tablero.bloqueActual = undefined;
+                                tem__tablero.bloqueActual = undefined;
 
                             } else {
 
-                                this.pareja.tablero.bloqueador = true;
-                                this.pareja.tablero.intentos++;
-                                this.pareja.tablero.fallos++;
-                                if (this.pareja.tablero.intentoFallo != null) {
-                                    this.pareja.tablero.intentoFallo(this.pareja.tablero.intentos, this.pareja.tablero.aciertos, this.pareja.tablero.fallos, this.pareja.tablero.valido);
-                                }
+                                tem__tablero.bloqueador = true;
+                                tem__tablero.propiedades.intentos++;
+                                tem__tablero.propiedades.fallos++;
+                                tem__tablero.doIntentoFallo();
+                                tem__tablero.doIntento();
+
 
                                 setTimeout(() => {
-                                    if (this.pareja.tablero.bloqueActual != null) {
-                                        this.pareja.tablero.bloqueActual.ocultar();
+                                    if (tem__tablero.bloqueActual != null) {
+                                        tem__tablero.bloqueActual.ocultar();
                                     }
                                     this.ocultar();
-                                    this.pareja.tablero.bloqueActual = undefined;
-                                    this.pareja.tablero.bloqueador = false;
+                                    tem__tablero.bloqueActual = undefined;
+                                    tem__tablero.bloqueador = false;
                                 }, 1000);
                             }
                         } else {
-                            this.pareja.tablero.bloqueActual = this;
+                            tem__tablero.bloqueActual = this;
                         }
                     }
                 }
 
-                if (this.pareja.tablero.verificar()) {
-                    this.pareja.tablero.valido = true;
-                    if (this.pareja.tablero.validacion != null) {
-                        this.pareja.tablero.validacion(this.pareja.tablero.intentos, this.pareja.tablero.aciertos, this.pareja.tablero.fallos, this.pareja.tablero.valido);
-                    }
+                if (tem__tablero.verificar()) {
+                    tem__tablero.valido = true;
+                    tem__tablero.doValidacion();
                 }
             }
 

@@ -53,6 +53,8 @@ export class Pregunta extends React.Component {
   }
 
   onFinal() {
+    resultados.setTiempo(this, this.pantalla.tiempo);
+  
     this.onStateObject.forEach(propiedad => {
       if (propiedad.onFinal) propiedad.onFinal();
     });

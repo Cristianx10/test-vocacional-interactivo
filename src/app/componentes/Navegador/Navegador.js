@@ -159,12 +159,14 @@ export class Pantalla extends React.Component {
 
     this.iniciado = false;
     this.finalizada = false;
+    this.tiempo = 0;
 
     /**
      * Variables fijas requeridas para la comunicacion
      */
 
     this.timer = new Timer();
+    this.tiempo = this.timer.tiempo;
 
     this.timer.setFinal(() => {
       this.navegador.continuar();
@@ -231,6 +233,7 @@ export class Pantalla extends React.Component {
       if (this.timer.isDetenido === false) {
         this.timer.detener();
       }
+      this.tiempo = this.timer.tiempo;
       console.log("Tiempo de pantalla", this.timer.tiempo / 1000);
 
       this.onStateObject.forEach(propiedad => {

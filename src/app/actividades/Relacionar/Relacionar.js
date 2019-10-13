@@ -21,7 +21,53 @@ export class Relacionar extends React.Component {
 
     this.tablero = new ARelacionar();
 
+    this.tablero.registro.tiempo = this.pantalla.tiempo;
 
+    this.accion = {};
+    this.accion.validar = (id, accion, descripcion, valorMaximo)=>{
+      this.tablero.validar(id, accion, descripcion, valorMaximo);
+    }
+
+    this.accion.setStyleA = (width, height, style, h, w) =>{
+      this.tablero.setStyleA(width, height, style, h, w);
+    }
+
+    this.accion.setStyleB = (width, height, style, h, w) =>{
+      this.tablero.setStyleB(width, height, style, h, w);
+    }
+
+    this.accion.distancia = (distancia) =>{
+      this.tablero.distancia(distancia);
+    }
+
+    this.accion.setIntento = (propiedades, acciones) =>{
+      this.tablero.setIntento(propiedades, acciones);
+    }
+
+    this.accion.setIntentoAcierto = (propiedades, acciones) =>{
+      this.tablero.setIntentoAcierto(propiedades, acciones);
+    }
+
+    this.accion.setIntentoFallo = (propiedades, acciones) =>{
+      this.tablero.setIntentoFallo(propiedades, acciones);
+    }
+
+    this.accion.setValidacion = (propiedades, acciones) =>{
+      this.tablero.setValidacion(propiedades, acciones);
+    }
+
+    this.accion.habilitarContinuar = ()=>{
+      this.pantalla.continuar.habilitar();
+    };
+
+    this.accion.ocultar = ()=>{
+      this.tablero.ocultar();
+    }
+
+    this.accion.reset = ()=>{
+      this.tablero.reset();
+    }
+    
   }
 
   componentDidMount() {
@@ -36,14 +82,13 @@ export class Relacionar extends React.Component {
 
     if (this.props.config) {
       this.props.config(
-        this,
-        this.tablero,
         this.tablero.propiedades,
-        this.tablero.accion
+        this.accion
       );
     }
 
     let tipos = this.opciones;
+
 
     let categorias = [];
 
@@ -70,6 +115,7 @@ export class Relacionar extends React.Component {
   }
 
   onFinal() {
+    resultados.setTiempo(this.tablero, this.pantalla.tiempo);
     this.tablero.capturarCanvas();
     resultados.evaluar(this.tablero);
   }

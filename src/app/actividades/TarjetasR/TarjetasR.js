@@ -16,26 +16,48 @@ export class TarjetasR extends React.Component {
     super();
     this.comunicador = comunicador;
     this.comunicador.add(Names.tableroR).push(this);
+    this.pantalla = this.comunicador.getPropiedadActual(Names.pantalla);
     this.opciones = [];
 
     this.tablero = new Tablero_tarjetas();
 
-    resultados.agregar(this);
+    this.pantalla.onAddEventos(this);
+    this.acciones = {};
+
+    this.acciones.validar = (id, accion, descripcion, valorMaximo) => {
+      this.tablero.validar(id, accion, descripcion, valorMaximo);
+    };
+
+    this.acciones.setIntento = (accion) => {
+      this.tablero.setIntento(accion);
+    };
+
+    this.acciones.setIntentoAcierto = (accion) => {
+      this.tablero.setIntentoAcierto(accion);
+    };
+
+    this.acciones.setIntentoFallo = (accion) => {
+      this.tablero.setIntentoFallo(accion);
+    };
+
+    this.acciones.setValidacion = (accion) => {
+      this.tablero.setValidacion(accion);
+    };
+
   }
 
-  onInicial(){
+  onInicial() {}
 
-  }
-
-  onFinal(){
-    
+  onFinal() {
+    resultados.setTiempo(this.tablero, this.pantalla.tiempo);
+    resultados.evaluar(this.tablero);
   }
 
   componentDidMount() {
-
     this.tablero.incluirEn(this.refs.contenedor);
     this.tablero.iniciar();
 
+    this.props.config(this.tablero.registro.propiedades, this.acciones);
   }
 
   render() {

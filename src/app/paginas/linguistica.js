@@ -13,14 +13,17 @@ import { TIntroduccion } from "../plantillas/templete-introduccion";
 import { D } from "../configuraciones/dato";
 
 export class Linguistica extends React.Component {
-  configTablero(o, tablero) {
-    tablero.setStyleA(250, 450, "20px Heebo", 170, 25);
-    tablero.setStyleB(450, 450, "20px Heebo", 170, 25);
-    tablero.distancia(300);
+  configTablero(propiedades, acciones) {
+    //console.log("El tablero");
+    //console.log(propiedades, acciones);
+
+    acciones.setStyleA(250, 450, "20px Heebo", 170, 25);
+    acciones.setStyleB(450, 450, "20px Heebo", 170, 25);
+    acciones.distancia(300);
 
     //console.log("funcion de tablero", o, tablero);
 
-    tablero.validar(
+    acciones.validar(
       "Aciertos",
       function(p, a) {
         if (p.aciertos > 3) {
@@ -29,11 +32,10 @@ export class Linguistica extends React.Component {
         }
       },
       "Si no termina la prueba",
-      [{ id: "arte", valor: "200" }],
-      tablero
+      [{ id: "arte", valor: "200" }]
     );
 
-    tablero.validar(
+    acciones.validar(
       "Aciertos",
       function(p, a) {
         if (p.aciertos > 0) {
@@ -46,30 +48,56 @@ export class Linguistica extends React.Component {
       [{ id: "arte", valor: "100" }]
     );
 
-    tablero.setIntento((p, a) => {
+    acciones.setIntento((p, a) => {
       // console.log(p, a);
     });
 
-    tablero.setIntentoAcierto(p => {
+    acciones.setIntentoAcierto(p => {
       console.log("bien");
-      //tablero.ocultar();
-      o.pantalla.continuar.habilitar();
+      //acciones.ocultar();
+      acciones.habilitarContinuar();
     });
 
-    tablero.setIntentoFallo(() => {
-      //tablero.reset();
+    acciones.setIntentoFallo(() => {
+      //acciones.reset();
       console.log("mal");
     });
 
-    tablero.setValidacion(() => {
+    acciones.setValidacion(() => {
       console.log("Gano");
-      o.pantalla.continuar.habilitar();
+      acciones.habilitarContinuar();
     });
+  }
+
+  configTarjetas(propiedades, acciones) {
+   
+    acciones.setIntento((p, a) => {
+      console.log("Mis acciones Intento");
+      console.log(p, a);
+    });
+/*
+    acciones.setIntentoAcierto((p, a) => {
+      console.log("Mis acciones Acierto");
+      console.log(p, a);
+    });
+
+    acciones.setIntentoFallo((p, a) => {
+      console.log("Mis acciones fallo");
+      console.log(p, a);
+    });*/
   }
 
   render() {
     return (
       <Navegador width="100%" fondo="/includes/background/oscuro.png">
+        <Pantalla>
+          <TarjetasR config={this.configTarjetas}>
+            <Carta img="/img/emparejados/card-1.png" posA="0" posB="2"></Carta>
+            <Carta img="/img/emparejados/card-2.png" posA="4" posB="5"></Carta>
+            <Carta img="/img/emparejados/card-3.png" posA="1" posB="3"></Carta>
+          </TarjetasR>
+        </Pantalla>
+
         <Pantalla fondo="/includes/background/claro.png">
           <Contenedor width="80%" height="15%">
             <h2 className="text-center">
@@ -98,7 +126,8 @@ export class Linguistica extends React.Component {
         </Pantalla>
 
         {/** 
-        
+          
+
         <Pantalla padding="50px" fondo="/includes/background/claro.png">
           <RelojContador></RelojContador>
           <Pregunta padding="30px">
@@ -112,8 +141,7 @@ export class Linguistica extends React.Component {
             <br></br>
             <Escribir
               original="El hombre no se convierte en hombre más que en una sociedad y solamente por la acción colectiva de la sociedad entera; no se emansipa del llugo de la naturalesa exterior más que por el trabajo colectivo o social y sin esa emancipación material no puede haber emancipación intelectual y moral para nadie. El hombre aislado no puede tener conciencia de su libertad. Ser libre para el hombre sólo es posible por otro hombre, por todos los hombres que le rodean. La libertad no es, pues, un echo de aislamiento, sino de reflección mutua; no de exclución, sino, al contrario, de aliansa, pues la libertad de todo individuo no es otra cosa que el reflejo de su humanidad o de su derecho humano en la consciencia de todos los hombres libres: sus hermanos, sus iguales. No soy verdaderamente libre más que cuando todos los seres humanos que me rodean, hombres y mujeres, son igualmente libres. La libertad de otro, lejos de ser un límite o la negasión de mi libertad, es, al contrario, su condición necesaria y su confirmación. No me ago verdaderamente libre más que por la libertad de los otros... BAKUNIN, M. La Libertad."
-              onFinal={function(p, a) {
-                
+              config={function(p, a) {
                 a.validar(
                   "Mayusculas",
                   () => {
@@ -122,7 +150,11 @@ export class Linguistica extends React.Component {
                     }
                   },
                   "No tuvo errores con mayuscula",
-                  [{ id: "area", valor: 5 }, { id: "areaB", valor: 5 }, { id: "areC", valor: 5 }]
+                  [
+                    { id: "area", valor: 5 },
+                    { id: "areaB", valor: 5 },
+                    { id: "areC", valor: 5 }
+                  ]
                 );
               }}
             >
@@ -148,8 +180,8 @@ export class Linguistica extends React.Component {
           </Pregunta>
           <Continuar>Enviar</Continuar>
         </Pantalla>
-        
 
+      
         <Pantalla>
           <Pregunta orientacion="vertical" height="50%">
             <h1 className="titulo">
@@ -407,7 +439,12 @@ export class Linguistica extends React.Component {
             ></Carta>
           </TarjetasR>
         </Pantalla>
-        */}
+
+        
+     
+          
+          
+          */}
       </Navegador>
     );
   }

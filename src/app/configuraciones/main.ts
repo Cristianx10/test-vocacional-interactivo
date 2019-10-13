@@ -14,32 +14,41 @@ export class Interaccion implements IObjectValidable {
     acciones: any;
 
     elemento: HTMLElement;
-
+/*
     puntos: number;
     aciertos: number;
     fallos: number;
-    intentos: number;
+    intentos: number;*/
     valido: boolean;
 
     validacion?: Function;
     intentoFallo?: Function;
     intentoAcierto?: Function;
     intento?: Function;
-    validar?: Function;
+
 
     tipoId: string;
 
+    registro?:GResultados;
+
 
     constructor() {
+        /*
         this.aciertos = 0;
         this.fallos = 0;
         this.intentos = 0;
+        this.puntos = 0;*/
+
         this.valido = true;
-        this.puntos = 0;
         this.elemento = document.createElement('div');
         this.elemento.className = "interaccion";
         this.tipoId = "pregunta";
 
+        this.propiedades = {};
+        let tempRegister = resultados.agregar(this);
+        if (tempRegister !== null) {
+            this.registro = tempRegister;
+        }
     }
 
     /**Metodos de accion */
@@ -68,10 +77,33 @@ export class Interaccion implements IObjectValidable {
         }
     }
 
+    validar(id: string, accion: Function, descripcion: string, valorMaximo: Array<ICategoria>) {
+        if(this.registro !== undefined){
+            this.registro.agregarCondicion(id, accion, descripcion, valorMaximo, this);
+        }
+    }
 
+    setValidacion(validacion: Function) {
+        this.validacion = validacion;
+    }
+
+    setIntento(intento: Function) {
+        this.intento = intento;
+    }
+
+    setIntentoFallo(intentoFallo: Function) {
+        this.intentoFallo = intentoFallo;
+    }
+
+    setIntentoAcierto(intentoAcierto: Function) {
+        this.intentoAcierto = intentoAcierto;
+    }
+
+/*
     setValidar(validar: Function) {
         this.validar = validar;
     }
+    */
 
     incluirEnEtiqueta(ubicacion: string) {
         let u: any = document.querySelector(ubicacion);
