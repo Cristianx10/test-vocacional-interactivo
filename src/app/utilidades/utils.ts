@@ -1,15 +1,15 @@
-//import html2canvas from "html2canvas";
+import html2canvas from "html2canvas";
 
 /*--------------------------------------------------------------
 ## Funciones Matematicas
 --------------------------------------------------------------*/
-export function selector (ubicacion: string){
-    let u:any = document.querySelector(ubicacion);
+export function selector(ubicacion: string) {
+    let u: any = document.querySelector(ubicacion);
     return u;
 }
 
-export function selectorAll (ubicacion: string){
-    let u= document.querySelectorAll(ubicacion);
+export function selectorAll(ubicacion: string) {
+    let u = document.querySelectorAll(ubicacion);
     return u;
 }
 
@@ -112,21 +112,21 @@ export function hsvToRgb(h: any, s: any, v: any) {
     ];
 }
 
-export function pantallaToImg(etiqueta:any) {
-  /*
-    html2canvas(etiqueta,{
-        scale:.7,
-  
+export function pantallaToImg(etiqueta: any, cargado:Function) {
+
+    html2canvas(etiqueta, {
+        scale: .7,
+
     }
-    ).then(function(canvas) {
-     // document.body.appendChild(canvas);
-      var image = canvas.toDataURL();
-  
-      var link = document.createElement("a");
-      link.href = image;
-      link.download = "screenshot.png";
-  
-      link.click();
-    });*/
-  }
-  
+    ).then((canvas:any) => {
+        // document.body.appendChild(canvas);
+        var image = canvas.toDataURL('image/png');
+        cargado(image);
+/*
+        var link = document.createElement("a");
+        link.href = image;
+        link.download = "screenshot.png";
+
+        link.click();*/
+    });
+}

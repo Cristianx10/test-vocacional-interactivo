@@ -58,12 +58,12 @@ export class Carta extends React.Component {
     this.comunicador.add(Names.carta).push(this);
     this.View_tablero = this.comunicador.getPropiedadActual(Names.tableroR);
     this.tablero = this.View_tablero.tablero;
-    console.log(this.tablero);
+    //console.log(this.tablero);
     this.View_tablero.opciones.push(this);
   }
 
   componentDidMount() {
-    console.log("una tarjeta");
+    //console.log("una tarjeta");
 
     let img = this.props.img;
     let posA = this.props.posA;

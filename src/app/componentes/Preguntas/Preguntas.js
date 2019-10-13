@@ -10,6 +10,7 @@ import { resultados } from "../../resultados/resultados";
 
 import "./Preguntas.scss";
 import { tags } from "../../configuraciones/dato";
+import Names from "../../comunicacion/Names";
 
 
 /* Clase encargada de la navegación entre actividades*/
@@ -19,7 +20,7 @@ export class Pregunta extends React.Component {
 
     this.comunicador = comunicador;
     this.comunicador.add("pregunta").push(this);
-    this.pantalla = this.comunicador.getPropiedadActual("pantallas");
+    this.pantalla = this.comunicador.getPropiedadActual(Names.pantalla);
 
     this.styleManager = new ManagerStyle(this, "pregunta");
 
@@ -114,6 +115,7 @@ export class Opcion extends React.Component {
 
     this.comunicador = comunicador;
     this.comunicador.add("opcion").push(this);
+ 
     this.pregunta = this.comunicador.getPropiedadActual("pregunta");
     this.contenedor = this.comunicador.getPropiedadActual("contenedor");
 
@@ -282,6 +284,8 @@ export class Likert extends React.Component {
       value: -1,
       iniciado: false
     };
+
+    this.pregunta.propiedades
   }
 
   seleccionar(estado) {
@@ -301,6 +305,9 @@ export class Likert extends React.Component {
     if (value !== this.state.value || this.state.value === -1) {
       this.setState({ value: value });
       this.pregunta.seleccion = this.opciones[value];
+      this.opciones.forEach((o, index)=>{
+        o.siguiente.habilitar();
+      });
     }
   }
 

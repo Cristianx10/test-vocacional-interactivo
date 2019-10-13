@@ -11,7 +11,7 @@ const { mongoose } = require("./database");
 app.set("port", process.env.PORT || 3000);
 
 // Middlewares
-app.use(express.urlencoded({ extended: true })); 
+app.use(express.urlencoded({limit: '50mb', extended: true })); 
 app.use(morgan("dev"));
 app.use(express.json());
 

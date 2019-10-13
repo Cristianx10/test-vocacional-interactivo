@@ -57,6 +57,7 @@ export class ManagerStyle {
   etiqueta: any;
   style: any;
   cargado: boolean;
+  contenedor?: HTMLElement;
 
   constructor(etiqueta: any, nombre: string) {
     this.etiqueta = etiqueta;
@@ -85,6 +86,10 @@ export class ManagerStyle {
         this.style.backgroundImage = "url('" + this.etiqueta.props.image + "')";
       }
 
+      if (this.etiqueta.props.fondo != null) {
+        this.style.backgroundImage = "url('" + this.etiqueta.props.fondo + "')";
+      }
+
       if (this.etiqueta.props.className != null) {
         this.className = this.className + " " + this.etiqueta.props.className;
       }
@@ -100,6 +105,29 @@ export class ManagerStyle {
       if (this.className.includes("horizontal") === false) {
         this.className = this.className + " vertical";
       }
+    }
+  }
+
+  setContenedor(contenedor:HTMLElement){
+    this.contenedor = contenedor;
+  }
+
+  appendChild(contenedor:HTMLElement){
+    if(this.contenedor != null){
+      this.contenedor.appendChild(contenedor);
+    }
+  }
+
+  removeChild(contenedor:HTMLElement){
+    if(this.contenedor != null && contenedor.parentNode == this.contenedor){
+   
+      this.contenedor.removeChild(contenedor);
+    }
+  }
+
+  aplicar(){
+    if(this.contenedor != null){
+      this.contenedor.style.backgroundImage = this.style.backgroundImage;
     }
   }
 

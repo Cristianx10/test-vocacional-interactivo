@@ -9,7 +9,6 @@ import comunicador from "../../comunicacion/Comunicacion";
 import { resizeClass } from "../../utilidades/AutoClases";
 import { resultados } from "../../resultados/resultados";
 
-
 /* Clase encargada de la navegación entre actividades*/
 export class Escribir extends React.Component {
   constructor() {
@@ -47,34 +46,32 @@ export class Escribir extends React.Component {
     let textoAnalisis = new Texto_validar(this.original, editado);
 
     //Da los errores sin tener encuenta mayusculas o puntuacion y las que faltaron
-    this.propiedades.error_general = textoAnalisis.getErrores();
+    this.pregunta.propiedades.error_general = textoAnalisis.getErrores();
 
     //Da los errores de coincidencia exacta
-    this.propiedades.error_estricto = textoAnalisis.getErroresStrict();
+    this.pregunta.propiedades.error_estricto = textoAnalisis.getErroresStrict();
 
     //Da los errores de Mayusculas
-    this.propiedades.error_mayuscula = textoAnalisis.getErroresMayusculas();
+    this.pregunta.propiedades.error_mayuscula = textoAnalisis.getErroresMayusculas();
 
     //Da los errores de Puntuacion, solo "," y "."
-    this.propiedades.error_puntuacion = textoAnalisis.getErroresPuntuacion();
+    this.pregunta.propiedades.error_puntuacion = textoAnalisis.getErroresPuntuacion();
 
     //Da los errores de palabras que faltaron
-    this.propiedades.error_falto = textoAnalisis.getErroresFalto();
+    this.pregunta.propiedades.error_falto = textoAnalisis.getErroresFalto();
 
     //Numero de palabras
-    this.propiedades.numero_palabras = textoAnalisis.getNumPalabras();
+    this.pregunta.propiedades.numero_palabras = textoAnalisis.getNumPalabras();
 
-     //Numero de errores de tilde
-     this.propiedades.error__tilde = textoAnalisis.getErroresTilde();
+    //Numero de errores de tilde
+    this.pregunta.propiedades.error__tilde = textoAnalisis.getErroresTilde();
 
     if (this.props.onFinal) {
-      this.props.onFinal(this.propiedades, this.acciones);
+      this.props.onFinal(this.pregunta.propiedades, this.acciones);
     }
   }
 
-  
   validar(id, accion, descripcion, valorMaximo) {
-  
     resultados.agregarCondicion(
       this,
       this.pregunta,
@@ -83,11 +80,18 @@ export class Escribir extends React.Component {
       descripcion,
       valorMaximo
     );
-    
   }
 
   componentDidMount() {
     this.original = this.props.original;
+    this.pregunta.propiedades.text__original = this.original;
+    let area_text = this.refs.texto_edit;
+
+    area_text.addEventListener("change", () => {
+      let area_text = this.refs.texto_edit;
+      this.pregunta.propiedades.text__usuario = area_text.value;
+    });
+    this.pregunta.propiedades.text__usuario = area_text.value;
   }
 
   render() {

@@ -18,7 +18,7 @@ export class Linguistica extends React.Component {
     tablero.setStyleB(450, 450, "20px Heebo", 170, 25);
     tablero.distancia(300);
 
-    console.log("funcion de tablero", o, tablero);
+    //console.log("funcion de tablero", o, tablero);
 
     tablero.validar(
       "Aciertos",
@@ -69,8 +69,36 @@ export class Linguistica extends React.Component {
 
   render() {
     return (
-      <Navegador width="100%" imagen="/includes/background/oscuro.png">
-        {/*
+      <Navegador width="100%" fondo="/includes/background/oscuro.png">
+        <Pantalla fondo="/includes/background/claro.png">
+          <Contenedor width="80%" height="15%">
+            <h2 className="text-center">
+              <D t>
+                1. Las palabras están al azar , por favor enlaza una palabra de
+                la izquierda con otra palabra de la derecha según sea su
+                antónimo.
+              </D>
+            </h2>
+          </Contenedor>
+          <Contenedor height="70%">
+            <Relacionar width="650" height="450" config={this.configTablero}>
+              <Relacion tipo="Facilidad" categoria="Dificultad" />
+              <Relacion tipo="Evaporar" categoria="Solidificar" />
+              <Relacion tipo="Implícito" categoria="Explícito" />
+              <Relacion tipo="Derrumbar" categoria="Construir" />
+              <Relacion tipo="Idéntico" categoria="Distinto" />
+              <Relacion tipo="Fallido" categoria="Acertado" />
+              <Relacion tipo="Orden" categoria="Caos" />
+              <Relacion tipo="Denegar" categoria="Acceder" />
+              <Relacion tipo="Sabio" categoria="Ignorante" />
+              <Relacion tipo="Flexible" categoria="Rígido" />
+            </Relacionar>
+          </Contenedor>
+          <Continuar height="15%" align="center" disabled></Continuar>
+        </Pantalla>
+
+        {/** 
+        
         <Pantalla padding="50px" fondo="/includes/background/claro.png">
           <RelojContador></RelojContador>
           <Pregunta padding="30px">
@@ -85,7 +113,7 @@ export class Linguistica extends React.Component {
             <Escribir
               original="El hombre no se convierte en hombre más que en una sociedad y solamente por la acción colectiva de la sociedad entera; no se emansipa del llugo de la naturalesa exterior más que por el trabajo colectivo o social y sin esa emancipación material no puede haber emancipación intelectual y moral para nadie. El hombre aislado no puede tener conciencia de su libertad. Ser libre para el hombre sólo es posible por otro hombre, por todos los hombres que le rodean. La libertad no es, pues, un echo de aislamiento, sino de reflección mutua; no de exclución, sino, al contrario, de aliansa, pues la libertad de todo individuo no es otra cosa que el reflejo de su humanidad o de su derecho humano en la consciencia de todos los hombres libres: sus hermanos, sus iguales. No soy verdaderamente libre más que cuando todos los seres humanos que me rodean, hombres y mujeres, son igualmente libres. La libertad de otro, lejos de ser un límite o la negasión de mi libertad, es, al contrario, su condición necesaria y su confirmación. No me ago verdaderamente libre más que por la libertad de los otros... BAKUNIN, M. La Libertad."
               onFinal={function(p, a) {
-                console.log(p, a);
+                
                 a.validar(
                   "Mayusculas",
                   () => {
@@ -94,7 +122,7 @@ export class Linguistica extends React.Component {
                     }
                   },
                   "No tuvo errores con mayuscula",
-                  [{ id: "area", valor: 5 }]
+                  [{ id: "area", valor: 5 }, { id: "areaB", valor: 5 }, { id: "areC", valor: 5 }]
                 );
               }}
             >
@@ -120,63 +148,27 @@ export class Linguistica extends React.Component {
           </Pregunta>
           <Continuar>Enviar</Continuar>
         </Pantalla>
-            */}
-        <Pantalla fondo="/includes/background/claro.png">
-          <Pregunta orientacion="horizontal">
-            <Contenedor height="30%">
-              <h1>
-                <D t>¿Cuantos años tienes?</D>
-              </h1>
-
-              <Contenedor allType="boton" grid>
-                <Opcion resultados={[{ id: "Mate", valor: 10 },{ id: "Matematicas", valor: 10 }]}>
-                  <D>Un texto mucho mas largo que otros es un problmea cierto</D>
-                </Opcion>
-                <Opcion resultados={[{ id: "Cein", valor: 10 }]}>
-                  <D>30</D>
-                </Opcion>
-                <Opcion>
-                  <D>40</D>
-                </Opcion>
-                <Opcion>
-                  <D>60</D>
-                </Opcion>
-              </Contenedor>
-            </Contenedor>
-          </Pregunta>
-          <Continuar height="15%" align="center"></Continuar>
-        </Pantalla>
+        
 
         <Pantalla>
-          <Pregunta orientacion="horizontal">
-            <Contenedor>
-              <D t>
-                <img src="/img/persona-e1533759204552.jpg" alt="" />
-              </D>
-            </Contenedor>
-
-            <Contenedor height="30%">
-              <h1>
-                <D t>¿Cuantos años tienes?</D>
-              </h1>
-
-              <Contenedor allType="boton" grid>
-                <Opcion resultados={[{ id: "Mate", valor: 10 }]}>
-                  <D>10</D>
-                </Opcion>
-                <Opcion resultados={[{ id: "Cien", valor: 10 }]}>
-                  <D>30</D>
-                </Opcion>
-                <Opcion>
-                  <D>40</D>
-                </Opcion>
-                <Opcion>
-                  <D>60</D>
-                </Opcion>
-              </Contenedor>
-            </Contenedor>
+          <Pregunta orientacion="vertical" height="50%">
+            <h1 className="titulo">
+              <D t>¿What is your name?</D>
+            </h1>
+            <Likert min="Lo peor" max="Lo mejor" width="60%">
+              <Opcion resultados={[{id:"area", valor:10}]}>
+                <D>1</D>
+              </Opcion>
+              <Opcion>
+                <D>2</D>
+              </Opcion>
+              <Opcion>
+                <D>3</D>
+              </Opcion>
+            </Likert>
           </Pregunta>
-          <Continuar height="15%" align="center" disabled></Continuar>
+
+          <Continuar disabled></Continuar>
         </Pantalla>
 
         <Pantalla>
@@ -217,6 +209,71 @@ export class Linguistica extends React.Component {
           <Continuar height="15%" align="center" disabled></Continuar>
         </Pantalla>
 
+        <Pantalla fondo="/includes/background/claro.png">
+          <Pregunta orientacion="horizontal">
+            <Contenedor height="30%">
+              <h1>
+                <D t>¿Cuantos años tienes?</D>
+              </h1>
+
+              <Contenedor allType="boton" grid>
+                <Opcion
+                  resultados={[
+                    { id: "Mate", valor: 10 },
+                    { id: "Matematicas", valor: 10 }
+                  ]}
+                >
+                  <D>
+                    Un texto mucho mas largo que otros es un problmea cierto
+                  </D>
+                </Opcion>
+                <Opcion resultados={[{ id: "Cein", valor: 10 }]}>
+                  <D>30</D>
+                </Opcion>
+                <Opcion>
+                  <D>40</D>
+                </Opcion>
+                <Opcion>
+                  <D>60</D>
+                </Opcion>
+              </Contenedor>
+            </Contenedor>
+          </Pregunta>
+          <Continuar height="15%" align="center" disabled></Continuar>
+        </Pantalla>
+
+        <Pantalla fondo="/includes/background/oscuro.png">
+          <Pregunta orientacion="horizontal">
+            <Contenedor>
+              <D t>
+                <img src="/img/persona-e1533759204552.jpg" alt="" />
+              </D>
+            </Contenedor>
+
+            <Contenedor height="30%">
+              <h1>
+                <D t>¿Cuantos años tienes?</D>
+              </h1>
+
+              <Contenedor allType="boton" grid>
+                <Opcion resultados={[{ id: "Mate", valor: 10 }]}>
+                  <D>10</D>
+                </Opcion>
+                <Opcion resultados={[{ id: "Cien", valor: 10 }]}>
+                  <D>30</D>
+                </Opcion>
+                <Opcion>
+                  <D>40</D>
+                </Opcion>
+                <Opcion>
+                  <D>60</D>
+                </Opcion>
+              </Contenedor>
+            </Contenedor>
+          </Pregunta>
+          <Continuar height="15%" align="center" disabled></Continuar>
+        </Pantalla>
+
         <TIntroduccion fondo="/includes/background/oscuro-personajes.png">
           <h1>Inteligencia Lingüística</h1>
           <p>
@@ -225,32 +282,7 @@ export class Linguistica extends React.Component {
           </p>
         </TIntroduccion>
 
-        <Pantalla fondo="/includes/background/claro.png">
-          <Contenedor width="80%" height="15%">
-            <h2 className="text-center">
-              <D t>
-                1. Las palabras están al azar , por favor enlaza una palabra de
-                la izquierda con otra palabra de la derecha según sea su
-                antónimo.
-              </D>
-            </h2>
-          </Contenedor>
-          <Contenedor height="70%">
-            <Relacionar width="650" height="450" config={this.configTablero}>
-              <Relacion tipo="Facilidad" categoria="Dificultad" />
-              <Relacion tipo="Evaporar" categoria="Solidificar" />
-              <Relacion tipo="Implícito" categoria="Explícito" />
-              <Relacion tipo="Derrumbar" categoria="Construir" />
-              <Relacion tipo="Idéntico" categoria="Distinto" />
-              <Relacion tipo="Fallido" categoria="Acertado" />
-              <Relacion tipo="Orden" categoria="Caos" />
-              <Relacion tipo="Denegar" categoria="Acceder" />
-              <Relacion tipo="Sabio" categoria="Ignorante" />
-              <Relacion tipo="Flexible" categoria="Rígido" />
-            </Relacionar>
-          </Contenedor>
-          <Continuar height="15%" align="center" disabled></Continuar>
-        </Pantalla>
+        
 
         <Pantalla>
           <Pregunta orientacion="horizontal">
@@ -330,27 +362,6 @@ export class Linguistica extends React.Component {
         </Pantalla>
 
         <Pantalla>
-          <Pregunta orientacion="vertical" height="50%">
-            <h1 className="titulo">
-              <D>¿What is your name?</D>
-            </h1>
-            <Likert min="Lo peor" max="Lo mejor" width="60%">
-              <Opcion>
-                <D>1</D>
-              </Opcion>
-              <Opcion>
-                <D>2</D>
-              </Opcion>
-              <Opcion>
-                <D>3</D>
-              </Opcion>
-            </Likert>
-          </Pregunta>
-
-          <Continuar></Continuar>
-        </Pantalla>
-
-        <Pantalla>
           <TarjetasR>
             <Carta img="/img/emparejados/card-1.png" posA="0" posB="2"></Carta>
             <Carta img="/img/emparejados/card-2.png" posA="4" posB="5"></Carta>
@@ -396,6 +407,7 @@ export class Linguistica extends React.Component {
             ></Carta>
           </TarjetasR>
         </Pantalla>
+        */}
       </Navegador>
     );
   }

@@ -49,7 +49,10 @@ export class ViewPregunta extends Component {
         <VPTitulares prueba={prueba} />
         <div className="rv__pregunta__opciones__contenedor__global">
           <VPOpciones prueba={prueba} />
-          <div className="rv__pregunta__maximos"><h2>Maximos:</h2>{viewMaximos}</div>
+          <div className="rv__pregunta__maximos">
+            <h2>Maximos:</h2>
+            {viewMaximos}
+          </div>
         </div>
       </div>
     );
@@ -120,7 +123,7 @@ class VPOpciones extends Component {
     let views__opciones = [];
 
     opciones.forEach(opcion => {
-      if(opcion.id !== "default"){
+      if (opcion.id !== "default") {
         let contieneImg = false;
         let views = {
           img: [],
@@ -142,7 +145,7 @@ class VPOpciones extends Component {
             );
           }
         });
-  
+
         let arrayValor = [];
         opcion.valor.forEach(valor => {
           arrayValor.push(
@@ -156,7 +159,7 @@ class VPOpciones extends Component {
             </div>
           );
         });
-  
+
         let classSeleccion = "rv__pregunta__opciones__contenedor__item";
         if (opcion.validacion && opcion.validacion === true) {
           classSeleccion = "rv__pregunta__opciones__contenedor__item seleccion";
@@ -190,7 +193,7 @@ class VPOpciones extends Component {
           );
           //views__opciones.push(view);
         }
-  
+
         let viewT = (
           <div className="rv__pregunta__opciones__contenedor">
             <div>{view}</div>
@@ -259,6 +262,76 @@ class VPGaleria extends Component {
                 </div>
               );
             })}
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+
+export class ViewPreguntaEscritura extends Component {
+  render() {
+    let prueba = this.props.prueba;
+
+    let { propiedades } = prueba;
+
+    console.log(prueba);
+    return (
+      <div className="rv__pregunta__escritura">
+        <div>
+          <VPTitulares prueba={prueba} />
+        </div>
+
+        <table border="1">
+          <tbody>
+            <tr>
+              <td>
+                <h2>Escrito por el investigador</h2>
+              </td>
+              <td>
+                <h2>Escrito por el usuario</h2>
+              </td>
+            </tr>
+            <tr>
+              <td width="50%" style={{ verticalAlign: "top" }}>
+                <div className="rv__pregunta__escritura__ver__texto">
+                  {propiedades.text__original}
+                </div>
+              </td>
+              <td width="50%" style={{ verticalAlign: "top" }}>
+                <div className="rv__pregunta__escritura__ver__texto">
+                  {propiedades.text__usuario}
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div className="rv__pregunta__escritura__ver__errores">
+          <div>
+            Errores de Error general (sin mayusculas, puntuacion o tilde):{" "}
+            <span>{propiedades.error_general}</span>
+          </div>
+          <div>
+            Errores de concidencia exacta:{" "}
+            <span>{propiedades.error_estricto}</span>
+          </div>
+          <div>
+            Errores de Tilde: <span>{propiedades.error__tilde}</span>
+          </div>
+          <div>
+            Errores de por mayusculas:{" "}
+            <span>{propiedades.error_mayuscula}</span>
+          </div>
+          <div>
+            Errores de puntuación: <span>{propiedades.error_puntuacion}</span>
+          </div>
+          <div>
+            Errores de palabras faltantes:{" "}
+            <span>{propiedades.error_falto}</span>
+          </div>
+          <div>
+            Total de palabras: <span>{propiedades.numero_palabras}</span>
           </div>
         </div>
       </div>

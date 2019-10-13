@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { resultados, resultados2 } from "../resultados/resultados";
-import { ViewPregunta } from "../analisis/ViewPregunta";
+import { ViewPregunta, ViewPreguntaEscritura } from "../analisis/ViewPregunta";
 
 import { UnificarResultados } from "../resultados/unificador";
 import comunicador from "../comunicacion/Comunicacion";
 import Names from "../comunicacion/Names";
 import { ViewComparadorCategoiras } from "../analisis/ViewCompatorCategorias";
+import { ViewARelacion } from "../analisis/ViewARelacion";
 
 export class Viewregistro extends Component {
   constructor() {
@@ -34,7 +35,7 @@ export class Viewregistro extends Component {
     this.resultados.agregar(resultados);
     this.resultados.agregar(resultados2);
     this.resultados.agregar(Object.assign({}, resultados2));
-    this.setState({})
+    this.setState({});
   }
 
   render() {
@@ -48,14 +49,67 @@ export class Viewregistro extends Component {
       let view = <div>Categoria no encontrada</div>;
       let prueba = resultado.pruebas[0].prueba;
       let id = prueba.id;
+
+      let viewPrueba = null;
+      let viewTitulo = null;
+
+      if (id === "Pregunta") {
+        viewTitulo = <h2>Pregunta General</h2>;
+        viewPrueba = <ViewPregunta prueba={prueba} />;
+      } else if (id === "Likert") {
+        viewTitulo = <h2>Pregunta Likert</h2>;
+        viewPrueba = <ViewPregunta prueba={prueba} />;
+      } else if (id === "Escritura") {
+        viewTitulo = <h2>Pregunta Escritura</h2>;
+        viewPrueba = <ViewPreguntaEscritura prueba={prueba} />;
+      } else if (id === "Relacionar_Palabras") {
+        viewTitulo = <h2>Pregunta Relaciona Palabras</h2>;
+        viewPrueba = <ViewARelacion prueba={prueba} />;
+      }
+
+      view = (
+        <div className="rv__prueba">
+          {viewTitulo}
+          {viewPrueba}
+          <ViewComparadorCategoiras resultado={resultado} />
+        </div>
+      );
+
+      /*
       if (id === "Pregunta") {
         view = (
           <div className="rv__prueba">
+            <h2>Pregunta Normal</h2>
             <ViewPregunta prueba={prueba} />
             <ViewComparadorCategoiras resultado={resultado} />
           </div>
         );
-      }
+      } else if (id === "Likert") {
+        view = (
+          <div className="rv__prueba">
+            <h2>Pregunta Likert</h2>
+            <ViewPregunta prueba={prueba} />
+            <ViewComparadorCategoiras resultado={resultado} />
+          </div>
+        );
+      } else if (id === "Escritura") {
+        view = (
+          <div className="rv__prueba">
+            <h2>Pregunta Escritura</h2>
+            <ViewPreguntaEscritura prueba={prueba} />
+            <ViewComparadorCategoiras resultado={resultado} />
+          </div>
+        );
+      } else if (id === "Relacionar_Palabras") {
+        view = (
+          <div className="rv__prueba">
+            <h2>Pregunta Relaciona palabras</h2>
+            <ViewARelacion prueba={prueba} />
+            <ViewComparadorCategoiras resultado={resultado} />
+          </div>
+        );
+      }*/
+
       views.push(view);
     });
 

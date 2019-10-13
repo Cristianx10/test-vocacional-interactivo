@@ -12,6 +12,7 @@ export class ARelacionar extends Actividad {
 
     constructor() {
         super();
+        this.propiedades.palabras = [];
         this.encontrado = false;
         this.baseA = new ARelacionar_base(this);
         this.baseA.contenedor.x = 5;
@@ -23,14 +24,16 @@ export class ARelacionar extends Actividad {
         this.baseA.setOrientacion(true);
         this.baseB.setOrientacion(false);
 
+        if(this.registro){
+            this.registro.setId("Relacionar_Palabras");
+        }
 
         this.propiedades.intentos = 0;
         this.propiedades.clasificados = 0;
         this.propiedades.aciertos = 0;
         this.propiedades.faltantes = 0;
         this.propiedades.fallos = 0;
-
-        this.update();
+      
 
         this.stage.on("stagemousemove", () => {
             if (this.seleccion != null) {
@@ -46,6 +49,8 @@ export class ARelacionar extends Actividad {
         this.acciones.reset = () => {
             this.reset();
         }
+
+        this.update();
 
     }
 
@@ -107,6 +112,7 @@ class ARelacionar_base {
     width?: number;
     height?: number;
 
+    info__categorias:Array<any>;
 
     constructor(tablero: ARelacionar) {
         this.tablero = tablero;
@@ -117,6 +123,9 @@ class ARelacionar_base {
         this.stage.addChild(this.contenedor);
         this.altura = 0;
         this.orientation = true;
+        this.info__categorias = [];
+
+        this.tablero.propiedades.palabras.push(this.info__categorias);
     }
 
     drawTablero(width: number, height: number, style?: string, w?: number, h?: number) {
@@ -154,7 +163,7 @@ class ARelacionar_base {
     }
 
     agregar(infomacion: string, categoria: string) {
-       
+        this.info__categorias.push({informacion:infomacion,categoria:categoria });
         let tarjeta;
         if (this.style != null) {
             tarjeta = new Tablero_Categoria(this, infomacion, categoria, this.style);
@@ -239,9 +248,13 @@ class Tablero_Categoria {
     puntos: number;
     visible: boolean;
     tablero: ARelacionar;
+    text__info:string;
+    text__categoria:string;
 
     constructor(base: ARelacionar_base, texto: string, categoria: string, style?: string) {
         this.base = base;
+        this.text__info = texto;
+        this.text__categoria = categoria;
         this.stage = base.stage;
         this.puntos = 0;
         this.visible = true;

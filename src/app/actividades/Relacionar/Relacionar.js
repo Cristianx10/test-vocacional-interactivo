@@ -6,6 +6,7 @@ import { shuffle } from "../../utilidades/utils";
 import Names from "../../comunicacion/Names";
 
 import { ARelacionar } from "./TS-relacionar";
+import { resultados } from "../../resultados/resultados";
 
 /* Clase encargada de la navegación entre actividades*/
 export class Relacionar extends React.Component {
@@ -19,6 +20,8 @@ export class Relacionar extends React.Component {
     this.opciones = [];
 
     this.tablero = new ARelacionar();
+
+
   }
 
   componentDidMount() {
@@ -67,7 +70,8 @@ export class Relacionar extends React.Component {
   }
 
   onFinal() {
-    this.tablero.registro.evaluar();
+    this.tablero.capturarCanvas();
+    resultados.evaluar(this.tablero);
   }
 
   render() {

@@ -8,6 +8,7 @@ import { resizeClass, ManagerStyle } from "../../utilidades/AutoClases";
 import { Timer } from "../../utilidades/timer";
 
 import "./Navegador.scss";
+import html2canvas from "html2canvas";
 
 /* Clase encargada de la navegación entre actividades*/
 export class Navegador extends React.Component {
@@ -17,6 +18,9 @@ export class Navegador extends React.Component {
     this.comunicador.add("navegador").push(this);
 
     this.renderizado = false;
+    this.pantallas = [];
+
+    this.actual = 0;
 
     document.addEventListener("keypress", e => {
       if (e.key === "a" || e.key === "A") {
@@ -30,23 +34,27 @@ export class Navegador extends React.Component {
   }
 
   continuar() {
-    let actual = this.state.actual;
+    let actual = this.actual;
+    this.pantallas[this.actual].ocultar();
 
     let pantallaActual = this.comunicador.getPropiedad("pantallas", actual);
     pantallaActual.onFinal();
 
-    if (actual > this.props.children.length) {
-    } else {
+    if (actual + 1 < this.props.children.length) {
+      actual += 1;
+      this.pantallas[actual].mostrar();
+    }else if(actual < this.props.children.length){
       actual += 1;
     }
+    this.actual = actual;
 
-    this.setState({ actual });
-
-    //console.log("Resultados", JSON.stringify(resultados));
   }
 
   atras() {
-    let actual = this.state.actual;
+    let actual = this.actual;
+    if(actual < this.props.children.length){
+      this.pantallas[this.actual].ocultar();
+    }
 
     let pantallaActual = this.comunicador.getPropiedad("pantallas", actual);
 
@@ -54,29 +62,50 @@ export class Navegador extends React.Component {
       actual -= 1;
     }
 
-    this.setState({ actual });
+    this.actual = actual;
+    this.pantallas[this.actual].mostrar();
 
-    //console.log("Resultados", JSON.stringify(resultados));
   }
 
   capturarPantalla() {
     pantallaToImg(this.refs.contenedor);
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+    this.propiedades.setContenedor(this.refs.contenedor);
+    this.pantallas.forEach((pantalla, index)=>{
+      pantalla.ocultar();
+    });
+    this.pantallas[this.actual].mostrar();
+    
+  }
 
   renderizadoInicial() {
     if (this.renderizado === false) {
       this.renderizado = true;
       this.propiedades = new ManagerStyle(this, "navegacion");
-      this.state = {
-        actual: 0,
-        style: this.propiedades.getStyle(),
-        className: this.propiedades.className
-      };
+      this.style = this.propiedades.getStyle();
+      this.className = this.propiedades.className;      
     }
   }
 
+  render() {
+    this.renderizadoInicial();
+    return (
+      <div
+        ref="contenedor"
+        className={this.className}
+        style={this.style}
+        key={this.actual}
+      >
+        {React.Children.map(this.props.children, views => {
+          return views;
+        })}
+      </div>
+    );
+  }
+
+  /*
   render() {
     this.renderizadoInicial();
 
@@ -114,6 +143,7 @@ export class Navegador extends React.Component {
       );
     }
   }
+  */
 }
 
 /* Clase encargada de almacenar cada una de las actividades*/
@@ -125,7 +155,9 @@ export class Pantalla extends React.Component {
     this.comunicador.add("pantallas").push(this);
     this.navegador = this.comunicador.getPropiedadActual(Names.navegador);
     this.continuar = null;
+    this.navegador.pantallas.push(this);
 
+    this.iniciado = false;
     this.finalizada = false;
 
     /**
@@ -142,11 +174,15 @@ export class Pantalla extends React.Component {
       this.onProgress(segundos, minutos);
     });
 
+    this.renderInicial = false;
+
+
     /**
      * Fin de variables fijas para la comunicacion
      */
 
     this.onStateObject = [];
+  
   }
 
   onAddEventos(objeto) {
@@ -160,21 +196,31 @@ export class Pantalla extends React.Component {
   }
 
   onInicial() {
-    console.log("Inicio la aplicacion");
-
-    if (this.props.time) {
-      this.timer.iniciarEn(this.props.time);
-      this.timer.temporizador();
-    } else {
-      this.timer.iniciar();
-    }
-
-    this.onStateObject.forEach(propiedad => {
-      if (propiedad.onInicial) propiedad.onInicial();
-    });
-
-    if (this.props.onInicial) {
-      this.props.onInicial().bind(this);
+    if(this.iniciado == false){
+      this.iniciado = true;
+      console.log("Inicio la aplicacion");
+  
+      if (this.navegador && this.props.fondo) {
+        let temStyle = this.navegador.propiedades;
+        temStyle.setStyle("backgroundImage", "url(" + this.props.fondo + ")");
+        temStyle.aplicar();
+        
+      }
+  
+      if (this.props.time) {
+        this.timer.iniciarEn(this.props.time);
+        this.timer.temporizador();
+      } else {
+        this.timer.iniciar();
+      }
+  
+      this.onStateObject.forEach(propiedad => {
+        if (propiedad.onInicial) propiedad.onInicial();
+      });
+  
+      if (this.props.onInicial) {
+        this.props.onInicial().bind(this);
+      }
     }
   }
 
@@ -196,21 +242,38 @@ export class Pantalla extends React.Component {
     }
   }
 
+  mostrar() {
+    this.onInicial();
+    let contenedor = this.refs.contenedor;
+    contenedor.classList.remove("ocultar");
+    this.navegador.propiedades.appendChild(contenedor);
+  }
+
   ocultar() {
+    let contenedor = this.refs.contenedor;
+    contenedor.classList.add("ocultar");
+   
+    this.navegador.propiedades.removeChild(contenedor);
+  }
+
+  componentDidMount() {
     let contenedor = this.refs.contenedor;
     contenedor.classList.add("ocultar");
   }
 
-  componentDidMount() {
-    this.onInicial();
-    if (this.navegador && this.props.fondo) {
-      let temStyle = this.navegador.propiedades;
-      temStyle.setStyle("backgroundImage", "url(" + this.props.fondo + ")");
-      this.navegador.setState({ style: temStyle.getStyle() });
+  capturarPantalla(capturando){
+    html2canvas(this.refs.contenedor, capturando);
+  }
+
+  renderizadoInicial(){
+    if(this.renderInicial == false){
+      this.renderInicial = true;
+   
     }
   }
 
   render() {
+    this.renderizadoInicial();
     let c = resizeClass(this, "pantalla__contenedor");
     return (
       <div ref="contenedor" className="pantalla">
@@ -234,14 +297,14 @@ export class Continuar extends React.Component {
   constructor() {
     super();
     this.comunicador = comunicador;
-    this.navegador = this.comunicador.getPropiedadActual("navegador");
+    this.navegador = this.comunicador.getPropiedadActual(Names.navegador);
     this.pantalla = this.comunicador.getPropiedadActual(Names.pantalla);
     this.pantalla.continuar = this;
 
     /**Control de opciones de pregunta */
 
     this.actualPregunta = this.comunicador.getPropiedadActual("pregunta");
-    if (this.actualPregunta != null) {
+    if (this.actualPregunta != null && this.actualPregunta.pantalla === this.pantalla) {
       this.actualPregunta.opciones.forEach(opcion => {
         opcion.siguiente = this;
       });
@@ -262,6 +325,7 @@ export class Continuar extends React.Component {
   }
 
   habilitar() {
+    
     this.setState({ disabled: false });
   }
 
@@ -270,6 +334,7 @@ export class Continuar extends React.Component {
   }
 
   render() {
+   
     let c = resizeClass(this, "boton__navegacion");
 
     let contenido = "Continuar";
@@ -281,13 +346,14 @@ export class Continuar extends React.Component {
 
     if (this.state.disabled) {
       contenedor = (
-        <button className="btn__nav" disabled onClick={this.onClick}>
+        <button className="btn__nav" disabled>
           {contenido}
         </button>
       );
     } else {
       contenedor = (
         <button
+        
           className="btn__nav"
           onClick={this.navegador.continuar.bind(this.navegador)}
         >
@@ -297,7 +363,7 @@ export class Continuar extends React.Component {
     }
 
     return (
-      <div className={c.className} style={c.style}>
+      <div ref="a"  className={c.className} style={c.style}>
         {contenedor}
       </div>
     );

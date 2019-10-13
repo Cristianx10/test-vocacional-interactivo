@@ -37,20 +37,27 @@
             }
 
             div:nth-child(2) {
-                width: 40%;
+                width: 35%;
             }
 
             div:nth-child(3) {
-                width: 10%;
+                width: 15%;
             }
 
             div:nth-child(4) {
-                width: 28%;
+                width: 10%;
             }
 
             div:nth-child(5) {
-                width: 12%;
+                width: 20%;
             }
+
+            div:nth-child(6) {
+                font-size: 1em;
+                width: 10%;
+            }
+
+           
 
             div {
                 text-align: center;
@@ -77,12 +84,28 @@
         }
 
         &__descripcion {
-            width: 40%;
+            width: 35%;
             padding: 5px 10px;
             display: flex;
             flex-wrap: wrap;
 
             background: lightpink;
+        }
+
+        &__maximos{
+            display: flex;
+            flex-direction: column;
+            width: 15%;
+            padding: 5px;
+
+            &__id{
+                margin-right: 5px;
+            }
+            &__valor{
+
+            }
+
+            background: lightcyan;
         }
 
         &__nrespuestas {
@@ -91,12 +114,15 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: lightcyan;
+          
+            background: lightpink;
 
         }
 
+        
+
         &__opciones {
-            width: 40%;
+            width: 30%;
 
 
 
@@ -152,7 +178,7 @@
                     align-items: center;
                     width: 70%;
                     padding: 5px 0;
-                    background: lightpink;
+                    background: lightcyan;
                 }
 
                 &__total {
@@ -161,7 +187,8 @@
                     align-items: center;
                     width: 30%;
                     padding: 5px 0;
-                    background: lightcyan;
+                   
+                    background: lightpink;
                 }
             }
         }
@@ -194,4 +221,15 @@
 
 .c_verde{
     background: rgba(127, 168, 166, 0.555);
+}
+
+
+.rva__comparador__respuesta{
+    .seleccionado{
+        background: lightskyblue;
+    }
+}
+
+.max-width{
+    width: 1280px;
 }

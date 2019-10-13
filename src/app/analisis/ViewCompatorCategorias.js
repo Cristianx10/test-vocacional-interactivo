@@ -25,7 +25,8 @@ export class ViewComparadorCategoiras extends Component {
             nRespuestas: 0,
             ponderacion: [],
             id: opcion.id,
-            descripcion: opcion.descripcion
+            descripcion: opcion.descripcion,
+            maximo: opcion.valorMaximo
           };
         }
         if (opcion.validacion) {
@@ -110,10 +111,27 @@ export class ViewComparadorCategoiras extends Component {
         );
       }
 
+      let viewMaximos = [];
+      res.maximo.forEach(m => {
+        viewMaximos.push(
+          <div className="horizontal">
+            <div className="rva__ponderacion__maximos__id">{m.id + ":"}</div>
+            <div className="rva__ponderacion__maximos__valor">{m.valor}</div>
+          </div>
+        );
+      });
+
       let view = (
         <div className="rva__ponderacion">
           <div className="rva__ponderacion__id">{res.id}</div>
           <div className="rva__ponderacion__descripcion">{res.descripcion}</div>
+
+          <div className="rva__ponderacion__maximos">
+            {React.Children.map(viewMaximos, view => {
+              return view;
+            })}
+          </div>
+
           <div className="rva__ponderacion__nrespuestas">{res.nRespuestas}</div>
 
           <div className="rva__ponderacion__opciones">
@@ -128,14 +146,15 @@ export class ViewComparadorCategoiras extends Component {
 
     return (
       <div className="rva__ponderacion__global">
-        <h1>Vista especifica</h1>
+        <h1>Vista Analisis Global</h1>
         <div className="rva__ponderacion__cuadro__global">
           <div className="rva__ponderacion__cuadro">
             <div className="rva__ponderacion__titulares">
               <div>Accion</div>
               <div>Descripcion</div>
+              <div>Maximos</div>
               <div>Respuestas</div>
-              <div>Categorias</div>
+              <div>Tendencias</div>
               <div>Por Categoria</div>
             </div>
 
@@ -240,9 +259,8 @@ export class ViewAcumulada extends Component {
             m = ma.valor;
           }
         });
-       // console.log(max);
+        // console.log(max);
         por = (c.maximo.valor / m) * 100;
-      
       }
 
       viewList.push(
@@ -268,7 +286,9 @@ export class ViewAcumulada extends Component {
                 className="ui__porcentaje__barra"
                 style={{ width: `${c.porcetaje}%` }}
               ></div>
-              <div className="ui__porcentaje__valor">{(c.porcetaje).toFixed(2)}%</div>
+              <div className="ui__porcentaje__valor">
+                {c.porcetaje.toFixed(2)}%
+              </div>
             </div>
           </td>
         </tr>
@@ -279,7 +299,7 @@ export class ViewAcumulada extends Component {
 
     return (
       <div className="rva__ponderacion__global">
-        <h1>Vista especifica</h1>
+        <h1>Analisis Acumulativo</h1>
         <div className="rva__acumulado">
           <table border="1px">
             <tbody>
@@ -296,6 +316,75 @@ export class ViewAcumulada extends Component {
             </tbody>
           </table>
         </div>
+      </div>
+    );
+  }
+}
+
+export class ViewComparadorOpciones extends Component {
+  render() {
+    let prueba = this.props.prueba;
+
+    let { opciones } = prueba;
+
+    let filas = [];
+    opciones.forEach(opcion => {
+      let viewOpcion = [];
+      let viewOpcionM = [];
+      let className = "";
+      if (opcion.validacion == true) {
+        className = "seleccionado";
+      }
+      filas.push(
+        <tr className={className}>
+          <td>{opcion.id}</td>
+          <td>{opcion.descripcion}</td>
+          <td>
+            {opcion.valor.forEach(o => {
+              viewOpcion.push(
+                <div>
+                  {o.id}: {o.valor}
+                </div>
+              );
+            })}
+
+            {React.Children.map(viewOpcion, valor => {
+              return valor;
+            })}
+          </td>
+          <td>
+            {opcion.valorMaximo.forEach(o => {
+              viewOpcionM.push(
+                <div>
+                  {o.id}: {o.valor}
+                </div>
+              );
+            })}
+            {React.Children.map(viewOpcionM, maximo => {
+              return maximo;
+            })}
+          </td>
+        </tr>
+      );
+    });
+
+    return (
+      <div className="rva__ponderacion__global max-width" style={{padding:"10px"}}>
+        <h1>Analisis De Opciones</h1>
+
+        <table className="rva__comparador__respuesta" border="1">
+          <tbody>
+            <tr>
+              <td><strong>Acción</strong></td>
+              <td><strong>Descripción</strong></td>
+              <td><strong>Resultado</strong></td>
+              <td><strong>Maximo</strong></td>
+            </tr>
+            {React.Children.map(filas, view => {
+              return view;
+            })}
+          </tbody>
+        </table>
       </div>
     );
   }

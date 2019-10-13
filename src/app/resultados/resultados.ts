@@ -29,9 +29,11 @@ export class Resultados {
             this.usuario = variables.usuario;
             this.ponderacion = variables.ponderacion;
             reconozido = true;
+            console.log("Resultados encontrados")
         }
 
         if (reconozido === false) {
+            console.log("Resultados no encontrados")
             this.categorias = [];
             this.pruebas = [];
             this.maximos = [];
@@ -178,7 +180,7 @@ export class Resultados {
     }
 
     setId(objeto: any, id: string) {
-        console.log(objeto.registro)
+        //console.log(objeto.registro)
         objeto.registro.id = id;
     }
 
@@ -320,9 +322,10 @@ export class GResultados {
             });
 
         });
+    }
 
-
-
+    setId(id:string){
+        this.id = id;
     }
 
     evaluar() {

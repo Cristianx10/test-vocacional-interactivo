@@ -1,7 +1,11 @@
 import React, { Component } from "react";
-import { ViewPregunta } from "./ViewPregunta";
-import { ViewAcumulada } from "./ViewCompatorCategorias";
+import { ViewPregunta, ViewPreguntaEscritura } from "./ViewPregunta";
+import {
+  ViewAcumulada,
+  ViewComparadorOpciones
+} from "./ViewCompatorCategorias";
 import "./datosUsuario.scss";
+import { ViewARelacion } from "./ViewARelacion";
 
 export class ViewUsuario extends Component {
   constructor() {
@@ -42,17 +46,76 @@ export class ViewUsuario extends Component {
       acumuladoTotal.push(prueba);
       let view = <div>Categoria no encontrada</div>;
       let id = prueba.id;
+      let viewPrueba = null;
+      let viewTitulo = null;
+
+      if (id === "Pregunta") {
+        viewTitulo = <h2>Pregunta General</h2>;
+        viewPrueba = <ViewPregunta prueba={prueba} />;
+      } else if (id === "Likert") {
+        viewTitulo = <h2>Pregunta Likert</h2>;
+        viewPrueba = <ViewPregunta prueba={prueba} />;
+      } else if (id === "Escritura") {
+        viewTitulo = <h2>Pregunta Escritura</h2>;
+        viewPrueba = <ViewPreguntaEscritura prueba={prueba} />;
+      } else if (id === "Relacionar_Palabras") {
+        viewTitulo = <h2>Pregunta Relaciona Palabras</h2>;
+        viewPrueba = <ViewARelacion prueba={prueba} />;
+      }
+     
+
+      view = (
+        <div className="rv__prueba">
+          {viewTitulo}
+          {viewPrueba}
+          <ViewComparadorOpciones prueba={prueba} />
+          <ViewAcumulada pruebas={[prueba]} />
+          <ViewAcumulada pruebas={acumuladoTotal} maximo={maximosGlobal} />
+        </div>
+      );
+
+      /*
       if (id === "Pregunta") {
         view = (
           <div className="rv__prueba">
             <ViewPregunta prueba={prueba} />
-            <ViewAcumulada
-              pruebas={Object.assign([], acumuladoTotal)}
-              maximo={maximosGlobal}
-            />
+            <ViewComparadorOpciones prueba={prueba} />
+            <ViewAcumulada pruebas={[prueba]} />
+            <ViewAcumulada pruebas={acumuladoTotal} maximo={maximosGlobal} />
           </div>
         );
-      }
+      } else if (id === "Likert") {
+        view = (
+          <div className="rv__prueba">
+            <h2>Pregunta Likert</h2>
+            <ViewPregunta prueba={prueba} />
+            <ViewComparadorOpciones prueba={prueba} />
+            <ViewAcumulada pruebas={[prueba]} />
+            <ViewAcumulada pruebas={acumuladoTotal} maximo={maximosGlobal} />
+          </div>
+        );
+      } else if (id === "Escritura") {
+        view = (
+          <div className="rv__prueba">
+            <h2>Pregunta Escritura</h2>
+            <ViewPreguntaEscritura prueba={prueba} />
+            <ViewComparadorOpciones prueba={prueba} />
+            <ViewAcumulada pruebas={[prueba]} />
+            <ViewAcumulada pruebas={acumuladoTotal} maximo={maximosGlobal} />
+          </div>
+        );
+      } else if (id === "Relacionar_Palabras") {
+        view = (
+          <div className="rv__prueba">
+            <h2>Pregunta Relaciona Palabras</h2>
+            <ViewARelacion prueba={prueba} />
+            <ViewComparadorOpciones prueba={prueba} />
+            <ViewAcumulada pruebas={[prueba]} />
+            <ViewAcumulada pruebas={acumuladoTotal} maximo={maximosGlobal} />
+          </div>
+        );
+      }*/
+
       views.push(view);
     });
 
@@ -81,11 +144,11 @@ export class ViewUserData extends Component {
           <img width="200px" src="/includes/user/icon-user.png" />
         </div>
         <div>
-        <h2>Nombre: {usuario.nombre}</h2>
-        <h2>Genero: {usuario.genero}</h2>
-        <h2>Edad: {usuario.edad}</h2>
-        <h2>Mano: {usuario.mano}</h2>
-        <h2>Carrera: {usuario.carrera}</h2>
+          <h2>Nombre: {usuario.nombre}</h2>
+          <h2>Genero: {usuario.genero}</h2>
+          <h2>Edad: {usuario.edad}</h2>
+          <h2>Mano: {usuario.mano}</h2>
+          <h2>Carrera: {usuario.carrera}</h2>
         </div>
       </div>
     );

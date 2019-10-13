@@ -34,6 +34,8 @@ export class Texto_validar {
     noEncontradas: Array<Texto_palabra>;
 
     constructor(original: string, texto: string) {
+        original = original.trim();
+        texto = texto.trim();
         this.original = original.replace("  ", " ").replace("  ", " ");
         this.texto = texto.replace("  ", " ").replace("  ", " ");
         this.coincidencias = 0;

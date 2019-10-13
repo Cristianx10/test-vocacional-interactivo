@@ -214,6 +214,10 @@ export class Actividad implements IObjectValidable {
         this.intentoAcierto = intentoAcierto;
     }
 
+    capturarCanvas(){
+        this.propiedades.captura = this.canvas.toDataURL('image/png');
+    }
+
 
     getElemento(id?: string) {
         if (id != null) {
