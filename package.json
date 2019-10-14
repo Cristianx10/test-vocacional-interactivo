@@ -11,9 +11,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/jqueryui": "^1.12.7",
     "createjs-module": "^0.8.3",
     "express": "^4.16.3",
     "html2canvas": "^1.0.0-rc.5",
+    "jquery": "^3.4.1",
+    "jquery-ui": "^1.12.1",
     "mongoose": "^5.1.4",
     "morgan": "^1.9.0"
   },
@@ -22,6 +25,7 @@
     "@material-ui/lab": "^4.0.0-alpha.28",
     "@material-ui/styles": "^4.5.0",
     "@types/createjs": "0.0.29",
+    "@types/jquery": "^3.3.31",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.7.0",

@@ -7,6 +7,12 @@ import { IObjectValidable, GResultados, ICategoria, resultados } from '../result
 ## Interaccion
 *Se ocupa de las interacciones hechas en HTML que NO usan canvas
 --------------------------------------------------------------*/
+ var init_arrastrables:number = 0;
+
+ export function addAgregarRegistroArrastrable(){
+    init_arrastrables += 1;
+    return init_arrastrables + 0;
+}
 
 export class Interaccion implements IObjectValidable {
 

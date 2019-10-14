@@ -12,6 +12,10 @@ export class Resultados {
     usuario?: any;
     pruebas?: Array<GResultados>;
 
+    tiempoInicial?: number;
+    tiempoFinal?: number;
+    tiempo?: number;
+
     categorias?: Array<ICategoria>;
     maximos?: Array<ICategoria>;
     ponderacion?: Array<ICategoria>;
@@ -28,12 +32,19 @@ export class Resultados {
             this.maximos = variables.maximos;
             this.usuario = variables.usuario;
             this.ponderacion = variables.ponderacion;
+            this.tiempo = variables.tiempo;
+            this.tiempoInicial = variables.tiempoInicial;
+            this.tiempoFinal = variables.tiempoFinal;
             reconozido = true;
             console.log("Resultados encontrados")
         }
 
         if (reconozido === false) {
             console.log("Resultados no encontrados")
+            let t = new Date();
+            this.tiempoInicial = t.getTime();
+            this.tiempo = 0;
+            this.tiempoFinal = 0;
             this.categorias = [];
             this.pruebas = [];
             this.maximos = [];
@@ -55,7 +66,7 @@ export class Resultados {
                 this.pruebas.push(refObject);
                 }
                 */
-        
+
         let refObject = null;
         if (this.pruebas) {
             let encontro = false;
@@ -138,7 +149,7 @@ export class Resultados {
     calcularPonederado() {
         this.ponderacion = [];
         if (this.categorias != null && this.maximos != null && this.ponderacion != null) {
-         
+
             this.maximos.forEach(maximo => {
                 if (this.categorias != null) {
                     let encontro = false;
@@ -151,7 +162,7 @@ export class Resultados {
                             }
                         }
                     });
-                    if(encontro === false){
+                    if (encontro === false) {
                         if (this.ponderacion != null) {
                             let resultado = 0;
                             this.ponderacion.push({ id: maximo.id, valor: (resultado) });
@@ -170,6 +181,13 @@ export class Resultados {
         this.calcularMaximo();
         this.calcularValor();
         this.calcularPonederado();
+
+        let t = new Date();
+        this.tiempoFinal = t.getTime();
+        if(this.tiempoInicial != null){
+            this.tiempo = this.tiempoFinal - this.tiempoInicial;
+        }
+
         this.save();
     }
 
@@ -182,6 +200,12 @@ export class Resultados {
     setId(objeto: any, id: string) {
         //console.log(objeto.registro)
         objeto.registro.id = id;
+    }
+
+    getPropiedades(objeto: any) {
+        //console.log(objeto.registro)
+        return objeto.registro.propiedades;
+       
     }
 
     setTiempo(objeto: any, tiempo: string) {
@@ -202,10 +226,16 @@ export class Resultados {
 export var resultados = new Resultados("resultados1");
 export var resultados2 = new Resultados("resultados2");
 
+
 document.addEventListener("keypress", (e) => {
     if (e.key === "Enter") {
         console.log("Imprimiendo resultados");
         console.log(resultados);
+    }
+
+    if (e.key === "p" || e.key === "P") {
+        console.log("Imprimiendo Pruebas");
+        console.log(resultados.pruebas);
     }
 })
 
@@ -229,7 +259,7 @@ export interface IObjectValidable {
     tipoId: string;
     propiedades: any;
     acciones: any;
-   
+
 }
 
 
@@ -242,32 +272,40 @@ export class GResultados {
     maximos: Array<ICategoria>;
     opciones: Array<OResultado>;
     defaultResult: OResultado;
-    seleccion: OResultado;
-    tiempo:any;
+    seleccion: Array<OResultado>;
+    tiempo: any;
+    multiple: boolean;
 
     constructor(objeto: any) {
-       
+
         if (objeto) {
             if (objeto.tipoId) {
                 this.id = objeto.tipoId;
             } else {
                 this.id = "defaul";
             }
-           
+
+            if (objeto.multiple) {
+                this.multiple = objeto.multiple;
+            } else {
+                this.multiple = false;
+            }
+
             if (objeto.tiempo) {
                 this.tiempo = objeto.tiempo;
-            }else{
+            } else {
                 this.tiempo = 0;
             }
 
             if (objeto.propiedades) {
-                
+
                 this.propiedades = objeto.propiedades;
             } else {
                 this.propiedades = {};
             }
         } else {
             this.id = "defaul";
+            this.multiple = false;
             this.propiedades = {};
             this.tiempo = 0;
         }
@@ -276,12 +314,13 @@ export class GResultados {
         this.result = [];
         this.maximos = [];
         this.opciones = [];
+        this.seleccion = [];
 
         let obj = {};
 
         this.defaultResult = new OResultado(obj);
-        
-        this.seleccion = this.defaultResult;
+
+        this.seleccion.push(this.defaultResult);
 
         this.opciones.push(this.defaultResult);
     }
@@ -290,6 +329,7 @@ export class GResultados {
 
         valorMaximo.forEach((v) => {
             v.id = v.id.toLowerCase();
+            v.valor = parseInt(v.valor + "");
         });
 
         let valores: Array<ICategoria> = [];
@@ -325,10 +365,14 @@ export class GResultados {
                 this.maximos.forEach((valor) => {
                     if (result.id === valor.id) {
                         encontrado = true;
-                        if (result.valor > valor.valor) {
-                            valor.valor = result.valor;
-
+                        if (this.multiple) {
+                            valor.valor += result.valor;
+                        } else {
+                            if (result.valor > valor.valor) {
+                                valor.valor = result.valor;
+                            }
                         }
+
                     }
                 });
 
@@ -342,30 +386,64 @@ export class GResultados {
         });
     }
 
-    setId(id:string){
+    setId(id: string) {
         this.id = id;
     }
 
-    evaluar() {
+    setMultiple(multiple: boolean) {
+        this.multiple = multiple;
+    }
 
+    evaluar() {
+        this.seleccion = [];
         let encontro = false;
         this.opciones.forEach((opcion) => {
+
             let value = opcion.acciones();
             opcion.setValidacion(value);
 
             if (value || opcion.validacion === true) {
                 encontro = true;
-                this.seleccion = opcion;
+                if (this.multiple) {
+                    this.seleccion.push(opcion);
+                } else {
+                    if (this.seleccion.length > 0) {
+                        this.seleccion[0] = opcion;
+                    } else {
+                        this.seleccion.push(opcion);
+                    }
+
+                }
             }
         });
 
         if (encontro === false) {
-            this.seleccion = this.defaultResult;
-            this.seleccion.setValidacion(true);
+            this.seleccion.push(this.defaultResult);
+            this.defaultResult.setValidacion(true);
         }
+        if (this.multiple) {
+            let temporal: Array<ICategoria> = []
+            this.seleccion.forEach((select) => {
 
-        this.result = Object.assign([], this.seleccion.valor);
+                select.valor.forEach((s) => {
+                    let encontro = false;
+                    temporal.forEach((t) => {
+                        if (t.id == s.id) {
+                            encontro = true;
+                            t.valor += s.valor;
+                        }
+                    });
+                    if (encontro == false) {
+                        temporal.push(Object.assign({}, s));
+                    }
+                })
+            });
 
+            this.result = Object.assign([], temporal);
+
+        } else {
+            this.result = Object.assign([], this.seleccion[0].valor);
+        }
 
         this.calcularMaximo();
     }
@@ -381,7 +459,7 @@ class OResultado {
     valorMaximo: Array<ICategoria>;
     valor: Array<ICategoria>;
     validacion: boolean;
-    tiempo:any;
+    tiempo: any;
 
     constructor(objeto: any) {
 
@@ -393,7 +471,7 @@ class OResultado {
             }
             if (objeto.tiempo) {
                 this.tiempo = objeto.tiempo;
-            }else{
+            } else {
                 this.tiempo = 0;
             }
 
@@ -424,6 +502,7 @@ class OResultado {
 
     setValor(tipo: string, valor: number) {
         tipo = tipo.toLocaleLowerCase();
+        valor = parseInt(valor + "");
         this.valor.forEach((v) => {
             if (tipo === v.id) {
                 v.valor = valor;
@@ -432,6 +511,7 @@ class OResultado {
     }
 
     setResultados(valor: Array<ICategoria>) {
+
         this.valor = valor;
 
         this.valor.forEach((v) => {
@@ -440,7 +520,6 @@ class OResultado {
 
         let valores: Array<ICategoria> = [];
         this.valor.forEach((v) => {
-
             valores.push(Object.assign({}, v));
         });
 

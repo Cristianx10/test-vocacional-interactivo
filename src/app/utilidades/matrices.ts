@@ -20,7 +20,7 @@ interface Posicion {
 #crea un arreglo con posiciones (x, y) con un tamaño definido
 --------------------------------------------------------------*/
 
-function crearMatrix(columas_inicial: number, filas_inicial: number, width_inicial: number, height_inicial: number) {
+export function crearMatrix(columas_inicial: number, filas_inicial: number, width_inicial: number, height_inicial: number) {
 
     //Inicializacion de las variables
     let columnas_total = columas_inicial;
@@ -67,7 +67,7 @@ function crearMatrix(columas_inicial: number, filas_inicial: number, width_inici
 #Devuelve una arreglo de imagenes fragmentos de la original SIN coordenadas (x,y)
 --------------------------------------------------------------*/
 
-function matrixImagen(url: string, width: number, height: number, columnas: number, filas: number) {
+export function matrixImagen(url: string, width: number, height: number, columnas: number, filas: number) {
 
     //Inicializacion de las variables
     let imagenes = new Array<HTMLElement>();
@@ -124,7 +124,7 @@ function matrixImagen(url: string, width: number, height: number, columnas: numb
 #Devuelve una arreglo de imagenes fragmentos de la original CON coordenadas (x,y)
 --------------------------------------------------------------*/
 
-function matrixFija(url: string, width: number, height: number, columnas: number, filas: number) {
+export function matrixFija(url: string, width: number, height: number, columnas: number, filas: number) {
     let matrix = crearMatrix(columnas, filas, width, height);
 
     let imagenes = new Array<HTMLElement>();

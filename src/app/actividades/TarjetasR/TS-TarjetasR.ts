@@ -26,11 +26,12 @@ export class Tablero_tarjetas extends Interaccion {
         this.propiedades.fallos = 0;
         this.propiedades.aciertos = 0;
         this.propiedades.intentos = 0;
+        this.propiedades.total = 0;
     }
 
     agregar(url: string, orden: number, url2: string, orden2: number) {
 
-
+        this.propiedades.total+= 2;
         this.posiciones.push(orden);
 
 

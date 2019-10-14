@@ -31,7 +31,7 @@ export class Pregunta extends React.Component {
 
     this.tipoId = "Pregunta";
     this.propiedades = {};
-
+   
     this.registro = resultados.agregar(this);
 
     this.onStateObject = [];

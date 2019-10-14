@@ -6,6 +6,7 @@ import {
 } from "./ViewCompatorCategorias";
 import "./datosUsuario.scss";
 import { ViewARelacion } from "./ViewARelacion";
+import { ViewATarjetas } from "./ViewATarjetas";
 
 export class ViewUsuario extends Component {
   constructor() {
@@ -21,7 +22,7 @@ export class ViewUsuario extends Component {
   }
 
   render() {
-    let { pruebas, usuario } = this.data;
+    let { pruebas, usuario, tiempo } = this.data;
 
     let views = [];
     let acumuladoTotal = [];
@@ -61,12 +62,16 @@ export class ViewUsuario extends Component {
       } else if (id === "Relacionar_Palabras") {
         viewTitulo = <h2>Pregunta Relaciona Palabras</h2>;
         viewPrueba = <ViewARelacion prueba={prueba} />;
+      }else if (id === "Tarjetas__relacion") {
+        viewTitulo = <h2>Tarjetas escondidas</h2>;
+        viewPrueba = <ViewATarjetas prueba={prueba} />;
       }
      
 
       view = (
         <div className="rv__prueba">
           {viewTitulo}
+          <h3>Tiempo: {prueba.tiempo}</h3>
           {viewPrueba}
           <ViewComparadorOpciones prueba={prueba} />
           <ViewAcumulada pruebas={[prueba]} />
@@ -122,6 +127,7 @@ export class ViewUsuario extends Component {
     return (
       <div>
         <ViewUserData usuario={usuario} />
+        <h2>Tiempo total de la prueba: {tiempo}</h2>
         <h3>Ver datos de usuario</h3>
         <div>
           <ViewAcumulada pruebas={Object.assign([], pruebas)} />
@@ -137,7 +143,7 @@ export class ViewUsuario extends Component {
 export class ViewUserData extends Component {
   render() {
     let usuario = this.props.usuario;
-    console.log(usuario);
+    
     return (
       <div className="horizontal">
         <div>
@@ -149,6 +155,7 @@ export class ViewUserData extends Component {
           <h2>Edad: {usuario.edad}</h2>
           <h2>Mano: {usuario.mano}</h2>
           <h2>Carrera: {usuario.carrera}</h2>
+         
         </div>
       </div>
     );

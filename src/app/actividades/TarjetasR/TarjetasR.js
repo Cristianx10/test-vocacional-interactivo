@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Component} from "react";
 
 import comunicador from "../../comunicacion/Comunicacion";
 import { resizeClass } from "../../utilidades/AutoClases";
@@ -11,7 +11,7 @@ import { Tablero_tarjetas } from "./TS-TarjetasR";
 import "./TarjetasR.scss";
 
 /* Clase encargada de la navegación entre actividades*/
-export class TarjetasR extends React.Component {
+export class TarjetasR extends Component {
   constructor() {
     super();
     this.comunicador = comunicador;
@@ -49,6 +49,11 @@ export class TarjetasR extends React.Component {
   onInicial() {}
 
   onFinal() {
+    this.pantalla.capturarPantalla((imagen)=>{
+      resultados.getPropiedades(this.tablero).captura = imagen;
+
+    });
+    
     resultados.setTiempo(this.tablero, this.pantalla.tiempo);
     resultados.evaluar(this.tablero);
   }

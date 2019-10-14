@@ -26,12 +26,12 @@ export class Linguistica extends React.Component {
     acciones.validar(
       "Aciertos",
       function(p, a) {
-        if (p.aciertos > 3) {
-          a.setValor("arte", 15);
+        if (p.aciertos > 2) {
+          a.setValor("arte", 37);
           return true;
         }
       },
-      "Si no termina la prueba",
+      "Mas de un acierto",
       [{ id: "arte", valor: "200" }]
     );
 
@@ -39,8 +39,6 @@ export class Linguistica extends React.Component {
       "Aciertos",
       function(p, a) {
         if (p.aciertos > 0) {
-          a.setValor("arte", 5);
-
           return true;
         }
       },
@@ -70,12 +68,30 @@ export class Linguistica extends React.Component {
   }
 
   configTarjetas(propiedades, acciones) {
-   
+    console.log(propiedades, acciones);
+
+    acciones.validar(
+      "Aciertos",
+      (p, a) => {
+        return false;
+      },
+      "Logra todas sin errores",
+      [{ valor: 10, id: "area" }]
+    );
+
+    acciones.validar(
+      "Aciertos",
+      (p, a) => {
+        return false;
+      },
+      "Logra todas sin errores 2",
+      [{ valor: 100, id: "area" }]
+    );
+
     acciones.setIntento((p, a) => {
       console.log("Mis acciones Intento");
-      console.log(p, a);
     });
-/*
+    /*
     acciones.setIntentoAcierto((p, a) => {
       console.log("Mis acciones Acierto");
       console.log(p, a);
@@ -90,6 +106,52 @@ export class Linguistica extends React.Component {
   render() {
     return (
       <Navegador width="100%" fondo="/includes/background/oscuro.png">
+        <Pantalla>
+          <TarjetasR config={this.configTarjetas}>
+            <Carta img="/img/emparejados/card-1.png" posA="0" posB="2"></Carta>
+            <Carta img="/img/emparejados/card-2.png" posA="4" posB="5"></Carta>
+            <Carta img="/img/emparejados/card-3.png" posA="1" posB="3"></Carta>
+          </TarjetasR>
+          <Continuar height="15%" align="center"></Continuar>
+        </Pantalla>
+        {/** 
+        <Pantalla fondo="/includes/background/claro.png">
+          <Contenedor width="80%" height="15%">
+            <h2 className="text-center">
+              <D t>
+                1. Las palabras están al azar , por favor enlaza una palabra de
+                la izquierda con otra palabra de la derecha según sea su
+                antónimo.
+              </D>
+            </h2>
+          </Contenedor>
+          <Contenedor height="70%">
+            <Relacionar width="650" height="450" config={this.configTablero}>
+              <Relacion tipo="Facilidad" categoria="Dificultad" />
+              <Relacion tipo="Evaporar" categoria="Solidificar" />
+              <Relacion tipo="Implícito" categoria="Explícito" />
+              <Relacion tipo="Derrumbar" categoria="Construir" />
+              <Relacion tipo="Idéntico" categoria="Distinto" />
+              <Relacion tipo="Fallido" categoria="Acertado" />
+              <Relacion tipo="Orden" categoria="Caos" />
+              <Relacion tipo="Denegar" categoria="Acceder" />
+              <Relacion tipo="Sabio" categoria="Ignorante" />
+              <Relacion tipo="Flexible" categoria="Rígido" />
+            </Relacionar>
+          </Contenedor>
+          <Continuar height="15%" align="center" disabled></Continuar>
+        </Pantalla>
+
+        <Pantalla>
+          <TarjetasR config={this.configTarjetas}>
+            <Carta img="/img/emparejados/card-1.png" posA="0" posB="2"></Carta>
+            <Carta img="/img/emparejados/card-2.png" posA="4" posB="5"></Carta>
+            <Carta img="/img/emparejados/card-3.png" posA="1" posB="3"></Carta>
+          </TarjetasR>
+          <Continuar></Continuar>
+        </Pantalla>
+
+     
         <Pantalla>
           <TarjetasR config={this.configTarjetas}>
             <Carta img="/img/emparejados/card-1.png" posA="0" posB="2"></Carta>
@@ -125,7 +187,7 @@ export class Linguistica extends React.Component {
           <Continuar height="15%" align="center" disabled></Continuar>
         </Pantalla>
 
-        {/** 
+      
           
 
         <Pantalla padding="50px" fondo="/includes/background/claro.png">

@@ -7,6 +7,7 @@ import comunicador from "../comunicacion/Comunicacion";
 import Names from "../comunicacion/Names";
 import { ViewComparadorCategoiras } from "../analisis/ViewCompatorCategorias";
 import { ViewARelacion } from "../analisis/ViewARelacion";
+import { ViewATarjetas } from "../analisis/ViewATarjetas";
 
 export class Viewregistro extends Component {
   constructor() {
@@ -65,13 +66,20 @@ export class Viewregistro extends Component {
       } else if (id === "Relacionar_Palabras") {
         viewTitulo = <h2>Pregunta Relaciona Palabras</h2>;
         viewPrueba = <ViewARelacion prueba={prueba} />;
+      }else if (id === "Tarjetas__relacion") {
+        viewTitulo = <h2>Tarjetas escondidas</h2>;
+        viewPrueba = <ViewATarjetas prueba={prueba} />;
       }
 
+      
+  
       view = (
         <div className="rv__prueba">
           {viewTitulo}
+          <h3>Tiempo: {prueba.tiempo}</h3>
           {viewPrueba}
-          <ViewComparadorCategoiras resultado={resultado} />
+          <ViewComparadorCategoiras resultado={resultado} 
+          />
         </div>
       );
 
