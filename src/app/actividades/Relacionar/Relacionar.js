@@ -21,8 +21,6 @@ export class Relacionar extends React.Component {
 
     this.tablero = new ARelacionar();
 
-    
-
     this.accion = {};
     this.accion.validar = (id, accion, descripcion, valorMaximo)=>{
       this.tablero.validar(id, accion, descripcion, valorMaximo);

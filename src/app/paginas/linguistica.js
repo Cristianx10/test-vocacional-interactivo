@@ -11,6 +11,9 @@ import { RelojContador } from "../componentes/Navegador/RelojContador";
 import { TarjetasR, Carta } from "../actividades/TarjetasR/TarjetasR";
 import { TIntroduccion } from "../plantillas/templete-introduccion";
 import { D } from "../configuraciones/dato";
+import { Rompecabezas } from "../actividades/Rompecabezas/Rompecabezas";
+import { Tuberias, Ficha } from "../actividades/Tuberias/Tuberias";
+import { Clasificar } from "../actividades/Clasificar/Clasificar";
 
 export class Linguistica extends React.Component {
   configTablero(propiedades, acciones) {
@@ -105,7 +108,117 @@ export class Linguistica extends React.Component {
 
   render() {
     return (
-      <Navegador width="100%" fondo="/includes/background/oscuro.png">
+      <Navegador width="100%" fondo="/includes/background/claro.png">
+
+      <Pantalla>
+        <Clasificar>
+          
+        </Clasificar>
+      </Pantalla>
+
+
+        <Pantalla>
+          <Tuberias
+            url="/img/pizarra/tabla_tutorial.png"
+            width="110"
+            height="110"
+            filas="3"
+            columnas="5"
+          >
+            <Ficha static />
+            <Ficha down static inicio />
+            <Ficha static />
+            <Ficha up left />
+            <Ficha up down />
+            <Ficha left right/>
+            <Ficha up down />
+            <Ficha down left />
+            <Ficha lider />
+            <Ficha down left />
+            <Ficha up down />
+            <Ficha down right />
+            <Ficha static />
+            <Ficha up static final />
+            <Ficha static />
+          </Tuberias>
+          <Continuar></Continuar>
+        </Pantalla>
+
+        <Pantalla fondo="/includes/background/claro.png">
+          <Contenedor width="80%" height="15%">
+            <h2 className="text-center">
+              <D t>
+                1. Las palabras están al azar , por favor enlaza una palabra de
+                la izquierda con otra palabra de la derecha según sea su
+                antónimo.
+              </D>
+            </h2>
+          </Contenedor>
+          <Contenedor height="70%">
+            <Relacionar width="650" height="450" config={this.configTablero}>
+              <Relacion tipo="Facilidad" categoria="Dificultad" />
+              <Relacion tipo="Evaporar" categoria="Solidificar" />
+              <Relacion tipo="Implícito" categoria="Explícito" />
+              <Relacion tipo="Derrumbar" categoria="Construir" />
+              <Relacion tipo="Idéntico" categoria="Distinto" />
+              <Relacion tipo="Fallido" categoria="Acertado" />
+              <Relacion tipo="Orden" categoria="Caos" />
+              <Relacion tipo="Denegar" categoria="Acceder" />
+              <Relacion tipo="Sabio" categoria="Ignorante" />
+              <Relacion tipo="Flexible" categoria="Rígido" />
+            </Relacionar>
+          </Contenedor>
+          <Continuar height="15%" align="center" disabled></Continuar>
+        </Pantalla>
+
+        <Pantalla>
+          <h1>
+            <D t>Complete esta actividad</D>
+          </h1>
+          <Rompecabezas
+            arrastrable
+            width="113"
+            colmnas="4"
+            filas="4"
+            imagen="/img/diseno/rompecabeza2.png"
+            orden={[1, 3, 9, 5, 11, 8, 0, 7, 15, 6, 13, 2, 4, 14, 10, 12]}
+            config={(propiedades, acciones) => {
+              acciones.validar(
+                "Intentos",
+                (p, a) => {
+                  if (p.tiempo < 5000) {
+                    return true;
+                  }
+                },
+                "Completo en menos de 5 segundos",
+                []
+              );
+
+              acciones.validar(
+                "Intentos",
+                (p, a) => {
+                  console.log(p);
+                  if (p.tiempo < 10000) {
+                    return true;
+                  }
+                },
+                "Completo en menos de 5 segundos",
+                [{ id: "Area", valor: 100 }]
+              );
+
+              acciones.setValidacion(() => {
+                alert("Felicitaciones Ganaste");
+              });
+
+              acciones.setIntento((p, a) => {
+                // console.log("Sigue intentando: ", p);
+              });
+            }}
+          />
+          <br></br>
+          <Continuar></Continuar>
+        </Pantalla>
+
         <Pantalla>
           <TarjetasR config={this.configTarjetas}>
             <Carta img="/img/emparejados/card-1.png" posA="0" posB="2"></Carta>
@@ -114,7 +227,7 @@ export class Linguistica extends React.Component {
           </TarjetasR>
           <Continuar height="15%" align="center"></Continuar>
         </Pantalla>
-        {/** 
+
         <Pantalla fondo="/includes/background/claro.png">
           <Contenedor width="80%" height="15%">
             <h2 className="text-center">
@@ -151,7 +264,7 @@ export class Linguistica extends React.Component {
           <Continuar></Continuar>
         </Pantalla>
 
-     
+        {/** 
         <Pantalla>
           <TarjetasR config={this.configTarjetas}>
             <Carta img="/img/emparejados/card-1.png" posA="0" posB="2"></Carta>

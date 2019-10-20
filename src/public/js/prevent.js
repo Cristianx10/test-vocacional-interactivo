@@ -1,3 +1,7 @@
+
+
+//var $ = require ('jquery');
+
 /*
 
 !(function(e) {

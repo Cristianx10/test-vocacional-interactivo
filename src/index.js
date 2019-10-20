@@ -8,7 +8,7 @@ const app = express();
 const { mongoose } = require("./database");
 
 // Settings
-app.set("port", process.env.PORT || 3000);
+app.set("port", process.env.PORT || 4000);
 
 // Middlewares
 app.use(express.urlencoded({limit: '50mb', extended: true })); 

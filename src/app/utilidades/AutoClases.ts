@@ -8,7 +8,6 @@ export function resizeClass(etiqueta: any, etiquetasClass: string) {
     style = etiqueta.props.style;
   }
 
-
   if (etiqueta.props.width != null) {
     style.width = etiqueta.props.width;
   }

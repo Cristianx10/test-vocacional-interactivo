@@ -113,24 +113,52 @@ export function hsvToRgb(h: any, s: any, v: any) {
     ];
 }
 
-export function pantallaToImg(etiqueta: any, cargado:Function, navegador:any) {
+export function pantallaToImg(etiqueta: any, cargado: Function, navegador: any) {
 
     html2canvas(etiqueta, {
         scale: .7,
 
     }
-    ).then((canvas:any) => {
+    ).then((canvas: any) => {
         // document.body.appendChild(canvas);
         var image = canvas.toDataURL('image/png');
         cargado(image);
         navegador.cambioClonacionContinuar();
         resultados.save();
 
-/*
-        var link = document.createElement("a");
-        link.href = image;
-        link.download = "screenshot.png";
-
-        link.click();*/
+        /*
+                var link = document.createElement("a");
+                link.href = image;
+                link.download = "screenshot.png";
+        
+                link.click();*/
     });
+}
+
+export class ControlEvent {
+
+    acciones: Array<any>;
+
+    constructor() {
+        this.acciones = [];
+    }
+
+
+    add(accion: Function) {
+        this.acciones.push({accion:accion, ejecucion:false});
+        this.ejecutar();
+    }
+
+    ejecutar() {
+     
+        if(this.acciones.length > 0){
+            if(this.acciones[0].ejecucion === false){
+                this.acciones[0].ejecucion = true;
+                this.acciones[0].accion();
+                this.ejecutar();
+                this.acciones.splice(0, 1);
+            }
+        }
+       
+    }
 }

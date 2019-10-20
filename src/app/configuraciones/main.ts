@@ -50,6 +50,7 @@ export class Interaccion implements IObjectValidable {
         this.elemento.className = "interaccion";
         this.tipoId = "pregunta";
 
+        this.acciones = {};
         this.propiedades = {};
         let tempRegister = resultados.agregar(this);
         if (tempRegister !== null) {

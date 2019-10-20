@@ -1,6 +1,6 @@
 import React from "react";
 
-import { comunicador } from "../../comunicacion/Comunicacion";
+import comunicador from "../../comunicacion/Comunicacion";
 import Names from "../../comunicacion/Names";
 
 import { resizeClass, ManagerStyle } from "../../utilidades/AutoClases";
@@ -9,6 +9,7 @@ import { Timer } from "../../utilidades/timer";
 
 import "./Navegador.scss";
 import { pantallaToImg } from "../../utilidades/utils";
+import { tags } from "../../configuraciones/dato";
 
 /* Clase encargada de la navegación entre actividades*/
 export class Navegador extends React.Component {
@@ -43,13 +44,15 @@ export class Navegador extends React.Component {
     } else if (this.actual < this.props.children.length) {
       this.actual += 1;
     }
- 
+
     this.clonandoPantalla = false;
   }
 
   continuar() {
-  
-    let pantallaActual = this.comunicador.getPropiedad("pantallas", this.actual);
+    let pantallaActual = this.comunicador.getPropiedad(
+      "pantallas",
+      this.actual
+    );
     pantallaActual.continuoPantalla = true;
     pantallaActual.onFinal();
 
@@ -63,7 +66,6 @@ export class Navegador extends React.Component {
       } else if (this.actual < this.props.children.length) {
         this.actual += 1;
       }
- 
     }
   }
 
@@ -169,12 +171,15 @@ export class Pantalla extends React.Component {
     this.comunicador = comunicador;
     this.comunicador.add("pantallas").push(this);
     this.navegador = this.comunicador.getPropiedadActual(Names.navegador);
-    this.continuar = null;
+    this.btnContinuar = null;
+    this.titulares = [];
+
     this.navegador.pantallas.push(this);
 
     this.iniciado = false;
     this.finalizada = false;
     this.tiempo = 0;
+
 
     this.continuoPantalla = false;
 
@@ -186,7 +191,7 @@ export class Pantalla extends React.Component {
     this.tiempo = this.timer.tiempo;
 
     this.timer.setFinal(() => {
-      if(this.continuoPantalla == false){
+      if (this.continuoPantalla == false) {
         this.navegador.continuar();
       }
     });
@@ -279,16 +284,39 @@ export class Pantalla extends React.Component {
   componentDidMount() {
     let contenedor = this.refs.contenedor;
     contenedor.classList.add("ocultar");
+
+    let titulares = contenedor.querySelectorAll(tags.t);
+
+    titulares.forEach(t => {
+      let fotos = t.querySelectorAll("img");
+
+      if (fotos.length > 0) {
+        fotos.forEach(f => {
+          this.titulares.push({ type: "img", contenido: f.src });
+        });
+      } else {
+        this.titulares.push({
+          type: "text",
+          contenido: t.innerHTML
+        });
+      }
+    });
   }
 
   capturarPantalla(capturando) {
     this.navegador.clonandoPantalla = true;
-    console.log( "this.navegador.clonandoPantalla == TRUE")
-    console.log(this.refs.contenedor);
     pantallaToImg(this.refs.contenedor, capturando, this.navegador);
-   
   }
 
+  habilitarContinuar() {
+    if (this.btnContinuar != null) {
+      this.btnContinuar.habilitar();
+    }
+  }
+
+  continuar() {
+    this.navegador.continuar();
+  }
 
   renderizadoInicial() {
     if (this.renderInicial == false) {
