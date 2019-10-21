@@ -3,17 +3,23 @@ import Navegador, {
   Pantalla,
   Continuar
 } from "../componentes/Navegador/Navegador";
-import { Pregunta, Opcion, Likert } from "../componentes/Preguntas/Preguntas";
-import { Escribir } from "../componentes/Preguntas/Escribir";
+
+//import { Pregunta, Opcion, Likert } from "../componentes/Preguntas/Preguntas";
+//import { Escribir } from "../componentes/Preguntas/Escribir";
 import Contenedor from "../componentes/Contenedor/Contenedor";
-import { Relacionar, Relacion } from "../actividades/Relacionar/Relacionar";
+/*import { Relacionar, Relacion } from "../actividades/Relacionar/Relacionar";
 import { RelojContador } from "../componentes/Navegador/RelojContador";
 import { TarjetasR, Carta } from "../actividades/TarjetasR/TarjetasR";
 import { TIntroduccion } from "../plantillas/templete-introduccion";
+*/
 import { D } from "../configuraciones/dato";
 import { Rompecabezas } from "../actividades/Rompecabezas/Rompecabezas";
-import { Tuberias, Ficha } from "../actividades/Tuberias/Tuberias";
-import { Clasificar } from "../actividades/Clasificar/Clasificar";
+//import { Tuberias, Ficha } from "../actividades/Tuberias/Tuberias";*/
+import {
+  Clasificar,
+  Zona,
+  Almacen
+} from "../actividades/Clasificar/Clasificar";
 
 export class Linguistica extends React.Component {
   configTablero(propiedades, acciones) {
@@ -109,14 +115,79 @@ export class Linguistica extends React.Component {
   render() {
     return (
       <Navegador width="100%" fondo="/includes/background/claro.png">
+        <Pantalla>
+          <h1>Clasificacion</h1>
+          <div className="pantalla ppintura" style={{ display: "flex" }}>
+            <div className="contenido-pintura">
+              <div id="correcto" className="pregunta__pintura">
+                <img src="/img/arte/pinturaParcial.png" alt="" />
+              </div>
 
-      <Pantalla>
-        <Clasificar>
-          
-        </Clasificar>
-      </Pantalla>
+              <div>
+                <div className="pregunta_titulo">
+                  <h2>Arrastra a la pintura la sección que le hace falta </h2>
+                </div>
 
+                <div className="pregunta__opciones">
+                  <img
+                    className="ima__opcion"
+                    src="/img/arte/fragmentoC.png"
+                    alt=""
+                  />
+                  <img
+                    className="ima__opcion"
+                    src="/img/arte/fragmentoD.png"
+                    alt=""
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <Contenedor on width="100%" height="100%">
+            <Clasificar width="100%" height="100%">
+              <Contenedor orientacion="horizontal">
+                <Contenedor width="30%">
+                  <Almacen tipo="as" pos="100px 100px" id="cabello"></Almacen>
+                </Contenedor>
+                <Contenedor width="30%">
+                  <Almacen tipo="asd" id="ojos"></Almacen>
+                </Contenedor>
+                <Contenedor width="30%">
+                  <Zona tipo="as" pos="10px 10px" categoria="cabello">
+                    <img
+                      className="ima__opcion"
+                      src="/img/arte/fragmentoA.png"
+                      alt=""
+                    />
+                  </Zona>
+                  <Zona tipo="as" >
+                    <img
+                      className="ima__opcion"
+                      src="/img/arte/fragmentoB.png"
+                      alt=""
+                    />
+                  </Zona>
+                  <Zona tipo="as"  categoria="ojos">
+                    <img
+                      className="ima__opcion"
+                      src="/img/arte/fragmentoC.png"
+                      alt=""
+                    />
+                  </Zona>
+                  <Zona tipo="asd" >
+                    <img
+                      className="ima__opcion"
+                      src="/img/arte/fragmentoD.png"
+                      alt=""
+                    />
+                  </Zona>
+                </Contenedor>
+              </Contenedor>
+            </Clasificar>
+          </Contenedor>
+        </Pantalla>
 
+        {/**
         <Pantalla>
           <Tuberias
             url="/img/pizarra/tabla_tutorial.png"
@@ -218,6 +289,7 @@ export class Linguistica extends React.Component {
           <br></br>
           <Continuar></Continuar>
         </Pantalla>
+
 
         <Pantalla>
           <TarjetasR config={this.configTarjetas}>

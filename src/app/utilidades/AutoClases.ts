@@ -3,13 +3,20 @@ export function resizeClass(etiqueta: any, etiquetasClass: string) {
 
   let style: any = {};
 
-
   if (etiqueta.props.style != null) {
     style = etiqueta.props.style;
   }
 
   if (etiqueta.props.width != null) {
     style.width = etiqueta.props.width;
+  }
+
+  if (etiqueta.props.color != null) {
+    style.color = etiqueta.props.color;
+  }
+
+  if (etiqueta.props.background != null) {
+    style.background = etiqueta.props.background;
   }
 
   if (etiqueta.props.padding != null) {
@@ -30,6 +37,14 @@ export function resizeClass(etiqueta: any, etiquetasClass: string) {
 
   if (etiqueta.props.orientacion != null) {
     className = className + " " + etiqueta.props.orientacion;
+  }
+
+  if (etiqueta.props.horizontal != null) {
+    className = className + " horizontal";
+  }
+
+  if (etiqueta.props.on != null) {
+    className = className + " on_over";
   }
 
   if (etiqueta.props.align != null) {
