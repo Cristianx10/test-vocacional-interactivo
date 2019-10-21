@@ -20,6 +20,7 @@ import {
   Zona,
   Almacen
 } from "../actividades/Clasificar/Clasificar";
+import { Cortes } from "../actividades/Cortes/Cortes";
 
 export class Linguistica extends React.Component {
   configTablero(propiedades, acciones) {
@@ -115,6 +116,11 @@ export class Linguistica extends React.Component {
   render() {
     return (
       <Navegador width="100%" fondo="/includes/background/claro.png">
+{/*
+      <Pantalla>
+        <Cortes></Cortes>
+      </Pantalla>
+*/}
         <Pantalla>
           <h1>Clasificacion</h1>
           <div className="pantalla ppintura" style={{ display: "flex" }}>

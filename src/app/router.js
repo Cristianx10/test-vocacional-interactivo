@@ -7,6 +7,7 @@ import { Linguistica } from "./paginas/linguistica";
 import { Matematicas } from "./paginas/matematicas";
 import { Viewregistro } from "./paginas/viewregistro";
 import { ViewUsuario } from "./analisis/datosUsuario";
+import { Pruebas } from "./paginas/pruebas";
 
 
 
@@ -25,6 +26,7 @@ export class Router extends React.Component {
           <Route path="/matematicas" component={Matematicas} />
           <Route path="/datos_usuario" component={ViewUsuario} />
           <Route path="/verregistro" component={Viewregistro} />
+          <Route exact path="/pruebas" component={Pruebas} />
         </Switch>
       </BrowserRouter>
     );
