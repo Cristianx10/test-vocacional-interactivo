@@ -21,6 +21,9 @@ import {
   Almacen
 } from "../actividades/Clasificar/Clasificar";
 import { Cortes } from "../actividades/Cortes/Cortes";
+import { Processing } from "../configuraciones/Processing/Processing";
+import Juego from "../actividades/Actividad/Actividad";
+
 
 export class Linguistica extends React.Component {
   configTablero(propiedades, acciones) {
@@ -116,11 +119,15 @@ export class Linguistica extends React.Component {
   render() {
     return (
       <Navegador width="100%" fondo="/includes/background/claro.png">
-{/*
+
+        <Pantalla>
+          <Processing juego={Juego}></Processing>
+        </Pantalla>
+
       <Pantalla>
         <Cortes></Cortes>
       </Pantalla>
-*/}
+
         <Pantalla>
           <h1>Clasificacion</h1>
           <div className="pantalla ppintura" style={{ display: "flex" }}>

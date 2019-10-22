@@ -5,10 +5,10 @@ import Navegador, {
   Continuar
 } from "../componentes/Navegador/Navegador";
 import Contenedor from "../componentes/Contenedor/Contenedor";
-import Pregunta, { Opcion } from "../componentes/Preguntas/Preguntas";
+import Pregunta, { Opcion, Likert } from "../componentes/Preguntas/Preguntas";
+import { Tpreguntacajonbotones } from "../plantillas/templete-preguntas";
 
 export class Inicio extends React.Component {
-  
   componentDidMount() {}
 
   render() {
@@ -17,6 +17,18 @@ export class Inicio extends React.Component {
         image="/includes/background/oscuro-personajes.png"
         width="100%"
       >
+        <Pantalla fondo="/includes/background/claro.png">
+          <Tpreguntacajonbotones>
+          <h1>Titulo</h1>
+          
+          <Opcion>1</Opcion>
+          <Opcion>1</Opcion>
+          <Opcion>1</Opcion>
+
+          </Tpreguntacajonbotones>
+          
+        </Pantalla>
+
         <Pantalla
           padding="200px 250px"
           image="/includes/background/oscuro-personajes.png"

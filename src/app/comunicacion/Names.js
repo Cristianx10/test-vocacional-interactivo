@@ -14,7 +14,10 @@ export var Names = {
 
     tableroR:"tableroR",
     carta:"cartas__pareja",
-    dataUser:"user_data"
+    dataUser:"user_data",
+
+    cortes:"cortes",
+    corte:"corte"
 }
 
 export default Names;

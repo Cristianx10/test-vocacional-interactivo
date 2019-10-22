@@ -69,3 +69,8 @@ export class Tpreguntacajonbotones extends React.Component {
     );
   }
 }
+
+
+
+
+

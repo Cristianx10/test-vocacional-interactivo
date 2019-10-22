@@ -23,10 +23,13 @@ export class SalaCirugia extends Actividad {
 
     cortando: boolean;
     bisturi?: createjs.Bitmap;
+    cortes: Array<CorteLinea>;
 
     constructor() {
         super();
 
+        if (this.registro)
+            this.registro.setId("Cortes");
 
         this.cortando = false;
         this.canvas.width = 1000;
@@ -57,6 +60,8 @@ export class SalaCirugia extends Actividad {
                 this.stage.update();
             });
         });
+
+        this.cortes = [];
     }
 
     cargarCuerpo(url: string) {
@@ -71,6 +76,29 @@ export class SalaCirugia extends Actividad {
             this.stage.update();
         });
     }
+
+    agregarLinea(coordenadaA: Coordenada, coordenadaB: Coordenada, distancia: number) {
+        let corte = new CorteLinea(this, distancia);
+        corte.trazadoLineal(coordenadaA, coordenadaB);
+        this.cortes.push(corte);
+        this.stage.addChild(corte.linea);
+    }
+
+    agregarCurva(coordenadaA: Coordenada, coordenadaB: Coordenada, frecuencia: number, distancia: number) {
+        let corte = new CorteLinea(this, frecuencia);
+        corte.trazoCurva(coordenadaA, coordenadaB, distancia);
+        this.cortes.push(corte);
+        this.stage.addChild(corte.linea);
+    }
+
+    agregarCurvaDerecha(coordenadaA: Coordenada, coordenadaB: Coordenada, frecuencia: number) {
+        let corte = new CorteLinea(this, frecuencia);
+        corte.trazadoCurvaIzquierda(coordenadaA, coordenadaB);
+        this.cortes.push(corte);
+        this.stage.addChild(corte.linea);
+    }
+
+
 }
 
 
@@ -119,14 +147,13 @@ export class CorteLinea {
         });
     }
 
-    trazoCurva(inicio: Coordenada, final: Coordenada, distancia: number, dist: number) {
+    trazoCurva(inicio: Coordenada, final: Coordenada, distancia: number) {
 
         let nPuntos = final.y - inicio.y;
-        let dis = dist;
 
         for (let i = 0; i < nPuntos; i++) {
 
-            let x = Math.round(inicio.x + Math.sin(radians(i * dis)) * distancia);
+            let x = Math.round(inicio.x + Math.sin(radians(i * this.dis)) * distancia);
             let y = Math.round(inicio.y + (i));
 
             if (i % this.dis == 0) {
@@ -137,7 +164,7 @@ export class CorteLinea {
         }
 
         this.linea.graphics.beginFill("blue").drawCircle(inicio.x, inicio.y, 5);
-
+        this.linea.graphics.beginFill("blue").drawCircle(final.x, final.y, 5);
     }
 
     trazadoLineal(inicio: Coordenada, final: Coordenada) {
@@ -182,11 +209,17 @@ export class CorteLinea {
             let x = Math.round(inicio.x + Math.cos(radians(index)) * distancia);
             let y = Math.round(inicio.y + Math.sin(radians(index)) * distancia);
 
+            if (i == 0) {
+                this.linea.graphics.beginFill("blue").drawCircle(x, y, 5);
+
+            } else if (i == distancia - 1) {
+                this.linea.graphics.beginFill("blue").drawCircle(x, y, 5);
+            }
+
             this.linea.graphics.beginFill(this.color).drawCircle(x, y, 3);
             this.puntos.push({ x: x, y: y });
         }
-        this.linea.graphics.beginFill("blue").drawCircle(inicio.x, inicio.y, 5);
-        this.linea.graphics.beginFill("blue").drawCircle(final.x, final.y, 5);
+
     }
 
     trazadoCurvaIzquierda(inicio: Coordenada, final: Coordenada) {
@@ -204,9 +237,16 @@ export class CorteLinea {
                 this.linea.graphics.beginFill(this.color).drawCircle(x, y, 3);
             }
             this.puntos.push({ x: x, y: y });
+
+            if (i == 0) {
+                this.linea.graphics.beginFill("blue").drawCircle(x, y, 5);
+
+            } else if (i == distancia - 1) {
+                this.linea.graphics.beginFill("blue").drawCircle(x, y, 5);
+            }
+
         }
-        this.linea.graphics.beginFill("blue").drawCircle(inicio.x, inicio.y, 5);
-        this.linea.graphics.beginFill("blue").drawCircle(final.x, final.y, 5);
+
 
     }
 
@@ -215,17 +255,16 @@ export class CorteLinea {
         let total_matrix = 0;
 
         this.historial.forEach((coordenada) => {
-            let puntos = obtenerMenorDistancia(coordenada, this.puntos); 
+            let puntos = obtenerMenorDistancia(coordenada, this.puntos);
             let dis = distancia(puntos.a, puntos.b, coordenada);
-            if(isNaN(dis)){
+            if (isNaN(dis)) {
 
-            }else{
+            } else {
                 total++;
                 total_matrix += dis;
-                
+
             }
         });
-
 
         let resultado = total_matrix / total;
 
@@ -252,7 +291,7 @@ function distancia(puntoO: Coordenada, puntoA: Coordenada, puntoB: Coordenada) {
 
     let dis = OBD * Math.sin(radians(angulo));
 
-    if(isNaN(angulo)){
+    if (isNaN(angulo)) {
         console.log("Es: " + angulo);
     }
 
@@ -262,20 +301,20 @@ function distancia(puntoO: Coordenada, puntoA: Coordenada, puntoB: Coordenada) {
 function obtenerMenorDistancia(ref: Coordenada, matrix: Array<Coordenada>) {
     let cordenadaA = { x: 0, y: 0 };
     let cordenadaB = { x: 0, y: 0 };
-    let matrixD: Array<{coordenada:Coordenada, distancia:number}> = []
+    let matrixD: Array<{ coordenada: Coordenada, distancia: number }> = []
     for (let i = 0; i < matrix.length; i++) {
-        let m:Coordenada = matrix[i];
-        let dis = Math.sqrt(Math.pow(m.x - ref.x, 2) + Math.pow(m.y - ref.y,2));
-        matrixD.push({coordenada:m, distancia:dis});
+        let m: Coordenada = matrix[i];
+        let dis = Math.sqrt(Math.pow(m.x - ref.x, 2) + Math.pow(m.y - ref.y, 2));
+        matrixD.push({ coordenada: m, distancia: dis });
     }
 
-    matrixD.sort((a, b)=>{
+    matrixD.sort((a, b) => {
         return a.distancia - b.distancia;
     });
-    
+
 
     cordenadaA = matrixD[0].coordenada;
     cordenadaB = matrixD[1].coordenada;
 
-    return {a:cordenadaA, b:cordenadaB};
+    return { a: cordenadaA, b: cordenadaB };
 }
