@@ -1,3 +1,4 @@
+import { UID } from 'createjs-module';
 
 
 interface ResultadoA {
@@ -57,6 +58,10 @@ export class Resultados {
             }
             this.ponderacion = [];
         }
+    }
+
+    setUID(objeto: any, UID: string) {
+        objeto.registro.setUID(UID);
     }
 
     agregar(objeto: any) {
@@ -184,7 +189,7 @@ export class Resultados {
 
         let t = new Date();
         this.tiempoFinal = t.getTime();
-        if(this.tiempoInicial != null){
+        if (this.tiempoInicial != null) {
             this.tiempo = this.tiempoFinal - this.tiempoInicial;
         }
 
@@ -205,7 +210,7 @@ export class Resultados {
     getPropiedades(objeto: any) {
         //console.log(objeto.registro)
         return objeto.registro.propiedades;
-       
+
     }
 
     setTiempo(objeto: any, tiempo: string) {
@@ -219,6 +224,20 @@ export class Resultados {
 
     save() {
         localStorage.setItem(this.id, JSON.stringify(this));
+    }
+
+    descargar() {
+
+        var fecha = new Date();
+        var nombre = `result_${fecha.getDay()}_${fecha.getHours()}_${fecha.getSeconds()}`;
+        var text = JSON.stringify(this),
+            blob = new Blob([text], { type: 'text/plain' }),
+            anchor = document.createElement('a');
+
+        anchor.download = nombre +".json";
+        anchor.href = (/*window.webkitURL ||*/ window.URL).createObjectURL(blob);
+        anchor.dataset.downloadurl = ['text/plain', anchor.download, anchor.href].join(':');
+        anchor.click();
     }
 }
 
@@ -265,6 +284,7 @@ export interface IObjectValidable {
 
 export class GResultados {
 
+    UID: string;
     id: string;
     propiedades: any;
 
@@ -277,7 +297,7 @@ export class GResultados {
     multiple: boolean;
 
     constructor(objeto: any) {
-
+        this.UID = "";
         if (objeto) {
             if (objeto.tipoId) {
                 this.id = objeto.tipoId;
@@ -384,6 +404,10 @@ export class GResultados {
             });
 
         });
+    }
+
+    setUID(UID: string) {
+        this.UID = UID;
     }
 
     setId(id: string) {

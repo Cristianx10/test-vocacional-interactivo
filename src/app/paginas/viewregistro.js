@@ -32,14 +32,43 @@ export class Viewregistro extends Component {
     console.log("dato tomado");
   }
 
+  leerArchivo(e) {
+    var archivos = e.target.files;
+
+    for (let i = 0; i < archivos.length; i++) {
+      let archivo = archivos[i];
+
+      if (!archivo) {
+        return;
+      }
+
+      let lector = new FileReader();
+      lector.readAsText(archivo);
+
+      lector.onload = (e) => {
+        let contenido = e.target.result;
+        let datos = JSON.parse(contenido);
+        this.resultados.agregar(datos);
+        this.setState({});
+      };
+    }
+
+    
+  }
+
   componentDidMount() {
+   /*
     this.resultados.agregar(resultados);
     this.resultados.agregar(resultados2);
     this.resultados.agregar(Object.assign({}, resultados2));
-    this.setState({});
+    */
+    //this.setState({});
   }
 
+  
+
   render() {
+    
     let views = [];
 
     views.push(<h1>Pruebas</h1>);
@@ -83,41 +112,6 @@ export class Viewregistro extends Component {
         </div>
       );
 
-      /*
-      if (id === "Pregunta") {
-        view = (
-          <div className="rv__prueba">
-            <h2>Pregunta Normal</h2>
-            <ViewPregunta prueba={prueba} />
-            <ViewComparadorCategoiras resultado={resultado} />
-          </div>
-        );
-      } else if (id === "Likert") {
-        view = (
-          <div className="rv__prueba">
-            <h2>Pregunta Likert</h2>
-            <ViewPregunta prueba={prueba} />
-            <ViewComparadorCategoiras resultado={resultado} />
-          </div>
-        );
-      } else if (id === "Escritura") {
-        view = (
-          <div className="rv__prueba">
-            <h2>Pregunta Escritura</h2>
-            <ViewPreguntaEscritura prueba={prueba} />
-            <ViewComparadorCategoiras resultado={resultado} />
-          </div>
-        );
-      } else if (id === "Relacionar_Palabras") {
-        view = (
-          <div className="rv__prueba">
-            <h2>Pregunta Relaciona palabras</h2>
-            <ViewARelacion prueba={prueba} />
-            <ViewComparadorCategoiras resultado={resultado} />
-          </div>
-        );
-      }*/
-
       views.push(view);
     });
 
@@ -142,6 +136,9 @@ export class Viewregistro extends Component {
 
           <input type="submit" value="enviar" />
         </form>
+        <div>
+          <input type="file" onChange={this.leerArchivo.bind(this)}  multiple />
+        </div>
         <div>
           {React.Children.map(views, view => {
             return view;

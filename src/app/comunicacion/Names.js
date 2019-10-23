@@ -17,7 +17,9 @@ export var Names = {
     dataUser:"user_data",
 
     cortes:"cortes",
-    corte:"corte"
+    corte:"corte",
+
+    processing:"processing"
 }
 
 export default Names;

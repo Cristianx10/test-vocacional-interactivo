@@ -8,25 +8,31 @@ import Contenedor from "../componentes/Contenedor/Contenedor";
 import Pregunta, { Opcion, Likert } from "../componentes/Preguntas/Preguntas";
 import { Tpreguntacajonbotones } from "../plantillas/templete-preguntas";
 
+import data from "../../data/queryPreguntas.json";
+import { TLikertPregunta } from "../plantillas/template-likert/TLikertPregunta";
+import Processing from "../configuraciones/Processing/Processing";
+import Juego from "../actividades/Actividad/Actividad";
+
 export class Inicio extends React.Component {
   componentDidMount() {}
 
   render() {
     return (
-      <Navegador
-        image="/includes/background/oscuro-personajes.png"
-        width="100%"
-      >
+      <Navegador image="/includes/background/claro.png" width="100%">
+        <Pantalla>
+          <Processing juego={Juego}></Processing>
+        </Pantalla>
+
+        <TLikertPregunta uid="1"></TLikertPregunta>
+
         <Pantalla fondo="/includes/background/claro.png">
           <Tpreguntacajonbotones>
-          <h1>Titulo</h1>
-          
-          <Opcion>1</Opcion>
-          <Opcion>1</Opcion>
-          <Opcion>1</Opcion>
+            <h1>Titulo</h1>
 
+            <Opcion>1</Opcion>
+            <Opcion>1</Opcion>
+            <Opcion>1</Opcion>
           </Tpreguntacajonbotones>
-          
         </Pantalla>
 
         <Pantalla

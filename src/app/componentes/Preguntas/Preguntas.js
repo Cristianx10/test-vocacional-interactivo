@@ -75,6 +75,7 @@ export class Pregunta extends React.Component {
 
   componentDidMount(){
     let contenedor = this.refs.contenedor;
+    
  
     let titulares = contenedor.querySelectorAll(tags.t);
     

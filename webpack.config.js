@@ -1,5 +1,5 @@
-var webpack = require('webpack');
-var path = require('path');
+var webpack = require("webpack");
+var path = require("path");
 
 module.exports = {
   mode: "development",
@@ -12,7 +12,7 @@ module.exports = {
     extensions: [".js", ".ts"],
     alias: {
       // bind version of jquery-ui
-      "jquery-ui": "jquery-ui/jquery-ui.js",      
+      "jquery-ui": "jquery-ui/jquery-ui.js",
       // bind to modules;
       modules: path.join(__dirname, "node_modules")
     }
@@ -35,11 +35,12 @@ module.exports = {
         exclude: /node_modules/
       }
     ]
-  },plugins: [
+  },
+  plugins: [
     new webpack.ProvidePlugin({
-      "$":"jquery",
-      "jQuery":"jquery",
-      "window.jQuery":"jquery"
+      $: "jquery",
+      jQuery: "jquery",
+      "window.jQuery": "jquery"
     })
   ]
 };
