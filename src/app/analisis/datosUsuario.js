@@ -75,7 +75,7 @@ export class ViewUsuario extends Component {
           {viewPrueba}
           <ViewComparadorOpciones prueba={prueba} />
           <ViewAcumulada pruebas={[prueba]} />
-          <ViewAcumulada pruebas={acumuladoTotal} maximo={maximosGlobal} />
+          <ViewAcumulada pruebas={Object.assign({}, acumuladoTotal)} maximo={maximosGlobal} />
         </div>
       );
 

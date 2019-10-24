@@ -41,7 +41,7 @@ export class TLikertPregunta extends Component {
       let opciones = [];
       this.data.opciones.forEach(opcion => {
         opciones.push(
-          <Opcion resultados={opcion.resultados}>{opcion.titulares}</Opcion>
+          <Opcion resultados={opcion.resultados}><D>{opcion.titulares}</D></Opcion>
         );
       });
 
@@ -49,15 +49,15 @@ export class TLikertPregunta extends Component {
         <Pantalla>
           <Pregunta>
             <h1>
-              <D>{this.data.titulares}</D>
+              <D t>{this.data.titulares}</D>
             </h1>
-            <Likert>
+            <Likert min={this.data.minimo} max={this.data.maximo}>
               {React.Children.map(opciones, view => {
                 return view;
               })}
             </Likert>
           </Pregunta>
-          <Continuar disabled></Continuar>
+          <Continuar></Continuar>
         </Pantalla>
       );
     }

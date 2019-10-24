@@ -45,30 +45,23 @@ export class Viewregistro extends Component {
       let lector = new FileReader();
       lector.readAsText(archivo);
 
-      lector.onload = (e) => {
+      lector.onload = e => {
         let contenido = e.target.result;
         let datos = JSON.parse(contenido);
         this.resultados.agregar(datos);
         this.setState({});
       };
     }
-
-    
   }
 
   componentDidMount() {
-   /*
     this.resultados.agregar(resultados);
-    this.resultados.agregar(resultados2);
-    this.resultados.agregar(Object.assign({}, resultados2));
-    */
-    //this.setState({});
+    //this.resultados.agregar(resultados2);
+    //this.resultados.agregar(Object.assign({}, resultados2));
+    this.setState({});
   }
 
-  
-
   render() {
-    
     let views = [];
 
     views.push(<h1>Pruebas</h1>);
@@ -95,20 +88,17 @@ export class Viewregistro extends Component {
       } else if (id === "Relacionar_Palabras") {
         viewTitulo = <h2>Pregunta Relaciona Palabras</h2>;
         viewPrueba = <ViewARelacion prueba={prueba} />;
-      }else if (id === "Tarjetas__relacion") {
+      } else if (id === "Tarjetas__relacion") {
         viewTitulo = <h2>Tarjetas escondidas</h2>;
         viewPrueba = <ViewATarjetas prueba={prueba} />;
       }
 
-      
-  
       view = (
         <div className="rv__prueba">
           {viewTitulo}
           <h3>Tiempo: {prueba.tiempo}</h3>
           {viewPrueba}
-          <ViewComparadorCategoiras resultado={resultado} 
-          />
+          <ViewComparadorCategoiras resultado={resultado} />
         </div>
       );
 
@@ -137,7 +127,7 @@ export class Viewregistro extends Component {
           <input type="submit" value="enviar" />
         </form>
         <div>
-          <input type="file" onChange={this.leerArchivo.bind(this)}  multiple />
+          <input type="file" onChange={this.leerArchivo.bind(this)} multiple />
         </div>
         <div>
           {React.Children.map(views, view => {

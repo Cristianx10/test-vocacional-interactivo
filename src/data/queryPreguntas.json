@@ -1,7 +1,7 @@
 [
     {
         "id": "1",
-        "titulares": "Las matemáticas es una materia entretenida para mí.",
+        "titulares": "Las matemáticas es una materia entretenida para mí",
         "minimo": "poco",
         "maximo": "mucho",
         "opciones": [
@@ -72,7 +72,7 @@
     },
     {
         "id": "2",
-        "titulares": "Me fijo más en los más mínimos detalles al hacer un trabajo.",
+        "titulares": "Me fijo en los más mínimos detalles al hacer un trabajo",
         "minimo": "poco",
         "maximo": "mucho",
         "opciones": [
@@ -126,7 +126,7 @@
                     },
                     {
                         "id": "humanidades",
-                        "valor": 15
+                        "valor": 10
                     },
                     {
                         "id": "derecho",
@@ -159,7 +159,7 @@
                     },
                     {
                         "id": "humanidades",
-                        "valor": 30
+                        "valor": 20
                     },
                     {
                         "id": "derecho",
@@ -179,7 +179,7 @@
     },
     {
         "id": "3",
-        "titulares": "Al trabajar en equipo asumo el liderazgo .",
+        "titulares": "Al trabajar en equipo asumo el liderazgo ",
         "minimo": "poco",
         "maximo": "mucho",
         "opciones": [
@@ -192,10 +192,6 @@
                     },
                     {
                         "id": "diseno",
-                        "valor": 0
-                    },
-                    {
-                        "id": "humanidades",
                         "valor": 0
                     },
                     {
@@ -220,10 +216,6 @@
                         "valor": 5
                     },
                     {
-                        "id": "humanidades",
-                        "valor": 15
-                    },
-                    {
                         "id": "derecho",
                         "valor": 5
                     },
@@ -243,10 +235,6 @@
                     {
                         "id": "diseno",
                         "valor": 10
-                    },
-                    {
-                        "id": "humanidades",
-                        "valor": 30
                     },
                     {
                         "id": "derecho",
@@ -509,7 +497,7 @@
                     },
                     {
                         "id": "humanidades",
-                        "valor": 15
+                        "valor": 10
                     },
                     {
                         "id": "derecho",
@@ -538,7 +526,7 @@
                     },
                     {
                         "id": "humanidades",
-                        "valor": 30
+                        "valor": 20
                     },
                     {
                         "id": "derecho",
@@ -633,7 +621,7 @@
                     },
                     {
                         "id": "humanidades",
-                        "valor": 20
+                        "valor": 10
                     },
                     {
                         "id": "derecho",
@@ -707,7 +695,7 @@
                     },
                     {
                         "id": "humanidades",
-                        "valor": 10
+                        "valor": 5
                     },
                     {
                         "id": "derecho",
@@ -740,7 +728,7 @@
                     },
                     {
                         "id": "humanidades",
-                        "valor": 20
+                        "valor": 10
                     },
                     {
                         "id": "derecho",
@@ -790,8 +778,7 @@
                     {
                         "id": "economia",
                         "valor": 0
-                    },
-                    {
+                    },{
                         "id": "licenciatura",
                         "valor": 0
                     }
@@ -810,7 +797,7 @@
                     },
                     {
                         "id": "humanidades",
-                        "valor": 25
+                        "valor": 10
                     },
                     {
                         "id": "derecho",
@@ -823,8 +810,7 @@
                     {
                         "id": "economia",
                         "valor": 5
-                    },
-                    {
+                    },{
                         "id": "licenciatura",
                         "valor": 15
                     }
@@ -843,7 +829,7 @@
                     },
                     {
                         "id": "humanidades",
-                        "valor": 50
+                        "valor": 20
                     },
                     {
                         "id": "derecho",
@@ -856,8 +842,7 @@
                     {
                         "id": "economia",
                         "valor": 10
-                    },
-                    {
+                    },{
                         "id": "licenciatura",
                         "valor": 30
                     }
@@ -867,7 +852,7 @@
     },
     {
         "id": "11",
-        "titulares": "Cuando voy a iniciar un proyecto, muchas ideas creativas llegan a mí mente",
+        "titulares": "Cuando voy a iniciar un proyecto, muchas ideas creativas llegan a mi mente",
         "minimo": "poco",
         "maximo": "mucho",
         "opciones": [
@@ -909,7 +894,7 @@
                     },
                     {
                         "id": "humanidades",
-                        "valor": 15
+                        "valor": 5
                     },
                     {
                         "id": "ciencias",
@@ -934,7 +919,7 @@
                     },
                     {
                         "id": "humanidades",
-                        "valor": 30
+                        "valor": 10
                     },
                     {
                         "id": "ciencias",
@@ -1004,7 +989,7 @@
                     },
                     {
                         "id": "humanidades",
-                        "valor": 25
+                        "valor": 10
                     },
                     {
                         "id": "derecho",
@@ -1037,7 +1022,7 @@
                     },
                     {
                         "id": "humanidades",
-                        "valor": 50
+                        "valor": 20
                     },
                     {
                         "id": "derecho",
@@ -1057,7 +1042,7 @@
     },
     {
         "id": "13",
-        "titulares": "Que tanto suelo pensar las cosas antes de actuar.",
+        "titulares": "Suelo pensar las cosas antes de actuar.",
         "minimo": "poco",
         "maximo": "mucho",
         "opciones": [
@@ -1087,8 +1072,7 @@
                     {
                         "id": "economia",
                         "valor": 0
-                    },
-                    {
+                    },{
                         "id": "licenciatura",
                         "valor": 0
                     }
@@ -1107,7 +1091,7 @@
                     },
                     {
                         "id": "humanidades",
-                        "valor": 35
+                        "valor": 15
                     },
                     {
                         "id": "derecho",
@@ -1120,8 +1104,7 @@
                     {
                         "id": "economia",
                         "valor": 15
-                    },
-                    {
+                    },{
                         "id": "licenciatura",
                         "valor": 10
                     }
@@ -1140,7 +1123,7 @@
                     },
                     {
                         "id": "humanidades",
-                        "valor": 70
+                        "valor": 30
                     },
                     {
                         "id": "derecho",
@@ -1153,8 +1136,7 @@
                     {
                         "id": "economia",
                         "valor": 30
-                    },
-                    {
+                    },{
                         "id": "licenciatura",
                         "valor": 20
                     }
@@ -1190,8 +1172,7 @@
                     {
                         "id": "economia",
                         "valor": 0
-                    },
-                    {
+                    },{
                         "id": "licenciatura",
                         "valor": 0
                     }
@@ -1210,7 +1191,7 @@
                     },
                     {
                         "id": "humanidades",
-                        "valor": 25
+                        "valor": 15
                     },
                     {
                         "id": "ciencias",
@@ -1219,8 +1200,7 @@
                     {
                         "id": "economia",
                         "valor": 5
-                    },
-                    {
+                    },{
                         "id": "licenciatura",
                         "valor": 10
                     }
@@ -1239,7 +1219,7 @@
                     },
                     {
                         "id": "humanidades",
-                        "valor": 50
+                        "valor": 30
                     },
                     {
                         "id": "ciencias",
@@ -1248,8 +1228,7 @@
                     {
                         "id": "economia",
                         "valor": 10
-                    },
-                    {
+                    },{
                         "id": "licenciatura",
                         "valor": 20
                     }
@@ -1401,7 +1380,7 @@
     },
     {
         "id": "17",
-        "titulares": "Siempre estoy pensando el por qué suceden las cosas, pocas veces te quedas con lo que te dan.",
+        "titulares": "Siempre estoy pensando el por qué suceden las cosas, pocas veces me quedo con lo que me dan.",
         "minimo": "desacuerdo",
         "maximo": "de acuerdo",
         "opciones": [
@@ -1448,7 +1427,7 @@
                     },
                     {
                         "id": "humanidades",
-                        "valor": 20
+                        "valor": 10
                     },
                     {
                         "id": "ciencias",
@@ -1523,10 +1502,6 @@
                         "valor": 0
                     },
                     {
-                        "id": "humanidades",
-                        "valor": 0
-                    },
-                    {
                         "id": "ciencias",
                         "valor": 0
                     }
@@ -1541,10 +1516,6 @@
                     },
                     {
                         "id": "ingenieria",
-                        "valor": 0
-                    },
-                    {
-                        "id": "humanidades",
                         "valor": 0
                     },
                     {
@@ -1563,10 +1534,6 @@
                     {
                         "id": "ingenieria",
                         "valor": 100
-                    },
-                    {
-                        "id": "humanidades",
-                        "valor": 10
                     },
                     {
                         "id": "ciencias",
@@ -1868,8 +1835,7 @@
                     {
                         "id": "economia",
                         "valor": 0
-                    },
-                    {
+                    },{
                         "id": "licenciatura",
                         "valor": 0
                     }
@@ -1901,8 +1867,7 @@
                     {
                         "id": "economia",
                         "valor": 10
-                    },
-                    {
+                    },{
                         "id": "licenciatura",
                         "valor": 10
                     }
@@ -1934,8 +1899,7 @@
                     {
                         "id": "economia",
                         "valor": 20
-                    },
-                    {
+                    },{
                         "id": "licenciatura",
                         "valor": 20
                     }
@@ -2251,7 +2215,7 @@
     },
     {
         "id": "31",
-        "titulares": "Tengo la facilidad de ponerme en los zapatos de las demás personas",
+        "titulares": "Tengo la facilidad de ponerme en los zapatos de otras personas",
         "minimo": "",
         "maximo": "",
         "opciones": [
@@ -2271,7 +2235,7 @@
     },
     {
         "id": "32",
-        "titulares": "Soy capaz de controlar mis emociones ",
+        "titulares": "Soy capaz de controlar mis impulsos ",
         "minimo": "",
         "maximo": "",
         "opciones": [
@@ -2291,7 +2255,7 @@
     },
     {
         "id": "33",
-        "titulares": "Tengo la facilidad de tomar decisiones que privilegien el bien común",
+        "titulares": "Tengo la facilidad de tomar decisiones donde se privilegie el bien común",
         "minimo": "",
         "maximo": "",
         "opciones": [
@@ -2575,10 +2539,6 @@
                     {
                         "id": "diseno",
                         "valor": 0
-                    },
-                    {
-                        "id": "humanidades",
-                        "valor": 0
                     }
                 ]
             },
@@ -2596,10 +2556,6 @@
                     {
                         "id": "diseno",
                         "valor": 10
-                    },
-                    {
-                        "id": "humanidades",
-                        "valor": 10
                     }
                 ]
             },
@@ -2616,10 +2572,6 @@
                     },
                     {
                         "id": "diseno",
-                        "valor": 20
-                    },
-                    {
-                        "id": "humanidades",
                         "valor": 20
                     }
                 ]
@@ -2691,10 +2643,6 @@
                         "valor": 0
                     },
                     {
-                        "id": "humanidades",
-                        "valor": 0
-                    },
-                    {
                         "id": "economia",
                         "valor": 0
                     }
@@ -2712,10 +2660,6 @@
                         "valor": 0
                     },
                     {
-                        "id": "humanidades",
-                        "valor": 0
-                    },
-                    {
                         "id": "economia",
                         "valor": 0
                     }
@@ -2730,10 +2674,6 @@
                     },
                     {
                         "id": "ingenieria",
-                        "valor": 10
-                    },
-                    {
-                        "id": "humanidades",
                         "valor": 10
                     },
                     {
@@ -2903,10 +2843,6 @@
                         "valor": 0
                     },
                     {
-                        "id": "humanidades",
-                        "valor": 0
-                    },
-                    {
                         "id": "ciencias",
                         "valor": 0
                     },
@@ -2928,10 +2864,6 @@
                         "valor": 10
                     },
                     {
-                        "id": "humanidades",
-                        "valor": 5
-                    },
-                    {
                         "id": "ciencias",
                         "valor": 10
                     },
@@ -2951,10 +2883,6 @@
                     {
                         "id": "ingenieria",
                         "valor": 20
-                    },
-                    {
-                        "id": "humanidades",
-                        "valor": 10
                     },
                     {
                         "id": "ciencias",
@@ -3087,8 +3015,7 @@
                     {
                         "id": "economia",
                         "valor": 0
-                    },
-                    {
+                    },{
                         "id": "licenciatura",
                         "valor": 0
                     }
@@ -3124,8 +3051,7 @@
                     {
                         "id": "economia",
                         "valor": 0
-                    },
-                    {
+                    },{
                         "id": "licenciatura",
                         "valor": 0
                     }
@@ -3161,8 +3087,7 @@
                     {
                         "id": "economia",
                         "valor": 10
-                    },
-                    {
+                    },{
                         "id": "licenciatura",
                         "valor": 30
                     }
@@ -3192,10 +3117,6 @@
                         "valor": 0
                     },
                     {
-                        "id": "humanidades",
-                        "valor": 0
-                    },
-                    {
                         "id": "ciencias",
                         "valor": 0
                     },
@@ -3221,10 +3142,6 @@
                         "valor": 35
                     },
                     {
-                        "id": "humanidades",
-                        "valor": 10
-                    },
-                    {
                         "id": "ciencias",
                         "valor": 5
                     },
@@ -3248,10 +3165,6 @@
                     {
                         "id": "diseno",
                         "valor": 70
-                    },
-                    {
-                        "id": "humanidades",
-                        "valor": 20
                     },
                     {
                         "id": "ciencias",
@@ -3309,7 +3222,7 @@
                     },
                     {
                         "id": "humanidades",
-                        "valor": 10
+                        "valor": 5
                     },
                     {
                         "id": "derecho",
@@ -3334,7 +3247,7 @@
                     },
                     {
                         "id": "humanidades",
-                        "valor": 20
+                        "valor": 10
                     },
                     {
                         "id": "derecho",
@@ -3350,7 +3263,7 @@
     },
     {
         "id": "54",
-        "titulares": "¿Considero que tengo inteligencia emocional, es decir, capacidad para identificar, entender y manejar las emociones correctamente, de un modo que facilite las relaciones con los demás?",
+        "titulares": "Considero que tengo inteligencia emocional, es decir, capacidad para identificar, entender y manejar las emociones correctamente, de un modo que facilite las relaciones con los demás",
         "minimo": "Poco",
         "maximo": "Mucho",
         "opciones": [
@@ -3372,8 +3285,7 @@
                     {
                         "id": "economia",
                         "valor": 0
-                    },
-                    {
+                    },{
                         "id": "licenciatura",
                         "valor": 0
                     }
@@ -3388,7 +3300,7 @@
                     },
                     {
                         "id": "humanidades",
-                        "valor": 35
+                        "valor": 20
                     },
                     {
                         "id": "derecho",
@@ -3397,8 +3309,7 @@
                     {
                         "id": "economia",
                         "valor": 10
-                    },
-                    {
+                    },{
                         "id": "licenciatura",
                         "valor": 10
                     }
@@ -3413,7 +3324,7 @@
                     },
                     {
                         "id": "humanidades",
-                        "valor": 70
+                        "valor": 40
                     },
                     {
                         "id": "derecho",
@@ -3422,8 +3333,7 @@
                     {
                         "id": "economia",
                         "valor": 20
-                    },
-                    {
+                    },{
                         "id": "licenciatura",
                         "valor": 20
                     }
@@ -3445,10 +3355,6 @@
                         "valor": 0
                     },
                     {
-                        "id": "humanidades",
-                        "valor": 0
-                    },
-                    {
                         "id": "ciencias",
                         "valor": 0
                     }
@@ -3462,10 +3368,6 @@
                         "valor": 40
                     },
                     {
-                        "id": "humanidades",
-                        "valor": 4
-                    },
-                    {
                         "id": "ciencias",
                         "valor": 4
                     }
@@ -3477,10 +3379,6 @@
                     {
                         "id": "medicina",
                         "valor": 100
-                    },
-                    {
-                        "id": "humanidades",
-                        "valor": 10
                     },
                     {
                         "id": "ciencias",
@@ -3565,8 +3463,7 @@
                     {
                         "id": "economia",
                         "valor": 0
-                    },
-                    {
+                    },{
                         "id": "licenciatura",
                         "valor": 0
                     }
@@ -3594,8 +3491,7 @@
                     {
                         "id": "economia",
                         "valor": 0
-                    },
-                    {
+                    },{
                         "id": "licenciatura",
                         "valor": 0
                     }
@@ -3614,7 +3510,7 @@
                     },
                     {
                         "id": "humanidades",
-                        "valor": 30
+                        "valor": 10
                     },
                     {
                         "id": "derecho",
@@ -3623,8 +3519,7 @@
                     {
                         "id": "economia",
                         "valor": 20
-                    },
-                    {
+                    },{
                         "id": "licenciatura",
                         "valor": 20
                     }
@@ -3689,7 +3584,7 @@
                     },
                     {
                         "id": "humanidades",
-                        "valor": 50
+                        "valor": 20
                     },
                     {
                         "id": "derecho",
@@ -3743,7 +3638,7 @@
                     },
                     {
                         "id": "humanidades",
-                        "valor": 12
+                        "valor": 4
                     },
                     {
                         "id": "derecho",
@@ -3764,7 +3659,7 @@
                     },
                     {
                         "id": "humanidades",
-                        "valor": 30
+                        "valor": 10
                     },
                     {
                         "id": "derecho",
@@ -3823,7 +3718,7 @@
                     },
                     {
                         "id": "humanidades",
-                        "valor": 70
+                        "valor": 30
                     },
                     {
                         "id": "economia",
@@ -4006,8 +3901,7 @@
                     {
                         "id": "economia",
                         "valor": 0
-                    },
-                    {
+                    },{
                         "id": "licenciatura",
                         "valor": 0
                     }
@@ -4027,8 +3921,7 @@
                     {
                         "id": "economia",
                         "valor": 0
-                    },
-                    {
+                    },{
                         "id": "licenciatura",
                         "valor": 0
                     }
@@ -4048,8 +3941,7 @@
                     {
                         "id": "economia",
                         "valor": 100
-                    },
-                    {
+                    },{
                         "id": "licenciatura",
                         "valor": 20
                     }
@@ -4226,8 +4118,7 @@
                     {
                         "id": "economia",
                         "valor": 0
-                    },
-                    {
+                    },{
                         "id": "licenciatura",
                         "valor": 0
                     }
@@ -4255,8 +4146,7 @@
                     {
                         "id": "economia",
                         "valor": 0
-                    },
-                    {
+                    },{
                         "id": "licenciatura",
                         "valor": 0
                     }
@@ -4284,8 +4174,7 @@
                     {
                         "id": "economia",
                         "valor": 100
-                    },
-                    {
+                    },{
                         "id": "licenciatura",
                         "valor": 30
                     }
@@ -4959,6 +4848,10 @@
                         "valor": 0
                     },
                     {
+                        "id": "humanidades",
+                        "valor": 0
+                    },
+                    {
                         "id": "derecho",
                         "valor": 0
                     },
@@ -4980,6 +4873,10 @@
                         "valor": 3
                     },
                     {
+                        "id": "humanidades",
+                        "valor": 9
+                    },
+                    {
                         "id": "derecho",
                         "valor": 30
                     },
@@ -4999,6 +4896,10 @@
                     {
                         "id": "ingenieria",
                         "valor": 10
+                    },
+                    {
+                        "id": "humanidades",
+                        "valor": 30
                     },
                     {
                         "id": "derecho",
@@ -5030,6 +4931,10 @@
                         "valor": 0
                     },
                     {
+                        "id": "humanidades",
+                        "valor": 0
+                    },
+                    {
                         "id": "derecho",
                         "valor": 0
                     },
@@ -5040,8 +4945,7 @@
                     {
                         "id": "economia",
                         "valor": 0
-                    },
-                    {
+                    },{
                         "id": "licenciatura",
                         "valor": 0
                     }
@@ -5059,6 +4963,10 @@
                         "valor": 3
                     },
                     {
+                        "id": "humanidades",
+                        "valor": 6
+                    },
+                    {
                         "id": "derecho",
                         "valor": 30
                     },
@@ -5069,8 +4977,7 @@
                     {
                         "id": "economia",
                         "valor": 6
-                    },
-                    {
+                    },{
                         "id": "licenciatura",
                         "valor": 9
                     }
@@ -5088,6 +4995,10 @@
                         "valor": 10
                     },
                     {
+                        "id": "humanidades",
+                        "valor": 20
+                    },
+                    {
                         "id": "derecho",
                         "valor": 100
                     },
@@ -5098,8 +5009,7 @@
                     {
                         "id": "economia",
                         "valor": 20
-                    },
-                    {
+                    },{
                         "id": "licenciatura",
                         "valor": 30
                     }
@@ -5184,6 +5094,10 @@
                         "valor": 0
                     },
                     {
+                        "id": "humanidades",
+                        "valor": 0
+                    },
+                    {
                         "id": "derecho",
                         "valor": 0
                     },
@@ -5205,6 +5119,10 @@
                         "valor": 6
                     },
                     {
+                        "id": "humanidades",
+                        "valor": 3
+                    },
+                    {
                         "id": "derecho",
                         "valor": 30
                     },
@@ -5224,6 +5142,10 @@
                     {
                         "id": "ingenieria",
                         "valor": 20
+                    },
+                    {
+                        "id": "humanidades",
+                        "valor": 10
                     },
                     {
                         "id": "derecho",
@@ -5306,6 +5228,10 @@
                 "titulares": "1",
                 "resultados": [
                     {
+                        "id": "humanidades",
+                        "valor": 0
+                    },
+                    {
                         "id": "derecho",
                         "valor": 0
                     },
@@ -5323,6 +5249,10 @@
                 "titulares": "2",
                 "resultados": [
                     {
+                        "id": "humanidades",
+                        "valor": 3
+                    },
+                    {
                         "id": "derecho",
                         "valor": 30
                     },
@@ -5339,6 +5269,10 @@
             {
                 "titulares": "3",
                 "resultados": [
+                    {
+                        "id": "humanidades",
+                        "valor": 10
+                    },
                     {
                         "id": "derecho",
                         "valor": 100
@@ -5369,6 +5303,10 @@
                         "valor": 0
                     },
                     {
+                        "id": "humanidades",
+                        "valor": 0
+                    },
+                    {
                         "id": "derecho",
                         "valor": 0
                     }
@@ -5382,6 +5320,10 @@
                         "valor": 6
                     },
                     {
+                        "id": "humanidades",
+                        "valor": 6
+                    },
+                    {
                         "id": "derecho",
                         "valor": 30
                     }
@@ -5392,6 +5334,10 @@
                 "resultados": [
                     {
                         "id": "ingenieria",
+                        "valor": 20
+                    },
+                    {
+                        "id": "humanidades",
                         "valor": 20
                     },
                     {
@@ -5416,6 +5362,10 @@
                         "valor": 0
                     },
                     {
+                        "id": "humanidades",
+                        "valor": 0
+                    },
+                    {
                         "id": "derecho",
                         "valor": 0
                     },
@@ -5433,6 +5383,10 @@
                         "valor": 6
                     },
                     {
+                        "id": "humanidades",
+                        "valor": 3
+                    },
+                    {
                         "id": "derecho",
                         "valor": 30
                     },
@@ -5448,6 +5402,10 @@
                     {
                         "id": "ingenieria",
                         "valor": 20
+                    },
+                    {
+                        "id": "humanidades",
+                        "valor": 10
                     },
                     {
                         "id": "derecho",
@@ -5475,6 +5433,10 @@
                         "valor": 0
                     },
                     {
+                        "id": "humanidades",
+                        "valor": 0
+                    },
+                    {
                         "id": "derecho",
                         "valor": 0
                     },
@@ -5496,6 +5458,10 @@
                         "valor": 9
                     },
                     {
+                        "id": "humanidades",
+                        "valor": 6
+                    },
+                    {
                         "id": "derecho",
                         "valor": 30
                     },
@@ -5515,6 +5481,10 @@
                     {
                         "id": "ingenieria",
                         "valor": 30
+                    },
+                    {
+                        "id": "humanidades",
+                        "valor": 20
                     },
                     {
                         "id": "derecho",
@@ -5546,6 +5516,10 @@
                         "valor": 0
                     },
                     {
+                        "id": "humanidades",
+                        "valor": 0
+                    },
+                    {
                         "id": "derecho",
                         "valor": 0
                     },
@@ -5567,6 +5541,10 @@
                         "valor": 9
                     },
                     {
+                        "id": "humanidades",
+                        "valor": 12
+                    },
+                    {
                         "id": "derecho",
                         "valor": 30
                     },
@@ -5586,6 +5564,10 @@
                     {
                         "id": "ingenieria",
                         "valor": 30
+                    },
+                    {
+                        "id": "humanidades",
+                        "valor": 40
                     },
                     {
                         "id": "derecho",
@@ -5701,8 +5683,7 @@
                     {
                         "id": "economia",
                         "valor": 0
-                    },
-                    {
+                    },{
                         "id": "licenciatura",
                         "valor": 0
                     }
@@ -5718,8 +5699,7 @@
                     {
                         "id": "economia",
                         "valor": 9
-                    },
-                    {
+                    },{
                         "id": "licenciatura",
                         "valor": 6
                     }
@@ -5735,8 +5715,7 @@
                     {
                         "id": "economia",
                         "valor": 30
-                    },
-                    {
+                    },{
                         "id": "licenciatura",
                         "valor": 20
                     }
@@ -5846,8 +5825,7 @@
                     {
                         "id": "economia",
                         "valor": 0
-                    },
-                    {
+                    },{
                         "id": "licenciatura",
                         "valor": 0
                     }
@@ -5867,8 +5845,7 @@
                     {
                         "id": "economia",
                         "valor": 6
-                    },
-                    {
+                    },{
                         "id": "licenciatura",
                         "valor": 6
                     }
@@ -5888,8 +5865,7 @@
                     {
                         "id": "economia",
                         "valor": 20
-                    },
-                    {
+                    },{
                         "id": "licenciatura",
                         "valor": 20
                     }
@@ -6649,8 +6625,7 @@
                     {
                         "id": "economia",
                         "valor": 0
-                    },
-                    {
+                    },{
                         "id": "licenciatura",
                         "valor": 0
                     }
@@ -6674,8 +6649,7 @@
                     {
                         "id": "economia",
                         "valor": 12
-                    },
-                    {
+                    },{
                         "id": "licenciatura",
                         "valor": 8
                     }
@@ -6699,8 +6673,7 @@
                     {
                         "id": "economia",
                         "valor": 30
-                    },
-                    {
+                    },{
                         "id": "licenciatura",
                         "valor": 20
                     }
@@ -6736,8 +6709,7 @@
                     {
                         "id": "economia",
                         "valor": 0
-                    },
-                    {
+                    },{
                         "id": "licenciatura",
                         "valor": 0
                     }
@@ -6765,8 +6737,7 @@
                     {
                         "id": "economia",
                         "valor": 0
-                    },
-                    {
+                    },{
                         "id": "licenciatura",
                         "valor": 0
                     }
@@ -6794,8 +6765,7 @@
                     {
                         "id": "economia",
                         "valor": 30
-                    },
-                    {
+                    },{
                         "id": "licenciatura",
                         "valor": 20
                     }
@@ -6890,8 +6860,7 @@
                     {
                         "id": "economia",
                         "valor": 0
-                    },
-                    {
+                    },{
                         "id": "licenciatura",
                         "valor": 0
                     }
@@ -6919,8 +6888,7 @@
                     {
                         "id": "economia",
                         "valor": 9
-                    },
-                    {
+                    },{
                         "id": "licenciatura",
                         "valor": 6
                     }
@@ -6948,8 +6916,7 @@
                     {
                         "id": "economia",
                         "valor": 30
-                    },
-                    {
+                    },{
                         "id": "licenciatura",
                         "valor": 20
                     }
@@ -7162,8 +7129,7 @@
                     {
                         "id": "economia",
                         "valor": 0
-                    },
-                    {
+                    },{
                         "id": "licenciatura",
                         "valor": 0
                     }
@@ -7191,8 +7157,7 @@
                     {
                         "id": "economia",
                         "valor": 3
-                    },
-                    {
+                    },{
                         "id": "licenciatura",
                         "valor": 6
                     }
@@ -7220,8 +7185,7 @@
                     {
                         "id": "economia",
                         "valor": 10
-                    },
-                    {
+                    },{
                         "id": "licenciatura",
                         "valor": 20
                     }
@@ -8012,27 +7976,27 @@
                 "resultados": [
                     {
                         "id": "ingenieria",
-                        "valor": 2
+                        "valor": 0
                     },
                     {
                         "id": "diseno",
-                        "valor": 1
+                        "valor": 0
                     },
                     {
                         "id": "humanidades",
-                        "valor": 3
+                        "valor": 0
                     },
                     {
                         "id": "derecho",
-                        "valor": 3
+                        "valor": 0
                     },
                     {
                         "id": "ciencias",
-                        "valor": 3
+                        "valor": 0
                     },
                     {
                         "id": "licenciatura",
-                        "valor": 10
+                        "valor": 0
                     }
                 ]
             },
@@ -8041,27 +8005,27 @@
                 "resultados": [
                     {
                         "id": "ingenieria",
-                        "valor": 2
+                        "valor": 10
                     },
                     {
                         "id": "diseno",
-                        "valor": 1
+                        "valor": 5
                     },
                     {
                         "id": "humanidades",
-                        "valor": 3
+                        "valor": 15
                     },
                     {
                         "id": "derecho",
-                        "valor": 3
+                        "valor": 15
                     },
                     {
                         "id": "ciencias",
-                        "valor": 3
+                        "valor": 15
                     },
                     {
                         "id": "licenciatura",
-                        "valor": 10
+                        "valor": 50
                     }
                 ]
             },
@@ -8070,27 +8034,27 @@
                 "resultados": [
                     {
                         "id": "ingenieria",
-                        "valor": 2
+                        "valor": 20
                     },
                     {
                         "id": "diseno",
-                        "valor": 1
+                        "valor": 10
                     },
                     {
                         "id": "humanidades",
-                        "valor": 3
+                        "valor": 30
                     },
                     {
                         "id": "derecho",
-                        "valor": 3
+                        "valor": 30
                     },
                     {
                         "id": "ciencias",
-                        "valor": 3
+                        "valor": 30
                     },
                     {
                         "id": "licenciatura",
-                        "valor": 10
+                        "valor": 100
                     }
                 ]
             }
@@ -8107,19 +8071,19 @@
                 "resultados": [
                     {
                         "id": "diseno",
-                        "valor": 4
+                        "valor": 0
                     },
                     {
                         "id": "humanidades",
-                        "valor": 5
+                        "valor": 0
                     },
                     {
                         "id": "derecho",
-                        "valor": 1
+                        "valor": 0
                     },
                     {
                         "id": "licenciatura",
-                        "valor": 10
+                        "valor": 0
                     }
                 ]
             },
@@ -8128,19 +8092,19 @@
                 "resultados": [
                     {
                         "id": "diseno",
-                        "valor": 4
+                        "valor": 20
                     },
                     {
                         "id": "humanidades",
-                        "valor": 5
+                        "valor": 15
                     },
                     {
                         "id": "derecho",
-                        "valor": 1
+                        "valor": 5
                     },
                     {
                         "id": "licenciatura",
-                        "valor": 10
+                        "valor": 50
                     }
                 ]
             },
@@ -8149,19 +8113,19 @@
                 "resultados": [
                     {
                         "id": "diseno",
-                        "valor": 4
+                        "valor": 40
                     },
                     {
                         "id": "humanidades",
-                        "valor": 5
+                        "valor": 30
                     },
                     {
                         "id": "derecho",
-                        "valor": 1
+                        "valor": 10
                     },
                     {
                         "id": "licenciatura",
-                        "valor": 10
+                        "valor": 100
                     }
                 ]
             }
@@ -8178,23 +8142,26 @@
                 "resultados": [
                     {
                         "id": "diseno",
-                        "valor": 3
+                        "valor": 0
+                    },
+                    {
+                        "id": "humanidades",
+                        "valor": 0
                     },
                     {
                         "id": "derecho",
-                        "valor": 3
+                        "valor": 0
                     },
                     {
                         "id": "ciencias",
-                        "valor": 1
+                        "valor": 0
                     },
                     {
                         "id": "economia",
-                        "valor": 2
-                    },
-                    {
+                        "valor": 0
+                    },{
                         "id": "licenciatura",
-                        "valor": 10
+                        "valor": 0
                     }
                 ]
             },
@@ -8203,23 +8170,26 @@
                 "resultados": [
                     {
                         "id": "diseno",
-                        "valor": 3
+                        "valor": 21
+                    },
+                    {
+                        "id": "humanidades",
+                        "valor": 21
                     },
                     {
                         "id": "derecho",
-                        "valor": 3
+                        "valor": 21
                     },
                     {
                         "id": "ciencias",
-                        "valor": 1
+                        "valor": 7
                     },
                     {
                         "id": "economia",
-                        "valor": 2
-                    },
-                    {
+                        "valor": 14
+                    },{
                         "id": "licenciatura",
-                        "valor": 10
+                        "valor": 70
                     }
                 ]
             },
@@ -8228,23 +8198,26 @@
                 "resultados": [
                     {
                         "id": "diseno",
-                        "valor": 3
+                        "valor": 30
+                    },
+                    {
+                        "id": "humanidades",
+                        "valor": 30
                     },
                     {
                         "id": "derecho",
-                        "valor": 3
+                        "valor": 30
                     },
                     {
                         "id": "ciencias",
-                        "valor": 1
+                        "valor": 10
                     },
                     {
                         "id": "economia",
-                        "valor": 2
-                    },
-                    {
+                        "valor": 20
+                    },{
                         "id": "licenciatura",
-                        "valor": 10
+                        "valor": 100
                     }
                 ]
             }
@@ -8261,23 +8234,26 @@
                 "resultados": [
                     {
                         "id": "ingenieria",
-                        "valor": 1
+                        "valor": 0
                     },
                     {
                         "id": "diseno",
-                        "valor": 3
+                        "valor": 0
+                    },
+                    {
+                        "id": "humanidades",
+                        "valor": 0
                     },
                     {
                         "id": "derecho",
-                        "valor": 1
+                        "valor": 0
                     },
                     {
                         "id": "economia",
-                        "valor": 2
-                    },
-                    {
+                        "valor": 0
+                    },{
                         "id": "licenciatura",
-                        "valor": 10
+                        "valor": 0
                     }
                 ]
             },
@@ -8286,23 +8262,26 @@
                 "resultados": [
                     {
                         "id": "ingenieria",
-                        "valor": 1
+                        "valor": 4
                     },
                     {
                         "id": "diseno",
-                        "valor": 3
+                        "valor": 12
+                    },
+                    {
+                        "id": "humanidades",
+                        "valor": 12
                     },
                     {
                         "id": "derecho",
-                        "valor": 1
+                        "valor": 4
                     },
                     {
                         "id": "economia",
-                        "valor": 2
-                    },
-                    {
+                        "valor": 8
+                    },{
                         "id": "licenciatura",
-                        "valor": 10
+                        "valor": 40
                     }
                 ]
             },
@@ -8311,23 +8290,26 @@
                 "resultados": [
                     {
                         "id": "ingenieria",
-                        "valor": 1
+                        "valor": 10
                     },
                     {
                         "id": "diseno",
-                        "valor": 3
+                        "valor": 30
+                    },
+                    {
+                        "id": "humanidades",
+                        "valor": 30
                     },
                     {
                         "id": "derecho",
-                        "valor": 1
+                        "valor": 10
                     },
                     {
                         "id": "economia",
-                        "valor": 2
-                    },
-                    {
+                        "valor": 20
+                    },{
                         "id": "licenciatura",
-                        "valor": 10
+                        "valor": 100
                     }
                 ]
             }
@@ -8343,12 +8325,16 @@
                 "titulares": "1",
                 "resultados": [
                     {
+                        "id": "humanidades",
+                        "valor": 0
+                    },
+                    {
                         "id": "derecho",
-                        "valor": 2
+                        "valor": 0
                     },
                     {
                         "id": "licenciatura",
-                        "valor": 10
+                        "valor": 0
                     }
                 ]
             },
@@ -8356,12 +8342,16 @@
                 "titulares": "2",
                 "resultados": [
                     {
+                        "id": "humanidades",
+                        "valor": 15
+                    },
+                    {
                         "id": "derecho",
-                        "valor": 2
+                        "valor": 10
                     },
                     {
                         "id": "licenciatura",
-                        "valor": 10
+                        "valor": 50
                     }
                 ]
             },
@@ -8369,12 +8359,16 @@
                 "titulares": "3",
                 "resultados": [
                     {
+                        "id": "humanidades",
+                        "valor": 30
+                    },
+                    {
                         "id": "derecho",
-                        "valor": 2
+                        "valor": 20
                     },
                     {
                         "id": "licenciatura",
-                        "valor": 10
+                        "valor": 100
                     }
                 ]
             }
@@ -8391,11 +8385,11 @@
                 "resultados": [
                     {
                         "id": "ingenieria",
-                        "valor": 2
+                        "valor": 0
                     },
                     {
                         "id": "licenciatura",
-                        "valor": 10
+                        "valor": 0
                     }
                 ]
             },
@@ -8404,11 +8398,11 @@
                 "resultados": [
                     {
                         "id": "ingenieria",
-                        "valor": 2
+                        "valor": 14
                     },
                     {
                         "id": "licenciatura",
-                        "valor": 10
+                        "valor": 70
                     }
                 ]
             },
@@ -8417,11 +8411,11 @@
                 "resultados": [
                     {
                         "id": "ingenieria",
-                        "valor": 2
+                        "valor": 20
                     },
                     {
                         "id": "licenciatura",
-                        "valor": 10
+                        "valor": 100
                     }
                 ]
             }
@@ -8437,12 +8431,16 @@
                 "titulares": "1",
                 "resultados": [
                     {
+                        "id": "humanidades",
+                        "valor": 0
+                    },
+                    {
                         "id": "derecho",
-                        "valor": 1
+                        "valor": 0
                     },
                     {
                         "id": "licenciatura",
-                        "valor": 10
+                        "valor": 0
                     }
                 ]
             },
@@ -8450,12 +8448,16 @@
                 "titulares": "2",
                 "resultados": [
                     {
+                        "id": "humanidades",
+                        "valor": 12
+                    },
+                    {
                         "id": "derecho",
-                        "valor": 1
+                        "valor": 4
                     },
                     {
                         "id": "licenciatura",
-                        "valor": 10
+                        "valor": 40
                     }
                 ]
             },
@@ -8463,12 +8465,16 @@
                 "titulares": "3",
                 "resultados": [
                     {
+                        "id": "humanidades",
+                        "valor": 30
+                    },
+                    {
                         "id": "derecho",
-                        "valor": 1
+                        "valor": 10
                     },
                     {
                         "id": "licenciatura",
-                        "valor": 10
+                        "valor": 100
                     }
                 ]
             }
@@ -8485,19 +8491,23 @@
                 "resultados": [
                     {
                         "id": "ingenieria",
-                        "valor": 2
+                        "valor": 0
                     },
                     {
                         "id": "diseno",
-                        "valor": 3
+                        "valor": 0
+                    },
+                    {
+                        "id": "humanidades",
+                        "valor": 0
                     },
                     {
                         "id": "derecho",
-                        "valor": 1
+                        "valor": 0
                     },
                     {
                         "id": "licenciatura",
-                        "valor": 10
+                        "valor": 0
                     }
                 ]
             },
@@ -8506,19 +8516,23 @@
                 "resultados": [
                     {
                         "id": "ingenieria",
-                        "valor": 2
+                        "valor": 12
                     },
                     {
                         "id": "diseno",
-                        "valor": 3
+                        "valor": 18
+                    },
+                    {
+                        "id": "humanidades",
+                        "valor": 6
                     },
                     {
                         "id": "derecho",
-                        "valor": 1
+                        "valor": 6
                     },
                     {
                         "id": "licenciatura",
-                        "valor": 10
+                        "valor": 60
                     }
                 ]
             },
@@ -8527,19 +8541,23 @@
                 "resultados": [
                     {
                         "id": "ingenieria",
-                        "valor": 2
+                        "valor": 20
                     },
                     {
                         "id": "diseno",
-                        "valor": 3
+                        "valor": 30
+                    },
+                    {
+                        "id": "humanidades",
+                        "valor": 10
                     },
                     {
                         "id": "derecho",
-                        "valor": 1
+                        "valor": 10
                     },
                     {
                         "id": "licenciatura",
-                        "valor": 10
+                        "valor": 100
                     }
                 ]
             }
@@ -8556,7 +8574,7 @@
                 "resultados": [
                     {
                         "id": "licenciatura",
-                        "valor": 10
+                        "valor": 0
                     }
                 ]
             },
@@ -8565,7 +8583,7 @@
                 "resultados": [
                     {
                         "id": "licenciatura",
-                        "valor": 10
+                        "valor": 60
                     }
                 ]
             },
@@ -8574,7 +8592,7 @@
                 "resultados": [
                     {
                         "id": "licenciatura",
-                        "valor": 10
+                        "valor": 100
                     }
                 ]
             }
@@ -8590,8 +8608,12 @@
                 "titulares": "1",
                 "resultados": [
                     {
+                        "id": "humanidades",
+                        "valor": 0
+                    },
+                    {
                         "id": "licenciatura",
-                        "valor": 10
+                        "valor": 0
                     }
                 ]
             },
@@ -8599,8 +8621,12 @@
                 "titulares": "2",
                 "resultados": [
                     {
+                        "id": "humanidades",
+                        "valor": 4
+                    },
+                    {
                         "id": "licenciatura",
-                        "valor": 10
+                        "valor": 40
                     }
                 ]
             },
@@ -8608,8 +8634,12 @@
                 "titulares": "3",
                 "resultados": [
                     {
-                        "id": "licenciatura",
+                        "id": "humanidades",
                         "valor": 10
+                    },
+                    {
+                        "id": "licenciatura",
+                        "valor": 100
                     }
                 ]
             }
@@ -8626,11 +8656,11 @@
                 "resultados": [
                     {
                         "id": "derecho",
-                        "valor": 2
+                        "valor": 0
                     },
                     {
                         "id": "licenciatura",
-                        "valor": 10
+                        "valor": 0
                     }
                 ]
             },
@@ -8639,11 +8669,11 @@
                 "resultados": [
                     {
                         "id": "derecho",
-                        "valor": 2
+                        "valor": 8
                     },
                     {
                         "id": "licenciatura",
-                        "valor": 10
+                        "valor": 40
                     }
                 ]
             },
@@ -8652,11 +8682,11 @@
                 "resultados": [
                     {
                         "id": "derecho",
-                        "valor": 2
+                        "valor": 20
                     },
                     {
                         "id": "licenciatura",
-                        "valor": 10
+                        "valor": 100
                     }
                 ]
             }
@@ -8673,7 +8703,7 @@
                 "resultados": [
                     {
                         "id": "licenciatura",
-                        "valor": 10
+                        "valor": 0
                     }
                 ]
             },
@@ -8682,7 +8712,7 @@
                 "resultados": [
                     {
                         "id": "licenciatura",
-                        "valor": 10
+                        "valor": 50
                     }
                 ]
             },
@@ -8691,7 +8721,7 @@
                 "resultados": [
                     {
                         "id": "licenciatura",
-                        "valor": 10
+                        "valor": 100
                     }
                 ]
             }
@@ -8708,7 +8738,7 @@
                 "resultados": [
                     {
                         "id": "licenciatura",
-                        "valor": 10
+                        "valor": 0
                     }
                 ]
             },
@@ -8717,7 +8747,7 @@
                 "resultados": [
                     {
                         "id": "licenciatura",
-                        "valor": 10
+                        "valor": 30
                     }
                 ]
             },
@@ -8726,7 +8756,7 @@
                 "resultados": [
                     {
                         "id": "licenciatura",
-                        "valor": 10
+                        "valor": 100
                     }
                 ]
             }
@@ -8742,12 +8772,16 @@
                 "titulares": "1",
                 "resultados": [
                     {
+                        "id": "humanidades",
+                        "valor": 0
+                    },
+                    {
                         "id": "derecho",
-                        "valor": 2
+                        "valor": 0
                     },
                     {
                         "id": "licenciatura",
-                        "valor": 10
+                        "valor": 0
                     }
                 ]
             },
@@ -8755,12 +8789,16 @@
                 "titulares": "2",
                 "resultados": [
                     {
+                        "id": "humanidades",
+                        "valor": 10
+                    },
+                    {
                         "id": "derecho",
-                        "valor": 2
+                        "valor": 10
                     },
                     {
                         "id": "licenciatura",
-                        "valor": 10
+                        "valor": 50
                     }
                 ]
             },
@@ -8768,12 +8806,16 @@
                 "titulares": "3",
                 "resultados": [
                     {
+                        "id": "humanidades",
+                        "valor": 20
+                    },
+                    {
                         "id": "derecho",
-                        "valor": 2
+                        "valor": 20
                     },
                     {
                         "id": "licenciatura",
-                        "valor": 10
+                        "valor": 100
                     }
                 ]
             }
@@ -8789,12 +8831,16 @@
                 "titulares": "1",
                 "resultados": [
                     {
+                        "id": "humanidades",
+                        "valor": 0
+                    },
+                    {
                         "id": "derecho",
-                        "valor": 1
+                        "valor": 0
                     },
                     {
                         "id": "licenciatura",
-                        "valor": 10
+                        "valor": 0
                     }
                 ]
             },
@@ -8802,12 +8848,16 @@
                 "titulares": "2",
                 "resultados": [
                     {
+                        "id": "humanidades",
+                        "valor": 5
+                    },
+                    {
                         "id": "derecho",
-                        "valor": 1
+                        "valor": 5
                     },
                     {
                         "id": "licenciatura",
-                        "valor": 10
+                        "valor": 50
                     }
                 ]
             },
@@ -8815,12 +8865,16 @@
                 "titulares": "3",
                 "resultados": [
                     {
+                        "id": "humanidades",
+                        "valor": 10
+                    },
+                    {
                         "id": "derecho",
-                        "valor": 1
+                        "valor": 10
                     },
                     {
                         "id": "licenciatura",
-                        "valor": 10
+                        "valor": 100
                     }
                 ]
             }
@@ -8837,7 +8891,7 @@
                 "resultados": [
                     {
                         "id": "licenciatura",
-                        "valor": 10
+                        "valor": 0
                     }
                 ]
             },
@@ -8846,7 +8900,7 @@
                 "resultados": [
                     {
                         "id": "licenciatura",
-                        "valor": 10
+                        "valor": 50
                     }
                 ]
             },
@@ -8855,7 +8909,7 @@
                 "resultados": [
                     {
                         "id": "licenciatura",
-                        "valor": 10
+                        "valor": 100
                     }
                 ]
             }
@@ -8872,7 +8926,7 @@
                 "resultados": [
                     {
                         "id": "licenciatura",
-                        "valor": 10
+                        "valor": 0
                     }
                 ]
             },
@@ -8881,7 +8935,7 @@
                 "resultados": [
                     {
                         "id": "licenciatura",
-                        "valor": 10
+                        "valor": 50
                     }
                 ]
             },
@@ -8890,7 +8944,7 @@
                 "resultados": [
                     {
                         "id": "licenciatura",
-                        "valor": 10
+                        "valor": 100
                     }
                 ]
             }
@@ -8906,8 +8960,12 @@
                 "titulares": "1",
                 "resultados": [
                     {
+                        "id": "humanidades",
+                        "valor": 0
+                    },
+                    {
                         "id": "licenciatura",
-                        "valor": 10
+                        "valor": 0
                     }
                 ]
             },
@@ -8915,8 +8973,12 @@
                 "titulares": "2",
                 "resultados": [
                     {
+                        "id": "humanidades",
+                        "valor": 4
+                    },
+                    {
                         "id": "licenciatura",
-                        "valor": 10
+                        "valor": 40
                     }
                 ]
             },
@@ -8924,8 +8986,12 @@
                 "titulares": "3",
                 "resultados": [
                     {
-                        "id": "licenciatura",
+                        "id": "humanidades",
                         "valor": 10
+                    },
+                    {
+                        "id": "licenciatura",
+                        "valor": 100
                     }
                 ]
             }
@@ -8941,12 +9007,16 @@
                 "titulares": "1",
                 "resultados": [
                     {
+                        "id": "humanidades",
+                        "valor": 0
+                    },
+                    {
                         "id": "derecho",
-                        "valor": 1
+                        "valor": 0
                     },
                     {
                         "id": "licenciatura",
-                        "valor": 10
+                        "valor": 0
                     }
                 ]
             },
@@ -8954,12 +9024,16 @@
                 "titulares": "2",
                 "resultados": [
                     {
+                        "id": "humanidades",
+                        "valor": 10
+                    },
+                    {
                         "id": "derecho",
-                        "valor": 1
+                        "valor": 5
                     },
                     {
                         "id": "licenciatura",
-                        "valor": 10
+                        "valor": 50
                     }
                 ]
             },
@@ -8967,12 +9041,16 @@
                 "titulares": "3",
                 "resultados": [
                     {
+                        "id": "humanidades",
+                        "valor": 20
+                    },
+                    {
                         "id": "derecho",
-                        "valor": 1
+                        "valor": 10
                     },
                     {
                         "id": "licenciatura",
-                        "valor": 10
+                        "valor": 100
                     }
                 ]
             }
@@ -8988,8 +9066,12 @@
                 "titulares": "1",
                 "resultados": [
                     {
+                        "id": "humanidades",
+                        "valor": 0
+                    },
+                    {
                         "id": "licenciatura",
-                        "valor": 10
+                        "valor": 0
                     }
                 ]
             },
@@ -8997,8 +9079,12 @@
                 "titulares": "2",
                 "resultados": [
                     {
+                        "id": "humanidades",
+                        "valor": 15
+                    },
+                    {
                         "id": "licenciatura",
-                        "valor": 10
+                        "valor": 50
                     }
                 ]
             },
@@ -9006,8 +9092,12 @@
                 "titulares": "3",
                 "resultados": [
                     {
+                        "id": "humanidades",
+                        "valor": 30
+                    },
+                    {
                         "id": "licenciatura",
-                        "valor": 10
+                        "valor": 100
                     }
                 ]
             }

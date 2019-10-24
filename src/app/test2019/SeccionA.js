@@ -1,25 +1,37 @@
 import React, { Component } from "react";
-import Navegador from "../componentes/Navegador/Navegador";
+import Navegador, {
+  Pantalla,
+  Continuar
+} from "../componentes/Navegador/Navegador";
 import { TLikertPregunta } from "../plantillas/template-likert/TLikertPregunta";
 
 export class SeccionA extends Component {
   constructor() {
     super();
+    this.views = [];
+  }
+
+  componentDidMount() {
+    for (let index = 0; index < 160; index++) {
+      this.views.push(<TLikertPregunta uid={index + 1}></TLikertPregunta>);
+    }
+    this.setState({});
   }
 
   render() {
-    let views = [];
-    for (let index = 0; index < 160; index++) {
-        views.push(<TLikertPregunta uid={index+1}></TLikertPregunta>);
-        
-    }
-    return (
-      <Navegador>
-          {React.Children.map(views, (view)=>{
-              return view;
+    let ver;
+    if (this.views.length <= 0) {
+      ver = <div>Espera</div>;
+    } else {
+      ver = (
+        <Navegador>
+          {React.Children.map(this.views, view => {
+            return view;
           })}
-        
-      </Navegador>
-    );
+        </Navegador>
+      );
+    }
+
+    return ver;
   }
 }
