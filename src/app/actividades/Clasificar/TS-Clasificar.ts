@@ -2,6 +2,7 @@ import { Interaccion } from '../../configuraciones/main';
 
 import $ from "jquery";
 import 'jquery-ui-bundle';
+import { Almacen } from './Clasificar';
 
 interface ElementoClacificable {
     clasificado: boolean;
@@ -82,20 +83,26 @@ class Clasificar_elemento_item implements ElementoClacificable {
 
     constructor(elemento: HTMLElement, categoria: string) {
         this.elemento = document.createElement('div');
-        let img = document.createElement('img');
+
         this.categoria = categoria;
 
 
 
         this.validado = true;
         this.elemento = elemento;
-        img.className = "recurso";
+
 
         this.elemento.addEventListener("mousedown", () => {
             if (this.padre != null) {
+                this.elemento.style.zIndex = "100";
                 this.padre.seleccion = this;
             }
         });
+
+        this.elemento.addEventListener("mouseup", () => {
+            this.elemento.style.zIndex = "0";
+        });
+
         this.acerto = 0;
         this.fallos = 0;
         this.intentos = 0;
@@ -107,43 +114,43 @@ class Clasificar_elemento_item implements ElementoClacificable {
     }
 }
 
-interface ConfigAlmacen {
-    capacidad: number;
-    nombre: string;
-    tipo:string;
-}
 
 class Almacenamiento {
     categoria: string;
-    contenedor: any;
+    contenedor: JQuery;
     elementos: Array<ElementoClacificable>;
     acciones: Function;
-    propiedades: ConfigAlmacen;
+    nombre: string;
     padre: AClasificar;
     accept: string;
+    capacidad: number;
+    almacen: Almacen;
 
-    constructor(categoria: string,
-        contenedor: any, acciones: Function, props: ConfigAlmacen, padre: AClasificar, div: string) {
-        this.accept = div;
-        this.padre = padre;
-        this.categoria = categoria;
-        this.contenedor = contenedor;
+    constructor(almacen: Almacen, clasificar: AClasificar) {
+        this.almacen = almacen;
+        this.accept = almacen.idType;
+        this.padre = clasificar;
+        this.categoria = almacen.tipo;
+        this.contenedor = $("." + almacen.idClass);
+
         this.elementos = [];
-        this.acciones = acciones;
-        this.propiedades = props;
+        this.capacidad = almacen.capacidad;
+        this.nombre = almacen.nombre;
+        this.acciones = almacen.accion;
         this.almacenar();
     }
 
     almacenar() {
-      
+
         this.contenedor.droppable({
-            accept: ("." + this.propiedades.tipo),
+            accept: ("." + this.categoria),
             drop: (event: any, ui: any) => {
-                if (this.propiedades.capacidad > 0) {
-                    this.propiedades.capacidad--;
+                if (this.capacidad > 0) {
+                    this.capacidad--;
+
                     this.deleteImage(ui.draggable, this.contenedor, this.acciones);
 
-                    if (this.propiedades.capacidad <= 0) {
+                    if (this.capacidad <= 0) {
                         this.contenedor.droppable("option", "disabled", true);
                     }
                 }
@@ -170,7 +177,7 @@ class Almacenamiento {
                             this.padre.seleccion.contenedor.elementos.splice(indiceDelete, 1);
                         }
 
-                        this.padre.seleccion.contenedor.propiedades.capacidad++;
+                        this.padre.seleccion.contenedor.capacidad++;
                         this.padre.seleccion.contenedor.contenedor.droppable("option", "disabled", false);
                     }
                 }
@@ -217,7 +224,7 @@ class Almacenamiento {
                 this.padre.doIntento();
                 this.padre.propiedades.intentos++;
 
-                accion(this.padre.seleccion.elemento);
+                this.almacen.accion(this.padre.seleccion.elemento);
 
                 /*
                 if (this.resetear != null) {
@@ -238,7 +245,7 @@ class Almacenamiento {
         });
     }
 }
-export class AClasificar extends Interaccion {
+export default class AClasificar extends Interaccion {
 
     almacenes: Array<Almacenamiento>;
     elementos: Array<ElementoClacificable>;
@@ -342,8 +349,8 @@ export class AClasificar extends Interaccion {
                 categorias.push(e.categoria);
             });
             informacion.push({
-                categoria: almacen.propiedades.nombre,
-                capacidad: almacen.propiedades.capacidad,
+                categoria: almacen.nombre,
+                capacidad: almacen.capacidad,
                 almacenados: categorias
             });
         })
@@ -367,14 +374,14 @@ export class AClasificar extends Interaccion {
 
     }
 
-    almacenaje(lugares: Array<string>, div: string, acciones: Array<Function>, props: Array<any>) {
+    almacenaje(alamcenes: Almacen[], allow: string) {
 
-        lugares.forEach((element, i) => {
-            let con = $(element);
+        /* lugares: Array<string>, div: string, acciones: Array<Function>, props: Array<any> */
 
-            let almacen = new Almacenamiento(element, con, acciones[i], props[i], this, div);
+        alamcenes.forEach((refAlmacen, i) => {
+            //element, con, acciones[i], props[i], this, div
+            let almacen = new Almacenamiento(refAlmacen, this);
             this.almacenes.push(almacen);
-
         });
 
     }

@@ -10,6 +10,7 @@ import { ViewUsuario } from "./analisis/datosUsuario";
 import { Pruebas } from "./paginas/pruebas";
 import { Descargar } from "./paginas/Descargar/Descargar";
 import { SeccionA } from "./test2019/SeccionA";
+import { SeccionB } from "./test2019/SeccionB";
 
 
 
@@ -28,11 +29,12 @@ export class Router extends React.Component {
           <Route path="/matematicas" component={Matematicas} />
           <Route path="/datos_usuario" component={ViewUsuario} />
           <Route path="/verregistro" component={Viewregistro} />
-          <Route exact path="/pruebas" component={Pruebas} />
           <Route exact path="/descargar" component={Descargar} />
 
+          <Route exact path="/pruebas" component={Pruebas} />
 
           <Route exact path="/seccion" component={SeccionA} />
+          <Route exact path="/seccionb" component={SeccionB} />
         </Switch>
       </BrowserRouter>
     );

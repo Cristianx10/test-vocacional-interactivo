@@ -1,5 +1,4 @@
-import { resultados, resultados2, Resultados } from './resultados';
-import { UID } from 'createjs-module';
+import { Resultados } from './resultados';
 
 var nPrueba = 0;
 export class UnificarResultados {

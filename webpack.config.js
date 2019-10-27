@@ -9,7 +9,7 @@ module.exports = {
     filename: "bundle.js"
   },
   resolve: {
-    extensions: [".js", ".ts"],
+    extensions: ['.js', '.jsx', '.ts', '.tsx' ],
     alias: {
       // bind version of jquery-ui
       "jquery-ui": "jquery-ui/jquery-ui.js",

@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import Navegador, { Pantalla } from "../componentes/Navegador/Navegador";
+import Navegador from "../componentes/Navegador/Navegador";
 import Contenedor from "../componentes/Contenedor/Contenedor";
-import { Clasificar, Almacen, Zona } from "../actividades/Clasificar/Clasificar";
+import Clasificar, { Almacen, Zona } from "../actividades/Clasificar/Clasificar";
+import Pantalla from "../componentes/Pantalla/Pantalla";
 
 export class Pruebas extends Component {
   render() {
@@ -42,10 +43,10 @@ export class Pruebas extends Component {
                   <Almacen tipo="as" pos="100px 100px" id="cabello"></Almacen>
                 </Contenedor>
                 <Contenedor width="30%">
-                  <Almacen tipo="asd" id="ojos"></Almacen>
+                  <Almacen tipo="as" id="ojos"></Almacen>
                 </Contenedor>
                 <Contenedor width="30%">
-                  <Zona tipo="as" pos="10px 10px" categoria="cabello">
+                  <Zona tipo="as" pos="10px 10px">
                     <img
                       className="ima__opcion"
                       src="/img/arte/fragmentoA.png"
@@ -66,7 +67,7 @@ export class Pruebas extends Component {
                       alt=""
                     />
                   </Zona>
-                  <Zona tipo="asd">
+                  <Zona tipo="as">
                     <img
                       className="ima__opcion"
                       src="/img/arte/fragmentoD.png"

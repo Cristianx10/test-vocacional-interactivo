@@ -5,14 +5,14 @@ import Navegador, {
 } from "../componentes/Navegador/Navegador";
 import { TLikertPregunta } from "../plantillas/template-likert/TLikertPregunta";
 
-export class SeccionA extends Component {
+export class SeccioA extends Component {
   constructor() {
     super();
     this.views = [];
   }
 
   componentDidMount() {
-    for (let index = 0; index < 160; index++) {
+    for (let index = 0; index < 3; index++) {
       this.views.push(<TLikertPregunta uid={index + 1}></TLikertPregunta>);
     }
     this.setState({});

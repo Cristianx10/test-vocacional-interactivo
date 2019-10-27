@@ -1,9 +1,13 @@
-import { UID } from 'createjs-module';
+export interface IORestulados {
+    tipoId: string;
+    propiedades: any;
+    registro: GResultados;
+}
 
-
-interface ResultadoA {
-    area: string;
-    valor: number;
+export interface IOORestulados {
+    tipoId: string;
+    propiedades: any;
+    registro: OResultado;
 }
 
 export class Resultados {
@@ -64,7 +68,7 @@ export class Resultados {
         objeto.registro.setUID(UID);
     }
 
-    agregar(objeto: any) {
+    agregar(objeto: any): GResultados {
         /*
                 let refObject = new GResultados(objeto);
                 if (this.pruebas) {
@@ -72,7 +76,7 @@ export class Resultados {
                 }
                 */
 
-        let refObject = null;
+        let refObject:any = null;
         if (this.pruebas) {
             let encontro = false;
             this.pruebas.forEach((p) => {
@@ -234,7 +238,7 @@ export class Resultados {
             blob = new Blob([text], { type: 'text/plain' }),
             anchor = document.createElement('a');
 
-        anchor.download = nombre +".json";
+        anchor.download = nombre + ".json";
         anchor.href = (/*window.webkitURL ||*/ window.URL).createObjectURL(blob);
         anchor.dataset.downloadurl = ['text/plain', anchor.download, anchor.href].join(':');
         anchor.click();
@@ -347,13 +351,18 @@ export class GResultados {
 
     agregarCondicion(id: string, accion: Function, descripcion: string, valorMaximo: Array<ICategoria>, objeto: any) {
 
+        let valueMaximos: Array<ICategoria> = [];
         valorMaximo.forEach((v) => {
             v.id = v.id.toLowerCase();
             v.valor = parseInt(v.valor + "");
+
+            if(v.valor != 0){
+                valueMaximos.push(v);
+            }
         });
 
         let valores: Array<ICategoria> = [];
-        valorMaximo.forEach((v) => {
+        valueMaximos.forEach((v) => {
             valores.push(Object.assign({}, v));
         });
 
@@ -366,7 +375,7 @@ export class GResultados {
         opcion.id = id;
         opcion.accion = accion;
         opcion.descripcion = descripcion;
-        opcion.valorMaximo = valorMaximo;
+        opcion.valorMaximo = valueMaximos;
         opcion.valor = valores;
 
         this.opciones.push(opcion);
@@ -474,7 +483,7 @@ export class GResultados {
 }
 
 
-class OResultado {
+export class OResultado {
     id: string;
     propiedades: any;
 
@@ -538,9 +547,16 @@ class OResultado {
 
         this.valor = valor;
 
+        let valueMaximos:ICategoria[] = [];
         this.valor.forEach((v) => {
             v.id = v.id.toLowerCase();
+            v.valor = parseInt(v.valor + "");
+
+            if(v.valor != 0){
+                valueMaximos.push(v);
+            }
         });
+        this.valor = valueMaximos;
 
         let valores: Array<ICategoria> = [];
         this.valor.forEach((v) => {
