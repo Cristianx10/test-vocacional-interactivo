@@ -1,7 +1,7 @@
 import { Interaccion } from '../../configuraciones/main';
 
 
-export class Tablero_tarjetas extends Interaccion {
+export default class Tablero_tarjetas extends Interaccion {
 
     fichas: Array<Pareja>;
     tarjetas: Array<HTMLElement>;
@@ -31,7 +31,7 @@ export class Tablero_tarjetas extends Interaccion {
 
     agregar(url: string, orden: number, url2: string, orden2: number) {
 
-        this.propiedades.total+= 2;
+        this.propiedades.total += 2;
         this.posiciones.push(orden);
 
 
@@ -148,7 +148,7 @@ class Bloque {
                     } else {
                         this.mostrar();
 
-                        
+
 
                         if (tem__tablero.bloqueActual != null) {
 

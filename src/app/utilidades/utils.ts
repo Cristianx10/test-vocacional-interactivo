@@ -117,22 +117,26 @@ export function hsvToRgb(h: any, s: any, v: any) {
 export function pantallaToImg(etiqueta: any, cargado: Function, navegador: Navegador) {
 
     html2canvas(etiqueta, {
-        scale: .4,
 
     }
     ).then((canvas: any) => {
         // document.body.appendChild(canvas);
+
+        let time = new Date();
+        let ruta = `_${time.getDay().toString()}_${time.getHours().toString()}_${time.getMinutes().toString()}_${time.getSeconds().toString()}_${time.getMilliseconds().toString()}`
+        let rutaComplete = "test_resource" + ruta + ".png"
+
+
         var image = canvas.toDataURL('image/png');
-        cargado(image);
+        cargado("/data_resource/" + rutaComplete);
         navegador.impresionPantallaCompletada();
         resultados.save();
 
-        /*
-                var link = document.createElement("a");
-                link.href = image;
-                link.download = "screenshot.png";
-        
-                link.click();*/
+        var link = document.createElement("a");
+        link.href = image;
+        link.download = rutaComplete;
+
+        link.click();
     });
 }
 
@@ -146,20 +150,20 @@ export class ControlEvent {
 
 
     add(accion: Function) {
-        this.acciones.push({accion:accion, ejecucion:false});
+        this.acciones.push({ accion: accion, ejecucion: false });
         this.ejecutar();
     }
 
     ejecutar() {
-     
-        if(this.acciones.length > 0){
-            if(this.acciones[0].ejecucion === false){
+
+        if (this.acciones.length > 0) {
+            if (this.acciones[0].ejecucion === false) {
                 this.acciones[0].ejecucion = true;
                 this.acciones[0].accion();
                 this.ejecutar();
                 this.acciones.splice(0, 1);
             }
         }
-       
+
     }
 }

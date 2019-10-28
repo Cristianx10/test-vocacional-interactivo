@@ -6,17 +6,11 @@ function raizN(x: number, n: number) {
     return Math.exp(Math.log(x) / n);
 }
 
-interface Coordenada {
+export interface Coordenada {
     x: number;
     y: number;
 }
 
-interface CoordenadaP {
-    x: number;
-    y: number;
-    posx: number;
-    posy: number;
-}
 
 
 export class SalaCirugia extends Actividad {
@@ -25,11 +19,15 @@ export class SalaCirugia extends Actividad {
     bisturi?: createjs.Bitmap;
     cortes: Array<CorteLinea>;
 
+
     constructor() {
         super();
 
-        if (this.registro)
+        if (this.registro) {
             this.registro.setId("Cortes");
+        }
+
+        this.propiedades.cortes = [];
 
         this.cortando = false;
         this.canvas.width = 1000;
@@ -91,9 +89,16 @@ export class SalaCirugia extends Actividad {
         this.stage.addChild(corte.linea);
     }
 
+    agregarCurvaIzquierda(coordenadaA: Coordenada, coordenadaB: Coordenada, frecuencia: number) {
+        let corte = new CorteLinea(this, frecuencia);
+        corte.trazadoCurvaDerecha(coordenadaA, coordenadaB);
+        this.cortes.push(corte);
+        this.stage.addChild(corte.linea);
+    }
+
     agregarCurvaDerecha(coordenadaA: Coordenada, coordenadaB: Coordenada, frecuencia: number) {
         let corte = new CorteLinea(this, frecuencia);
-        corte.trazadoCurvaIzquierda(coordenadaA, coordenadaB);
+        corte.trazadoCurvaDerecha(coordenadaA, coordenadaB);
         this.cortes.push(corte);
         this.stage.addChild(corte.linea);
     }
@@ -112,6 +117,8 @@ export class CorteLinea {
     dis: number;
     color = "#EF3838";
 
+    propiedades: any;
+
     // puntos:Array<>;
 
     constructor(lienzo: SalaCirugia, dis: number) {
@@ -120,6 +127,11 @@ export class CorteLinea {
         this.lienzo = lienzo;
         this.registrando = false;
         this.historial = [];
+
+        this.propiedades = {};
+        this.propiedades.desviacion = 0;
+
+        this.lienzo.propiedades.cortes.push(this.propiedades);
 
 
         this.linea = new createjs.Shape();
@@ -132,7 +144,9 @@ export class CorteLinea {
 
         lienzo.stage.on("stagemouseup", () => {
             if (this.registrando) {
-                console.log("Des" + this.getDesviacion());
+                this.propiedades.desviacion = this.getDesviacion();
+                lienzo.doIntento();
+                console.log("Desviacion: " + this.propiedades.desviacion);
             }
             this.registrando = false;
             this.lienzo.cortando = false;

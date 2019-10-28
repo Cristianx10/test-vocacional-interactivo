@@ -5,6 +5,7 @@ import Contenedor from "../componentes/Contenedor/Contenedor";
 import Continuar from "../componentes/Continuar/Continuar";
 import RelojContador from "../componentes/Navegador/RelojContador";
 import { IPropClasificar } from '../actividades/Clasificar/Clasificar';
+import Cortes from '../actividades/Cortes/Cortes';
 import Clasificar, {
   Almacen,
   Zona, IActionClasificar
@@ -114,6 +115,11 @@ export class SeccionB extends Component {
   render() {
     return (
       <Navegador>
+
+        <Pantalla>
+          <Cortes fondo="/img/cortes/CuerpoB.png" />
+        </Pantalla>
+
         <Pantalla fondo="lightblue">
           <Contenedor height="80%"></Contenedor>
           <Contenedor height="20%" width="100%">

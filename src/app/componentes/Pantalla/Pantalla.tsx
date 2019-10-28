@@ -1,4 +1,4 @@
-import React, { Component, ReactChild } from 'react';
+import React, { Component, ReactChild, ReactNode } from 'react';
 import Timer from '../../utilidades/timer';
 import Navegador from '../Navegador/Navegador';
 import NavegadorContext from '../../comunicacion/NavegadorContext';
@@ -16,7 +16,7 @@ interface IETitular {
 interface IPropsPantalla {
     fondo?: string;
     imagen?: string;
-    children?: Array<ReactChild>;
+    children?: Array<ReactChild> | ReactChild;
     time?: string | number;
     onInicial?: Function;
     onFinal?: Function;

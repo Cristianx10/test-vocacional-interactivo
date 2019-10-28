@@ -8,6 +8,7 @@ import Names from "../comunicacion/Names";
 import { ViewComparadorCategoiras } from "../analisis/ViewCompatorCategorias";
 import { ViewARelacion } from "../analisis/ViewARelacion";
 import { ViewATarjetas } from "../analisis/ViewATarjetas";
+import { ViewAClasificar } from "../analisis/ViewClasificar";
 
 export class Viewregistro extends Component {
   constructor() {
@@ -91,6 +92,9 @@ export class Viewregistro extends Component {
       } else if (id === "Tarjetas__relacion") {
         viewTitulo = <h2>Tarjetas escondidas</h2>;
         viewPrueba = <ViewATarjetas prueba={prueba} />;
+      } else if (id === "Clasificacion") {
+        viewTitulo = <h2>Clasificacion</h2>;
+        viewPrueba = <ViewAClasificar prueba={prueba} />;
       }
 
       view = (

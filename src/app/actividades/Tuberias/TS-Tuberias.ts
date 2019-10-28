@@ -167,7 +167,7 @@ class Casilla {
     }
 }
 
-export class APizarra extends Interaccion{
+export default class APizarra extends Interaccion{
 
     casillas: Array<Casilla>;
     inicial?: Casilla;
@@ -343,7 +343,3 @@ export class APizarra extends Interaccion{
 
 
 }
-
-
-
-export default APizarra;

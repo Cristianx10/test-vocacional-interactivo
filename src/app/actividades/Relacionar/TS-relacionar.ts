@@ -4,7 +4,7 @@ import * as createjs from 'createjs-module';
 
 
 
-export class ARelacionar extends Actividad {
+export default class ARelacionar extends Actividad {
     baseA: ARelacionar_base;
     baseB: ARelacionar_base;
     seleccion?: Tablero_Categoria;
