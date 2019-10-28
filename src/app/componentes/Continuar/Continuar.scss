@@ -1,0 +1,22 @@
+
+.boton__navegacion {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn__nav {
+    background: #FFFF00;
+    border: 1px solid #FFFF00;
+    color: #020963;
+    width: 200px;
+    height: 60px;
+}
+
+.btn__nav:disabled {
+    background: #ffffff00;
+    color: #d43e66;
+    cursor: no-drop;
+
+}

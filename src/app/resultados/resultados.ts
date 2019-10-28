@@ -206,6 +206,10 @@ export class Resultados {
         return opcion;
     }
 
+    setMultiple(objeto:any, multple: boolean){
+        objeto.registro.setMultiple(multple);
+    }
+
     setId(objeto: any, id: string) {
         //console.log(objeto.registro)
         objeto.registro.id = id;
@@ -486,7 +490,6 @@ export class GResultados {
 export class OResultado {
     id: string;
     propiedades: any;
-
     accion?: Function;
     descripcion: string;
     valorMaximo: Array<ICategoria>;
@@ -572,11 +575,14 @@ export class OResultado {
         if (this.accion) {
             val = this.accion(this.propiedades, this);
         }
+        /*
         if (val === false) {
             return val;
         } else {
             return val;
         }
+        */
+       return val
     }
 }
 

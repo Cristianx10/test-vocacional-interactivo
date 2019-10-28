@@ -59,7 +59,7 @@ export class RelojContador extends Component<IPropsRelojContador> implements ION
         m = "0" + minutos;
       }
 
-      let viewTiempo:any = this.refs.tiempo;
+      let viewTiempo: any = this.refs.tiempo;
       if (viewTiempo) {
         viewTiempo.innerHTML = `${m}:${s}`;
       }
@@ -79,12 +79,13 @@ export class RelojContador extends Component<IPropsRelojContador> implements ION
 
         if (this.pantalla.props.time != null) {
           let segundos = this.pantalla.props.time;
+          let seconds = parseInt(segundos + "");
           let s: string | number = 0;
           let m: string | number = 0;
 
           if (segundos > 60) {
-            m = parseInt(segundos / 60 + "", 10);
-            s = segundos % 60;
+            m = parseInt(seconds / 60 + "", 10);
+            s = seconds % 60;
           } else {
             s = segundos;
           }

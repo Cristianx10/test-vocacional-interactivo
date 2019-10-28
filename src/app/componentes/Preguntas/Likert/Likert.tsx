@@ -45,6 +45,21 @@ interface IPropsLikert {
     min: string;
     max: string;
     children: ReactChild[];
+
+    /* Clases de ManagerStyle */
+    style?: Object;
+    className?: string;
+    grid?: string;
+    on?: boolean;
+    width?: string;
+    height?: string;
+    padding?: string;
+    left?: string;
+    top?: string;
+    pos?: string;
+    image?: string;
+    orientacion?: string;
+    align?: string;
 }
 
 interface IStateLikert {

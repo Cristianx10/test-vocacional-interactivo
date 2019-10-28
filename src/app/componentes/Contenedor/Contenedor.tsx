@@ -9,16 +9,30 @@ import { contenedorContext } from '../../comunicacion/ContenedorContext';
 import ContenedorContext from '../../comunicacion/ContenedorContext';
 
 interface IPropsContenedor {
-  grid?:string;
-  allType?:string;
-  on?:boolean;
+  allType?: string;
+
+
+  /* Clases de ManagerStyle */
+  style?: Object;
+  className?: string;
+  grid?: string;
+  on?: boolean;
+  width?: string;
+  height?: string;
+  padding?: string;
+  left?: string;
+  top?: string;
+  pos?: string;
+  image?: string;
+  orientacion?: string;
+  align?: string;
 }
 
 /* Clase encargada de la navegación entre actividades*/
 export class Contenedor extends Component<IPropsContenedor> {
 
   style: ManagerStyle;
-  contenedorContext:contenedorContext;
+  contenedorContext: contenedorContext;
 
   constructor(props: IPropsContenedor) {
     super(props);
@@ -26,7 +40,7 @@ export class Contenedor extends Component<IPropsContenedor> {
     this.contenedorContext = ContenedorContext;
     this.contenedorContext.setContenedor(this);
 
-    this.style = new ManagerStyle(props, "contenedor center");
+    this.style = new ManagerStyle(props, "contenedor center", true);
 
   }
 

@@ -14,6 +14,21 @@ import Pantalla from '../Pantalla/Pantalla';
 
 export interface IPropsNavegador {
   children: Array<ReactChild>;
+
+  /* Clases de ManagerStyle */
+  style?: Object;
+  className?: string;
+  grid?: string;
+  on?: boolean;
+  width?: string;
+  height?: string;
+  padding?: string;
+  left?: string;
+  top?: string;
+  pos?: string;
+  image?: string;
+  orientacion?: string;
+  align?: string;
 }
 
 /* Clase encargada de la navegación entre actividades*/
@@ -40,6 +55,10 @@ export class Navegador extends Component<IPropsNavegador> {
     document.addEventListener("keypress", e => {
       if (e.key === "a" || e.key === "A") {
         this.atras();
+      }
+
+      if (e.key === "s" || e.key === "S") {
+        this.continuar();
       }
 
       if (e.key === "q" || e.key === "Q") {

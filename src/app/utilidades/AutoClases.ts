@@ -2,6 +2,24 @@ import { IPropsNavegador } from '../componentes/Navegador/Navegador';
 import { StandardProperties } from 'csstype';
 import Navegador from '../componentes/Navegador/Navegador';
 
+export interface IManagerStyle {
+
+  /* Clases de ManagerStyle */
+  style?: Object;
+  className?: string;
+  grid?: string;
+  on?: boolean;
+  width?: string;
+  height?: string;
+  padding?: string;
+  left?: string;
+  top?: string;
+  pos?: string;
+  image?: string;
+  orientacion?: string;
+  align?: string;
+}
+
 export class ManagerStyle {
 
   className: string;
@@ -12,7 +30,7 @@ export class ManagerStyle {
   initStyle: boolean;
   navegador?: Navegador;
 
-  constructor(props: StandardProperties | any, nombre: string, initStyle?: boolean, style?:StandardProperties) {
+  constructor(props: StandardProperties | any, nombre: string, initStyle?: boolean, style?: StandardProperties) {
     this.props = props;
     this.className = nombre;
     this.style = {};
@@ -22,7 +40,7 @@ export class ManagerStyle {
     } else {
       this.initStyle = false;
     }
-    if(style){
+    if (style) {
       this.style = style;
     }
   }
@@ -85,7 +103,12 @@ export class ManagerStyle {
 
       if (this.navegador) {
         if (this.props.fondo != null) {
-          this.style.backgroundImage = "url('" + this.props.fondo + "')";
+          let fondo = this.props.fondo + "";
+          if (fondo.includes("/")) {
+            this.style.backgroundImage = "url('" + this.props.fondo + "')";
+          } else {
+            this.style.background = this.props.fondo;
+          }
         }
       }
 
@@ -141,6 +164,7 @@ export class ManagerStyle {
   update() {
     if (this.contenedor != null) {
       this.contenedor.style.backgroundImage = this.style.backgroundImage + "";
+      this.contenedor.style.background = this.style.background + "";
     }
   }
 
@@ -161,7 +185,18 @@ export class ManagerStyle {
     }
   }
 
-  setStyle(propiedad: string, value: any) {
+  setStyle(propiedad: string, value: string) {
+
+    if (propiedad === "fondo") {
+      let fondo = value + "";
+      if (fondo.includes("/")) {
+        this.style.backgroundImage = "url('" + value + "')";
+      } else {
+        this.style.background = value;
+      }
+    }
+
+
     if (propiedad === "backgroundImage") {
       this.style.backgroundImage = value;
     }

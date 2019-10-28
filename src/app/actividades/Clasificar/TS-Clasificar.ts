@@ -2,8 +2,8 @@ import { Interaccion } from '../../configuraciones/main';
 
 import $ from "jquery";
 import 'jquery-ui-bundle';
-import { Almacen } from './Clasificar';
-
+import { Almacen, Zona } from './Clasificar';
+/*
 interface ElementoClacificable {
     clasificado: boolean;
     categoria: string;
@@ -16,7 +16,7 @@ interface ElementoClacificable {
 
     padre?: AClasificar;
 }
-
+/*
 class Clasificar_elemento implements ElementoClacificable {
     elemento: HTMLElement;
     validado: boolean;
@@ -65,8 +65,8 @@ class Clasificar_elemento implements ElementoClacificable {
         this.clasificado = true;
     }
 }
-
-class Clasificar_elemento_item implements ElementoClacificable {
+*/
+class Clasificar_elemento {
 
     elemento: HTMLElement;
     validado: boolean;
@@ -80,17 +80,17 @@ class Clasificar_elemento_item implements ElementoClacificable {
     intentos: number;
 
 
+    actionresetStyle?: Function;
+
+
 
     constructor(elemento: HTMLElement, categoria: string) {
         this.elemento = document.createElement('div');
 
         this.categoria = categoria;
 
-
-
         this.validado = true;
         this.elemento = elemento;
-
 
         this.elemento.addEventListener("mousedown", () => {
             if (this.padre != null) {
@@ -112,13 +112,24 @@ class Clasificar_elemento_item implements ElementoClacificable {
     validar() {
         this.clasificado = true;
     }
+
+    resetStyle() {
+        if (this.actionresetStyle) {
+            this.actionresetStyle(this.elemento);
+        }
+    }
+
+    setResetStyle(actionresetStyle: Function) {
+        this.actionresetStyle = actionresetStyle;
+    }
+
 }
 
 
 class Almacenamiento {
     categoria: string;
     contenedor: JQuery;
-    elementos: Array<ElementoClacificable>;
+    elementos: Array<Clasificar_elemento>;
     acciones: Function;
     nombre: string;
     padre: AClasificar;
@@ -138,6 +149,12 @@ class Almacenamiento {
         this.nombre = almacen.nombre;
         this.acciones = almacen.accion;
         this.almacenar();
+    }
+
+    resetStyle() {
+        if (this.almacen.style.contenedor) {
+            this.acciones(this.almacen.style.contenedor);
+        }
     }
 
     almacenar() {
@@ -224,7 +241,10 @@ class Almacenamiento {
                 this.padre.doIntento();
                 this.padre.propiedades.intentos++;
 
-                this.almacen.accion(this.padre.seleccion.elemento);
+
+                this.almacen.accion();
+                this.padre.seleccion.resetStyle();
+
 
                 /*
                 if (this.resetear != null) {
@@ -248,8 +268,8 @@ class Almacenamiento {
 export default class AClasificar extends Interaccion {
 
     almacenes: Array<Almacenamiento>;
-    elementos: Array<ElementoClacificable>;
-    seleccion?: ElementoClacificable;
+    elementos: Array<Clasificar_elemento>;
+    seleccion?: Clasificar_elemento;
     resetear?: Function;
     zona = "";
     clasificados = 0;
@@ -274,7 +294,7 @@ export default class AClasificar extends Interaccion {
 
     }
 
-    agregarImagen(elemento: ElementoClacificable) {
+    agregarImagen(elemento: Clasificar_elemento) {
 
         elemento.padre = this;
         this.elementos.push(elemento);
@@ -300,9 +320,19 @@ export default class AClasificar extends Interaccion {
         });
     }
 
+    agregarElemento(zona: Zona) {
+        if (zona.style.contenedor) {
+            let element = new Clasificar_elemento(zona.style.contenedor, zona.props.categoria);
+            element.padre = this;
+            element.setResetStyle(zona.reset.bind(zona));
+            this.elementos.push(element);
+        }
+
+        //this.elemento.append(element.elemento);
+    }
 
     agregar(elemento: HTMLElement, categoria: string) {
-        let element = new Clasificar_elemento_item(elemento, categoria);
+        let element = new Clasificar_elemento(elemento, categoria);
         element.padre = this;
         this.elementos.push(element);
         //this.elemento.append(element.elemento);
@@ -349,7 +379,7 @@ export default class AClasificar extends Interaccion {
                 categorias.push(e.categoria);
             });
             informacion.push({
-                categoria: almacen.nombre,
+                categoria: almacen.categoria,
                 capacidad: almacen.capacidad,
                 almacenados: categorias
             });

@@ -3,10 +3,26 @@ import Pantalla from '../Pantalla/Pantalla';
 import NavegadorContext from '../../comunicacion/NavegadorContext';
 import ManagerStyle from '../../utilidades/AutoClases';
 import Navegador from "../Navegador/Navegador";
+import './Continuar.scss';
 
 interface IProsContinuar {
-    children: ReactChild;
+    children?: ReactChild;
     disabled?: boolean;
+
+    /* Clases de ManagerStyle */
+    style?: Object;
+    className?: string;
+    grid?: string;
+    on?: boolean;
+    width?: string;
+    height?: string;
+    padding?: string;
+    left?: string;
+    top?: string;
+    pos?: string;
+    image?: string;
+    orientacion?: string;
+    align?: string;
 }
 
 interface IStateContinuar {

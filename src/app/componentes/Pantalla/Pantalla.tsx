@@ -14,12 +14,27 @@ interface IETitular {
 }
 
 interface IPropsPantalla {
-    fondo: string;
-    imagen:string;
-    children: Array<ReactChild>;
-    time?: number;
-    onInicial: Function;
-    onFinal: Function;
+    fondo?: string;
+    imagen?: string;
+    children?: Array<ReactChild>;
+    time?: string | number;
+    onInicial?: Function;
+    onFinal?: Function;
+
+    /* Clases de ManagerStyle */
+    style?: Object;
+    className?: string;
+    grid?: string;
+    on?: boolean;
+    width?: string;
+    height?: string;
+    padding?: string;
+    left?: string;
+    top?: string;
+    pos?: string;
+    image?: string;
+    orientacion?: string;
+    align?: string;
 }
 
 /* Clase encargada de almacenar cada una de las actividades*/
@@ -84,7 +99,8 @@ export class Pantalla extends Component<IPropsPantalla> {
             console.log("Inicio la aplicacion");
 
             if (this.props.time) {
-                this.timer.iniciarEn(this.props.time);
+                let seconds = parseInt(this.props.time + "");
+                this.timer.iniciarEn(seconds);
                 this.timer.temporizador();
             } else {
                 this.timer.iniciar();
@@ -102,7 +118,7 @@ export class Pantalla extends Component<IPropsPantalla> {
 
     onChange() {
         if (this.navegador && this.props.fondo) {
-            this.navegador.style.setStyle("backgroundImage", "url(" + this.props.fondo + ")");
+            this.navegador.style.setStyle("fondo", this.props.fondo);
         }
     }
 
@@ -174,7 +190,6 @@ export class Pantalla extends Component<IPropsPantalla> {
             this.navegador.isImprimiendoPantalla = true;
             pantallaToImg(this.refs.contenedor, capturando, this.navegador);
         }
-
     }
 
     habilitarContinuar() {

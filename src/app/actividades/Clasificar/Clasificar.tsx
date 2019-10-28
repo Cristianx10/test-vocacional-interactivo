@@ -6,14 +6,44 @@ import ActividadContext, { actividadContext } from '../../comunicacion/Actividad
 import NavegadorContext, { navegadorContext } from "../../comunicacion/NavegadorContext";
 import Pantalla from '../../componentes/Pantalla/Pantalla';
 import ManagerStyle from '../../utilidades/AutoClases';
-import { resultados } from '../../resultados/resultados';
+import { resultados, ICategoria } from '../../resultados/resultados';
 
 
 var countClasificacion = 0;
 var countClasificacionAlmacen = 0;
 
 interface IPropsClasificiar {
+  config?: Function;
 
+  /* Clases de ManagerStyle */
+  style?: Object;
+  className?: string;
+  grid?: string;
+  on?: boolean;
+  width?: string;
+  height?: string;
+  padding?: string;
+  left?: string;
+  top?: string;
+  pos?: string;
+  image?: string;
+  orientacion?: string;
+  align?: string;
+}
+
+export interface IActionClasificar {
+  setIntentoAcierto: Function;
+  setIntentoFallo: Function;
+  setValidacion: Function;
+  validar: Function;
+  setMultiple:Function;
+}
+
+export interface IPropClasificar {
+  acierto: number;
+  fallos: number;
+  informacion: Array<{ categoria: string, capacidad: number, almacenados: Array<string> }>;
+  intentos: number;
 }
 
 export default class Clasificar extends Component<IPropsClasificiar> {
@@ -23,6 +53,7 @@ export default class Clasificar extends Component<IPropsClasificiar> {
   almacenes: Almacen[] = [];
   zonas: Zona[] = [];
   propiedades: any;
+  acciones: IActionClasificar;
 
   clasificar: AClasificar;
   pantalla?: Pantalla;
@@ -53,17 +84,42 @@ export default class Clasificar extends Component<IPropsClasificiar> {
       position: "relative"
     });
 
+
+    this.acciones = {
+      setIntentoAcierto: (acciones: Function) => {
+        this.clasificar.setIntentoAcierto(acciones);
+      },
+
+      setIntentoFallo: (acciones: Function) => {
+        this.clasificar.setIntentoFallo(acciones);
+      },
+
+      setValidacion: (acciones: Function) => {
+        this.clasificar.setValidacion(acciones);
+      },
+
+      validar: (id: string, accion: Function, descripcion: string, valorMaximo: Array<ICategoria>) => {
+        this.clasificar.validar(id, accion, descripcion, valorMaximo);
+      },
+
+      setMultiple: (value:boolean) => {
+        resultados.setMultiple(this.clasificar, value);
+      }
+
+    };
+
+
+
   }
 
   componentDidMount() {
     console.log("Logica");
 
-    this.zonas.forEach((zona => {
+    this.zonas.forEach(zona => {
       if (zona.style.contenedor) {
-        this.clasificar.agregar(zona.style.contenedor, zona.props.id);
-
+        this.clasificar.agregarElemento(zona);
       }
-    }));
+    });
 
     this.clasificar.arrastrables(
       ".elemento__clasificacion_" + countClasificacion,
@@ -76,16 +132,10 @@ export default class Clasificar extends Component<IPropsClasificiar> {
       ".elemento__clasificacion_" + countClasificacion
     );
 
+    if (this.props.config) {
+      this.props.config(this.propiedades, this.acciones);
+    }
 
-    this.clasificar.setIntentoAcierto(() => {
-      console.log("bien");
-    });
-
-    this.clasificar.setIntentoFallo(() => {
-      console.log("mal");
-    });
-
-    this.clasificar.setValidacion(() => { });
   }
 
   onInicial() { }
@@ -120,12 +170,28 @@ export default class Clasificar extends Component<IPropsClasificiar> {
 }
 
 interface IPropsAlmacen {
-  accion?: Function;
-  categoria: string;
   tipo: string;
-  capacidad: number;
-  nombre?: string;
   id: string;
+
+  accion?: Function;
+  capacidad?: number;
+  nombre?: string;
+  reset?: Function;
+
+  /* Clases de ManagerStyle */
+  style?: Object;
+  className?: string;
+  grid?: string;
+  on?: boolean;
+  width?: string;
+  height?: string;
+  padding?: string;
+  left?: string;
+  top?: string;
+  pos?: string;
+  image?: string;
+  orientacion?: string;
+  align?: string;
 }
 
 export class Almacen extends Component<IPropsAlmacen> {
@@ -138,6 +204,7 @@ export class Almacen extends Component<IPropsAlmacen> {
   style: ManagerStyle;
   idType: string;
   tipo: string;
+  resetStyle?: Function;
 
   constructor(props: IPropsAlmacen) {
     super(props);
@@ -157,27 +224,27 @@ export class Almacen extends Component<IPropsAlmacen> {
       this.clasificar.almacenes.push(this);
     }
 
-
     this.capacidad = 1;
     this.nombre = "";
 
     this.style = new ManagerStyle(props, this.idClass, false, {
       width: "100px",
       height: "100px",
-      position: "absolute",
-      background: "red"
+      position: "absolute"
     });
 
   }
 
-  accion(s: HTMLElement) {
-    s.style.margin = "0";
-    s.style.left = "0";
-    s.style.right = "0";
-    s.style.top = "0";
+  accion() {
+    if (this.resetStyle) {
+      this.resetStyle(this.style.contenedor);
+    }
   };
 
   componentDidMount() {
+
+    let contenedor: any = this.refs.contenedor;
+    this.style.setContenedor(contenedor);
 
     if (this.props.accion) {
       // this.accion = this.props.accion;
@@ -189,6 +256,10 @@ export class Almacen extends Component<IPropsAlmacen> {
 
     if (this.props.nombre) {
       this.nombre = this.props.nombre;
+    }
+
+    if (this.props.reset) {
+      this.resetStyle = this.props.reset;
     }
 
   }
@@ -207,7 +278,7 @@ export class Almacen extends Component<IPropsAlmacen> {
     let className = this.style.getClass();
 
     return (
-      <div className={className} id={this.idType} style={style}>
+      <div ref="contenedor" className={className} id={this.idType} style={style}>
         {Children.map(this.props.children, view => {
           return view;
         })}
@@ -217,9 +288,25 @@ export class Almacen extends Component<IPropsAlmacen> {
 }
 
 interface IPropsZona {
-  id: string;
   categoria: string;
   tipo: string;
+  reset?: Function;
+
+
+  /* Clases de ManagerStyle */
+  style?: Object;
+  className?: string;
+  grid?: string;
+  on?: boolean;
+  width?: string;
+  height?: string;
+  padding?: string;
+  left?: string;
+  top?: string;
+  pos?: string;
+  image?: string;
+  orientacion?: string;
+  align?: string;
 }
 
 export class Zona extends Component<IPropsZona> {
@@ -229,6 +316,7 @@ export class Zona extends Component<IPropsZona> {
   style: ManagerStyle;
   idClass: string;
   tipo: string;
+  resetStyle?: Function;
 
   constructor(props: IPropsZona) {
     super(props);
@@ -249,8 +337,7 @@ export class Zona extends Component<IPropsZona> {
     this.style = new ManagerStyle(props, this.idClass, false, {
       width: "100px",
       height: "100px",
-      position: "absolute",
-      background: "blue"
+      position: "absolute"
     });
 
 
@@ -263,10 +350,30 @@ export class Zona extends Component<IPropsZona> {
   }
 
   componentDidMount() {
-
     let contenedor: any = this.refs.contenedor;
     this.style.setContenedor(contenedor);
+
+    if (this.props.reset) {
+      this.resetStyle = this.props.reset;
+    }
   }
+
+  reset() {
+    if (this.style.contenedor) {
+      this.style.contenedor.style.position = "";
+      this.style.contenedor.style.margin = "0";
+      this.style.contenedor.style.left = "0";
+      this.style.contenedor.style.right = "0";
+      this.style.contenedor.style.top = "0";
+      if (this.resetStyle) {
+        this.resetStyle(this.style.contenedor);
+      } else {
+
+      }
+    }
+
+  }
+
   render() {
 
     if (this.props.tipo) {
@@ -280,7 +387,7 @@ export class Zona extends Component<IPropsZona> {
       <div
         ref="contenedor"
         className={className + " " + this.tipo}
-        id={this.props.id}
+        id={this.props.categoria}
         style={style}
       >
         {React.Children.map(this.props.children, view => {

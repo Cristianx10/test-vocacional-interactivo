@@ -20,6 +20,22 @@ interface IPropsPregunta {
   children: ReactChild[];
   onInicial: Function;
   onFinal: Function;
+
+
+  /* Clases de ManagerStyle */
+  style?: Object;
+  className?: string;
+  grid?: string;
+  on?: boolean;
+  width?: string;
+  height?: string;
+  padding?: string;
+  left?: string;
+  top?: string;
+  pos?: string;
+  image?: string;
+  orientacion?: string;
+  align?: string;
 }
 
 
@@ -133,6 +149,22 @@ interface IPropsOpcion {
   children: ReactChild[];
   type: String;
   resultados: Array<ICategoria>;
+
+
+  /* Clases de ManagerStyle */
+  style?: Object;
+  className?: string;
+  grid?: string;
+  on?: boolean;
+  width?: string;
+  height?: string;
+  padding?: string;
+  left?: string;
+  top?: string;
+  pos?: string;
+  image?: string;
+  orientacion?: string;
+  align?: string;
 }
 
 
@@ -166,7 +198,7 @@ export class Opcion extends Component<IPropsOpcion, IStateOpcion> implements IOO
     this.style = new ManagerStyle(props, "opcion");
 
     let tipo = "";
-    if(this.contenedorContext.contenedor && this.contenedorContext.contenedor.props.allType){
+    if (this.contenedorContext.contenedor && this.contenedorContext.contenedor.props.allType) {
       tipo = this.contenedorContext.contenedor.props.allType;
     }
 
@@ -174,7 +206,7 @@ export class Opcion extends Component<IPropsOpcion, IStateOpcion> implements IOO
       type: tipo
     };
 
-   
+
 
     /*
     this.comunicador = comunicador;

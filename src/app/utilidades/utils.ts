@@ -1,5 +1,6 @@
 import html2canvas from "html2canvas";
 import { resultados } from '../resultados/resultados';
+import Navegador from '../componentes/Navegador/Navegador';
 
 /*--------------------------------------------------------------
 ## Funciones Matematicas
@@ -113,17 +114,17 @@ export function hsvToRgb(h: any, s: any, v: any) {
     ];
 }
 
-export function pantallaToImg(etiqueta: any, cargado: Function, navegador: any) {
+export function pantallaToImg(etiqueta: any, cargado: Function, navegador: Navegador) {
 
     html2canvas(etiqueta, {
-        scale: .7,
+        scale: .4,
 
     }
     ).then((canvas: any) => {
         // document.body.appendChild(canvas);
         var image = canvas.toDataURL('image/png');
         cargado(image);
-        navegador.cambioClonacionContinuar();
+        navegador.impresionPantallaCompletada();
         resultados.save();
 
         /*
