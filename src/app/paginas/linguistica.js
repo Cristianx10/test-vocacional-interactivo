@@ -21,7 +21,7 @@ import {
   Almacen
 } from "../actividades/Clasificar/Clasificar";
 import { Cortes } from "../actividades/Cortes/Cortes";
-import { Processing } from "../configuraciones/Processing/Processing";
+import { Processing } from "../componentes/Processing/Processing";
 import Juego from "../actividades/Actividad/Actividad";
 
 

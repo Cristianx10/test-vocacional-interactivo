@@ -4,7 +4,7 @@ import { matrixImagen } from "../../utilidades/matrices";
 import "./Tuberias.scss";
 import { ICategoria } from '../../resultados/resultados';
 import APizarra from './TS-Tuberias';
-import Children from 'react';
+
 
 interface IPropsTuberias {
   url: string;

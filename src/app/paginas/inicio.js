@@ -10,7 +10,7 @@ import { Tpreguntacajonbotones } from "../plantillas/templete-preguntas";
 
 import data from "../../data/queryPreguntas.json";
 import { TLikertPregunta } from "../plantillas/template-likert/TLikertPregunta";
-import Processing from "../configuraciones/Processing/Processing";
+import Processing from "../componentes/Processing/Processing";
 import Juego from "../actividades/Actividad/Actividad";
 
 export class Inicio extends React.Component {
