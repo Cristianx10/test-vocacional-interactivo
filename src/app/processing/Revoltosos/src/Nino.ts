@@ -67,7 +67,7 @@ export class Nino {
                 let randomtiempo = parseInt(this.app.random(2, 6) + "");
                 this.tiempopedir = randomtiempo * 1000;
             }
-            let aleatorio = parseInt(this.app.random(5000, 10000) + "");
+          
             if (this.necesidad == 0) {
                 console.log("Nina2 tiempo:" + this.tiempopedir);
                 if (parseInt(this.app.millis() + "") - this.contador >= this.tiempopedir) {
@@ -103,7 +103,7 @@ export class Nino {
             this.xpanal = this.app.mouseX - 41;
             this.ypanal = this.app.mouseY - 36;
             this.log.seleccion = this.panalsucio;
-           
+            console.log("selecionadado")
         }
     }
 
