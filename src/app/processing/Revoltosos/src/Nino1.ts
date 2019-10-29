@@ -177,7 +177,8 @@ export default class Nino1 {
 			if (this.necesidad == 22) {
 				this.necesidad = 23;
 			} else {
-				//System.out.println("Correcto");
+				/**Acierto */
+				console.log("Correcto");
 				this.necesidad = 0;
 				this.contador = this.app.millis();
 				this.error = -1;
@@ -186,7 +187,8 @@ export default class Nino1 {
 		} else {
 			this.error = 1;
 			this.calcularfelicidad();
-			//System.out.println("Incorrecto");
+			/**Fallos */
+			console.log("Incorrecto");
 		}
 	}
 
