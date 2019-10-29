@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { resultados, ICategoria } from '../../resultados/resultados';
+import { resultados, ICategoria, GResultados } from '../../resultados/resultados';
 
 import Tablero_tarjetas from "./TS-TarjetasR";
 
@@ -12,6 +12,7 @@ import ManagerStyle from '../../utilidades/AutoClases';
 
 interface IPropsTarjetasR {
   config: Function;
+  UID?: string | number;
 }
 
 interface IActionTarjetasR {
@@ -31,6 +32,7 @@ export class TarjetasR extends Component<IPropsTarjetasR> {
   acciones: IActionTarjetasR;
   style: ManagerStyle;
   propiedades: any;
+  registro?: GResultados;
 
   constructor(props: IPropsTarjetasR) {
     super(props);
@@ -38,6 +40,7 @@ export class TarjetasR extends Component<IPropsTarjetasR> {
     this.actividadContext = ActividadContext;
     this.actividadContext.setTarjetasR(this);
     this.style = new ManagerStyle(props, "tarjetas__contenedor interaccion");
+
 
     if (NavegadorContext.navegador) {
       this.pantalla = NavegadorContext.navegador.getAddPantalla();
@@ -48,6 +51,8 @@ export class TarjetasR extends Component<IPropsTarjetasR> {
 
     this.tablero = new Tablero_tarjetas();
     this.propiedades = this.tablero.propiedades;
+
+    this.registro = this.tablero.registro;
 
     this.acciones = {
       validar: (id: string, accion: Function, descripcion: string, valorMaximo: ICategoria[]) => {
@@ -72,7 +77,16 @@ export class TarjetasR extends Component<IPropsTarjetasR> {
     };
   }
 
-  onInicial() { }
+  onInicial() {
+    if (this.registro) {
+      this.registro.agregar();
+
+      if (this.props.UID) {
+        this.registro.setUID(this.props.UID + "");
+      }
+    }
+
+  }
 
   onFinal() {
     if (this.pantalla) {

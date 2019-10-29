@@ -6,7 +6,7 @@ import ActividadContext, { actividadContext } from '../../comunicacion/Actividad
 import NavegadorContext, { navegadorContext } from "../../comunicacion/NavegadorContext";
 import Pantalla from '../../componentes/Pantalla/Pantalla';
 import ManagerStyle from '../../utilidades/AutoClases';
-import { resultados, ICategoria } from '../../resultados/resultados';
+import { resultados, ICategoria, GResultados } from '../../resultados/resultados';
 
 
 var countClasificacion = 0;
@@ -14,6 +14,7 @@ var countClasificacionAlmacen = 0;
 
 interface IPropsClasificiar {
   config?: Function;
+  UID: String | number;
 
   /* Clases de ManagerStyle */
   style?: Object;
@@ -29,6 +30,7 @@ interface IPropsClasificiar {
   image?: string;
   orientacion?: string;
   align?: string;
+
 }
 
 export interface IActionClasificar {
@@ -36,7 +38,7 @@ export interface IActionClasificar {
   setIntentoFallo: Function;
   setValidacion: Function;
   validar: Function;
-  setMultiple:Function;
+  setMultiple: Function;
 }
 
 export interface IPropClasificar {
@@ -58,6 +60,7 @@ export default class Clasificar extends Component<IPropsClasificiar> {
   clasificar: AClasificar;
   pantalla?: Pantalla;
   style: ManagerStyle;
+  registro?: GResultados;
 
   constructor(props: IPropsClasificiar) {
     super(props);
@@ -73,6 +76,9 @@ export default class Clasificar extends Component<IPropsClasificiar> {
     countClasificacion++;
 
     this.clasificar = new AClasificar();
+    if (this.clasificar.registro) {
+      this.registro = this.clasificar.registro;
+    }
 
     this.propiedades = this.clasificar.propiedades;
 
@@ -102,7 +108,7 @@ export default class Clasificar extends Component<IPropsClasificiar> {
         this.clasificar.validar(id, accion, descripcion, valorMaximo);
       },
 
-      setMultiple: (value:boolean) => {
+      setMultiple: (value: boolean) => {
         resultados.setMultiple(this.clasificar, value);
       }
 
@@ -138,7 +144,16 @@ export default class Clasificar extends Component<IPropsClasificiar> {
 
   }
 
-  onInicial() { }
+  onInicial() {
+    if (this.registro) {
+      this.registro.agregar();
+
+      if (this.props.UID) {
+        this.registro.setUID(this.props.UID + "");
+      }
+    }
+
+  }
 
   onFinal() {
 

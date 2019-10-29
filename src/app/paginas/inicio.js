@@ -1,9 +1,6 @@
 import React from "react";
 
-import Navegador, {
-  Pantalla,
-  Continuar
-} from "../componentes/Navegador/Navegador";
+import Navegador from "../componentes/Navegador/Navegador";
 import Contenedor from "../componentes/Contenedor/Contenedor";
 import Pregunta, { Opcion, Likert } from "../componentes/Preguntas/Preguntas";
 import { Tpreguntacajonbotones } from "../plantillas/templete-preguntas";
@@ -11,7 +8,7 @@ import { Tpreguntacajonbotones } from "../plantillas/templete-preguntas";
 import data from "../../data/queryPreguntas.json";
 import { TLikertPregunta } from "../plantillas/template-likert/TLikertPregunta";
 import Processing from "../componentes/Processing/Processing";
-import Juego from "../actividades/Actividad/Actividad";
+import Pantalla from "../componentes/Pantalla/Pantalla";
 
 export class Inicio extends React.Component {
   componentDidMount() {}
@@ -20,7 +17,6 @@ export class Inicio extends React.Component {
     return (
       <Navegador image="/includes/background/claro.png" width="100%">
         <Pantalla>
-          <Processing juego={Juego}></Processing>
         </Pantalla>
 
         <TLikertPregunta uid="1"></TLikertPregunta>

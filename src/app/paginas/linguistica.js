@@ -1,8 +1,5 @@
 import React from "react";
-import Navegador, {
-  Pantalla,
-  Continuar
-} from "../componentes/Navegador/Navegador";
+import Navegador from "../componentes/Navegador/Navegador";
 
 //import { Pregunta, Opcion, Likert } from "../componentes/Preguntas/Preguntas";
 //import { Escribir } from "../componentes/Preguntas/Escribir";
@@ -21,8 +18,7 @@ import {
   Almacen
 } from "../actividades/Clasificar/Clasificar";
 import { Cortes } from "../actividades/Cortes/Cortes";
-import { Processing } from "../componentes/Processing/Processing";
-import Juego from "../actividades/Actividad/Actividad";
+import Pantalla from "../componentes/Pantalla/Pantalla";
 
 
 export class Linguistica extends React.Component {
@@ -120,9 +116,6 @@ export class Linguistica extends React.Component {
     return (
       <Navegador width="100%" fondo="/includes/background/claro.png">
 
-        <Pantalla>
-          <Processing juego={Juego}></Processing>
-        </Pantalla>
 
       <Pantalla>
         <Cortes></Cortes>

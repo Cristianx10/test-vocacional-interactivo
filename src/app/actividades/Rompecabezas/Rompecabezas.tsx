@@ -3,7 +3,7 @@ import React, { Component, ReactDOM } from "react";
 import { Tablero } from "./TS-Rompecabezas";
 import { matrixImagen } from "../../utilidades/matrices";
 
-import { resultados, ICategoria } from '../../resultados/resultados';
+import { resultados, ICategoria, GResultados } from '../../resultados/resultados';
 import NavegadorContext, { navegadorContext } from '../../comunicacion/NavegadorContext';
 import Pantalla from '../../componentes/Pantalla/Pantalla';
 
@@ -19,6 +19,7 @@ interface IPropsRompecabezas {
   placeholder: string;
   arrastrable: boolean;
   rotacion: boolean;
+  UID?: string | number;
 }
 
 interface IActionRompecabezas {
@@ -35,7 +36,7 @@ export class Rompecabezas extends Component<IPropsRompecabezas> {
   tablero: Tablero;
   acciones: IActionRompecabezas;
   propiedades: any;
-
+  registro?: GResultados;
 
   constructor(props: IPropsRompecabezas) {
     super(props);
@@ -47,6 +48,7 @@ export class Rompecabezas extends Component<IPropsRompecabezas> {
     }
 
     this.tablero = new Tablero();
+    this.registro = this.tablero.registro;
 
     this.acciones = this.tablero.acciones;
     this.propiedades = this.tablero.propiedades;
@@ -73,6 +75,14 @@ export class Rompecabezas extends Component<IPropsRompecabezas> {
   }
 
   onInicial() {
+
+    if (this.registro) {
+      this.registro.agregar();
+
+      if (this.props.UID) {
+        this.registro.setUID(this.props.UID + "");
+      }
+    }
 
   }
 

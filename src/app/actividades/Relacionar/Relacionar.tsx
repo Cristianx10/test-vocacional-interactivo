@@ -1,7 +1,7 @@
 import React, { Component, Children } from "react";
 import { shuffle } from "../../utilidades/utils";
 import ARelacionar from "./TS-relacionar";
-import { resultados, ICategoria } from '../../resultados/resultados';
+import { resultados, ICategoria, GResultados } from '../../resultados/resultados';
 import NavegadorContext, { navegadorContext } from '../../comunicacion/NavegadorContext';
 import Pantalla from '../../componentes/Pantalla/Pantalla';
 import ActividadContext, { actividadContext } from '../../comunicacion/ActividadContext';
@@ -14,6 +14,7 @@ interface IPropsRelacionar {
   width: number;
   height: number;
   config?: Function;
+  UID?: string | number;
 }
 
 interface IActionRelacionar {
@@ -44,6 +45,8 @@ export class Relacionar extends Component<IPropsRelacionar> implements IONavegab
   propiedades: any;
   opciones: { tipo: string, categoria: string }[] = [];
   style: ManagerStyle;
+
+  registro?: GResultados;
 
   constructor(props: IPropsRelacionar) {
     super(props);
@@ -109,6 +112,8 @@ export class Relacionar extends Component<IPropsRelacionar> implements IONavegab
 
     this.tablero = new ARelacionar();
 
+    this.registro = this.tablero.registro;
+
     this.propiedades = this.tablero.propiedades;
 
     this.style = new ManagerStyle(props, "actividad__relacionar");
@@ -163,7 +168,17 @@ export class Relacionar extends Component<IPropsRelacionar> implements IONavegab
     }, 1000);
   }
 
-  onInicial() { }
+  onInicial() {
+
+    if (this.registro) {
+      this.registro.agregar();
+
+      if (this.props.UID) {
+        this.registro.setUID(this.props.UID + "");
+      }
+    }
+
+  }
 
   onFinal() {
     if (this.pantalla) {

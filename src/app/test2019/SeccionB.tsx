@@ -160,7 +160,7 @@ export class SeccionB extends Component {
             </div>
           </Contenedor>
           <Contenedor on width="100%" height="100%">
-            <Clasificar width="100%" height="100%" config={this.configClasificiar.bind(this)}>
+            <Clasificar UID="c200" width="100%" height="100%" config={this.configClasificiar.bind(this)}>
 
               <Almacen tipo="cabello" pos="215px 60px" id="cabello" height="90px" width="150px" style={{ background: "#add8e652" }} reset={(e: HTMLElement) => { e.style.background = "" }} />
 

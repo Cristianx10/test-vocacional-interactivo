@@ -7,12 +7,13 @@ import Children from 'react';
 import NavegadorContext, { navegadorContext } from '../../comunicacion/NavegadorContext';
 import Pantalla from '../../componentes/Pantalla/Pantalla';
 import { IONavegable } from '../../comunicacion/utilEvents';
-import { resultados } from '../../resultados/resultados';
+import { resultados, GResultados } from '../../resultados/resultados';
 
 interface IPropsCortes {
   fondo: string;
   children?: Array<ReactChild>;
   config?: Function;
+  UID?: String | number;
 }
 
 export interface IPropCortes {
@@ -36,10 +37,13 @@ export class Cortes extends Component<IPropsCortes> implements IONavegable {
   acciones: IActionCortes;
 
   pantalla?: Pantalla;
+  registro?: GResultados;
 
   constructor(props: IPropsCortes) {
     super(props);
     this.sala = new SalaCirugia();
+
+    this.registro = this.sala.registro;
 
     this.propiedades = this.sala.propiedades;
 
@@ -72,6 +76,15 @@ export class Cortes extends Component<IPropsCortes> implements IONavegable {
   }
 
   onInicial() {
+
+    if (this.registro) {
+      this.registro.agregar();
+
+      if (this.props.UID) {
+        this.registro.setUID(this.props.UID + "");
+      }
+    }
+
 
   }
 

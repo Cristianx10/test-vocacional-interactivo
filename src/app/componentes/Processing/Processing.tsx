@@ -17,7 +17,7 @@ export interface AppProcessing {
   mousePressed?: Function;
   mouseReleased?: Function;
   mouseDragged?: Function;
-  
+
 }
 
 interface IPropsProcessing {
@@ -92,7 +92,10 @@ export class Processing extends Component<IPropsProcessing> implements IONavegab
   }
 
   onInicial() {
-
+    this.registro.agregar();
+    if (this.props.UID) {
+      this.registro.setUID(this.props.UID);
+    }
   }
 
 

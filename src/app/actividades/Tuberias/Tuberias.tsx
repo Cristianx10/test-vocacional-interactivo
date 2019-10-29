@@ -2,8 +2,10 @@ import React, { Component } from "react";
 
 import { matrixImagen } from "../../utilidades/matrices";
 import "./Tuberias.scss";
-import { ICategoria } from '../../resultados/resultados';
+import { ICategoria, GResultados, resultados } from '../../resultados/resultados';
 import APizarra from './TS-Tuberias';
+import Pantalla from '../../componentes/Pantalla/Pantalla';
+import NavegadorContext from '../../comunicacion/NavegadorContext';
 
 
 interface IPropsTuberias {
@@ -14,6 +16,7 @@ interface IPropsTuberias {
   columnas: number;
   children: Ficha[];
   config: Function;
+  UID?: string | number;
 }
 
 interface IActionTuberias {
@@ -27,6 +30,8 @@ export class Tuberias extends Component<IPropsTuberias> {
   tuberias: APizarra;
   propiedades: any;
   acciones: IActionTuberias;
+  pantalla?: Pantalla;
+  registro?: GResultados;
 
   constructor(props: IPropsTuberias) {
     super(props);
@@ -35,6 +40,10 @@ export class Tuberias extends Component<IPropsTuberias> {
     this.tuberias = new APizarra();
     this.propiedades = this.tuberias.propiedades;
     this.acciones = this.tuberias.acciones;
+    if (NavegadorContext.navegador) {
+      this.pantalla = NavegadorContext.navegador.getAddPantalla();
+      this.pantalla.addEventos(this);
+    }
 
     this.acciones.validar = (id: string, accion: Function, descripcion: string, valorMaximo: ICategoria[]) => {
       this.tuberias.validar(id, accion, descripcion, valorMaximo);
@@ -122,6 +131,28 @@ export class Tuberias extends Component<IPropsTuberias> {
     });
 
     this.tuberias.incluirEn(contenedor);
+  }
+
+  onInicial() {
+    if (this.registro) {
+      this.registro.agregar();
+
+      if (this.props.UID) {
+        this.registro.setUID(this.props.UID + "");
+      }
+    }
+
+  }
+
+  onFinal() {
+    if (this.pantalla) {
+      resultados.setTiempo(this.tuberias, this.pantalla.timer.tiempo + "");
+      this.pantalla.capturarPantalla((imagen: string) => {
+        this.tuberias.propiedades.captura = imagen
+      });
+    }
+
+    resultados.evaluar(this.tuberias);
   }
 
   render() {
