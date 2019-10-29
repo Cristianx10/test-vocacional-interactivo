@@ -65,36 +65,80 @@ export class Resultados {
     }
 
     setUID(objeto: any, UID: string) {
+
+
+        if (this.pruebas) {
+            this.pruebas.forEach((p: GResultados, index: number) => {
+                if (p.UID === UID) {
+                    console.log("elemento duplibado")
+                    //encontro = true;
+
+                    if (this.pruebas) {
+                        this.pruebas.splice(index, 1);
+                    }
+                    //refObject = objeto.registro;
+                }
+            });
+        }
         objeto.registro.setUID(UID);
     }
 
     agregar(objeto: any): GResultados {
+
+
+
+        let refObject: any = null;
+        if (this.pruebas) {
+            let encontro = false;
+
+            /*
+            this.pruebas.forEach((p: GResultados, index: number) => {
+                if (p.UID === objeto.registro.UID) {
+                    //encontro = true;
+
+                    if (this.pruebas) {
+                        this.pruebas.splice(index, 1);
+                    }
+                    //refObject = objeto.registro;
+                }
+            });
+            */
+
+            //if (encontro === false) {
+            refObject = new GResultados(objeto);
+            objeto.registro = refObject;
+            //this.pruebas.push(refObject);
+            // }
+        }
+
         /*
                 let refObject = new GResultados(objeto);
                 if (this.pruebas) {
                 this.pruebas.push(refObject);
                 }
                 */
-
-        let refObject:any = null;
-        if (this.pruebas) {
-            let encontro = false;
-            this.pruebas.forEach((p) => {
-                if (objeto.registro !== null && p === objeto.registro) {
-                    encontro = true;
-                    refObject = objeto.registro;
+        /*
+                let refObject:any = null;
+                if (this.pruebas) {
+                    let encontro = false;
+                    this.pruebas.forEach((p) => {
+                        if (objeto.registro !== null && p === objeto.registro) {
+                            encontro = true;
+                            refObject = objeto.registro;
+                        }
+                    });
+        
+                    if (encontro === false) {
+                        refObject = new GResultados(objeto);
+                        objeto.registro = refObject;
+                        this.pruebas.push(refObject);
+                    }
                 }
-            });
-
-            if (encontro === false) {
-                refObject = new GResultados(objeto);
-                objeto.registro = refObject;
-                this.pruebas.push(refObject);
-            }
-        }
-
+        */
         return refObject;
     }
+
+
 
     calcularMaximo() {
         this.maximos = [];
@@ -206,7 +250,7 @@ export class Resultados {
         return opcion;
     }
 
-    setMultiple(objeto:any, multple: boolean){
+    setMultiple(objeto: any, multple: boolean) {
         objeto.registro.setMultiple(multple);
     }
 
@@ -313,6 +357,12 @@ export class GResultados {
                 this.id = "defaul";
             }
 
+            if (objeto.UID) {
+                this.UID = objeto.UID;
+            } else {
+                objeto.UID = this.UID;
+            }
+
             if (objeto.multiple) {
                 this.multiple = objeto.multiple;
             } else {
@@ -360,7 +410,7 @@ export class GResultados {
             v.id = v.id.toLowerCase();
             v.valor = parseInt(v.valor + "");
 
-            if(v.valor != 0){
+            if (v.valor != 0) {
                 valueMaximos.push(v);
             }
         });
@@ -419,7 +469,27 @@ export class GResultados {
         });
     }
 
+    agregar() {
+        if (resultados.pruebas) {
+            resultados.pruebas.push(this);
+        }
+    }
+
     setUID(UID: string) {
+
+        if (resultados.pruebas) {
+            resultados.pruebas.forEach((p: GResultados, index: number) => {
+                if (p.UID === UID) {
+                    console.log("elemento duplibado")
+                    //encontro = true;
+
+                    if (resultados.pruebas) {
+                        resultados.pruebas.splice(index, 1);
+                    }
+                    //refObject = objeto.registro;
+                }
+            });
+        }
         this.UID = UID;
     }
 
@@ -550,12 +620,12 @@ export class OResultado {
 
         this.valor = valor;
 
-        let valueMaximos:ICategoria[] = [];
+        let valueMaximos: ICategoria[] = [];
         this.valor.forEach((v) => {
             v.id = v.id.toLowerCase();
             v.valor = parseInt(v.valor + "");
 
-            if(v.valor != 0){
+            if (v.valor != 0) {
                 valueMaximos.push(v);
             }
         });
@@ -582,7 +652,7 @@ export class OResultado {
             return val;
         }
         */
-       return val
+        return val
     }
 }
 

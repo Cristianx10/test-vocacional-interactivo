@@ -20,6 +20,7 @@ interface IPropsPregunta {
   children: ReactChild[];
   onInicial: Function;
   onFinal: Function;
+  UID?: string;
 
 
   /* Clases de ManagerStyle */
@@ -77,10 +78,19 @@ export class Pregunta extends Component<IPropsPregunta> implements IONavegable, 
 
     this.registro = resultados.agregar(this);
 
+
     this.propiedades.titulares = [];
   }
 
   onInicial() {
+
+    this.registro.agregar();
+
+    if (this.props.UID) {
+      resultados.setUID(this, this.props.UID);
+    }
+
+
     if (this.props.onInicial) {
       this.props.onInicial().bind(this);
     }
@@ -124,6 +134,7 @@ export class Pregunta extends Component<IPropsPregunta> implements IONavegable, 
         this.propiedades.titulares.push({ type: "text", contenido: titular.innerHTML });
       }
     });
+
   }
 
   render() {

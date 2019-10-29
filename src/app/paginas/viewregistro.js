@@ -101,6 +101,7 @@ export class Viewregistro extends Component {
         <div className="rv__prueba">
           {viewTitulo}
           <h3>Tiempo: {prueba.tiempo}</h3>
+          <h3>UID de la prueba: {prueba.UID}</h3>
           {viewPrueba}
           <ViewComparadorCategoiras resultado={resultado} />
         </div>

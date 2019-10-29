@@ -1,11 +1,8 @@
 import React, { Component } from "react";
-import Navegador, {
-  Pantalla,
-  Continuar
-} from "../componentes/Navegador/Navegador";
+import Navegador from "../componentes/Navegador/Navegador";
 import { TLikertPregunta } from "../plantillas/template-likert/TLikertPregunta";
 
-export class SeccioA extends Component {
+export default class SeccioA extends Component {
   constructor() {
     super();
     this.views = [];
@@ -15,6 +12,7 @@ export class SeccioA extends Component {
     for (let index = 0; index < 3; index++) {
       this.views.push(<TLikertPregunta uid={index + 1}></TLikertPregunta>);
     }
+    console.log("bien");
     this.setState({});
   }
 

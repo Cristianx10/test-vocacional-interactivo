@@ -9,7 +9,7 @@ import { Viewregistro } from "./paginas/viewregistro";
 import { ViewUsuario } from "./analisis/datosUsuario";
 import { Pruebas } from "./paginas/pruebas";
 import { Descargar } from "./paginas/Descargar/Descargar";
-import { SeccionA } from "./test2019/SeccionA";
+import SeccionA from "./test2019/SeccionA";
 import { SeccionB } from "./test2019/SeccionB";
 import { SeccionC } from "./test2019/SeccionC";
 import SeccionD from "./test2019/SeccionD";

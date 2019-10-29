@@ -14,7 +14,8 @@ export class TLikertPregunta extends Component {
     this.renderInicial = false;
   }
 
-  componentDidMount() {}
+  componentDidMount() {
+  }
 
   renderizadoInicial() {
     if (this.renderInicial == false) {
@@ -46,10 +47,11 @@ export class TLikertPregunta extends Component {
         );
       });
 
+      console.log(this.data)
       view = (
         <Pantalla>
           <RelojContador></RelojContador>
-          <Pregunta>
+          <Pregunta UID={this.data.id}>
             <h1>
               <D t>{this.data.titulares}</D>
             </h1>

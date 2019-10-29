@@ -4,6 +4,11 @@ import ProcessingContext, {
   processingContext
 } from "../../comunicacion/ProcessingContext";
 import p5 from "p5";
+import { GResultados, resultados } from '../../resultados/resultados';
+import { navegadorContext } from '../../comunicacion/NavegadorContext';
+import Pantalla from '../Pantalla/Pantalla';
+import NavegadorContext from '../../comunicacion/NavegadorContext';
+import { IONavegable } from '../../comunicacion/utilEvents';
 
 export interface AppProcessing {
   preload?: Function;
@@ -12,19 +17,25 @@ export interface AppProcessing {
   mousePressed?: Function;
   mouseReleased?: Function;
   mouseDragged?: Function;
+  
 }
 
 interface IPropsProcessing {
   sketch?: AppProcessing;
   juego?: AppProcessing;
+  UID?: string;
 }
 
-export class Processing extends Component<IPropsProcessing> {
+export class Processing extends Component<IPropsProcessing> implements IONavegable {
 
   processingContext: processingContext;
+  pantalla?: Pantalla;
   id: string;
   app: p5;
   juego?: AppProcessing;
+  registro: GResultados;
+  propiedades: any;
+  acciones: any;
 
   constructor(props: IPropsProcessing) {
     super(props);
@@ -32,6 +43,13 @@ export class Processing extends Component<IPropsProcessing> {
     this.processingContext.setActividad(this);
     this.id = "processing processing__sckecth__" + this.processingContext.nActividades;
 
+    this.registro = resultados.agregar(this);
+    this.propiedades = this.registro.propiedades;
+
+    if (NavegadorContext.navegador) {
+      this.pantalla = NavegadorContext.navegador.getAddPantalla();
+      this.pantalla.addEventos(this);
+    }
 
     this.app = new p5((app: p5) => {
       this.app = app;
@@ -61,12 +79,32 @@ export class Processing extends Component<IPropsProcessing> {
       }
 
 
+
+
     });
   }
 
   componentDidMount() {
 
+    if (this.props.UID) {
+      resultados.setUID(this, this.props.UID);
+    }
+  }
 
+  onInicial() {
+
+  }
+
+
+  onFinal() {
+    this.app.noLoop();
+    if (this.pantalla) {
+      resultados.setTiempo(this, this.pantalla.timer.tiempo + "");
+      this.pantalla.capturarPantalla((imagen: string) => {
+        this.propiedades.captura = imagen;
+      });
+    }
+    resultados.evaluar(this);
   }
 
   preload() {

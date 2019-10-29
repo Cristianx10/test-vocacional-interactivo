@@ -24,6 +24,11 @@ export class ViewUsuario extends Component {
   render() {
     let { pruebas, usuario, tiempo } = this.data;
 
+
+    pruebas = pruebas.sort((a,b)=>{
+      return a.UID-b.UID;
+    });
+
     let views = [];
     let acumuladoTotal = [];
 

@@ -1,5 +1,9 @@
 import p5 = require("p5");
 import Logica from "./Logica";
+import { IPropRevoltosos } from '../Revoltosos';
+import { processingContext } from '../../../comunicacion/ProcessingContext';
+import Processing from '../../../componentes/Processing/Processing';
+import ProcessingContext from '../../../comunicacion/ProcessingContext';
 
 export default class Main {
 
@@ -15,6 +19,8 @@ export default class Main {
     pantalla: number;
     contador: number;
     activartiempo: boolean;
+    propiedades: IPropRevoltosos;
+    processing: Processing;
 
     constructor(app: p5) {
         this.app = app;
@@ -29,6 +35,9 @@ export default class Main {
         this.fondo3 = this.app.loadImage("/img/2019/revoltosos/data/fondo.jpg");
         this.fondo4 = this.app.loadImage("/img/2019/revoltosos/data/FINAL.png");
         this.fondo44 = this.app.loadImage("/img/2019/revoltosos/data/FINAL2.png");
+        this.processing = ProcessingContext.actividad;
+        this.propiedades = this.processing.propiedades;
+       
     }
 
 
@@ -55,6 +64,7 @@ export default class Main {
 
             case 4:
                 this.app.image(this.fondo4, 0, 0);
+                this.propiedades.puntuacion = this.log.getPuntaje();
                 console.log("Puntaje:" + this.log.getPuntaje());
                 console.log("Ancho barra:" + this.log.getAnchobarra());
                 break;

@@ -293,6 +293,7 @@ export default class Logica {
 		return this.main.getPantalla();
 	}
 
+	
 	getPuntaje() {
 		return this.anchobarra / 3;
 		/**Evaluacion --- 0 - 100 */

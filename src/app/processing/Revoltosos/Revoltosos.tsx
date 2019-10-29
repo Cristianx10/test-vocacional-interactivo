@@ -10,13 +10,18 @@ interface IPropsRevoltosos {
 
 }
 
+export interface IPropRevoltosos {
+    puntuacion: number;
+}
+
 export default class Revoltosos extends Component implements AppProcessing {
 
     processingContext: processingContext;
     processing: Processing;
     app: p5;
-
     main?: Main;
+    propiedades: any;
+
 
 
     constructor(props: IPropsRevoltosos) {
@@ -25,7 +30,8 @@ export default class Revoltosos extends Component implements AppProcessing {
         this.processing = this.processingContext.actividad;
         this.processing.juego = this;
         this.app = this.processing.app;
-
+        this.propiedades = this.processing.propiedades;
+        this.propiedades.puntuacion = 0;
     }
 
     settings() {
