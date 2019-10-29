@@ -1,4 +1,4 @@
-import p5 = require("p5");
+import p5 from "p5";
 
 
 export default class Boton {

@@ -1,4 +1,4 @@
-import p5 = require("p5");
+import p5 from "p5";
 import Tutorial from "./Tutorial";
 import Sospechoso from "./Sospechoso";
 import Boton from "./Boton";
@@ -71,19 +71,19 @@ export default class Logica {
 		this.ganar = this.app.loadImage("/img/2019/culpable/data/ganar.png");
 		this.perder = this.app.loadImage("/img/2019/culpable/data/perder.png");
 		this.gusto = this.app.loadImage("/img/2019/culpable/data/gusto.png");
-		
+
 	}
 
 	//------------------------------------------------------------- PINTAR
 	pintar() {
-	
+
 		this.contadorBoton++;
 		switch (this.pantalla) {
 
 			case 0:
-				
+
 				this.tutorial.pintar();
-				
+
 				break;
 			case 1:
 				this.app.image(this.caso, 0, 0);
@@ -149,10 +149,10 @@ export default class Logica {
 				this.app.image(this.gusto, 0, 0);
 				break;
 		}
-		
+
 		this.pintarBotones();
 
-	
+
 		if (this.culpar == 1) {
 			this.app.fill(0, 120);
 			this.app.rect(0, 0, this.app.width, this.app.height);
@@ -400,9 +400,9 @@ export default class Logica {
 		}
 	}
 
-	pintarDialogo(index:number) {
+	pintarDialogo(index: number) {
 		this.app.image(this.fondo, 0, 0);
-		let s:Sospechoso = this.sospechosos[index];
+		let s: Sospechoso = this.sospechosos[index];
 
 		if (index < 2) {
 			s.pintarPjDialogo(100, 120);
@@ -455,8 +455,8 @@ export default class Logica {
 		this.app.image(this.menu, 0, 606);
 	}
 
-	clickearDialogo(index:number) {
-		let s:Sospechoso = this.sospechosos[index];
+	clickearDialogo(index: number) {
+		let s: Sospechoso = this.sospechosos[index];
 
 		let mX = this.app.mouseX;
 		let mY = this.app.mouseY;

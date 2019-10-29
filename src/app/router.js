@@ -9,10 +9,11 @@ import { Viewregistro } from "./paginas/viewregistro";
 import { ViewUsuario } from "./analisis/datosUsuario";
 import { Pruebas } from "./paginas/pruebas";
 import { Descargar } from "./paginas/Descargar/Descargar";
-//import { SeccionA } from "./test2019/SeccionA";
+import { SeccionA } from "./test2019/SeccionA";
 import { SeccionB } from "./test2019/SeccionB";
 import { SeccionC } from "./test2019/SeccionC";
 import SeccionD from "./test2019/SeccionD";
+import SeccionE from "./test2019/SeccionE";
 
 
 
@@ -35,10 +36,11 @@ export class Router extends React.Component {
 
           <Route exact path="/pruebas" component={Pruebas} />
 
-          {/*<Route exact path="/seccion" component={SeccionA} />*/}
+          <Route exact path="/seccion" component={SeccionA} />
           <Route exact path="/seccionb" component={SeccionB} />
           <Route exact path="/seccionc" component={SeccionC} />
           <Route exact path="/secciond" component={SeccionD} />
+          <Route exact path="/seccionE" component={SeccionE} />
         </Switch>
       </BrowserRouter>
     );
