@@ -1,5 +1,6 @@
 var webpack = require("webpack");
 var path = require("path");
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 
 module.exports = {
   mode: "development",
@@ -9,7 +10,7 @@ module.exports = {
     filename: "bundle.js"
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.ts', '.tsx' ],
+    extensions: [".js", ".jsx", ".ts", ".tsx"],
     alias: {
       // bind version of jquery-ui
       "jquery-ui": "jquery-ui/jquery-ui.js",
@@ -42,5 +43,8 @@ module.exports = {
       jQuery: "jquery",
       "window.jQuery": "jquery"
     })
-  ]
+  ],
+  optimization: {
+    minimizer: [new UglifyJsPlugin()]
+  }
 };
