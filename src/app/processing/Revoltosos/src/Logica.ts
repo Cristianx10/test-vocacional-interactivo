@@ -51,6 +51,8 @@ export default class Logica {
 	fondobarra: p5.Image;
 	main: Main;
 
+	seleccion?: p5.Image;
+
 	constructor(main: Main) {
 		this.main = main;
 		this.app = this.main.app;
@@ -63,9 +65,9 @@ export default class Logica {
 		this.yNino2 = 138;
 		this.xNino3 = 798;
 		this.yNino3 = 198;
-		this.nino1 = new Nino1(this.app, this, this.xNino1, this.yNino1, this.widthNino, this.heightNino);
-		this.nina2 = new Nina2(this.app, this, this.xNino2, this.yNino2, this.widthNino, this.heightNino);
-		this.nina3 = new Nina3(this.app, this, this.xNino3, this.yNino3, this.widthNino, this.heightNino);
+		this.nino1 = new Nino1(this, this.xNino1, this.yNino1, this.widthNino, this.heightNino);
+		this.nina2 = new Nina2(this, this.xNino2, this.yNino2, this.widthNino, this.heightNino);
+		this.nina3 = new Nina3(this, this.xNino3, this.yNino3, this.widthNino, this.heightNino);
 		this.panal1 = false;
 		this.panal2 = false;
 		this.panal3 = false;
@@ -124,6 +126,11 @@ export default class Logica {
 		if (this.objeto != null) {
 			this.objeto.pintar();
 		}
+
+		if (this.seleccion) {
+			this.app.image(this.seleccion, this.app.mouseX - 41, this.app.mouseY -36);
+		}
+
 	}
 
 	mousePressed() {
@@ -196,6 +203,7 @@ export default class Logica {
 		if (this.objeto != null) {
 			this.objeto.mouseDragged();
 		}
+
 		if (this.panal1) {
 			this.nino1.arrastrarPanal();
 		}
@@ -259,6 +267,8 @@ export default class Logica {
 		this.nino1.soltarPanal();
 		this.nina2.soltarPanal();
 		this.nina3.soltarPanal();
+
+		this.seleccion = undefined;
 	}
 
 	barrafelicidad(i: number) {
@@ -293,7 +303,7 @@ export default class Logica {
 		return this.main.getPantalla();
 	}
 
-	
+
 	getPuntaje() {
 		return this.anchobarra / 3;
 		/**Evaluacion --- 0 - 100 */
