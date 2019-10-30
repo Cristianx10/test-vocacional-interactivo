@@ -1,6 +1,7 @@
 import p5 = require("p5");
 import { number } from "prop-types";
 import Elemento from "./Elemento";
+import ProcessingImg from "../../../componentes/Processing/ProcessingImg";
 
 export default class Logica {
 
@@ -74,7 +75,7 @@ export default class Logica {
     compuesto10: p5.Image;
 
 
-
+    img: ProcessingImg;
 
 
     icono?: p5.Image;
@@ -94,6 +95,8 @@ export default class Logica {
         this.iden = null;
         this.tiempo = 90;
 
+        this.img = new ProcessingImg(this.app);
+
         this.runins = this.runins.bind(this);
         this.idenins = null;
         this.tiempoins = 30;
@@ -105,7 +108,7 @@ export default class Logica {
         this.contadoranim = 0;
 
         for (var i = 0; i < 12; i++) {
-            this.rickmezclando.push(this.app.loadImage("/img/2019/ciencias/imgs/animacion/rick" + i + ".png"));
+            this.rickmezclando.push(this.img.loadImage("/img/2019/ciencias/imgs/animacion/rick" + i + ".png"));
         }
 
         this.elemento = -1;
@@ -115,11 +118,11 @@ export default class Logica {
         this.reto = 0;
         this.aciertos = 0; //cuenta los aciertos
         this.font = this.app.loadFont("/img/2019/ciencias/fonts/impact.ttf");
-        this.fondo = this.app.loadImage("/img/2019/ciencias/imgs/fondo.png");
-        this.mesa = this.app.loadImage("/img/2019/ciencias/imgs/mesa.png");
-        this.rick = this.app.loadImage("/img/2019/ciencias/imgs/rick.png");
-        this.decoracion1 = this.app.loadImage("/img/2019/ciencias/imgs/decoracion1.png");
-        this.decoracion2 = this.app.loadImage("/img/2019/ciencias/imgs/decoracion2.png");
+        this.fondo = this.img.loadImage("/img/2019/ciencias/imgs/fondo.png");
+        this.mesa = this.img.loadImage("/img/2019/ciencias/imgs/mesa.png");
+        this.rick = this.img.loadImage("/img/2019/ciencias/imgs/rick.png");
+        this.decoracion1 = this.img.loadImage("/img/2019/ciencias/imgs/decoracion1.png");
+        this.decoracion2 = this.img.loadImage("/img/2019/ciencias/imgs/decoracion2.png");
 
         this.hidrogeno = new Elemento(this.app, "/img/2019/ciencias/imgs/hidrogeno.png", 208, 93);
         this.oxigeno = new Elemento(this.app, "/img/2019/ciencias/imgs/oxigeno.png", 293, 93);
@@ -138,12 +141,12 @@ export default class Logica {
         this.recipiente2 = new Elemento(this.app, "/img/2019/ciencias/imgs/cuadrado2.png", 530, 625);
         this.boton = new Elemento(this.app, "/img/2019/ciencias/imgs/boton.png", 740, 625);
         this.libro = new Elemento(this.app, "/img/2019/ciencias/imgs/libro.png", 1115, 91);
-        this.mas = this.app.loadImage("/img/2019/ciencias/imgs/mas.png");
+        this.mas = this.img.loadImage("/img/2019/ciencias/imgs/mas.png");
 
         this.libroShow = false;
-        this.compuestos = this.app.loadImage("/img/2019/ciencias/imgs/compuestos.png");
-        this.compuestosinicio = this.app.loadImage("/img/2019/ciencias/imgs/compuestosinicio.png");
-        this.instrucciones = this.app.loadImage("/img/2019/ciencias/imgs/instrucciones.png");
+        this.compuestos = this.img.loadImage("/img/2019/ciencias/imgs/compuestos.png");
+        this.compuestosinicio = this.img.loadImage("/img/2019/ciencias/imgs/compuestosinicio.png");
+        this.instrucciones = this.img.loadImage("/img/2019/ciencias/imgs/instrucciones.png");
         this.jugar = new Elemento(this.app, "/img/2019/ciencias/imgs/jugar.png", 920, 536);
         this.continuar = new Elemento(this.app, "/img/2019/ciencias/imgs/continuar.png", 920, 536);
         this.cerrar = new Elemento(this.app, "/img/2019/ciencias/imgs/x.png", 88, 78);
@@ -151,16 +154,16 @@ export default class Logica {
 
 
 
-        this.compuesto1 = this.app.loadImage("/img/2019/ciencias/imgs/compuesto1.png");
-        this.compuesto2 = this.app.loadImage("/img/2019/ciencias/imgs/compuesto2.png");
-        this.compuesto3 = this.app.loadImage("/img/2019/ciencias/imgs/compuesto3.png");
-        this.compuesto4 = this.app.loadImage("/img/2019/ciencias/imgs/compuesto4.png");
-        this.compuesto5 = this.app.loadImage("/img/2019/ciencias/imgs/compuesto5.png");
-        this.compuesto6 = this.app.loadImage("/img/2019/ciencias/imgs/compuesto6.png");
-        this.compuesto7 = this.app.loadImage("/img/2019/ciencias/imgs/compuesto7.png");
-        this.compuesto8 = this.app.loadImage("/img/2019/ciencias/imgs/compuesto8.png");
-        this.compuesto9 = this.app.loadImage("/img/2019/ciencias/imgs/compuesto9.png");
-        this.compuesto10 = this.app.loadImage("/img/2019/ciencias/imgs/compuesto10.png");
+        this.compuesto1 = this.img.loadImage("/img/2019/ciencias/imgs/compuesto1.png");
+        this.compuesto2 = this.img.loadImage("/img/2019/ciencias/imgs/compuesto2.png");
+        this.compuesto3 = this.img.loadImage("/img/2019/ciencias/imgs/compuesto3.png");
+        this.compuesto4 = this.img.loadImage("/img/2019/ciencias/imgs/compuesto4.png");
+        this.compuesto5 = this.img.loadImage("/img/2019/ciencias/imgs/compuesto5.png");
+        this.compuesto6 = this.img.loadImage("/img/2019/ciencias/imgs/compuesto6.png");
+        this.compuesto7 = this.img.loadImage("/img/2019/ciencias/imgs/compuesto7.png");
+        this.compuesto8 = this.img.loadImage("/img/2019/ciencias/imgs/compuesto8.png");
+        this.compuesto9 = this.img.loadImage("/img/2019/ciencias/imgs/compuesto9.png");
+        this.compuesto10 = this.img.loadImage("/img/2019/ciencias/imgs/compuesto10.png");
 
 
 
@@ -693,7 +696,7 @@ export default class Logica {
                 let num = this.separador[0];
                 console.log(num)
 
-                this.icono = this.app.loadImage("/img/2019/ciencias/imgs/" + num + ".png");
+                this.icono = this.img.loadImage("/img/2019/ciencias/imgs/" + num + ".png");
 
 
             }
@@ -763,7 +766,7 @@ export default class Logica {
             if (this.separador2 != null) {
                 let num = this.separador2[0];
                 console.log(num)
-                this.icono2 = this.app.loadImage("/img/2019/ciencias/imgs/" + num + ".png");
+                this.icono2 = this.img.loadImage("/img/2019/ciencias/imgs/" + num + ".png");
             }
 
 

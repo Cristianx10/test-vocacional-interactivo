@@ -1,5 +1,6 @@
+import p5 from "p5";
 import Logica from './Logica';
-import p5 = require('p5');
+import ProcessingImg from "../../../componentes/Processing/ProcessingImg";
 
 interface IRGB {
     r: number;
@@ -33,6 +34,8 @@ export class Nino {
 
     panalsucio: p5.Image;
 
+    img: ProcessingImg;
+
     constructor(log: Logica, x: number, y: number, ancho: number, alto: number) {
         this.log = log;
         this.x = x;
@@ -55,7 +58,9 @@ export class Nino {
         this.contadorbarra = 0;
         this.error = 0;
 
-        this.panalsucio = this.app.loadImage("/img/2019/revoltosos/data/panalsucio.png");
+        this.img = new ProcessingImg(this.app);
+
+        this.panalsucio = this.img.loadImage("/img/2019/revoltosos/data/panalsucio.png");
 
     }
 
@@ -67,7 +72,7 @@ export class Nino {
                 let randomtiempo = parseInt(this.app.random(2, 6) + "");
                 this.tiempopedir = randomtiempo * 1000;
             }
-          
+
             if (this.necesidad == 0) {
                 console.log("Nina2 tiempo:" + this.tiempopedir);
                 if (parseInt(this.app.millis() + "") - this.contador >= this.tiempopedir) {

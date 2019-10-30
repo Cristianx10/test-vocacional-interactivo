@@ -6,6 +6,7 @@ import Objeto from "./Objeto";
 import Microondas from "./Microondas";
 
 import Main from "./Main";
+import ProcessingImg from "../../../componentes/Processing/ProcessingImg";
 
 export default class Logica {
 
@@ -53,9 +54,12 @@ export default class Logica {
 
 	seleccion?: p5.Image;
 
+	img: ProcessingImg;
+
 	constructor(main: Main) {
 		this.main = main;
 		this.app = this.main.app;
+		this.img = new ProcessingImg(this.app);
 
 		this.widthNino = 182;
 		this.heightNino = 290;
@@ -99,10 +103,10 @@ export default class Logica {
 
 		this.micro = new Microondas(this.app, this);
 
-		this.mesa = this.app.loadImage("/img/2019/revoltosos/data/mesa.png");
+		this.mesa = this.img.loadImage("/img/2019/revoltosos/data/mesa.png");
 
 		this.anchobarra = 300;
-		this.fondobarra = this.app.loadImage("/img/2019/revoltosos/data/fondobarragrande.png");
+		this.fondobarra = this.img.loadImage("/img/2019/revoltosos/data/fondobarragrande.png");
 	}
 
 	pintar() {
@@ -128,7 +132,7 @@ export default class Logica {
 		}
 
 		if (this.seleccion) {
-			this.app.image(this.seleccion, this.app.mouseX - 41, this.app.mouseY -36);
+			this.app.image(this.seleccion, this.app.mouseX - 41, this.app.mouseY - 36);
 		}
 
 	}

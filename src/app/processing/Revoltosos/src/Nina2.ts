@@ -27,21 +27,21 @@ export default class Nina2 extends Nino {
 		super(log, x, y, ancho, alto);
 
 
-		this.nino = this.app.loadImage("/img/2019/revoltosos/data/girl_feliz.png");
-		this.ninopide = this.app.loadImage("/img/2019/revoltosos/data/girl_pidiendo.png");
-		this.ninotriste = this.app.loadImage("/img/2019/revoltosos/data/boy_llorando.png");
-		this.barra = this.app.loadImage("/img/2019/revoltosos/data/barraindividual.png");
-		this.dos = this.app.loadImage("/img/2019/revoltosos/data/necesidad_panalsucio.png");
-		this.uno = this.app.loadImage("/img/2019/revoltosos/data/necesidad_cancion.png");
-		this.dosdos = this.app.loadImage("/img/2019/revoltosos/data/necesidad_panitos.png");
-		this.dostres = this.app.loadImage("/img/2019/revoltosos/data/necesidad_panal.png");
-		this.tres = this.app.loadImage("/img/2019/revoltosos/data/necesidad_juguetes.png");
-		this.cuatro = this.app.loadImage("/img/2019/revoltosos/data/necesidad_medicam.png");
-		this.cinco = this.app.loadImage("/img/2019/revoltosos/data/necesidad_leer.png");
-		this.seis = this.app.loadImage("/img/2019/revoltosos/data/necesidad_comida.png");
-		this.ninopanal = this.app.loadImage("/img/2019/revoltosos/data/girl_popis.png");
-		this.ninopanitos = this.app.loadImage("/img/2019/revoltosos/data/girl_panitos.png");
-		this.ninolimpio = this.app.loadImage("/img/2019/revoltosos/data/girl_limpia.png");
+		this.nino = this.img.loadImage("/img/2019/revoltosos/data/girl_feliz.png");
+		this.ninopide = this.img.loadImage("/img/2019/revoltosos/data/girl_pidiendo.png");
+		this.ninotriste = this.img.loadImage("/img/2019/revoltosos/data/boy_llorando.png");
+		this.barra = this.img.loadImage("/img/2019/revoltosos/data/barraindividual.png");
+		this.dos = this.img.loadImage("/img/2019/revoltosos/data/necesidad_panalsucio.png");
+		this.uno = this.img.loadImage("/img/2019/revoltosos/data/necesidad_cancion.png");
+		this.dosdos = this.img.loadImage("/img/2019/revoltosos/data/necesidad_panitos.png");
+		this.dostres = this.img.loadImage("/img/2019/revoltosos/data/necesidad_panal.png");
+		this.tres = this.img.loadImage("/img/2019/revoltosos/data/necesidad_juguetes.png");
+		this.cuatro = this.img.loadImage("/img/2019/revoltosos/data/necesidad_medicam.png");
+		this.cinco = this.img.loadImage("/img/2019/revoltosos/data/necesidad_leer.png");
+		this.seis = this.img.loadImage("/img/2019/revoltosos/data/necesidad_comida.png");
+		this.ninopanal = this.img.loadImage("/img/2019/revoltosos/data/girl_popis.png");
+		this.ninopanitos = this.img.loadImage("/img/2019/revoltosos/data/girl_panitos.png");
+		this.ninolimpio = this.img.loadImage("/img/2019/revoltosos/data/girl_limpia.png");
 	}
 
 	pintar() {

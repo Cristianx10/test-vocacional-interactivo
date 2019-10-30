@@ -1,3 +1,4 @@
+import ProcessingImg from '../../../componentes/Processing/ProcessingImg';
 import p5 = require("p5");
 
 export default class Elemento {
@@ -9,6 +10,7 @@ export default class Elemento {
     parte?: p5.Image;
     pos: { x: number, y: number, inicial: { x: number, y: number } };
     block: boolean;
+    img: ProcessingImg;
 
 
     constructor(app: p5, url: string, x: number, y: number, width?: number, height?: number) {
@@ -16,11 +18,12 @@ export default class Elemento {
         this.url = url;
         this.width = 0;
         this.height = 0;
+        this.img = new ProcessingImg(this.app);
 
         if (width != null) {
             this.width = width;
         }
-        
+
 
         if (height != null) {
             this.height = height;
@@ -28,7 +31,7 @@ export default class Elemento {
 
 
         if (url != "") {
-            this.parte = this.app.loadImage(url);
+            this.parte = this.img.loadImage(url);
             this.width = this.parte.width;
             this.height = this.parte.height;
         }

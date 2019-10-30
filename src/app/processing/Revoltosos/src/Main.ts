@@ -4,6 +4,7 @@ import { IPropRevoltosos } from '../Revoltosos';
 import { processingContext } from '../../../comunicacion/ProcessingContext';
 import Processing from '../../../componentes/Processing/Processing';
 import ProcessingContext from '../../../comunicacion/ProcessingContext';
+import ProcessingImg from "../../../componentes/Processing/ProcessingImg";
 
 export default class Main {
 
@@ -21,23 +22,25 @@ export default class Main {
     activartiempo: boolean;
     propiedades: IPropRevoltosos;
     processing: Processing;
+    img: ProcessingImg;
 
     constructor(app: p5) {
         this.app = app;
         this.log = new Logica(this);
+        this.img = new ProcessingImg(this.app);
         this.pantalla = 1;
         this.contador = 0;
         this.activartiempo = true;
-        this.fondo1 = this.app.loadImage("/img/2019/revoltosos/data/INICIO.png");
-        this.fondo11 = this.app.loadImage("/img/2019/revoltosos/data/INICIO2.png");
-        this.fondo2 = this.app.loadImage("/img/2019/revoltosos/data/INSTRUCCIONES.png");
-        this.fondo22 = this.app.loadImage("/img/2019/revoltosos/data/INSTRUCCIONES2.png");
-        this.fondo3 = this.app.loadImage("/img/2019/revoltosos/data/fondo.jpg");
-        this.fondo4 = this.app.loadImage("/img/2019/revoltosos/data/FINAL.png");
-        this.fondo44 = this.app.loadImage("/img/2019/revoltosos/data/FINAL2.png");
+        this.fondo1 = this.img.loadImage("/img/2019/revoltosos/data/INICIO.png");
+        this.fondo11 = this.img.loadImage("/img/2019/revoltosos/data/INICIO2.png");
+        this.fondo2 = this.img.loadImage("/img/2019/revoltosos/data/INSTRUCCIONES.png");
+        this.fondo22 = this.img.loadImage("/img/2019/revoltosos/data/INSTRUCCIONES2.png");
+        this.fondo3 = this.img.loadImage("/img/2019/revoltosos/data/fondo.jpg");
+        this.fondo4 = this.img.loadImage("/img/2019/revoltosos/data/FINAL.png");
+        this.fondo44 = this.img.loadImage("/img/2019/revoltosos/data/FINAL2.png");
         this.processing = ProcessingContext.actividad;
         this.propiedades = this.processing.propiedades;
-       
+
     }
 
 
