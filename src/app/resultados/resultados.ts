@@ -10,11 +10,19 @@ export interface IOORestulados {
     registro: OResultado;
 }
 
+interface IDataUser {
+    nombre: string;
+    genero: string;
+    carrera: string;
+    edad: string;
+    mano: string;
+}
+
 export class Resultados {
 
     UID = "undefined";
     id: string;
-    usuario?: any;
+    usuario?: IDataUser;
     pruebas?: Array<GResultados>;
 
     tiempoInicial?: number;

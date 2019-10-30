@@ -9,7 +9,7 @@ export default class SeccioA extends Component {
   }
 
   componentDidMount() {
-    for (let index = 0; index < 3; index++) {
+    for (let index = 0; index < 159; index++) {
       this.views.push(<TLikertPregunta uid={index + 1}></TLikertPregunta>);
     }
     console.log("bien");
