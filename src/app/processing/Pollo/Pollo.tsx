@@ -3,6 +3,7 @@ import ProcessingContext, { processingContext } from '../../comunicacion/Process
 import p5 from "p5";
 import Processing from "../../componentes/Processing/Processing";
 import { AppProcessing } from '../../componentes/Processing/Processing';
+import ProcessingImg from '../../componentes/Processing/ProcessingImg';
 import { Gamer } from './data/game';
 import "./stylePollo.scss";
 
@@ -69,6 +70,10 @@ export class Logica {
     killedState: CreateState[] = [];
     iterator = true;
 
+
+    intentos = 3;
+    puntajeAsignado = 0;
+
     app: p5;
     imgBarca: p5.Image;
     imgConejo: p5.Image
@@ -76,39 +81,60 @@ export class Logica {
     imgFondo: p5.Image
     imgInstruc: p5.Image
 
+
+    imgInicio: p5.Image;
+
+    imgLose: p5.Image;
+    imgWin: p5.Image;
+    cora: p5.Image;
+    espacioVida: p5.Image;
+    imgResumen: p5.Image;
+
+
+    animacionMuertePollo: p5.Image[];
+    numeroAnimacionPollo: number;
+
     pantalla = 0;
     gamer: Gamer;
 
+    // Creating a root node.
+    rootNode = new CreateState();
+
+
+    img: ProcessingImg;
 
     constructor(app: p5) {
         this.app = app;
-
+        this.img = new ProcessingImg(this.app);
         this.gamer = new Gamer(this);
+
+
+        this.numeroAnimacionPollo = 0;
+        this.imgBarca = this.img.loadImage('/img/barca.png');
+        this.imgConejo = this.img.loadImage('/img/pollo.png');
+        this.imgZorro = this.img.loadImage('/img/zorro.png');
+        this.imgFondo = this.img.loadImage('/img/fondo.png');
+        this.imgInstruc = this.img.loadImage('/img/instruc.png');
+        this.imgWin = this.img.loadImage('/img/win.png')
+        this.imgLose = this.img.loadImage('/img/lose.png');
+        this.cora = this.img.loadImage('/img/cora.png');
+        this.espacioVida = this.img.loadImage('/img/espacioVida.png');
+        this.imgResumen = this.img.loadImage('/img/resultados.png');
+        this.imgInicio = this.img.loadImage('/img/inicio.png');
+
+
+
+        this.animacionMuertePollo = new Array(175);
+        for (var i = 1; i <= 175; i++) {
+            this.animacionMuertePollo[i - 1] = this.img.loadImage('/img/' + i + '.png');
+        }
 
         this.app.frameRate(3);
 
-
-        this.imgBarca = this.app.loadImage('/img/2019/pollo/img/barca.png');
-        this.imgConejo = this.app.loadImage('/img/2019/pollo/img/pollo.png');
-        this.imgZorro = this.app.loadImage('/img/2019/pollo/img/zorro.png');
-        this.imgFondo = this.app.loadImage('/img/2019/pollo/img/fondo.png');
-        this.imgInstruc = this.app.loadImage('/img/2019/pollo/img/instruc.png');
-
-        console.log("Mi imagen", this.imgBarca)
-
-        // Creating a root node.
-        var rootNode = new CreateState();
-        rootNode.value = this.initialState;
-        rootNode.parent = this.initialState;
-        rootNode.visited = false;
-
-        /**Setup */
-
-
         // set x and y position of the root node.
-        rootNode.x = this.app.width / 2;
-        rootNode.y = 70;
-        this.state.push(rootNode);
+        this.rootNode.x = this.app.width / 2;
+        this.rootNode.y = 70;
+        this.state.push(this.rootNode);
         while (this.iterator) {
             this.applyOperation(this.state[this.state.length - 1])
         }
@@ -120,11 +146,13 @@ export class Logica {
         this.app.imageMode(this.app.CENTER);
 
         this.pantalla = 1;
+
     }
 
 
     draw() {
 
+        console.log('estoy en pantalla: ' + this.pantalla);
         switch (this.pantalla) {
 
             case 0:
@@ -135,6 +163,11 @@ export class Logica {
 
             case 1:
                 this.app.image(this.imgFondo, this.app.width / 2, this.app.height / 2);
+
+                this.app.image(this.espacioVida, this.app.width - 400, 100);
+                for (let h = 0; h < this.intentos; h++) {
+                    this.app.image(this.cora, (this.app.width - 400) + h * 40, 100);
+                }
 
                 // set boat position
                 let x = 0;
@@ -162,7 +195,7 @@ export class Logica {
                     this.app.image(this.imgZorro, 280 + j * 60, this.app.height / 2 + 130);
                 }
 
-                //  j = 0;
+
                 for (let j = 0; j < 3 - this.gamer.tracker[1]; j++) {
                     // CANNIBALS
                     //derecha
@@ -170,8 +203,32 @@ export class Logica {
                 }
 
                 break;
+            case 2:
+                this.app.image(this.imgLose, this.app.width / 2, this.app.height / 2);
+                for (var i = 0; i < this.animacionMuertePollo.length; i++) {
+                }
+
+                if (this.numeroAnimacionPollo <= 175) {
+                    this.animacionMuertePollo[this.numeroAnimacionPollo].resize(400, 100);
+                    this.app.image(this.animacionMuertePollo[this.numeroAnimacionPollo], this.app.width / 2 + 30, this.app.height / 2 - 150);
+                    this.numeroAnimacionPollo += 15;
+                } else {
+                    this.numeroAnimacionPollo = 0;
+                }
+
+                break;
+            case 3:
+                this.app.image(this.imgWin, this.app.width / 2, this.app.height / 2);
+                break;
+            case 4:
+                this.app.image(this.imgResumen, this.app.width / 2, this.app.height / 2);
+                break;
+            case 5:
+                this.app.image(this.imgInicio, this.app.width / 2, this.app.height / 2);
+                break;
 
         }
+
     }
 
 
@@ -181,11 +238,35 @@ export class Logica {
 
             this.pantalla = 1;
         }
+        if (this.pantalla == 2 && this.app.mouseY >= 389 && this.app.mouseY <= 429 && this.app.mouseX > 697 && this.app.mouseX < 832) {
+            this.pantalla = 1;
+        }
+        if (this.pantalla == 3 && this.app.mouseY >= 389 && this.app.mouseY <= 429 && this.app.mouseX > 697 && this.app.mouseX < 832) {
+            //EL PARTICIPANTE GANO SI ESTA EN ESTA PANTALLA Y SE LE ASIGNA UN PUNTAJE DEPENDIENDO CUANTOS INTENTOS UTILIZO
+            if (this.intentos == 3) {
+                this.puntajeAsignado = 100;
+            } else if (this.intentos == 2) {
+                this.puntajeAsignado = 75;
+            } else if (this.intentos == 1) {
+                this.puntajeAsignado = 50;
+            }
+            //CAMBIAR DE PANTALLA 
+            console.log('el puntaje asignado es: ' + this.puntajeAsignado);
+
+        }
+
+        if (this.pantalla == 4 && this.app.mouseY >= 389 && this.app.mouseY <= 429 && this.app.mouseX > 697 && this.app.mouseX < 832) {
+
+            //EL USUARIO PERDIO SI ESTA EN ESTA PANTALLA, PONER AQUI EL CAMBIO DE GAME
+
+        }
+
+        if (this.pantalla == 5) {
+            this.pantalla = 0;
+        }
 
 
     }
-
-
 
     // Generate new states from parent state.
     applyOperation(tempState: CreateState) {
@@ -269,6 +350,7 @@ export class Logica {
             this.killedState.push(temp);
         }
     }
+
     // Function to check whether a state already exists or not in the array
     repetitionChecker(value: number[]) {
         for (let i = 0; i < this.state.length; i++) {
@@ -282,7 +364,6 @@ export class Logica {
     getPantalla() {
         return this.pantalla;
     }
-
 
 }
 
@@ -306,43 +387,3 @@ class CreateState {
     }
 }
 
-
-/*
-import React, { Component } from "react";
-import ProcessingContext, { processingContext } from '../../comunicacion/ProcessingContext';
-import p5 from "p5";
-import Processing from "../../componentes/Processing/Processing";
-import { AppProcessing } from '../../componentes/Processing/Processing';
-
-interface IPropsPollo {
-
-}
-
-export default class Pollo extends Component implements AppProcessing {
-
-    processingContext: processingContext;
-    processing: Processing;
-    app: p5;
-
-    constructor(props: IPropsPollo) {
-        super(props);
-        this.processingContext = ProcessingContext;
-        this.processing = this.processingContext.actividad;
-        this.processing.juego = this;
-        this.app = this.processing.app;
-    }
-
-    setup() {
-
-    }
-
-    draw(){
-
-    }
-
-    render() {
-        return <div></div>;
-    }
-}
-
-*/

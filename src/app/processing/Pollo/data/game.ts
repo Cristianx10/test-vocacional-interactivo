@@ -3,13 +3,15 @@ import { Logica } from '../Pollo';
 export class Gamer {
 
 
-    missionaryCount:number = 0;
-    cannibalCount:number = 0;
+    missionaryCount: number = 0;
+    cannibalCount: number = 0;
     tracker: number[] = [3, 3, 1];
     parent: number[] = [];
     intentos = 3;
 
     log: Logica;
+
+    buttonGo: HTMLElement;
 
     constructor(log: Logica) {
         this.log = log;
@@ -35,18 +37,31 @@ export class Gamer {
             oneMissionaryOneCannibal.addEventListener('click', () => this.play(1, 1));
         }
 
+        this.buttonGo = <HTMLElement>document.querySelector('#go');
+        this.buttonGo.style.visibility = 'hidden';
+
+        this.selectGo();
+
     }
 
+    selectGo() {
 
+        this.buttonGo.addEventListener('click', () => {
+            this.applyMove(this.missionaryCount, this.cannibalCount);
+            this.buttonGo.style.visibility = 'hidden';
+        });
+
+    }
 
     // take missionaries and cannibals count and apply appropriate operation
-    play = (M:number, C:number) => {
+    play = (M: number, C: number) => {
         this.missionaryCount = M;
         this.cannibalCount = C;
-        this.applyMove(this.missionaryCount, this.cannibalCount);
+        this.buttonGo.style.visibility = 'visible';
+        // this.applyMove(this.missionaryCount, this.cannibalCount);
     }
     // main function 
-    applyMove(M:number, C:number) {
+    applyMove(M: number, C: number) {
         this.parent = this.tracker;
         // check boat is at right or left bank
         if (this.tracker[2] == 1) {
@@ -62,29 +77,34 @@ export class Gamer {
                     console.log(this.tracker);
                     if (this.tracker[0] == 0 && this.tracker[1] == 0 && this.tracker[2] == 0) {
                         console.log("YOU WON");
-                        alert("HURRAH! Ganaste!");
+
+                        this.log.pantalla = 3;
 
                         //Logica de cambiar pantalla
-                        location.href = "/resultados.html";
 
 
 
                     } else if (this.checkfromState()) {
                         console.log("Acceptable State");
                     } else {
+                        this.tracker = [3, 3, 1];
+
                         console.log("GAME OVER");
-                        alert("PERDISTE");
 
                         //Logica de cambiar pantalla
                         this.intentos -= 1;
+
                         if (this.intentos <= 0) {
-                            location.href = "/resultados.html";
+                            this.log.pantalla = 4;
+
+                        } else if (this.intentos >= 1) {
+
+                            console.log("ja manga de putitos" + this.intentos);
+                            //  location.reload();
+                            console.log("GAME OVER");
+                            this.log.pantalla = 2;
+
                         }
-
-                        console.log("ja manga de putitos" + this.intentos);
-                        //  location.reload();
-
-                        this.tracker = [3, 3, 1];
                     }
                 }
             } else {
