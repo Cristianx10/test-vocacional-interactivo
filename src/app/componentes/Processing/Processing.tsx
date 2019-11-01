@@ -17,6 +17,7 @@ export interface AppProcessing {
   mousePressed?: Function;
   mouseReleased?: Function;
   mouseDragged?: Function;
+  propiedades: any;
 
 }
 
@@ -110,9 +111,13 @@ export class Processing extends Component<IPropsProcessing> implements IONavegab
     resultados.evaluar(this);
   }
 
+  size(width: number, height: number) {
+    this.app.createCanvas(width, height).parent(this.id);
+  }
+
   preload() {
     if (this.app) {
-      this.app.createCanvas(1280, 720).parent(this.id);
+
       if (this.juego && this.juego.preload) {
         this.juego.preload(this.app);
       }
@@ -121,7 +126,7 @@ export class Processing extends Component<IPropsProcessing> implements IONavegab
 
   setup() {
     if (this.app) {
-      this.app.createCanvas(1280, 720).parent(this.id);
+      
       if (this.juego && this.juego.setup) {
         this.juego.setup(this.app);
       }

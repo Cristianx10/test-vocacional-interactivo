@@ -19,6 +19,7 @@ export default class Culpable extends Component implements AppProcessing {
 
     log?: Logica;
     propiedades: any;
+
     acciones: any;
 
     constructor(props: IPropsPollo) {
@@ -30,18 +31,19 @@ export default class Culpable extends Component implements AppProcessing {
     }
 
     setup() {
+        this.processing.size(1280, 720);
         this.log = new Logica(this.app);
         this.app.noStroke();
     }
 
     draw() {
-        if(this.log)
-        this.log.pintar();
+        if (this.log)
+            this.log.pintar();
     }
 
     mouseReleased() {
-        if(this.log)
-        this.log.soltarMouse();
+        if (this.log)
+            this.log.soltarMouse();
     }
 
     render() {

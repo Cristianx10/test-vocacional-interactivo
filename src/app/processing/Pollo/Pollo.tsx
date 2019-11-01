@@ -17,6 +17,8 @@ export default class Pollo extends Component implements AppProcessing {
     processing: Processing;
     app: p5;
     logica?: Logica;
+    propiedades: any;
+
 
     constructor(props: IPropsPollo) {
         super(props);
@@ -24,6 +26,8 @@ export default class Pollo extends Component implements AppProcessing {
         this.processing = this.processingContext.actividad;
         this.processing.juego = this;
         this.app = this.processing.app;
+
+        this.propiedades = {};
 
     }
 

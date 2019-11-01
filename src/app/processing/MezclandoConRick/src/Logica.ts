@@ -87,6 +87,9 @@ export default class Logica {
     separador: string[] = [];
     separador2: string[] = [];
 
+    vidas: number;
+    vida: p5.Image;
+
 
     constructor(app: p5) {
         this.app = app;
@@ -114,6 +117,9 @@ export default class Logica {
         this.elemento = -1;
 
         this.sel = false;
+
+        this.vidas =3;
+        this.vida = this.img.loadImage("/img/2019/ciencias/imgs/corazon.png")
 
         this.reto = 0;
         this.aciertos = 0; //cuenta los aciertos

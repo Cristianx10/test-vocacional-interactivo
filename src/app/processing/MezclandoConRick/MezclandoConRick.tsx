@@ -16,6 +16,7 @@ export class MezclandoConRick extends Component implements AppProcessing {
     app: p5;
 
     log?: Logica;
+    propiedades: any;
 
     constructor(props: IPropsMezclandoConRick) {
         super(props);
@@ -23,6 +24,7 @@ export class MezclandoConRick extends Component implements AppProcessing {
         this.processing = this.processingContext.actividad;
         this.processing.juego = this;
         this.app = this.processing.app;
+        
     }
 
     setup() {

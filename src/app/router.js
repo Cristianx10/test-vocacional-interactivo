@@ -15,6 +15,8 @@ import { SeccionC } from "./test2019/SeccionC";
 import SeccionD from "./test2019/SeccionD";
 import SeccionE from "./test2019/SeccionE";
 import SeccionH from "./test2019/SeccionH";
+import SeccionF from "./test2019/SeccionF";
+import SeccionG from "./test2019/SeccionG";
 
 
 
@@ -41,8 +43,10 @@ export class Router extends React.Component {
           <Route exact path="/seccionb" component={SeccionB} />
           <Route exact path="/seccionc" component={SeccionC} />
           <Route exact path="/secciond" component={SeccionD} />
-          <Route exact path="/seccionE" component={SeccionE} />
-          <Route exact path="/seccionH" component={SeccionH} />
+          <Route exact path="/seccione" component={SeccionE} />
+          <Route exact path="/seccionh" component={SeccionH} />
+          <Route exact path="/seccionf" component={SeccionF} />
+          <Route exact path="/secciong" component={SeccionG} />
         </Switch>
       </BrowserRouter>
     );
