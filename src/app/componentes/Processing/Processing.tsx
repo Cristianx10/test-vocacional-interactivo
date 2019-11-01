@@ -37,12 +37,14 @@ export class Processing extends Component<IPropsProcessing> implements IONavegab
   registro: GResultados;
   propiedades: any;
   acciones: any;
+  addEvents: IONavegable[];
 
   constructor(props: IPropsProcessing) {
     super(props);
     this.processingContext = ProcessingContext;
     this.processingContext.setActividad(this);
     this.id = "processing processing__sckecth__" + this.processingContext.nActividades;
+    this.addEvents = [];
 
     this.registro = resultados.agregar(this);
     this.propiedades = this.registro.propiedades;
@@ -79,9 +81,6 @@ export class Processing extends Component<IPropsProcessing> implements IONavegab
         this.mouseDragged();
       }
 
-
-
-
     });
   }
 
@@ -93,14 +92,33 @@ export class Processing extends Component<IPropsProcessing> implements IONavegab
   }
 
   onInicial() {
+
+    this.addEvents.forEach(event => {
+      event.onInicial();
+    });
+
     this.registro.agregar();
     if (this.props.UID) {
       this.registro.setUID(this.props.UID);
     }
+
+  }
+
+  onProgress() {
+    this.addEvents.forEach(event => {
+      if(event.onProgress){
+        event.onProgress();
+      }
+    });
   }
 
 
   onFinal() {
+
+    this.addEvents.forEach(event => {
+      event.onFinal();
+    });
+
     this.app.noLoop();
     if (this.pantalla) {
       resultados.setTiempo(this, this.pantalla.timer.tiempo + "");
@@ -126,7 +144,7 @@ export class Processing extends Component<IPropsProcessing> implements IONavegab
 
   setup() {
     if (this.app) {
-      
+
       if (this.juego && this.juego.setup) {
         this.juego.setup(this.app);
       }

@@ -6,6 +6,8 @@ import { AppProcessing } from '../../componentes/Processing/Processing';
 import ProcessingImg from '../../componentes/Processing/ProcessingImg';
 import { Gamer } from './data/game';
 import "./stylePollo.scss";
+import Contenedor from '../../componentes/Contenedor/Contenedor';
+import { position } from "html2canvas/dist/types/css/property-descriptors/position";
 
 interface IPropsPollo {
 
@@ -36,6 +38,7 @@ export default class Pollo extends Component implements AppProcessing {
     }
 
     setup() {
+        this.processing.size(1280, 720);
         this.logica = new Logica(this.app);
     }
 
@@ -50,8 +53,8 @@ export default class Pollo extends Component implements AppProcessing {
     }
 
     render() {
-        return <div>
-            <div>
+        return <div className="pollo">
+            <Contenedor style={{position:"absolute"}} top="">
                 <h4>ESCOGE TU MOVIMIENTO</h4>
                 <ul className="buttons">
                     <li id='oneMissionary'> 1 Pollito </li>
@@ -60,7 +63,11 @@ export default class Pollo extends Component implements AppProcessing {
                     <li id='twoCannibals'> 2 Zorros </li>
                     <li id='oneMissionaryOneCannibal'> 1 Pollito y 1 Zorro</li>
                 </ul>
-            </div>
+                <div className="espacioGo"  >
+                    <button className="gogo" id='go'>Enviar</button>
+                    <div className="perder"></div>
+                </div>
+            </Contenedor>
         </div>;
     }
 }
@@ -73,10 +80,10 @@ export class Logica {
     state: CreateState[] = [];
     killedState: CreateState[] = [];
     iterator = true;
-
-
     intentos = 3;
     puntajeAsignado = 0;
+
+
 
     app: p5;
     imgBarca: p5.Image;
@@ -102,10 +109,16 @@ export class Logica {
     gamer: Gamer;
 
     // Creating a root node.
-    rootNode = new CreateState();
+    rootNode: CreateState
+
+    boteIN: boolean = false;
+    zorrocount: number = 0;
+    pollocount: number = 0;
 
 
     img: ProcessingImg;
+
+    x: number = 0;
 
     constructor(app: p5) {
         this.app = app;
@@ -114,30 +127,35 @@ export class Logica {
 
 
         this.numeroAnimacionPollo = 0;
-        this.imgBarca = this.img.loadImage('/img/barca.png');
-        this.imgConejo = this.img.loadImage('/img/pollo.png');
-        this.imgZorro = this.img.loadImage('/img/zorro.png');
-        this.imgFondo = this.img.loadImage('/img/fondo.png');
-        this.imgInstruc = this.img.loadImage('/img/instruc.png');
-        this.imgWin = this.img.loadImage('/img/win.png')
-        this.imgLose = this.img.loadImage('/img/lose.png');
-        this.cora = this.img.loadImage('/img/cora.png');
-        this.espacioVida = this.img.loadImage('/img/espacioVida.png');
-        this.imgResumen = this.img.loadImage('/img/resultados.png');
-        this.imgInicio = this.img.loadImage('/img/inicio.png');
+        this.imgBarca = this.img.loadImage('/img/2019/pollo/img/barca.png');
+        this.imgConejo = this.img.loadImage('/img/2019/pollo/img/pollo.png');
+        this.imgZorro = this.img.loadImage('/img/2019/pollo/img/zorro.png');
+        this.imgFondo = this.img.loadImage('/img/2019/pollo/img/fondo.png');
+        this.imgInstruc = this.img.loadImage('/img/2019/pollo/img/instruc.png');
+        this.imgWin = this.img.loadImage('/img/2019/pollo/img/win.png')
+        this.imgLose = this.img.loadImage('/img/2019/pollo/img/lose.png');
+        this.cora = this.img.loadImage('/img/2019/pollo/img/cora.png');
+        this.espacioVida = this.img.loadImage('/img/2019/pollo/img/espacioVida.png');
+        this.imgResumen = this.img.loadImage('/img/2019/pollo/img/resultados.png');
+        this.imgInicio = this.img.loadImage('/img/2019/pollo/img/inicio.png');
 
 
 
         this.animacionMuertePollo = new Array(175);
         for (var i = 1; i <= 175; i++) {
-            this.animacionMuertePollo[i - 1] = this.img.loadImage('/img/' + i + '.png');
+            this.animacionMuertePollo[i - 1] = this.img.loadImage('/img/2019/pollo/img/' + i + '.png');
         }
 
         this.app.frameRate(3);
 
+        this.rootNode = new CreateState();
         // set x and y position of the root node.
+        this.rootNode.value = this.initialState;
+        this.rootNode.parent = this.initialState;
+        this.rootNode.visited = false;
         this.rootNode.x = this.app.width / 2;
         this.rootNode.y = 70;
+
         this.state.push(this.rootNode);
         while (this.iterator) {
             this.applyOperation(this.state[this.state.length - 1])
@@ -156,7 +174,7 @@ export class Logica {
 
     draw() {
 
-        console.log('estoy en pantalla: ' + this.pantalla);
+        console.log('estoy en this.pantalla: ' + this.pantalla);
         switch (this.pantalla) {
 
             case 0:
@@ -174,37 +192,107 @@ export class Logica {
                 }
 
                 // set boat position
-                let x = 0;
+
                 if (this.gamer.tracker[2] == 1) {
-                    x = this.app.width / 2 - 80;
+                    this.x = this.app.width / 2 - 80;
                 } else if (this.gamer.tracker[2] == 0) {
-                    x = this.app.width / 2 + 80;
+                    this.x = this.app.width / 2 + 80;
                 }
                 //Barca
-                this.app.image(this.imgBarca, x, this.app.height / 2 + 180);
 
 
                 // MISSIONARIES
                 //izquierda
+
+
+
                 for (let i = 0; i < this.gamer.tracker[0]; i++) {
 
                     this.app.image(this.imgConejo, this.app.width / 2 - 300 + i * 50, this.app.height / 2 + 125);
                 }
-                for (let i = 0; i < 3 - this.gamer.tracker[0]; i++) {
 
+
+                for (let i = 0; i < 3 - this.gamer.tracker[0]; i++) {
                     this.app.image(this.imgConejo, this.app.width / 2 + 300 + i * 50, this.app.height / 2 + 125);
                 }
+
                 for (let j = 0; j < this.gamer.tracker[1]; j++) {
                     // CANNIBALS
-                    this.app.image(this.imgZorro, 280 + j * 60, this.app.height / 2 + 130);
+                    this.app.image(this.imgZorro, 100 + j * 60, this.app.height / 2 + 130);
                 }
-
 
                 for (let j = 0; j < 3 - this.gamer.tracker[1]; j++) {
                     // CANNIBALS
                     //derecha
                     this.app.image(this.imgZorro, 980 + j * 60, this.app.height / 2 + 130);
                 }
+                /*
+                 if(tracker[2]==1 && boteIN==true){
+                  
+                  console.log(pollocount+" "+zorrocount);
+                  if(pollocount==1 && zorrocount==1){
+                    console.log('entre gonorreas');
+                    this.app.image(imgConejo,620, 420);
+                    this.app.image(imgZorro,720, 420);
+                    
+                  
+                    
+                  } else if(pollocount==1){  
+                    this.app.image(imgConejo,620, 420);
+                    
+                 
+                  } else if(pollocount==2){
+                    this.app.image(imgConejo,620, 420);
+                    this.app.image(imgConejo,620+pollocount*50, 420);
+                 
+                    
+                  }  else if(zorrocount==1){
+                    this.app.image(imgZorro,620, 420);
+                
+                  } else if(zorrocount==2){
+                    this.app.image(imgZorro,620, 420);
+                    this.app.image(imgZorro,620+zorrocount*50, 420);
+                    console.log('xdxdxd');
+                    
+                  
+                  }
+                  
+                } else if(tracker[2]==0 && boteIN==true){
+                
+                if(pollocount==1 && zorrocount==1){
+                  this.app.image(imgConejo,788, 420);
+                  this.app.image(imgZorro,888, 420);
+                  
+                  console.log('holaaaaaaaaaaa');
+                 
+                  
+                  
+                } else if(pollocount==1){  
+                  this.app.image(imgConejo,788, 420);
+                  
+                  
+                } else if(pollocount==2){
+                  this.app.image(imgConejo,788, 420);
+                  this.app.image(imgConejo,788+pollocount*50, 420);
+                }  else if(zorrocount==1){
+                  this.app.image(imgZorro,788, 420);
+                  
+                
+                 
+                  this.app.image(imgZorro,980, height/2+130);
+                } else if(zorrocount==2){
+                  
+                  this.app.image(imgZorro,788, 420);
+                  this.app.image(imgZorro,788+zorrocount*50, 420);
+                  
+                  
+                  
+                }
+              }*/
+
+
+
+                this.app.image(this.imgBarca, this.x, this.app.height / 2 + 180);
 
                 break;
             case 2:
@@ -233,6 +321,8 @@ export class Logica {
 
         }
 
+
+
     }
 
 
@@ -246,7 +336,7 @@ export class Logica {
             this.pantalla = 1;
         }
         if (this.pantalla == 3 && this.app.mouseY >= 389 && this.app.mouseY <= 429 && this.app.mouseX > 697 && this.app.mouseX < 832) {
-            //EL PARTICIPANTE GANO SI ESTA EN ESTA PANTALLA Y SE LE ASIGNA UN PUNTAJE DEPENDIENDO CUANTOS INTENTOS UTILIZO
+            //EL PARTICIPANTE GANO SI ESTA EN ESTA this.PANTALLA Y SE LE ASIGNA UN PUNTAJE DEPENDIENDO CUANTOS INTENTOS UTILIZO
             if (this.intentos == 3) {
                 this.puntajeAsignado = 100;
             } else if (this.intentos == 2) {
@@ -254,7 +344,7 @@ export class Logica {
             } else if (this.intentos == 1) {
                 this.puntajeAsignado = 50;
             }
-            //CAMBIAR DE PANTALLA 
+            //CAMBIAR DE this.PANTALLA 
             console.log('el puntaje asignado es: ' + this.puntajeAsignado);
 
         }
@@ -268,7 +358,6 @@ export class Logica {
         if (this.pantalla == 5) {
             this.pantalla = 0;
         }
-
 
     }
 

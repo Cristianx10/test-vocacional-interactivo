@@ -24,10 +24,11 @@ export class MezclandoConRick extends Component implements AppProcessing {
         this.processing = this.processingContext.actividad;
         this.processing.juego = this;
         this.app = this.processing.app;
-        
+
     }
 
     setup() {
+        this.processing.size(1200, 700);
         this.log = new Logica(this.app);
     }
 

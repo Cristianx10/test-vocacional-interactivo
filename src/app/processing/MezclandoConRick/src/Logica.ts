@@ -3,13 +3,17 @@ import { number } from "prop-types";
 import Elemento from "./Elemento";
 import ProcessingImg from "../../../componentes/Processing/ProcessingImg";
 
-export default class Logica {
+class Logica {
 
     app: p5;
     pantalla: number;
 
     iden: any;
     idenins: any;
+
+    puntaje: number;
+    mezclandobien: boolean
+    punterocompuesto: number;
 
 
     tiempo: number;
@@ -27,7 +31,7 @@ export default class Logica {
     sel: boolean;
     seleccion?: Elemento;
     reto: number;
-    aciertos: number; //cuenta los aciertos
+    aciertos: number = 0; //cuenta los aciertos
     font: p5.Font;
     fondo: p5.Image;
     mesa: p5.Image;
@@ -40,6 +44,8 @@ export default class Logica {
     sodio: Elemento;
     aluminio: Elemento;
     cloro: Elemento;
+
+    compuesto1: p5.Image[];
 
 
     cobre: Elemento;
@@ -63,25 +69,13 @@ export default class Logica {
     cerrar: Elemento;
 
 
-    compuesto1: p5.Image;
-    compuesto2: p5.Image;
-    compuesto3: p5.Image;
-    compuesto4: p5.Image;
-    compuesto5: p5.Image;
-    compuesto6: p5.Image;
-    compuesto7: p5.Image;
-    compuesto8: p5.Image;
-    compuesto9: p5.Image;
-    compuesto10: p5.Image;
-
-
     img: ProcessingImg;
 
 
     icono?: p5.Image;
     icono2?: p5.Image;
 
-    elemento: number;
+    elemento: number = 0;
     mezcla = "";
     mezcla2 = "";
     separador: string[] = [];
@@ -93,18 +87,18 @@ export default class Logica {
 
     constructor(app: p5) {
         this.app = app;
-        this.pantalla = 0;
+        this.img = new ProcessingImg(this.app);
+        this.pantalla = 2;
         this.run = this.run.bind(this);
         this.iden = null;
         this.tiempo = 90;
-
-        this.img = new ProcessingImg(this.app);
 
         this.runins = this.runins.bind(this);
         this.idenins = null;
         this.tiempoins = 30;
 
-        this.mezclando = false;
+        this.mezclando = false;;
+        this.mezclandobien = false;
         this.reproduciendo = true;
         this.rickmezclando = [];
         this.puntero = 0;
@@ -114,15 +108,11 @@ export default class Logica {
             this.rickmezclando.push(this.img.loadImage("/img/2019/ciencias/imgs/animacion/rick" + i + ".png"));
         }
 
-        this.elemento = -1;
 
         this.sel = false;
-
-        this.vidas =3;
-        this.vida = this.img.loadImage("/img/2019/ciencias/imgs/corazon.png")
-
+        this.seleccion;
         this.reto = 0;
-        this.aciertos = 0; //cuenta los aciertos
+        this.puntaje = 0; //cuenta los puntaje
         this.font = this.app.loadFont("/img/2019/ciencias/fonts/impact.ttf");
         this.fondo = this.img.loadImage("/img/2019/ciencias/imgs/fondo.png");
         this.mesa = this.img.loadImage("/img/2019/ciencias/imgs/mesa.png");
@@ -156,20 +146,18 @@ export default class Logica {
         this.jugar = new Elemento(this.app, "/img/2019/ciencias/imgs/jugar.png", 920, 536);
         this.continuar = new Elemento(this.app, "/img/2019/ciencias/imgs/continuar.png", 920, 536);
         this.cerrar = new Elemento(this.app, "/img/2019/ciencias/imgs/x.png", 88, 78);
+        //NUEVOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
 
+        this.punterocompuesto = 0;
+        this.compuesto1 = [];
+        for (var i = 0; i <= 1; i++) {
+            this.compuesto1.push(this.img.loadImage("/img/2019/ciencias/imgs/compuesto1." + i + ".png"));
+        }
 
+        this.vidas = 3;
+        this.vida = this.img.loadImage("/img/2019/ciencias/imgs/corazon.png");
 
-
-        this.compuesto1 = this.img.loadImage("/img/2019/ciencias/imgs/compuesto1.png");
-        this.compuesto2 = this.img.loadImage("/img/2019/ciencias/imgs/compuesto2.png");
-        this.compuesto3 = this.img.loadImage("/img/2019/ciencias/imgs/compuesto3.png");
-        this.compuesto4 = this.img.loadImage("/img/2019/ciencias/imgs/compuesto4.png");
-        this.compuesto5 = this.img.loadImage("/img/2019/ciencias/imgs/compuesto5.png");
-        this.compuesto6 = this.img.loadImage("/img/2019/ciencias/imgs/compuesto6.png");
-        this.compuesto7 = this.img.loadImage("/img/2019/ciencias/imgs/compuesto7.png");
-        this.compuesto8 = this.img.loadImage("/img/2019/ciencias/imgs/compuesto8.png");
-        this.compuesto9 = this.img.loadImage("/img/2019/ciencias/imgs/compuesto9.png");
-        this.compuesto10 = this.img.loadImage("/img/2019/ciencias/imgs/compuesto10.png");
+        //NUEVOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
 
 
 
@@ -197,8 +185,14 @@ export default class Logica {
 
             case 1:
                 this.app.background(50, 50, 50);
+                //NUEVOOOOOOOOOOOOOOOOOOOO
+                this.app.textFont(this.font);
+                this.app.textSize(32);
+                this.app.fill(163, 111, 69);
+                //NUEVOOOOOOOOOOOOOOOOOOOO
                 this.app.image(this.compuestosinicio, 600, 350);
-                this.app.text(this.tiempoins, 600, 60);
+                this.app.text("comienza en: " + this.tiempoins, 930, 610);
+                this.app.fill(0, 0, 0);
                 if (this.tiempoins <= 0) {
                     this.pantalla = 2;
                 }
@@ -213,67 +207,91 @@ export default class Logica {
                 break;
 
             case 2:
-                //pantalla de juego     
+                //pantalla de juego    
 
-
-                //this.animacionmal.draw();
                 this.app.textFont(this.font);
                 this.app.textSize(32);
                 this.app.imageMode(this.app.CORNER);
                 this.app.image(this.fondo, 0, 0);
                 this.app.image(this.mesa, 0, 0);
 
+                //NUEVOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+                this.app.text("Intentos:", 660, 58);
+
+                if (this.vidas === 0 && this.puntero === 10) {
+                    this.pantalla = 3;
+                    stop();
+                }
+
+                if (this.vidas > 2) {
+                    this.app.image(this.vida, 920, 30);
+                }
+                if (this.vidas > 1) {
+                    this.app.image(this.vida, 860, 30);
+                }
+
+                if (this.vidas > 0) {
+                    this.app.image(this.vida, 800, 30);
+                }
+
+                this.app.image(this.compuesto1[this.punterocompuesto], 850, 575);
+                if (this.app.frameCount % 50 === 0 && this.punterocompuesto === 0) {
+                    this.punterocompuesto = 1;
+                } else if (this.app.frameCount % 50 === 0 && this.punterocompuesto === 1) {
+                    this.punterocompuesto = 0;
+                }
+
+                this.app.textSize(22);
+                this.app.textAlign(this.app.CENTER)
+                this.app.fill(107, 80, 48);
+                //NUEVOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+
                 switch (this.reto) {
                     case 0:
-                        this.app.image(this.compuesto1, 885, 580);
-
+                        this.app.text("Óxido de sodio", 995, 635);
                         break;
                     case 1:
-                        this.app.image(this.compuesto2, 885, 580);
+                        this.app.text("Óxido de aluminio", 995, 635);
                         break;
                     case 2:
-                        this.app.image(this.compuesto3, 885, 580);
+                        this.app.text("Sal común", 995, 635);
                         break;
                     case 3:
-                        //this.app.text("Crea un compuesto de Hidruro de sodio", 600, 90);
-                        this.app.image(this.compuesto4, 885, 580);
+                        this.app.text("Hidruro de sodio", 995, 635);
                         break;
                     case 4:
-                        //this.app.text("Crea un compuesto de Hidruro de calcio", 600, 90);
-                        this.app.image(this.compuesto5, 885, 580);
+                        this.app.text("Hidruro de calcio", 995, 635);
                         break;
                     case 5:
-                        //this.app.text("Crea un compuesto de Hidruro de cobre", 600, 90);
-                        this.app.image(this.compuesto6, 885, 580);
+                        this.app.text("Hidruro de cobre", 995, 635);
                         break;
                     case 6:
-                        //this.app.text("Crea un compuesto de Óxido cuproso", 600, 90);
-                        this.app.image(this.compuesto7, 885, 580);
+                        this.app.text("Óxido cuproso", 995, 635);
                         break;
                     case 7:
-                        //this.app.text("Crea un compuesto de Cloruro ferroso", 600, 90);
-                        this.app.image(this.compuesto8, 885, 580);
+                        this.app.text("Cloruro ferroso", 995, 635);
                         break;
                     case 8:
-                        //this.app.text("Crea un compuesto de Cloruro férrico", 600, 90);
-                        this.app.image(this.compuesto9, 885, 580);
+                        this.app.text("Cloruro férrico", 995, 635);
                         break;
                     case 9:
-                        //this.app.text("Crea un compuesto de Hidruro de litio", 600, 90);
-                        this.app.image(this.compuesto10, 885, 580);
+                        this.app.text("Hidruro de litio", 995, 635);
                         break;
 
                     default:
                         break;
                 }
-
-
+                this.app.fill(0, 0, 0);
+                this.app.textAlign(this.app.LEFT);
+                this.app.textSize(32);
                 this.app.image(this.decoracion1, 85, 312);
                 this.app.image(this.decoracion2, 295, 362);
                 this.app.imageMode(this.app.CENTER);
 
+                let estatico = true;
 
                 if (this.mezclando === true) {
+                    estatico = false;
                     this.app.image(this.rickmezclando[this.puntero], 935, 295);
                     if (this.app.frameCount % 7 == 1 && this.reproduciendo === true) {
                         this.puntero++;
@@ -282,7 +300,9 @@ export default class Logica {
                             this.puntero = 10;
                             this.contadoranim++;
                             console.log(this.contadoranim);
-                            if (this.contadoranim === 8) {
+
+
+                            if (this.contadoranim === 13) {
                                 this.mezclando = false;
                                 this.contadoranim = 0;
                                 this.puntero = 0;
@@ -294,7 +314,28 @@ export default class Logica {
                 }
 
 
-                if (this.mezclando === false) {
+
+                if (this.mezclandobien === true) {
+                    estatico = false;
+                    this.app.image(this.rickmezclando[this.puntero], 935, 295);
+                    if (this.app.frameCount % 7 == 1 && this.reproduciendo === true) {
+                        this.puntero++;
+                        if (this.puntero === 5) {
+                            this.puntero = 0;
+                            this.mezclandobien = false;
+                            estatico = true;
+                        }
+                    }
+
+                }
+
+
+                if (this.mezclandobien === false && estatico === true) {
+
+                    this.app.image(this.rick, 935, 295);
+                }
+
+                if (this.mezclando === false && estatico === true) {
 
                     this.app.image(this.rick, 935, 295);
                 }
@@ -304,7 +345,7 @@ export default class Logica {
                 this.boton.pintar();
                 this.libro.pintar();
                 this.app.image(this.mas, 385, 625);
-                this.app.text("Tiempo: " + this.tiempo, 10, 40);
+                this.app.text("Tiempo: " + this.tiempo, 10, 58);
 
                 this.calcio.pintar();
                 this.cobre.pintar();
@@ -317,17 +358,12 @@ export default class Logica {
                 this.aluminio.pintar();
                 this.cloro.pintar();
                 //console.log(this.separador);
-
-                if (this.mezcla != "") {
-                    if (this.icono) {
-                        this.app.image(this.icono, 240, 625);
-                    }
+                if (this.mezcla != "" && this.icono) {
+                    this.app.image(this.icono, 240, 625);
                 }
 
-                if (this.mezcla2 != "") {
-                    if (this.icono2) {
-                        this.app.image(this.icono2, 530, 625);
-                    }
+                if (this.mezcla2 != "" && this.icono2) {
+                    this.app.image(this.icono2, 530, 625);
                 }
 
 
@@ -367,6 +403,15 @@ export default class Logica {
 
                     this.stop();
                 }
+
+
+                //NUEVOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+
+                if (this.puntaje <= 0) {
+                    this.puntaje = 0;
+                }
+                //NUEVOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+
 
                 break;
 
@@ -487,11 +532,16 @@ export default class Logica {
                         console.log("mezclaaa")
                         this.reto++;
                         this.vaciar();
-                        this.aciertos++;
+                        this.puntaje += 10;
+                        this.mezclandobien = true;
                     } else {
                         this.reto++;
                         this.vaciar();
                         this.mezclando = true;
+                        //NUEVOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+                        this.puntaje -= 15;
+                        this.vidas--;
+                        //NUEVOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
                     }
                     break;
                 case 1:
@@ -499,12 +549,16 @@ export default class Logica {
                         console.log("mezclaaa")
                         this.reto = 2;
                         this.vaciar();
-                        this.aciertos++;
+                        this.puntaje += 10;
+                        this.mezclandobien = true;
                     } else {
                         this.reto++;
                         this.vaciar();
                         this.mezclando = true;
-
+                        //NUEVOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+                        this.puntaje -= 15;
+                        this.vidas--;
+                        //NUEVOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
                     }
 
                     break;
@@ -513,12 +567,16 @@ export default class Logica {
                         console.log("mezclaaa")
                         this.reto++;
                         this.vaciar();
-                        this.aciertos++;
+                        this.puntaje += 10;
+                        this.mezclandobien = true;
                     } else {
                         this.reto++;
                         this.vaciar();
                         this.mezclando = true;
-
+                        //NUEVOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+                        this.puntaje -= 15;
+                        this.vidas--;
+                        //NUEVOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
                     }
 
                     break;
@@ -527,11 +585,16 @@ export default class Logica {
                         console.log("mezclaaa")
                         this.reto++;
                         this.vaciar();
-                        this.aciertos++;
+                        this.puntaje += 10;
+                        this.mezclandobien = true;
                     } else {
                         this.reto++;
                         this.vaciar();
                         this.mezclando = true;
+                        //NUEVOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+                        this.puntaje -= 15;
+                        this.vidas--;
+                        //NUEVOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
 
                     }
 
@@ -541,11 +604,16 @@ export default class Logica {
                         console.log("mezclaaa")
                         this.reto++;
                         this.vaciar();
-                        this.aciertos++;
+                        this.puntaje += 10;
+                        this.mezclandobien = true;
                     } else {
                         this.reto++;
                         this.vaciar();
                         this.mezclando = true;
+                        //NUEVOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+                        this.puntaje -= 15;
+                        this.vidas--;
+                        //NUEVOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
 
                     }
 
@@ -555,11 +623,16 @@ export default class Logica {
                         console.log("mezclaaa")
                         this.reto++;
                         this.vaciar();
-                        this.aciertos++;
+                        this.puntaje += 10;
+                        this.mezclandobien = true;
                     } else {
                         this.reto++;
                         this.vaciar();
                         this.mezclando = true;
+                        //NUEVOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+                        this.puntaje -= 15;
+                        this.vidas--;
+                        //NUEVOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
 
                     }
 
@@ -569,11 +642,16 @@ export default class Logica {
                         console.log("mezclaaa")
                         this.reto++;
                         this.vaciar();
-                        this.aciertos++;
+                        this.puntaje += 10;
+                        this.mezclandobien = true;
                     } else {
                         this.reto++;
                         this.vaciar();
                         this.mezclando = true;
+                        //NUEVOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+                        this.puntaje -= 15;
+                        this.vidas--;
+                        //NUEVOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
 
                     }
 
@@ -583,11 +661,16 @@ export default class Logica {
                         console.log("mezclaaa")
                         this.reto++;
                         this.vaciar();
-                        this.aciertos++;
+                        this.puntaje += 10;
+                        this.mezclandobien = true;
                     } else {
                         this.reto++;
                         this.vaciar();
                         this.mezclando = true;
+                        //NUEVOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+                        this.puntaje -= 15;
+                        this.vidas--;
+                        //NUEVOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
 
                     }
 
@@ -597,11 +680,16 @@ export default class Logica {
                         console.log("mezclaaa")
                         this.reto++;
                         this.vaciar();
-                        this.aciertos++;
+                        this.puntaje += 10;
+                        this.mezclandobien = true;
                     } else {
                         this.reto++;
                         this.vaciar();
                         this.mezclando = true;
+                        //NUEVOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+                        this.puntaje -= 15;
+                        this.vidas--;
+                        //NUEVOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
 
                     }
 
@@ -611,12 +699,17 @@ export default class Logica {
                         console.log("mezclaaa")
                         this.reto++;
                         this.vaciar();
-                        this.aciertos++;
+                        this.puntaje += 10;
+                        this.mezclandobien = true;
                     } else {
                         this.mezclando = true;
                         this.pantalla = 3;
                         this.vaciar();
                         this.stop();
+                        //NUEVOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+                        this.puntaje -= 15;
+                        this.vidas--;
+                        //NUEVOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
 
 
                     }
@@ -701,7 +794,6 @@ export default class Logica {
             if (this.separador != null) {
                 let num = this.separador[0];
                 console.log(num)
-
                 this.icono = this.img.loadImage("/img/2019/ciencias/imgs/" + num + ".png");
 
 
@@ -821,5 +913,6 @@ export default class Logica {
         this.tiempoins--;
     }
 
-
 }
+
+export default Logica;

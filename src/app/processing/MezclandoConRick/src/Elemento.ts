@@ -1,5 +1,5 @@
+import p5 from "p5";
 import ProcessingImg from '../../../componentes/Processing/ProcessingImg';
-import p5 = require("p5");
 
 export default class Elemento {
 

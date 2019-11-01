@@ -5,9 +5,10 @@ export class Gamer {
 
     missionaryCount: number = 0;
     cannibalCount: number = 0;
-    tracker: number[] = [3, 3, 1];
+    tracker: number[];
     parent: number[] = [];
     intentos = 3;
+    tracket2: number[];
 
     log: Logica;
 
@@ -15,6 +16,9 @@ export class Gamer {
 
     constructor(log: Logica) {
         this.log = log;
+
+        this.tracker = [3, 3, 1];
+        this.tracket2 = this.tracker;
 
         let oneMissionary = document.querySelector('#oneMissionary')
         if (oneMissionary) {
@@ -49,6 +53,7 @@ export class Gamer {
         this.buttonGo.addEventListener('click', () => {
             this.applyMove(this.missionaryCount, this.cannibalCount);
             this.buttonGo.style.visibility = 'hidden';
+            this.log.boteIN = false;
         });
 
     }
@@ -58,6 +63,9 @@ export class Gamer {
         this.missionaryCount = M;
         this.cannibalCount = C;
         this.buttonGo.style.visibility = 'visible';
+        this.log.pollocount = M;
+        this.log.zorrocount = C;
+        this.log.boteIN = true;
         // this.applyMove(this.missionaryCount, this.cannibalCount);
     }
     // main function 
@@ -74,7 +82,7 @@ export class Gamer {
                     this.tracker[0] = this.tracker[0] - M;
                     this.tracker[1] = this.tracker[1] - C;
                     if (this.tracker[2] == 1 ? this.tracker[2] = 0 : this.tracker[2] = 1)
-                    console.log(this.tracker);
+                        console.log(this.tracker);
                     if (this.tracker[0] == 0 && this.tracker[1] == 0 && this.tracker[2] == 0) {
                         console.log("YOU WON");
 

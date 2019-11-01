@@ -39,6 +39,7 @@ export default class Revoltosos extends Component implements AppProcessing {
     }
 
     setup() {
+        this.processing.size(1280, 720);
         this.main = new Main(this.app);
     }
 

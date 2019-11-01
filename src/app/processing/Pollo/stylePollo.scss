@@ -1,71 +1,100 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 
-/*
-* {
-    box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
-}
-
-body {
-    background-color: #00004A;
-    padding: 0;
-    margin: 0;
-}
-*/
+.pollo {
 
 
-h4 {
-    text-align: center;
-    color: #fff;
-}
+    h4 {
+        text-align: center;
+        color: #fff;
+    }
 
-ul {
-    margin: 10px auto;
-    padding: 0;
-    list-style: none;
-    display: grid;
-    grid-template-columns: auto auto auto auto auto;
-    grid-column-gap: 10px;
-    width: 80%;
-}
+    ul {
+        margin: 10px auto;
+        padding: 0;
+        list-style: none;
+        display: grid;
+        grid-template-columns: auto auto auto auto auto;
+        grid-column-gap: 10px;
+        width: 80%;
+    }
 
-ul li {
-    display: grid-item;
-    text-align: center;
-    padding: 10px;
-    border-radius: 5px;
-    background-color: #E64973;
-    color: #fff;
-}
+    ul li {
+        display: grid-item;
+        text-align: center;
+        padding: 10px;
+        border-radius: 5px;
+        background-color: #E64973;
+        color: #fff;
+    }
 
-ul li:hover {
-    cursor: pointer;
-}
+    ul li:hover {
+        cursor: pointer;
+        background-color: rgb(226, 6, 65);
+    }
 
-.instruc {
-    display: flex;
-    height: 650px;
-    width: auto;
-    background-image: url('/img/2019/pollo/img/instruc.png');
-    background-repeat: no-repeat;
-    align-items: flex-end;
-    justify-content: center;
+    .instruc {
+        display: flex;
+        height: 650px;
+        width: auto;
+        background-image: url('/img/2019/pollo/img/instruc.png');
+        background-repeat: no-repeat;
+        align-items: flex-end;
+        justify-content: center;
 
-    margin-left: 230px;
-    margin-top: 100px;
-}
+        margin-left: 230px;
+        margin-top: 100px;
+    }
 
-.jugar {
+    .inicio {
+        display: flex;
+        height: 650px;
+        width: auto;
+        background-image: url('/img/2019/pollo/img/inicio.png');
+        background-repeat: no-repeat;
+        align-items: flex-end;
+        justify-content: center;
 
-    margin-bottom: 70px;
-    margin-right: 250px;
-    background: #00DED3;
-    padding: 15px;
-    border-radius: 10px;
-    color: white;
-    font-size: 16px;
-    text-decoration: none;
-    justify-content: center;
-    align-content: center;
+        margin-left: 230px;
+        margin-top: 100px;
+    }
 
+    .jugar {
+
+        margin-bottom: 70px;
+        margin-right: 250px;
+        background: #00DED3;
+        padding: 15px;
+        border-radius: 10px;
+        color: white;
+        font-size: 16px;
+        text-decoration: none;
+        justify-content: center;
+        align-content: center;
+
+    }
+
+    .espacioGo {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+    }
+
+    .gogo {
+        margin-top: 10px;
+        background-color: rgb(4, 207, 197);
+        border: none;
+        border-radius: 5px;
+        text-align: center;
+        text-decoration: none;
+        width: 120px;
+        height: 40px;
+        font-size: 25px;
+
+        color: white;
+    }
+
+    .gogo:hover {
+        background-color: rgb(1, 128, 121);
+    }
 }
