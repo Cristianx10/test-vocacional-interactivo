@@ -167,6 +167,7 @@ class Logica {
 
         switch (this.respuesta) {
             case 0:
+                this.app.background(0);
                 this.app.image(this.escena1, 0, 0);
                 //Mouse sobre respuesta 1
                 if (this.app.mouseX > this.tantoxR1 && this.app.mouseX < this.tantoxMayorR1 && this.app.mouseY > this.tantoy && this.app.mouseY < this.tantoyMayor) {
@@ -176,7 +177,6 @@ class Logica {
                 //Mouse sobre respuesta 2
                 if (this.app.mouseX > this.tantoxR2 && this.app.mouseX < this.tantoxMayorR2 && this.app.mouseY > this.tantoy && this.app.mouseY < this.tantoyMayor) {
                     this.app.image(this.e1r2Over, 0, 0);
-
                 }
                 break;
             case 1:
@@ -837,18 +837,8 @@ class Logica {
                 break;
 
 
-
-
-
-
-
-
-
-
-
-
-
-
         }
     }
 }
+
+export default Logica;
