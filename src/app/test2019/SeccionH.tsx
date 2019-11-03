@@ -22,7 +22,7 @@ export default class SeccionH extends Component<IPropsSeccionH> {
 
         return (<Navegador>
             <Pantalla>
-                <Processing>
+                <Processing UID="" config={()=>{}}>
                     <MezclandoConRick></MezclandoConRick>
                 </Processing>
 

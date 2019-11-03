@@ -118,6 +118,7 @@ export class Pantalla extends Component<IPropsPantalla> {
     }
 
     onChange() {
+     
         if (this.navegador && this.props.fondo) {
             this.navegador.style.setStyle("fondo", this.props.fondo);
         }

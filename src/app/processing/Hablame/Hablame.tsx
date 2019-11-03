@@ -12,8 +12,8 @@ interface IPropsMezclandoConRick {
 export class Hablame extends Component implements AppProcessing {
 
     processingContext: processingContext;
-    processing: Processing;
-    app: p5;
+    processing?: Processing;
+    app?: p5;
 
     log?: Logica;
     propiedades: any;
@@ -22,19 +22,27 @@ export class Hablame extends Component implements AppProcessing {
         super(props);
         this.processingContext = ProcessingContext;
         this.processing = this.processingContext.actividad;
-        this.processing.juego = this;
-        this.app = this.processing.app;
-        
+        if (this.processing) {
+            this.processing.juego = this;
+            this.app = this.processing.app;
+        }
+
     }
 
     setup() {
-        this.processing.size(1280, 720);
-        this.log = new Logica(this.app);
+        if (this.processing) {
+            this.processing.size(1280, 720);
+        }
+        if (this.app) {
+            this.log = new Logica(this.app);
+        }
     }
 
     draw() {
-        this.app.background("white");
-        this.app.text(this.app.key, this.app.mouseX, this.app.mouseY);
+        if(this.app){
+            this.app.background("white");
+            this.app.text(this.app.key, this.app.mouseX, this.app.mouseY);
+        }
         if (this.log) {
             this.log.draw();
         }

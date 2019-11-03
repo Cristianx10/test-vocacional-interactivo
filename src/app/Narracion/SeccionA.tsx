@@ -7,6 +7,8 @@ import TLikertPregunta from "../plantillas/template-likert/TLikertPregunta";
 import { shuffle } from '../utilidades/utils';
 import { TIntroduccion } from '../plantillas/templete-introduccion';
 import { routes } from '../router';
+import ClasificarRopa from '../processing/ClasificarRopa/ClasificarRopa';
+import { TLikertPruebaBefore } from '../plantillas/template-likert/TLikertPregunta';
 
 /**Seccion A */
 
@@ -47,6 +49,7 @@ export class SeccionA extends Component<{}> {
         return (<Navegador>
 
 
+
             <TIntroduccion fondo="/includes/background/oscuro-personajes.png">
                 <h1>Responda las preguntas</h1>
                 <p>A continuación, encontrarás un cuestionario que permite conocer tus intereses vocacionales.</p>
@@ -56,12 +59,17 @@ export class SeccionA extends Component<{}> {
                 return <Pantalla width="80%" fondo="/includes/background/claro.png">{view}</Pantalla>;
             })}
 
+            {/**Diseño */}
+            <ClasificarRopa></ClasificarRopa>
+
+            <TLikertPruebaBefore titulo="Mezclando Compuestos" UID="A11" />
+
             {Children.map(preguntasB, view => {
                 return <Pantalla width="80%" fondo="/includes/background/claro.png">{view}</Pantalla>;
             })}
 
-            <Pantalla>
-                <h1>Ahora, continuemos con la siguiente seccion. Haz click en continuar</h1>
+            <Pantalla fondo="/includes/background/claro.png">
+                <h1>Lo has hecho muy bien, continuemos con la siguiente unidad. Haz click en continuar</h1>
                 <Continuar url={routes.cuetionarioB}></Continuar>
             </Pantalla>
 

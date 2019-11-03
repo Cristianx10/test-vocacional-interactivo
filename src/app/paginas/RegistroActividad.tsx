@@ -38,7 +38,7 @@ export class RegistroActividad extends Component {
   }
 
   onSubmit(event: React.FormEvent) {
-    //event.preventDefault();
+    event.preventDefault();
     console.log("dato tomado");
   }
 
@@ -110,6 +110,7 @@ export class RegistroActividad extends Component {
         <div className="rv__prueba">
           {viewTitulo}
           <h3>Tiempo: {prueba.tiempo}</h3>
+          <h3>Id de prueba: {prueba.id}</h3>
           <h3>UID de la prueba: {prueba.UID}</h3>
           {viewPrueba}
           <ViewComparadorCategoiras resultado={resultado} />
@@ -125,7 +126,7 @@ export class RegistroActividad extends Component {
           ref="formadmin"
           style={{ display: "none" }}
           id="nom"
-          target="blank"
+          target="_blank"
           action="/datos_usuario"
           method="POST"
           onSubmit={this.onSubmit.bind(this)}

@@ -107,7 +107,7 @@ export class ManagerStyle {
           if (fondo.includes("/")) {
             this.style.backgroundImage = "url('" + this.props.fondo + "')";
           } else {
-            this.style.background = this.props.fondo;
+            this.style.backgroundColor = this.props.fondo;
           }
         }
       }
@@ -164,7 +164,7 @@ export class ManagerStyle {
   update() {
     if (this.contenedor != null) {
       this.contenedor.style.backgroundImage = this.style.backgroundImage + "";
-      this.contenedor.style.background = this.style.background + "";
+      this.contenedor.style.backgroundColor = this.style.backgroundColor + "";
     }
   }
 
@@ -190,9 +190,11 @@ export class ManagerStyle {
     if (propiedad === "fondo") {
       let fondo = value + "";
       if (fondo.includes("/")) {
+        this.style.backgroundColor = "";
         this.style.backgroundImage = "url('" + value + "')";
       } else {
-        this.style.background = value;
+        this.style.backgroundImage = "";
+        this.style.backgroundColor = value;
       }
     }
 
@@ -224,8 +226,8 @@ export function resizeClass(etiqueta: any, etiquetasClass: string) {
     style.color = etiqueta.props.color;
   }
 
-  if (etiqueta.props.background != null) {
-    style.background = etiqueta.props.background;
+  if (etiqueta.props.backgroundColor != null) {
+    style.backgroundColor = etiqueta.props.background;
   }
 
   if (etiqueta.props.padding != null) {

@@ -8,6 +8,7 @@ import D from "../../configuraciones/dato";
 import Continuar from "../../componentes/Continuar/Continuar";
 import RelojContador from "../../componentes/Navegador/RelojContador";
 import Contenedor from '../../componentes/Contenedor/Contenedor';
+import Pantalla from "../../componentes/Pantalla/Pantalla";
 
 interface IPropsTLikertPregunta {
   UID: string;
@@ -57,7 +58,7 @@ export class TLikertPregunta extends Component<IPropsTLikertPregunta> {
         );
       });
 
-     // console.log(this.data)
+      // console.log(this.data)
       view = (
         <>
           <RelojContador style={{
@@ -100,3 +101,24 @@ export class TLikertPregunta extends Component<IPropsTLikertPregunta> {
 
 
 export default TLikertPregunta;
+
+
+
+export function TLikertPruebaBefore(props: { UID: string, titulo: string }) {
+  return <Pantalla fondo="/includes/background/claro.png">
+    <Contenedor height="70%" padding="20px">
+      <h1><D t>Como te sentiste con esta pruebas de {props.titulo}</D></h1>
+      <Pregunta UID={props.UID}>
+        <Likert min="Mal" max="Bien">
+          <Opcion><D>1</D></Opcion>
+          <Opcion><D>2</D></Opcion>
+          <Opcion><D>3</D></Opcion>
+        </Likert>
+
+      </Pregunta>
+    </Contenedor>
+    <Contenedor height="30%">
+      <Continuar></Continuar>
+    </Contenedor>
+  </Pantalla>;
+}

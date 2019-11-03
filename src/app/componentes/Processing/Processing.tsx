@@ -1,14 +1,13 @@
 import React, { Component, Children } from "react";
-
 import ProcessingContext, {
   processingContext
 } from "../../comunicacion/ProcessingContext";
 import p5 from "p5";
-import { GResultados, resultados } from '../../resultados/resultados';
-import { navegadorContext } from '../../comunicacion/NavegadorContext';
+import { GResultados, resultados, IORestulados, ICategoria } from '../../resultados/resultados';
 import Pantalla from '../Pantalla/Pantalla';
 import NavegadorContext from '../../comunicacion/NavegadorContext';
 import { IONavegable } from '../../comunicacion/utilEvents';
+import ManagerStyle from '../../utilidades/AutoClases';
 
 export interface AppProcessing {
   preload?: Function;
@@ -19,13 +18,16 @@ export interface AppProcessing {
   mouseDragged?: Function;
   propiedades: any;
 
+
 }
 
 interface IPropsProcessing {
   sketch?: AppProcessing;
   juego?: AppProcessing;
-  UID?: string;
+  UID: string;
+  config: Function;
 }
+
 
 export class Processing extends Component<IPropsProcessing> implements IONavegable {
 
@@ -38,6 +40,10 @@ export class Processing extends Component<IPropsProcessing> implements IONavegab
   propiedades: any;
   acciones: any;
   addEvents: IONavegable[];
+  canvas?: p5.Renderer;
+  style: ManagerStyle;
+  config?: Function;
+
 
   constructor(props: IPropsProcessing) {
     super(props);
@@ -46,8 +52,11 @@ export class Processing extends Component<IPropsProcessing> implements IONavegab
     this.id = "processing processing__sckecth__" + this.processingContext.nActividades;
     this.addEvents = [];
 
+    this.style = new ManagerStyle(props, this.id);
+
     this.registro = resultados.agregar(this);
     this.propiedades = this.registro.propiedades;
+    this.acciones = {};
 
     if (NavegadorContext.navegador) {
       this.pantalla = NavegadorContext.navegador.getAddPantalla();
@@ -82,13 +91,25 @@ export class Processing extends Component<IPropsProcessing> implements IONavegab
       }
 
     });
+
+    this.acciones.evaluar = (id: string, accion: Function, descripcion: string, resultados: ICategoria[]) => {
+      this.evaluar(id, accion, descripcion, resultados);
+    }
+
   }
 
   componentDidMount() {
+    let contenedor: any = this.refs.contenedor;
+    this.style.setContenedor(contenedor);
 
-    if (this.props.UID) {
-      resultados.setUID(this, this.props.UID);
+    if (this.props.config) {
+      this.config = this.props.config;
     }
+
+    if (this.config) {
+      this.config(this.propiedades, this.acciones);
+    }
+
   }
 
   onInicial() {
@@ -97,19 +118,39 @@ export class Processing extends Component<IPropsProcessing> implements IONavegab
       event.onInicial();
     });
 
+
     this.registro.agregar();
+    
     if (this.props.UID) {
       this.registro.setUID(this.props.UID);
     }
 
+    
+
+    /*
+    if (this.props.UID) {
+      this.registro.setUID(this.props.UID);
+    }
+    */
+
+
+
+ 
+
+
+
   }
 
-  onProgress() {
+  onProgress(segundos: number, minutos: number) {
     this.addEvents.forEach(event => {
-      if(event.onProgress){
-        event.onProgress();
+      if (event.onProgress) {
+        event.onProgress(segundos, minutos);
       }
     });
+  }
+
+  evaluar(id: string, accion: Function, descripcion: string, resultados: ICategoria[]) {
+    this.registro.agregarCondicion(id, accion, descripcion, resultados, this);
   }
 
 
@@ -129,8 +170,21 @@ export class Processing extends Component<IPropsProcessing> implements IONavegab
     resultados.evaluar(this);
   }
 
+  continuar() {
+    if (this.pantalla) {
+      this.pantalla.continuar();
+    }
+  }
+
   size(width: number, height: number) {
-    this.app.createCanvas(width, height).parent(this.id);
+    this.canvas = this.app.createCanvas(width, height);
+
+    if (this.canvas && this.style.contenedor) {
+      this.canvas.parent(this.style.contenedor);
+
+      let canvas: any = this.canvas;
+      canvas.canvas.style.visibility = "visible";
+    }
   }
 
   preload() {
@@ -178,7 +232,7 @@ export class Processing extends Component<IPropsProcessing> implements IONavegab
 
   render() {
     return (
-      <div id={this.id}>
+      <div ref="contenedor" id={this.id}>
         {Children.map(this.props.children, (view) => {
           return view;
         })}

@@ -3,10 +3,13 @@ import Navegador from '../componentes/Navegador/Navegador';
 import Pantalla from '../componentes/Pantalla/Pantalla';
 import Continuar from '../componentes/Continuar/Continuar';
 
-import TLikertPregunta from "../plantillas/template-likert/TLikertPregunta";
+import TLikertPregunta, { TLikertPruebaBefore } from "../plantillas/template-likert/TLikertPregunta";
 import { shuffle } from '../utilidades/utils';
 import { TIntroduccion } from '../plantillas/templete-introduccion';
 import { routes } from '../router';
+import Processing from "../componentes/Processing/Processing";
+import Culpable from '../processing/Culpable/Culpable';
+import { Re } from '../resultados/resultados';
 
 /**Seccion A */
 
@@ -39,12 +42,21 @@ export class SeccionD extends Component<{}> {
 
     }
 
+    configCulpable(propiedades: any, acciones: any) {
+        console.log(propiedades, acciones)
+        acciones.evaluar("Puntuacion", (p: any, a: any) => {
+            a.setValor(Re.derecho, p.puntuacion);
+            return true;
+        }, "puntuacion Obtendida", [{ id: Re.derecho, valor: 100 }]);
+    }
+
     render() {
 
         let preguntasA = this.formularioPreguntas(60);
         let preguntasB = this.formularioPreguntas(70);
 
         return (<Navegador>
+
 
 
             <TIntroduccion fondo="/includes/background/oscuro-personajes.png">
@@ -55,6 +67,15 @@ export class SeccionD extends Component<{}> {
             {Children.map(preguntasA, view => {
                 return <Pantalla width="80%" fondo="/includes/background/claro.png">{view}</Pantalla>;
             })}
+
+            {/**Derecho */}
+            <Pantalla>
+                <Processing UID="D1" config={this.configCulpable}>
+                    <Culpable></Culpable>
+                </Processing>
+            </Pantalla>
+
+            <TLikertPruebaBefore UID="D11" titulo="Culpable"></TLikertPruebaBefore>
 
             {Children.map(preguntasB, view => {
                 return <Pantalla width="80%" fondo="/includes/background/claro.png">{view}</Pantalla>;

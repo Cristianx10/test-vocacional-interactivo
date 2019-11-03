@@ -56,6 +56,8 @@ export class SeccionF extends Component<{}> {
                 return <Pantalla width="80%" fondo="/includes/background/claro.png">{view}</Pantalla>;
             })}
 
+            {/**Ingenieria */}
+
             {Children.map(preguntasB, view => {
                 return <Pantalla width="80%" fondo="/includes/background/claro.png">{view}</Pantalla>;
             })}

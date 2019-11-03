@@ -1,11 +1,10 @@
 import React, { Component } from "react";
-import Navegador from "../../componentes/Navegador/Navegador";
 import Pantalla from "../../componentes/Pantalla/Pantalla";
 import Contenedor from "../../componentes/Contenedor/Contenedor";
 import Continuar from "../../componentes/Continuar/Continuar";
 import RelojContador from "../../componentes/Navegador/RelojContador";
 import { IPropClasificar } from '../../actividades/Clasificar/Clasificar';
-import Cortes from '../../actividades/Cortes/Cortes';
+
 import Clasificar, {
   Almacen,
   Zona, IActionClasificar
@@ -30,7 +29,7 @@ export class ClasificarRopa extends Component {
 
       });
       return value;
-    }, "Escogio cabello correcto", []);
+    }, "Escogio cabello correcto", [{ id: "", valor: 14 }]);
 
     acciones.validar("ojos", (p: IPropClasificar) => {
       let value = false
@@ -45,7 +44,7 @@ export class ClasificarRopa extends Component {
       });
       return value;
 
-    }, "Escogio ojos correcto", []);
+    }, "Escogio ojos correcto", [{ id: "", valor: 14 }]);
 
     acciones.validar("boca", (p: IPropClasificar) => {
       let value = false
@@ -60,7 +59,7 @@ export class ClasificarRopa extends Component {
       });
       return value;
 
-    }, "Escogio boca correcto", []);
+    }, "Escogio boca correcto", [{ id: "", valor: 14 }]);
 
     acciones.validar("moño", (p: IPropClasificar) => {
       let value = false
@@ -75,7 +74,7 @@ export class ClasificarRopa extends Component {
       });
       return value;
 
-    }, "Escogio cabello correcto", []);
+    }, "Escogio cabello correcto", [{ id: "", valor: 14 }]);
 
     acciones.validar("carpeta", (p: IPropClasificar) => {
       let value = false
@@ -90,7 +89,7 @@ export class ClasificarRopa extends Component {
       });
       return value;
 
-    }, "Escogio carpeta correcto", []);
+    }, "Escogio carpeta correcto", [{ id: "", valor: 14 }]);
 
     acciones.validar("pistola", (p: IPropClasificar) => {
       let value = false
@@ -105,7 +104,22 @@ export class ClasificarRopa extends Component {
       });
       return value;
 
-    }, "Escogio pistola correcto", []);
+    }, "Escogio pistola correcto", [{ id: "", valor: 14 }]);
+
+    acciones.validar("tipografia", (p: IPropClasificar) => {
+      let value = false
+      p.informacion.forEach(info => {
+        if (info.categoria == "tipografia") {
+          info.almacenados.forEach(a => {
+            if (a == "tipografia") {
+              value = true;
+            }
+          });
+        }
+      });
+      return value;
+
+    }, "Escogio pistola correcto", [{ id: "", valor: 14 }]);
 
 
 
@@ -114,20 +128,15 @@ export class ClasificarRopa extends Component {
 
   render() {
     return (
-      <Navegador>
-
-        <Pantalla>
-          <Cortes fondo="/img/cortes/CuerpoB.png" />
-        </Pantalla>
-
-        <Pantalla fondo="lightblue">
-          <Contenedor height="80%"></Contenedor>
-          <Contenedor height="20%" width="100%">
+      <>
+        <Pantalla fondo="#020963">
+          <Contenedor height="100%" width="100%">
+            <img style={{ height: "80%" }} src="/img/2019/diseno/partes/instrucciones.png"></img>
             <Continuar></Continuar>
           </Contenedor>
         </Pantalla>
 
-        <Pantalla time="15" fondo="#B2C1E1">
+        <Pantalla time="15" fondo="#b2c1e1">
           <RelojContador></RelojContador>
 
           <div className="tituloCompleta">
@@ -139,166 +148,207 @@ export class ClasificarRopa extends Component {
           </div>
         </Pantalla>
 
-        <Pantalla>
+        <Pantalla time="75">
+        
           <Contenedor height="100%" orientacion="vertical">
+          <RelojContador pos="25px -22px"></RelojContador>
             <h1>¿Erez capaz de recordar todo?</h1>
-            <div className="pantalla ppintura" style={{ display: "flex" }}>
-              <div className="contenido-pintura">
-                <div id="correcto" className="pregunta__pintura">
-                  <img src="/img/2019/diseno/partes/fondo.png" alt="" />
-                </div>
 
-                <div>
-                  <div className="pregunta_titulo">
-                    <h2>
-                      Completa de nuevo toda la composición en el menor tiempo
-                      posible
+            <div id="correcto" className="pregunta__pintura">
+              <img src="/img/2019/diseno/partes/fondo.png" alt="" />
+            </div>
+
+            <div>
+              <div className="pregunta_titulo">
+                <h2>
+                  Completa de nuevo toda la composición en el menor tiempo
+                  posible
                   </h2>
-                  </div>
-                </div>
               </div>
             </div>
+          
           </Contenedor>
           <Contenedor on width="100%" height="100%">
-            <Clasificar UID="c200" width="100%" height="100%" config={this.configClasificiar.bind(this)}>
+            <Clasificar UID="A1" width="100%" height="100%" config={this.configClasificiar.bind(this)}>
 
-              <Almacen tipo="cabello" pos="215px 60px" id="cabello" height="90px" width="150px" style={{ background: "#add8e652" }} reset={(e: HTMLElement) => { e.style.background = "" }} />
+              <Almacen tipo="cabello" pos="225px 60px" id="cabello" height="90px" width="150px" style={{ background: "#add8e652" }} reset={(e: HTMLElement) => { e.style.background = "" }} />
 
-              <Almacen tipo="ojos" id="ojos" pos="300px 60px" width="150px" height="40px" style={{ background: "#add8e652", display: "flex", justifyContent: "center" }} reset={(e: HTMLElement) => {
+              <Almacen tipo="ojos" id="ojos" pos="315px 60px" width="150px" height="40px" style={{ background: "#add8e652", display: "flex", justifyContent: "center" }} reset={(e: HTMLElement) => {
                 e.style.background = "";
               }} />
 
-              <Almacen tipo="boca" id="bocas" pos="350px 118px" height="20px" width="80px" />
+              <Almacen tipo="boca" id="boca" pos="370px 114px" height="30px" width="80px" />
 
-              <Almacen tipo="moño" id="moños" pos="385px 116px" height="20px" width="80px" />
+              <Almacen style={{ display: "flex", justifyContent: "center", alignItem: "center" }} tipo="moño" id="moño" pos="416px 95px" height="50px" width="80px" />
 
-              <Almacen tipo="carpeta" id="carpeta" pos="100px 430px" height="40px" width="80px" />
+              <Almacen tipo="carpeta" id="carpeta" pos="115px 430px" height="40px" width="80px" />
 
-              <Almacen tipo="pistola" id="pistola" pos="410px 270px" height="40px" width="80px" />
+              <Almacen tipo="pistola" id="pistola" pos="410px 270px" height="80px" width="150px" />
 
-              <Zona tipo="cabello" categoria="cabelloNo" width="146px" pos="150px 560px" >
-                <img className="ima__opcion" src="/img/2019/diseno/partes/cabello1.png" alt="" />
-              </Zona>
+              <Almacen tipo="tipografia" id="tipografia" pos="300px 270px" height="110px" width="240px" />
 
-              <Zona tipo="cabello" categoria="cabello" width="146px" pos="300px 560px" reset={(e: HTMLElement) => {
-                e.style.position = "relative";
-                e.style.top = "10px";
-                e.style.left = "5px";
-              }}>
-                <img
+              <Almacen capacidad={4} tipo="moño" id="contenedorMoño" pos="150px 890px" height="200px" width="60px">
+                <Zona style={{ position: "", display: "flex", justifyContent: "center", alignItems: "flex-start" }} tipo="moño" categoria="moñoNo1" width="90px" height="50px"><img
                   className="ima__opcion"
-                  src="/img/2019/diseno/partes/cabello2.png"
+                  src="/img/2019/diseno/partes/mono1.png"
                   alt=""
                 />
-              </Zona>
-              <Zona tipo="cabello" categoria="cabelloNo" width="146px" pos="450px 560px" reset={(e: HTMLElement) => {
-                e.style.position = "relative";
-                e.style.top = "25px";
-              }}>
-                <img
+                </Zona>
+                <Zona style={{ position: "", display: "flex", justifyContent: "center", alignItems: "flex-start" }} tipo="moño" categoria="moñoNo2" width="90px" height="50px"><img
                   className="ima__opcion"
-                  src="/img/2019/diseno/partes/cabello3.png"
+                  src="/img/2019/diseno/partes/mono2.png"
                   alt=""
                 />
-              </Zona>
-              <Zona tipo="ojos" categoria="ojoNo1" width="90px" height="30px" pos="150px 720px"><img
-                className="ima__opcion"
-                src="/img/2019/diseno/partes/ojos1.png"
-                alt=""
-              />
-              </Zona>
-              <Zona tipo="ojos" categoria="ojo" width="90px" height="30px" pos="200px 720px"><img
-                className="ima__opcion"
-                src="/img/2019/diseno/partes/ojos2.png"
-                alt=""
-              />
-              </Zona>
-              <Zona tipo="ojos" categoria="ojoNo3" width="90px" height="30px" pos="250px 720px"><img
-                className="ima__opcion"
-                src="/img/2019/diseno/partes/ojos3.png"
-                alt=""
-              />
-              </Zona>
-              <Zona tipo="boca" categoria="bocaNo1" width="90px" height="20px" pos="150px 820px"><img
-                className="ima__opcion"
-                src="/img/2019/diseno/partes/boca1.png"
-                alt=""
-              />
-              </Zona>
-              <Zona tipo="boca" categoria="bocaNo2" width="90px" height="20px" pos="200px 820px"><img
-                className="ima__opcion"
-                src="/img/2019/diseno/partes/boca2.png"
-                alt=""
-              />
-              </Zona>
-              <Zona tipo="boca" categoria="boca" width="90px" height="20px" pos="250px 820px"><img
-                className="ima__opcion"
-                src="/img/2019/diseno/partes/boca3.png"
-                alt=""
-              />
-              </Zona>
-              <Zona tipo="moño" categoria="moño" width="90px" height="30px" pos="150px 900px"><img
-                className="ima__opcion"
-                src="/img/2019/diseno/partes/mono1.png"
-                alt=""
-              />
-              </Zona>
-              <Zona tipo="moño" categoria="moñoNo2" width="90px" height="30px" pos="200px 900px"><img
-                className="ima__opcion"
-                src="/img/2019/diseno/partes/mono2.png"
-                alt=""
-              />
-              </Zona>
-              <Zona tipo="moño" categoria="moñoNo3" width="90px" height="30px" pos="250px 900px"><img
-                className="ima__opcion"
-                src="/img/2019/diseno/partes/mono3.png"
-                alt=""
-              />
-              </Zona>
-              <Zona tipo="carpeta" categoria="carpetaNo1" width="90px" height="30px" pos="150px 980px"><img
-                className="ima__opcion"
-                src="/img/2019/diseno/partes/carpeta1.png"
-                alt=""
-              />
-              </Zona>
-              <Zona tipo="carpeta" categoria="carpetaNo2" width="90px" height="30px" pos="200px 980px"><img
-                className="ima__opcion"
-                src="/img/2019/diseno/partes/carpeta2.png"
-                alt=""
-              />
-              </Zona>
-              <Zona tipo="carpeta" categoria="carpetaNo3" width="90px" height="30px" pos="250px 980px"><img
-                className="ima__opcion"
-                src="/img/2019/diseno/partes/carpeta3.png"
-                alt=""
-              />
-              </Zona>
-              <Zona tipo="carpeta" categoria="carpeta" width="90px" height="30px" pos="300px 980px"><img
-                className="ima__opcion"
-                src="/img/2019/diseno/partes/carpeta4.png"
-                alt=""
-              />
-              </Zona>
-              <Zona tipo="pistola" categoria="pistola" width="90px" height="30px" pos="150px 1080px"><img
-                className="ima__opcion"
-                src="/img/2019/diseno/partes/pistola1.png"
-                alt=""
-              />
-              </Zona>
-              <Zona tipo="pistola" categoria="pistolaNo2" width="90px" height="30px" pos="200px 1080px"><img
-                className="ima__opcion"
-                src="/img/2019/diseno/partes/pistola2.png"
-                alt=""
-              />
-              </Zona>
+                </Zona>
+                <Zona style={{ position: "", display: "flex", justifyContent: "center", alignItems: "flex-start" }} tipo="moño" categoria="moño" width="90px" height="50px"><img
+                  className="ima__opcion"
+                  src="/img/2019/diseno/partes/mono3.png"
+                  alt=""
+                />
+                </Zona>
+              </Almacen>
+
+              <Almacen capacidad={4} tipo="boca" id="contenedorBoca" pos="150px 810px" height="200px" width="60px">
+                <Zona style={{ position: "" }} tipo="boca" categoria="bocaNo1" width="90px" height="40px"><img
+                  className="ima__opcion"
+                  src="/img/2019/diseno/partes/boca1.png"
+                  alt=""
+                />
+                </Zona>
+                <Zona style={{ position: "" }} tipo="boca" categoria="bocaNo2" width="90px" height="40px"><img
+                  className="ima__opcion"
+                  src="/img/2019/diseno/partes/boca2.png"
+                  alt=""
+                />
+                </Zona>
+                <Zona style={{ position: "" }} tipo="boca" categoria="boca" width="90px" height="40px"><img
+                  className="ima__opcion"
+                  src="/img/2019/diseno/partes/boca3.png"
+                  alt=""
+                />
+                </Zona>
+              </Almacen>
+
+              <Almacen capacidad={4} tipo="carpeta" id="contenedorCarpeta" pos="150px 960px" height="200px" width="100px">
+                <Zona style={{ position: "" }} tipo="carpeta" categoria="carpetaNo1" width="90px" height="50px"><img
+                  className="ima__opcion"
+                  src="/img/2019/diseno/partes/carpeta1.png"
+                  alt=""
+                />
+                </Zona>
+                <Zona style={{ position: "" }} tipo="carpeta" categoria="carpetaNo2" width="90px" height="50px" ><img
+                  className="ima__opcion"
+                  src="/img/2019/diseno/partes/carpeta2.png"
+                  alt=""
+                />
+                </Zona>
+                <Zona style={{ position: "" }} tipo="carpeta" categoria="carpetaNo3" width="90px" height="50px" ><img
+                  className="ima__opcion"
+                  src="/img/2019/diseno/partes/carpeta3.png"
+                  alt=""
+                />
+                </Zona>
+                <Zona style={{ position: "" }} tipo="carpeta" categoria="carpeta" width="90px" height="50px"><img
+                  className="ima__opcion"
+                  src="/img/2019/diseno/partes/carpeta4.png"
+                  alt=""
+                />
+                </Zona>
+              </Almacen>
+
+              <Almacen capacidad={3} tipo="ojos" id="contenedorOjos" pos="150px 700px" height="150px" width="100px">
+                <Zona style={{ position: "" }} tipo="ojos" categoria="ojoNo1" width="90px" height="50px" ><img
+                  className="ima__opcion"
+                  src="/img/2019/diseno/partes/ojos1.png"
+                  alt=""
+                />
+                </Zona>
+                <Zona style={{ position: "" }} tipo="ojos" categoria="ojo" width="90px" height="50px"><img
+                  className="ima__opcion"
+                  src="/img/2019/diseno/partes/ojos2.png"
+                  alt=""
+                />
+                </Zona>
+                <Zona style={{ position: "" }} tipo="ojos" categoria="ojoNo3" width="90px" height="50px" ><img
+                  className="ima__opcion"
+                  src="/img/2019/diseno/partes/ojos3.png"
+                  alt=""
+                />
+                </Zona>
+              </Almacen>
+
+              <Almacen capacidad={2} tipo="pistola" id="contenedorPistola" pos="150px 1080px" height="150px" width="120px">
+                <Zona style={{ position: "", display: "flex", alignItems: "center" }} tipo="pistola" categoria="pistola" width="90px" height="70px" ><img
+                  className="ima__opcion"
+                  src="/img/2019/diseno/partes/pistola1.png"
+                  alt=""
+                />
+                </Zona>
+                <Zona style={{ position: "", display: "flex", alignItems: "center" }} tipo="pistola" categoria="pistolaNo2" width="90px" height="70px" ><img
+                  className="ima__opcion"
+                  src="/img/2019/diseno/partes/pistola2.png"
+                  alt=""
+                />
+                </Zona>
+              </Almacen>
+
+              <Almacen capacidad={3} tipo="tipografia" id="contenedorTipografia" pos="330px 700px" height="250px" width="180px">
+
+                <Zona style={{ position: "" }} tipo="tipografia" categoria="tipografia" width="300px" height="50px" ><img
+                  className="ima__opcion"
+                  src="/img/2019/diseno/partes/TIPO1.png"
+                  alt=""
+                />
+                </Zona>
+                <Zona style={{ position: "" }} tipo="tipografia" categoria="tipografiaNo2" width="300px" height="50px" ><img
+                  className="ima__opcion"
+                  src="/img/2019/diseno/partes/TIPO2.png"
+                  alt=""
+                />
+                </Zona>
+                <Zona style={{ position: "" }} tipo="tipografia" categoria="tipografiaNo3" width="300px" height="50px" ><img
+                  className="ima__opcion"
+                  src="/img/2019/diseno/partes/TIPO3.png"
+                  alt=""
+                />
+                </Zona>
+              </Almacen>
+
+              <Almacen capacidad={3} tipo="cabello" id="contenedorCabellos" pos="149px 536px" height="425px" width="150px">
+
+                <Zona style={{ position: "" }} tipo="cabello" categoria="cabelloNo" width="146px" height="120px" >
+                  <img className="ima__opcion" src="/img/2019/diseno/partes/cabello1.png" alt="" />
+                </Zona>
+
+                <Zona style={{ position: "" }} tipo="cabello" categoria="cabello" width="146px" height="120px" reset={(e: HTMLElement) => {
+                  e.style.position = "relative";
+                  e.style.top = "10px";
+                  e.style.left = "5px";
+                }}>
+                  <img
+                    className="ima__opcion"
+                    src="/img/2019/diseno/partes/cabello2.png"
+                    alt=""
+                  />
+                </Zona>
+                <Zona style={{ position: "" }} tipo="cabello" categoria="cabelloNo" width="146px" height="120px" reset={(e: HTMLElement) => {
+                  e.style.position = "relative";
+                  e.style.top = "25px";
+                }}>
+                  <img
+                    className="ima__opcion"
+                    src="/img/2019/diseno/partes/cabello3.png"
+                    alt=""
+                  />
+                </Zona>
+              </Almacen>
 
             </Clasificar>
           </Contenedor>
         </Pantalla>
-      </Navegador >
+      </>
     );
   }
 }
-
 
 export default ClasificarRopa;

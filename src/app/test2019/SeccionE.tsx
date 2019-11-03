@@ -22,7 +22,7 @@ export default class SeccionE extends Component<IPropsSeccionE> {
 
         return <Navegador>
             <Pantalla>
-                <Processing>
+                <Processing UID="" config={()=>{}}>
                     <Revoltosos></Revoltosos>
                 </Processing>
 

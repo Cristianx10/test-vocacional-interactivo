@@ -4,6 +4,7 @@ import ProcessingContext, { processingContext } from '../../comunicacion/Process
 import p5 from "p5";
 import Processing from "../../componentes/Processing/Processing";
 import { AppProcessing } from '../../componentes/Processing/Processing';
+import { GResultados } from '../../resultados/resultados';
 
 import Logica from "./src/derecho/Logica";
 
@@ -14,26 +15,38 @@ interface IPropsPollo {
 export default class Culpable extends Component implements AppProcessing {
 
     processingContext: processingContext;
-    processing: Processing;
-    app: p5;
+    processing?: Processing;
+    app?: p5;
 
     log?: Logica;
     propiedades: any;
 
     acciones: any;
+    registro?: GResultados;
 
     constructor(props: IPropsPollo) {
         super(props);
         this.processingContext = ProcessingContext;
         this.processing = this.processingContext.actividad;
-        this.processing.juego = this;
-        this.app = this.processing.app;
+
+        if (this.processing) {
+            this.processing.juego = this;
+            this.app = this.processing.app;
+            this.propiedades = this.processing.propiedades;
+            this.registro = this.processing.registro;
+            this.registro.setId("Culpable");
+        }
+        this.propiedades.puntuacion = 0;
     }
 
     setup() {
-        this.processing.size(1280, 720);
-        this.log = new Logica(this.app);
-        this.app.noStroke();
+        if (this.processing) {
+            this.processing.size(1280, 720);
+        }
+        if (this.app) {
+            this.log = new Logica(this.app);
+            this.app.noStroke();
+        }
     }
 
     draw() {

@@ -2,11 +2,15 @@ import p5 = require("p5");
 import { number } from "prop-types";
 import Elemento from "./Elemento";
 import ProcessingImg from "../../../componentes/Processing/ProcessingImg";
+import ProcessingContext from '../../../comunicacion/ProcessingContext';
+import { processingContext } from '../../../comunicacion/ProcessingContext';
+import Processing from '../../../componentes/Processing/Processing';
+import { IONavegable } from '../../../comunicacion/utilEvents';
 
-class Logica {
+
+class Logica implements IONavegable {
 
     app: p5;
-    pantalla: number;
 
     iden: any;
     idenins: any;
@@ -14,7 +18,6 @@ class Logica {
     puntaje: number;
     mezclandobien: boolean
     punterocompuesto: number;
-
 
     tiempo: number;
 
@@ -62,10 +65,7 @@ class Logica {
 
     libroShow = false;
     compuestos: p5.Image;
-    compuestosinicio: p5.Image;
-    instrucciones: p5.Image;
-    jugar: Elemento;
-    continuar: Elemento;
+
     cerrar: Elemento;
 
 
@@ -84,14 +84,26 @@ class Logica {
     vidas: number;
     vida: p5.Image;
 
+    processing?: Processing;
+    propiedades: any;
+
 
     constructor(app: p5) {
         this.app = app;
         this.img = new ProcessingImg(this.app);
-        this.pantalla = 2;
-        this.run = this.run.bind(this);
+
+        this.processing = ProcessingContext.actividad;
+        if (this.processing) {
+            this.propiedades = this.processing.propiedades;
+            this.processing.addEvents.push(this);
+        }
+
         this.iden = null;
         this.tiempo = 90;
+
+
+
+
 
         this.runins = this.runins.bind(this);
         this.idenins = null;
@@ -141,10 +153,9 @@ class Logica {
 
         this.libroShow = false;
         this.compuestos = this.img.loadImage("/img/2019/ciencias/imgs/compuestos.png");
-        this.compuestosinicio = this.img.loadImage("/img/2019/ciencias/imgs/compuestosinicio.png");
-        this.instrucciones = this.img.loadImage("/img/2019/ciencias/imgs/instrucciones.png");
-        this.jugar = new Elemento(this.app, "/img/2019/ciencias/imgs/jugar.png", 920, 536);
-        this.continuar = new Elemento(this.app, "/img/2019/ciencias/imgs/continuar.png", 920, 536);
+
+
+
         this.cerrar = new Elemento(this.app, "/img/2019/ciencias/imgs/x.png", 88, 78);
         //NUEVOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
 
@@ -159,12 +170,6 @@ class Logica {
 
         //NUEVOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
 
-
-
-
-
-
-
         this.elemento;
         this.mezcla = "";
         this.mezcla2 = "";
@@ -175,255 +180,227 @@ class Logica {
 
     }
 
+    onInicial() { }
+    onFinal() {
+        this.propiedades.vidas = this.vidas;
+        this.propiedades.puntaje = this.puntaje;
+    }
+
+    onProgress(s: number, m: number) {
+        this.tiempo = s + (m * 60);
+        if (this.vidas <= 0) {
+            if (this.processing) {
+                this.processing.continuar();
+            }
+        }
+    }
+
     pintar() {
-        switch (this.pantalla) {
+
+        //pantalla de juego    
+
+        this.app.textFont(this.font);
+        this.app.textSize(32);
+        this.app.imageMode(this.app.CORNER);
+        this.app.image(this.fondo, 0, 0);
+        this.app.image(this.mesa, 0, 0);
+
+        //NUEVOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+        this.app.text("Intentos:", 660, 58);
+
+        if (this.vidas === 0 && this.puntero === 10) {
+            stop();
+        }
+
+        if (this.vidas > 2) {
+            this.app.image(this.vida, 920, 30);
+        }
+        if (this.vidas > 1) {
+            this.app.image(this.vida, 860, 30);
+        }
+
+        if (this.vidas > 0) {
+            this.app.image(this.vida, 800, 30);
+        }
+
+        this.app.image(this.compuesto1[this.punterocompuesto], 850, 575);
+        if (this.app.frameCount % 50 === 0 && this.punterocompuesto === 0) {
+            this.punterocompuesto = 1;
+        } else if (this.app.frameCount % 50 === 0 && this.punterocompuesto === 1) {
+            this.punterocompuesto = 0;
+        }
+
+        this.app.textSize(22);
+        this.app.textAlign(this.app.CENTER)
+        this.app.fill(107, 80, 48);
+        //NUEVOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+
+        switch (this.reto) {
             case 0:
-                this.app.imageMode(this.app.CORNER);
-                this.app.image(this.instrucciones, 0, 0);
-                this.jugar.pintar();
+                this.app.text("Óxido de sodio", 995, 635);
                 break;
-
             case 1:
-                this.app.background(50, 50, 50);
-                //NUEVOOOOOOOOOOOOOOOOOOOO
-                this.app.textFont(this.font);
-                this.app.textSize(32);
-                this.app.fill(163, 111, 69);
-                //NUEVOOOOOOOOOOOOOOOOOOOO
-                this.app.image(this.compuestosinicio, 600, 350);
-                this.app.text("comienza en: " + this.tiempoins, 930, 610);
-                this.app.fill(0, 0, 0);
-                if (this.tiempoins <= 0) {
-                    this.pantalla = 2;
-                }
-
-                if (this.iden == null && this.tiempoins <= 0) {
-                    this.start();
-                    this.reto = 0;
-                } else {
-                    clearInterval(this.iden);
-                    this.iden = null;
-                }
+                this.app.text("Óxido de aluminio", 995, 635);
                 break;
-
             case 2:
-                //pantalla de juego    
-
-                this.app.textFont(this.font);
-                this.app.textSize(32);
-                this.app.imageMode(this.app.CORNER);
-                this.app.image(this.fondo, 0, 0);
-                this.app.image(this.mesa, 0, 0);
-
-                //NUEVOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
-                this.app.text("Intentos:", 660, 58);
-
-                if (this.vidas === 0 && this.puntero === 10) {
-                    this.pantalla = 3;
-                    stop();
-                }
-
-                if (this.vidas > 2) {
-                    this.app.image(this.vida, 920, 30);
-                }
-                if (this.vidas > 1) {
-                    this.app.image(this.vida, 860, 30);
-                }
-
-                if (this.vidas > 0) {
-                    this.app.image(this.vida, 800, 30);
-                }
-
-                this.app.image(this.compuesto1[this.punterocompuesto], 850, 575);
-                if (this.app.frameCount % 50 === 0 && this.punterocompuesto === 0) {
-                    this.punterocompuesto = 1;
-                } else if (this.app.frameCount % 50 === 0 && this.punterocompuesto === 1) {
-                    this.punterocompuesto = 0;
-                }
-
-                this.app.textSize(22);
-                this.app.textAlign(this.app.CENTER)
-                this.app.fill(107, 80, 48);
-                //NUEVOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
-
-                switch (this.reto) {
-                    case 0:
-                        this.app.text("Óxido de sodio", 995, 635);
-                        break;
-                    case 1:
-                        this.app.text("Óxido de aluminio", 995, 635);
-                        break;
-                    case 2:
-                        this.app.text("Sal común", 995, 635);
-                        break;
-                    case 3:
-                        this.app.text("Hidruro de sodio", 995, 635);
-                        break;
-                    case 4:
-                        this.app.text("Hidruro de calcio", 995, 635);
-                        break;
-                    case 5:
-                        this.app.text("Hidruro de cobre", 995, 635);
-                        break;
-                    case 6:
-                        this.app.text("Óxido cuproso", 995, 635);
-                        break;
-                    case 7:
-                        this.app.text("Cloruro ferroso", 995, 635);
-                        break;
-                    case 8:
-                        this.app.text("Cloruro férrico", 995, 635);
-                        break;
-                    case 9:
-                        this.app.text("Hidruro de litio", 995, 635);
-                        break;
-
-                    default:
-                        break;
-                }
-                this.app.fill(0, 0, 0);
-                this.app.textAlign(this.app.LEFT);
-                this.app.textSize(32);
-                this.app.image(this.decoracion1, 85, 312);
-                this.app.image(this.decoracion2, 295, 362);
-                this.app.imageMode(this.app.CENTER);
-
-                let estatico = true;
-
-                if (this.mezclando === true) {
-                    estatico = false;
-                    this.app.image(this.rickmezclando[this.puntero], 935, 295);
-                    if (this.app.frameCount % 7 == 1 && this.reproduciendo === true) {
-                        this.puntero++;
-                        if (this.puntero === 11) {
-                            //this.reproduciendo = false;
-                            this.puntero = 10;
-                            this.contadoranim++;
-                            console.log(this.contadoranim);
-
-
-                            if (this.contadoranim === 13) {
-                                this.mezclando = false;
-                                this.contadoranim = 0;
-                                this.puntero = 0;
-                            }
-
-                        }
-                    }
-
-                }
-
-
-
-                if (this.mezclandobien === true) {
-                    estatico = false;
-                    this.app.image(this.rickmezclando[this.puntero], 935, 295);
-                    if (this.app.frameCount % 7 == 1 && this.reproduciendo === true) {
-                        this.puntero++;
-                        if (this.puntero === 5) {
-                            this.puntero = 0;
-                            this.mezclandobien = false;
-                            estatico = true;
-                        }
-                    }
-
-                }
-
-
-                if (this.mezclandobien === false && estatico === true) {
-
-                    this.app.image(this.rick, 935, 295);
-                }
-
-                if (this.mezclando === false && estatico === true) {
-
-                    this.app.image(this.rick, 935, 295);
-                }
-
-                this.recipiente.pintar();
-                this.recipiente2.pintar();
-                this.boton.pintar();
-                this.libro.pintar();
-                this.app.image(this.mas, 385, 625);
-                this.app.text("Tiempo: " + this.tiempo, 10, 58);
-
-                this.calcio.pintar();
-                this.cobre.pintar();
-                this.bromo.pintar();
-                this.hierro.pintar();
-                this.litio.pintar();
-                this.hidrogeno.pintar();
-                this.oxigeno.pintar();
-                this.sodio.pintar();
-                this.aluminio.pintar();
-                this.cloro.pintar();
-                //console.log(this.separador);
-                if (this.mezcla != "" && this.icono) {
-                    this.app.image(this.icono, 240, 625);
-                }
-
-                if (this.mezcla2 != "" && this.icono2) {
-                    this.app.image(this.icono2, 530, 625);
-                }
-
-
-                if (this.separador.length > 1) {
-                    this.app.noStroke();
-                    this.app.textSize(20);
-                    this.app.fill(255, 0, 0);
-                    this.app.ellipse(294, 650, 30, 30)
-                    this.app.fill(255, 255, 255);
-                    this.app.text(this.separador.length, 289, 657);
-                    this.app.fill(0, 0, 0);
-                    this.app.textSize(30);
-                }
-
-                if (this.separador2.length > 1) {
-                    this.app.noStroke();
-                    this.app.textSize(20);
-                    this.app.fill(255, 0, 0);
-                    this.app.ellipse(586, 650, 30, 30)
-                    this.app.fill(255, 255, 255);
-                    this.app.text(this.separador2.length, 581, 657);
-                    this.app.fill(0, 0, 0);
-                    this.app.textSize(30);
-                }
-
-
-
-                if (this.libroShow === true) {
-                    this.app.image(this.compuestos, 600, 350);
-                    this.cerrar.pintar()
-
-                }
-
-                if (this.tiempo <= 0) {
-                    this.pantalla = 3;
-                    console.log(this.tiempo);
-
-                    this.stop();
-                }
-
-
-                //NUEVOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
-
-                if (this.puntaje <= 0) {
-                    this.puntaje = 0;
-                }
-                //NUEVOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
-
-
+                this.app.text("Sal común", 995, 635);
                 break;
-
             case 3:
-                this.app.background(201, 150, 23);
-                this.continuar.pintar();
-
+                this.app.text("Hidruro de sodio", 995, 635);
+                break;
+            case 4:
+                this.app.text("Hidruro de calcio", 995, 635);
+                break;
+            case 5:
+                this.app.text("Hidruro de cobre", 995, 635);
+                break;
+            case 6:
+                this.app.text("Óxido cuproso", 995, 635);
+                break;
+            case 7:
+                this.app.text("Cloruro ferroso", 995, 635);
+                break;
+            case 8:
+                this.app.text("Cloruro férrico", 995, 635);
+                break;
+            case 9:
+                this.app.text("Hidruro de litio", 995, 635);
                 break;
 
             default:
                 break;
         }
+        this.app.fill(0, 0, 0);
+        this.app.textAlign(this.app.LEFT);
+        this.app.textSize(32);
+        this.app.image(this.decoracion1, 85, 312);
+        this.app.image(this.decoracion2, 295, 362);
+        this.app.imageMode(this.app.CENTER);
+
+        let estatico = true;
+
+        if (this.mezclando === true) {
+            estatico = false;
+            this.app.image(this.rickmezclando[this.puntero], 935, 295);
+            if (this.app.frameCount % 7 == 1 && this.reproduciendo === true) {
+                this.puntero++;
+                if (this.puntero === 11) {
+                    //this.reproduciendo = false;
+                    this.puntero = 10;
+                    this.contadoranim++;
+                    //console.log(this.contadoranim);
+
+
+                    if (this.contadoranim === 13) {
+                        this.mezclando = false;
+                        this.contadoranim = 0;
+                        this.puntero = 0;
+                    }
+
+                }
+            }
+
+        }
+
+
+
+        if (this.mezclandobien === true) {
+            estatico = false;
+            this.app.image(this.rickmezclando[this.puntero], 935, 295);
+            if (this.app.frameCount % 7 == 1 && this.reproduciendo === true) {
+                this.puntero++;
+                if (this.puntero === 5) {
+                    this.puntero = 0;
+                    this.mezclandobien = false;
+                    estatico = true;
+                }
+            }
+
+        }
+
+
+        if (this.mezclandobien === false && estatico === true) {
+
+            this.app.image(this.rick, 935, 295);
+        }
+
+        if (this.mezclando === false && estatico === true) {
+
+            this.app.image(this.rick, 935, 295);
+        }
+
+        this.recipiente.pintar();
+        this.recipiente2.pintar();
+        this.boton.pintar();
+        this.libro.pintar();
+        this.app.image(this.mas, 385, 625);
+        this.app.text("Tiempo: " + this.tiempo, 10, 58);
+
+        this.calcio.pintar();
+        this.cobre.pintar();
+        this.bromo.pintar();
+        this.hierro.pintar();
+        this.litio.pintar();
+        this.hidrogeno.pintar();
+        this.oxigeno.pintar();
+        this.sodio.pintar();
+        this.aluminio.pintar();
+        this.cloro.pintar();
+        //console.log(this.separador);
+        if (this.mezcla != "" && this.icono) {
+            this.app.image(this.icono, 240, 625);
+        }
+
+        if (this.mezcla2 != "" && this.icono2) {
+            this.app.image(this.icono2, 530, 625);
+        }
+
+
+        if (this.separador.length > 1) {
+            this.app.noStroke();
+            this.app.textSize(20);
+            this.app.fill(255, 0, 0);
+            this.app.ellipse(294, 650, 30, 30)
+            this.app.fill(255, 255, 255);
+            this.app.text(this.separador.length, 289, 657);
+            this.app.fill(0, 0, 0);
+            this.app.textSize(30);
+        }
+
+        if (this.separador2.length > 1) {
+            this.app.noStroke();
+            this.app.textSize(20);
+            this.app.fill(255, 0, 0);
+            this.app.ellipse(586, 650, 30, 30)
+            this.app.fill(255, 255, 255);
+            this.app.text(this.separador2.length, 581, 657);
+            this.app.fill(0, 0, 0);
+            this.app.textSize(30);
+        }
+
+
+
+        if (this.libroShow === true) {
+            this.app.image(this.compuestos, 600, 350);
+            this.cerrar.pintar()
+
+        }
+
+        if (this.tiempo <= 0) {
+            this.stop();
+        }
+
+
+        //NUEVOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+
+        if (this.puntaje <= 0) {
+            this.puntaje = 0;
+        }
+        //NUEVOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+
+
+
+
         //this.app.text(this.app.mouseX + " " + this.app.mouseY, this.app.mouseX, this.app.mouseY);
     }
 
@@ -437,89 +414,62 @@ class Logica {
 
     mouse() {
 
-        switch (this.pantalla) {
-            case 0:
-                if (this.jugar.isSobre()) {
-                    this.pantalla++;
-
-                    if (this.idenins == null) {
-                        this.startins();
-                    } else {
-                        clearInterval(this.idenins);
-                        this.idenins = null;
-                    }
-
-                }
-                break;
-
-            case 1:
-
-                break;
 
 
-            case 2:
-                //pantalla de juego
-                if (this.hidrogeno.isSobre()) {
-                    this.seleccion = this.hidrogeno;
-                    this.sel = true;
-                    this.elemento = 0
-                }
-                if (this.oxigeno.isSobre()) {
-                    this.seleccion = this.oxigeno;
-                    this.sel = true;
-                    this.elemento = 1;
-                }
-                if (this.sodio.isSobre()) {
-                    this.seleccion = this.sodio;
-                    this.sel = true;
-                    this.elemento = 2;
-                }
-                if (this.aluminio.isSobre()) {
-                    this.seleccion = this.aluminio;
-                    this.sel = true;
-                    this.elemento = 3;
-                }
-                if (this.cloro.isSobre()) {
-                    this.seleccion = this.cloro;
-                    this.sel = true;
-                    this.elemento = 4;
-                }
-                if (this.calcio.isSobre()) {
-                    this.seleccion = this.calcio;
-                    this.sel = true;
-                    this.elemento = 5;
-                }
-                if (this.cobre.isSobre()) {
-                    this.seleccion = this.cobre;
-                    this.sel = true;
-                    this.elemento = 6;
-                }
-                if (this.bromo.isSobre()) {
-                    this.seleccion = this.bromo;
-                    this.sel = true;
-                    this.elemento = 7;
-                }
-                if (this.hierro.isSobre()) {
-                    this.seleccion = this.hierro;
-                    this.sel = true;
-                    this.elemento = 8;
-                }
-                if (this.litio.isSobre()) {
-                    this.seleccion = this.litio;
-                    this.sel = true;
-                    this.elemento = 9;
-                }
-                break;
 
-            case 3:
-                if (this.continuar.isSobre()) {
-                    //pasar a sigueinte actividad
-                }
-                break;
 
-            default:
-                break;
+        //pantalla de juego
+        if (this.hidrogeno.isSobre()) {
+            this.seleccion = this.hidrogeno;
+            this.sel = true;
+            this.elemento = 0
         }
+        if (this.oxigeno.isSobre()) {
+            this.seleccion = this.oxigeno;
+            this.sel = true;
+            this.elemento = 1;
+        }
+        if (this.sodio.isSobre()) {
+            this.seleccion = this.sodio;
+            this.sel = true;
+            this.elemento = 2;
+        }
+        if (this.aluminio.isSobre()) {
+            this.seleccion = this.aluminio;
+            this.sel = true;
+            this.elemento = 3;
+        }
+        if (this.cloro.isSobre()) {
+            this.seleccion = this.cloro;
+            this.sel = true;
+            this.elemento = 4;
+        }
+        if (this.calcio.isSobre()) {
+            this.seleccion = this.calcio;
+            this.sel = true;
+            this.elemento = 5;
+        }
+        if (this.cobre.isSobre()) {
+            this.seleccion = this.cobre;
+            this.sel = true;
+            this.elemento = 6;
+        }
+        if (this.bromo.isSobre()) {
+            this.seleccion = this.bromo;
+            this.sel = true;
+            this.elemento = 7;
+        }
+        if (this.hierro.isSobre()) {
+            this.seleccion = this.hierro;
+            this.sel = true;
+            this.elemento = 8;
+        }
+        if (this.litio.isSobre()) {
+            this.seleccion = this.litio;
+            this.sel = true;
+            this.elemento = 9;
+        }
+
 
         if (this.boton.isSobre() && this.libroShow === false && this.mezcla != "" && this.mezcla2 != "") {
 
@@ -703,7 +653,6 @@ class Logica {
                         this.mezclandobien = true;
                     } else {
                         this.mezclando = true;
-                        this.pantalla = 3;
                         this.vaciar();
                         this.stop();
                         //NUEVOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
@@ -890,13 +839,7 @@ class Logica {
 
 
 
-    start() {
-        this.iden = setInterval(this.run, 1000);
-    }
 
-    run() {
-        this.tiempo--;
-    }
 
     stop() {
         clearInterval(this.iden);

@@ -15,14 +15,15 @@ export default class Main {
     fondo2: p5.Image;
     fondo22: p5.Image;
     fondo3: p5.Image;
-    fondo4: p5.Image;
+
     fondo44: p5.Image;
     pantalla: number;
     contador: number;
     activartiempo: boolean;
-    propiedades: IPropRevoltosos;
-    processing: Processing;
     img: ProcessingImg;
+
+    processing?: Processing;
+    propiedades?: IPropRevoltosos;
 
     constructor(app: p5) {
         this.app = app;
@@ -36,10 +37,12 @@ export default class Main {
         this.fondo2 = this.img.loadImage("/img/2019/revoltosos/data/INSTRUCCIONES.png");
         this.fondo22 = this.img.loadImage("/img/2019/revoltosos/data/INSTRUCCIONES2.png");
         this.fondo3 = this.img.loadImage("/img/2019/revoltosos/data/fondo.jpg");
-        this.fondo4 = this.img.loadImage("/img/2019/revoltosos/data/FINAL.png");
+
         this.fondo44 = this.img.loadImage("/img/2019/revoltosos/data/FINAL2.png");
         this.processing = ProcessingContext.actividad;
-        this.propiedades = this.processing.propiedades;
+        if (this.processing) {
+            this.propiedades = this.processing.propiedades;
+        }
 
     }
 
@@ -66,10 +69,15 @@ export default class Main {
                 break;
 
             case 4:
-                this.app.image(this.fondo4, 0, 0);
-                this.propiedades.puntuacion = this.log.getPuntaje();
+
+                if (this.propiedades) {
+                    this.propiedades.puntuacion = this.log.getPuntaje();
+                }
                 console.log("Puntaje:" + this.log.getPuntaje());
                 console.log("Ancho barra:" + this.log.getAnchobarra());
+                if (this.processing) {
+                    this.processing.continuar();
+                }
                 break;
         }
     }

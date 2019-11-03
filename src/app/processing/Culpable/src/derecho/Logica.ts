@@ -2,6 +2,8 @@ import p5 from "p5";
 import Tutorial from "./Tutorial";
 import Sospechoso from "./Sospechoso";
 import Boton from "./Boton";
+import Processing from '../../../../componentes/Processing/Processing';
+import ProcessingContext from '../../../../comunicacion/ProcessingContext';
 
 export default class Logica {
 
@@ -31,8 +33,16 @@ export default class Logica {
 	tutorial: Tutorial;
 	puntos: number;
 
+	processing?: Processing;
+	propiedades: any;
+
 	constructor(app: p5) {
 		this.app = app;
+
+		this.processing = ProcessingContext.actividad;
+		if (this.processing) {
+			this.propiedades = this.processing.propiedades ;
+		}
 
 		this.app.background(212);
 		this.heebo = this.app.loadFont("/img/2019/culpable/data/Heebo-Bold.ttf");
@@ -146,6 +156,10 @@ export default class Logica {
 				break;
 
 			case 13:
+				if (this.processing) {
+					this.processing.continuar();
+				}
+				this.propiedades.puntuacion = this.terminarJuego();
 				this.app.image(this.gusto, 0, 0);
 				break;
 		}
@@ -164,7 +178,7 @@ export default class Logica {
 
 		let mX = this.app.mouseX;
 		let mY = this.app.mouseY;
-		this.app.text("X: " + mX + "   Y: " + mY, mX + 20, mY);
+		//this.app.text("X: " + mX + "   Y: " + mY, mX + 20, mY);
 	}
 
 	//----------------------------------------------- MOUSE

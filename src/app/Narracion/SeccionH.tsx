@@ -60,6 +60,8 @@ export class SeccionH extends Component<{}> {
                 return <Pantalla width="80%" fondo="/includes/background/claro.png">{view}</Pantalla>;
             })}
 
+                    {/**Diseño */}
+
             {Children.map(preguntasB, view => {
                 return <Pantalla width="80%" fondo="/includes/background/claro.png">{view}</Pantalla>;
             })}

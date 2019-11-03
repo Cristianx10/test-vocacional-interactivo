@@ -83,12 +83,13 @@ export class Pregunta extends Component<IPropsPregunta> implements IONavegable, 
   }
 
   onInicial() {
-
+    
     this.registro.agregar();
 
     if (this.props.UID) {
       resultados.setUID(this, this.props.UID);
     }
+
 
 
     if (this.props.onInicial) {
@@ -159,7 +160,7 @@ export class Pregunta extends Component<IPropsPregunta> implements IONavegable, 
 interface IPropsOpcion {
   children: ReactChild[] | ReactChild;
   type?: String;
-  resultados: Array<ICategoria>;
+  resultados?: Array<ICategoria>;
 
 
   /* Clases de ManagerStyle */

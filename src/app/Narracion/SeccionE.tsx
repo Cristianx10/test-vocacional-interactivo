@@ -7,6 +7,9 @@ import TLikertPregunta from "../plantillas/template-likert/TLikertPregunta";
 import { shuffle } from '../utilidades/utils';
 import { TIntroduccion } from '../plantillas/templete-introduccion';
 import { routes } from '../router';
+import Processing from "../componentes/Processing/Processing";
+import Operando from "../processing/Operando/Operando";
+import { Re } from '../resultados/resultados';
 
 /**Seccion A */
 
@@ -39,12 +42,21 @@ export class SeccionE extends Component<{}> {
 
     }
 
+    configOperando(propiedades: any, acciones: any) {
+
+        acciones.evaluar("Puntuacion", (p: any, a: any) => {
+            a.setValor(Re.medicina, p.puntuacion);
+            return true;
+        }, "Puntuacion Obtendida", [{ id: Re.medicina, valor: 100 }]);
+    }
+
     render() {
 
         let preguntasA = this.formularioPreguntas(80);
         let preguntasB = this.formularioPreguntas(90);
 
         return (<Navegador>
+
 
 
             <TIntroduccion fondo="/includes/background/oscuro-personajes.png">
@@ -55,6 +67,14 @@ export class SeccionE extends Component<{}> {
             {Children.map(preguntasA, view => {
                 return <Pantalla width="80%" fondo="/includes/background/claro.png">{view}</Pantalla>;
             })}
+
+            {/**Salud */}
+
+
+            <Processing UID="E1" config={this.configOperando}>
+                <Operando></Operando>
+            </Processing>
+
 
             {Children.map(preguntasB, view => {
                 return <Pantalla width="80%" fondo="/includes/background/claro.png">{view}</Pantalla>;

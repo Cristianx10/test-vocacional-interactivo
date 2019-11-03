@@ -157,7 +157,7 @@ export class Actividad implements IObjectValidable {
     propiedades: any;
     acciones: any;
 
-    registro?: GResultados;
+    registro: GResultados;
 
 
     constructor() {
@@ -178,10 +178,8 @@ export class Actividad implements IObjectValidable {
 
         this.acciones = {};
 
-        let tempRegister = resultados.agregar(this);
-        if (tempRegister !== null) {
-            this.registro = tempRegister;
-        }
+        this.registro = resultados.agregar(this);
+        
 
         this.acciones.validar = (id: string, accion: Function, descripcion: string, valorMaximo: Array<ICategoria>) => {
             this.validar(id, accion, descripcion, valorMaximo);

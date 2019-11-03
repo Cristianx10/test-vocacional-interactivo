@@ -1,5 +1,7 @@
 import ProcessingImg from '../../../componentes/Processing/ProcessingImg';
 import p5 = require("p5");
+import Processing from '../../../componentes/Processing/Processing';
+import ProcessingContext from '../../../comunicacion/ProcessingContext';
 
 export class Logica {
     app: p5;
@@ -91,9 +93,17 @@ export class Logica {
     electroCardiograma: any;
     elec: any;
 
+    processing?: Processing;
+    propiedades: any;
+
     constructor(app: p5) {
         this.app = app;
         this.img = new ProcessingImg(this.app);
+
+        this.processing = ProcessingContext.actividad;
+        if (this.processing) {
+            this.propiedades = this.processing.propiedades;
+        }
 
         this.pantalla = 0;
 
@@ -451,6 +461,7 @@ export class Logica {
                 this.elec = null;
             }
             console.log("medicina + " + this.puntaje);
+            this.propiedades.puntuacion = this.puntaje;
             return this.puntaje;
 
             //agregar el cambio de pantalla

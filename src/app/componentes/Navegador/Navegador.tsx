@@ -70,10 +70,11 @@ export class Navegador extends Component<IPropsNavegador> {
   impresionPantallaCompletada() {
     this.pantallas[this.actual].ocultar();
 
-    if (this.actual + 1 < this.props.children.length) {
+    if (this.actual + 1 < this.pantallas.length) {
       this.actual += 1;
+      this.pantallas[this.actual].onChange();
       this.pantallas[this.actual].mostrar();
-    } else if (this.actual < this.props.children.length) {
+    } else if (this.actual < this.pantallas.length) {
       this.actual += 1;
     }
 
@@ -122,7 +123,7 @@ export class Navegador extends Component<IPropsNavegador> {
       pantalla.ocultar();
     });
 
-    console.log("Las vistas", this.pantallas)
+    //console.log("Las vistas", this.pantallas)
   
     this.pantallas[this.actual].mostrar();
     this.pantallas[this.actual].onChange();

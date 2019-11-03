@@ -1,3 +1,15 @@
+export var Re = {
+    derecho: "derecho",
+    ingenieria: "ingenieria",
+    humanidades: "humanidades",
+    licenciatura: "licenciatura",
+    diseno: "diseno",
+    medicina: "medicina",
+    economia: "economia",
+    ciencias: "ciencias",
+}
+
+
 export interface IORestulados {
     tipoId: string;
     propiedades: any;
@@ -74,7 +86,6 @@ export class Resultados {
 
     setUID(objeto: any, UID: string) {
 
-
         if (this.pruebas) {
             this.pruebas.forEach((p: GResultados, index: number) => {
                 if (p.UID === UID) {
@@ -88,7 +99,7 @@ export class Resultados {
                 }
             });
         }
-        objeto.registro.setUID(UID);
+        objeto.registro.UID = UID;
     }
 
     agregar(objeto: any): GResultados {
@@ -97,7 +108,7 @@ export class Resultados {
 
         let refObject: any = null;
         if (this.pruebas) {
-            let encontro = false;
+            //  let encontro = false;
 
             /*
             this.pruebas.forEach((p: GResultados, index: number) => {
@@ -507,6 +518,7 @@ export class GResultados {
 
         if (resultados.pruebas) {
             resultados.pruebas.forEach((p: GResultados, index: number) => {
+              
                 if (p.UID === UID) {
                     console.log("elemento duplibado")
                     //encontro = true;
@@ -518,6 +530,7 @@ export class GResultados {
                 }
             });
         }
+
         this.UID = UID;
     }
 

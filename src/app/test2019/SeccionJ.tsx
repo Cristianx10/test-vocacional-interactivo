@@ -23,7 +23,7 @@ export default class SeccionJ extends Component<IPropsSeccionJ> {
 
         return (<Navegador>
             <Pantalla>
-                <Processing>
+                <Processing UID="" config={()=>{}}>
                     <Hablame />
                 </Processing>
 

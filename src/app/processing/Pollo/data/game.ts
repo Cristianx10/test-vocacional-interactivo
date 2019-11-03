@@ -1,4 +1,5 @@
-import { Logica } from '../Pollo';
+import Logica from './Logica';
+
 
 export class Gamer {
 

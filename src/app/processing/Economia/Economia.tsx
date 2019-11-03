@@ -7,8 +7,8 @@ import { AppProcessing } from '../../componentes/Processing/Processing';
 import Logica from "./src/Logica";
 
 interface IPropsEconomia {
-    puntuacion:number;
-    
+    puntuacion: number;
+
 
 }
 
@@ -19,8 +19,8 @@ export interface IPropEconomia {
 export default class Economia extends Component implements AppProcessing {
 
     processingContext: processingContext;
-    processing: Processing;
-    app: p5;
+    processing?: Processing;
+    app?: p5;
     propiedades: any;
     logica?: Logica;
 
@@ -28,26 +28,33 @@ export default class Economia extends Component implements AppProcessing {
         super(props);
         this.processingContext = ProcessingContext;
         this.processing = this.processingContext.actividad;
-        this.processing.juego = this;
-        this.app = this.processing.app;
-        this.propiedades = this.processing.propiedades;
+        if (this.processing) {
+            this.processing.juego = this;
+            this.app = this.processing.app;
+            this.propiedades = this.processing.propiedades;
+        }
         this.propiedades.puntuacion = 0;
     }
 
     settings() {
-      
+
     }
 
     setup() {
-        this.processing.size(1280, 720);
-        this.logica = new Logica(this.app);
+        if (this.processing) {
+            this.processing.size(1280, 720);
+        }
+        if (this.app) {
+            this.logica = new Logica(this.app);
+        }
     }
 
     draw() {
-
-        this.app.background(255);
-        if(this.logica)
-        this.logica.pintar();
+        if(this.app){
+            this.app.background(255);
+        }
+        if (this.logica)
+            this.logica.pintar();
 
     }
 
@@ -60,8 +67,8 @@ export default class Economia extends Component implements AppProcessing {
     }
 
     mouseReleased() {
-        if(this.logica)
-        this.logica.seleccionar();
+        if (this.logica)
+            this.logica.seleccionar();
     }
 
 

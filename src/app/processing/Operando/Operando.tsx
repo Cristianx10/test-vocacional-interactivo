@@ -16,20 +16,21 @@ export interface IPropRevoltosos {
 export default class Operando extends Component implements AppProcessing {
 
     processingContext: processingContext;
-    processing: Processing;
-    app: p5;
+    processing?: Processing;
+    app?: p5;
     propiedades: any;
     log?: Logica;
-
 
 
     constructor(props: IPropsRevoltosos) {
         super(props);
         this.processingContext = ProcessingContext;
         this.processing = this.processingContext.actividad;
-        this.processing.juego = this;
-        this.app = this.processing.app;
-        this.propiedades = this.processing.propiedades;
+        if (this.processing) {
+            this.processing.juego = this;
+            this.app = this.processing.app;
+            this.propiedades = this.processing.propiedades;
+        }
         this.propiedades.puntuacion = 0;
     }
 
@@ -38,8 +39,12 @@ export default class Operando extends Component implements AppProcessing {
     }
 
     setup() {
-        this.processing.size(1000, 480);
-        this.log = new Logica(this.app);
+        if (this.processing) {
+            this.processing.size(1000, 480);
+        }
+        if (this.app) {
+            this.log = new Logica(this.app);
+        }
     }
 
     draw() {

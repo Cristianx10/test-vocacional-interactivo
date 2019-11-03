@@ -84,6 +84,8 @@ export class ViewUsuario extends Component<IPropsViewUsuario> {
       view = (
         <div className="rv__prueba">
           {viewTitulo}
+          <h3>Id de prueba: {prueba.id}</h3>
+          <h3>UID de la prueba: {prueba.UID}</h3>
           <h3>Tiempo: {prueba.tiempo}</h3>
           {viewPrueba}
           <ViewComparadorOpciones prueba={prueba} />

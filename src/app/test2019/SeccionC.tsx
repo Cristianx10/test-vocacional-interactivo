@@ -22,7 +22,7 @@ export class SeccionC extends Component<IPropsSeccionC> {
 
         return <Navegador>
             <Pantalla>
-                <Processing>
+                <Processing UID="" config={()=>{}}>
                     <Pollo></Pollo>
                 </Processing>
 

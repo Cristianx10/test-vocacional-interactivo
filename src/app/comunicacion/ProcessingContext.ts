@@ -1,7 +1,7 @@
 import Processing from '../componentes/Processing/Processing';
 
 export class processingContext {
-    actividad?: any;
+    actividad?: Processing;
     nActividades: number = 0;
 
     setActividad(actividad: Processing) {
