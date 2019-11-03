@@ -299,6 +299,26 @@ export class Resultados {
         anchor.dataset.downloadurl = ['text/plain', anchor.download, anchor.href].join(':');
         anchor.click();
     }
+
+    limpiarTodo() {
+        console.log("Datos reseteados")
+        let t = new Date();
+        this.tiempoInicial = t.getTime();
+        this.tiempo = 0;
+        this.tiempoFinal = 0;
+        this.categorias = [];
+        this.pruebas = [];
+        this.maximos = [];
+        this.usuario = {
+            nombre: "Nombre de usuario",
+            genero: "No definido",
+            carrera: "Carrera",
+            edad: "edad",
+            mano: "mano"
+        }
+        this.ponderacion = [];
+        this.save();
+    }
 }
 
 //localStorage.clear();

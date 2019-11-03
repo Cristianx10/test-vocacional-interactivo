@@ -17,9 +17,9 @@ import "../Contenedor/Contenedor.scss";
 import { contenedorContext } from '../../comunicacion/ContenedorContext';
 import ContenedorContext from '../../comunicacion/ContenedorContext';
 interface IPropsPregunta {
-  children: ReactChild[];
-  onInicial: Function;
-  onFinal: Function;
+  children: ReactChild[] | ReactChild;
+  onInicial?: Function;
+  onFinal?: Function;
   UID?: string;
 
 
@@ -157,8 +157,8 @@ export class Pregunta extends Component<IPropsPregunta> implements IONavegable, 
 }
 
 interface IPropsOpcion {
-  children: ReactChild[];
-  type: String;
+  children: ReactChild[] | ReactChild;
+  type?: String;
   resultados: Array<ICategoria>;
 
 

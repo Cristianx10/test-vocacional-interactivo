@@ -1,18 +1,18 @@
 import React, { Component } from "react";
-import Navegador from "../componentes/Navegador/Navegador";
-import Pantalla from "../componentes/Pantalla/Pantalla";
-import Contenedor from "../componentes/Contenedor/Contenedor";
-import Continuar from "../componentes/Continuar/Continuar";
-import RelojContador from "../componentes/Navegador/RelojContador";
-import { IPropClasificar } from '../actividades/Clasificar/Clasificar';
-import Cortes from '../actividades/Cortes/Cortes';
+import Navegador from "../../componentes/Navegador/Navegador";
+import Pantalla from "../../componentes/Pantalla/Pantalla";
+import Contenedor from "../../componentes/Contenedor/Contenedor";
+import Continuar from "../../componentes/Continuar/Continuar";
+import RelojContador from "../../componentes/Navegador/RelojContador";
+import { IPropClasificar } from '../../actividades/Clasificar/Clasificar';
+import Cortes from '../../actividades/Cortes/Cortes';
 import Clasificar, {
   Almacen,
   Zona, IActionClasificar
-} from "../actividades/Clasificar/Clasificar";
+} from "../../actividades/Clasificar/Clasificar";
 
 
-export class SeccionB extends Component {
+export class ClasificarRopa extends Component {
   configClasificiar(propiedades: IPropClasificar, acciones: IActionClasificar) {
 
     acciones.setMultiple(true)
@@ -27,7 +27,7 @@ export class SeccionB extends Component {
             }
           });
         }
-       
+
       });
       return value;
     }, "Escogio cabello correcto", []);
@@ -299,3 +299,6 @@ export class SeccionB extends Component {
     );
   }
 }
+
+
+export default ClasificarRopa;

@@ -1,21 +1,27 @@
-import React, { Component } from "react";
+import React, { Component, ReactChild } from "react";
 import "./ViewPregunta.scss";
+import { GResultados } from '../resultados/resultados';
 
-export class ViewPregunta extends Component {
+
+interface IPropsViewPregunta {
+  prueba: GResultados;
+}
+
+export class ViewPregunta extends Component<IPropsViewPregunta> {
   render() {
     let prueba = this.props.prueba;
     let { propiedades, opciones, maximos } = prueba;
 
     let contieneImgT = false;
 
-    propiedades.titulares.forEach(titular => {
+    propiedades.titulares.forEach((titular: any) => {
       if (titular.type === "img") {
         contieneImgT = true;
         return;
       }
     });
 
-    let arrayMaximos = [];
+    let arrayMaximos: any[] = [];
     let viewMaximos;
 
     prueba.maximos.forEach(valor => {
@@ -59,16 +65,21 @@ export class ViewPregunta extends Component {
   }
 }
 
-class VPTitulares extends Component {
+interface IPropsVPTitulares {
+  prueba: GResultados;
+}
+
+
+class VPTitulares extends Component<IPropsVPTitulares> {
   render() {
     let prueba = this.props.prueba;
     let { propiedades, opciones, maximos } = prueba;
 
-    let titulares__img = [];
-    let titulares__text = [];
+    let titulares__img: any[] = [];
+    let titulares__text: any[] = [];
     let contieneImgT = false;
 
-    propiedades.titulares.forEach(titular => {
+    propiedades.titulares.forEach((titular: any) => {
       if (titular.type === "img") {
         contieneImgT = true;
         titulares__img.push(titular.contenido);
@@ -115,21 +126,26 @@ class VPTitulares extends Component {
   }
 }
 
-class VPOpciones extends Component {
+interface IPropsVPOpciones {
+  prueba: GResultados;
+}
+
+class VPOpciones extends Component<IPropsVPOpciones> {
   render() {
     let prueba = this.props.prueba;
     let { propiedades, opciones, maximos } = prueba;
 
-    let views__opciones = [];
+    let views__opciones: ReactChild[] = [];
 
     opciones.forEach(opcion => {
       if (opcion.id !== "default") {
         let contieneImg = false;
-        let views = {
+        let views: any = {
           img: [],
           text: []
         };
-        opcion.propiedades.respuestas.forEach(respuesta => {
+
+        opcion.propiedades.respuestas.forEach((respuesta: any) => {
           if (respuesta.type === "img") {
             contieneImg = true;
             views.img.push(
@@ -146,7 +162,7 @@ class VPOpciones extends Component {
           }
         });
 
-        let arrayValor = [];
+        let arrayValor: any[] = [];
         opcion.valor.forEach(valor => {
           arrayValor.push(
             <div className="rv__pregunta__opciones__valor">
@@ -220,9 +236,17 @@ class VPOpciones extends Component {
   }
 }
 
-class VPGaleria extends Component {
-  constructor() {
-    super();
+interface IPropsVPGaleria {
+  img: string[];
+}
+
+interface IStageVPGaleria {
+  seleccion: string;
+}
+
+class VPGaleria extends Component<IPropsVPGaleria, IStageVPGaleria> {
+  constructor(props: IPropsVPGaleria) {
+    super(props);
     this.state = {
       seleccion: ""
     };
@@ -269,7 +293,11 @@ class VPGaleria extends Component {
   }
 }
 
-export class ViewPreguntaEscritura extends Component {
+interface IPropsViewPreguntaEscritura {
+  prueba: GResultados;
+}
+
+export class ViewPreguntaEscritura extends Component<IPropsViewPreguntaEscritura> {
   render() {
     let prueba = this.props.prueba;
 
@@ -282,7 +310,7 @@ export class ViewPreguntaEscritura extends Component {
           <VPTitulares prueba={prueba} />
         </div>
 
-        <table border="1">
+        <table style={{ border: "1px solid black" }}>
           <tbody>
             <tr>
               <td>
@@ -293,12 +321,12 @@ export class ViewPreguntaEscritura extends Component {
               </td>
             </tr>
             <tr>
-              <td width="50%" style={{ verticalAlign: "top" }}>
+              <td style={{ verticalAlign: "top", width: "50%" }}>
                 <div className="rv__pregunta__escritura__ver__texto">
                   {propiedades.text__original}
                 </div>
               </td>
-              <td width="50%" style={{ verticalAlign: "top" }}>
+              <td style={{ verticalAlign: "top", width: "50%" }}>
                 <div className="rv__pregunta__escritura__ver__texto">
                   {propiedades.text__usuario}
                 </div>

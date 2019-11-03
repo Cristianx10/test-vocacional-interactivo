@@ -1,25 +1,33 @@
 import React, { Component } from "react";
-import comunicador from "../comunicacion/Comunicacion";
-import Names from "../comunicacion/Names";
-import "./ViewCompatorCategoria.scss";
-import { ObjectFlags } from "typescript";
 
-export class ViewComparadorCategoiras extends Component {
-  constructor() {
-    super();
-    this.comunicador = comunicador;
-    this.globalResult = this.comunicador.getPropiedadActual(Names.dataUser);
+import "./ViewCompatorCategoria.scss";
+
+import { GResultados, resultados } from '../resultados/resultados';
+import RegistroContext from '../comunicacion/RegistroContext';
+
+interface IPropsViewComparadorCategoiras {
+  resultado: any;
+}
+
+export class ViewComparadorCategoiras extends Component<IPropsViewComparadorCategoiras> {
+
+  globalResult: any;
+
+  constructor(props: IPropsViewComparadorCategoiras) {
+    super(props);
+    let register: any = RegistroContext.registro;
+    this.globalResult = register;
   }
 
   render() {
     let { pruebas, acumuladas } = this.props.resultado;
 
-    let nRespuestas = [];
-    pruebas.forEach((opcionesPrueba, i) => {
+    let nRespuestas: any[] = [];
+    pruebas.forEach((opcionesPrueba: any, i: number) => {
       let { usuario, prueba, categorias, ponderacion, UID } = opcionesPrueba;
       let { opciones } = prueba;
 
-      opciones.forEach((opcion, j) => {
+      opciones.forEach((opcion: any, j: number) => {
         if (nRespuestas[j] === null || nRespuestas[j] === undefined) {
           nRespuestas[j] = {
             nRespuestas: 0,
@@ -32,14 +40,14 @@ export class ViewComparadorCategoiras extends Component {
         if (opcion.validacion) {
           nRespuestas[j].nRespuestas += 1;
 
-          ponderacion.sort(function(a, b) {
+          ponderacion.sort(function (a: any, b: any) {
             return b.valor - a.valor;
           });
 
-          ponderacion.forEach((gCategoria, index) => {
+          ponderacion.forEach((gCategoria: any, index: any) => {
             if (index === 0) {
               let encontro = false;
-              nRespuestas[j].ponderacion.forEach(categoria => {
+              nRespuestas[j].ponderacion.forEach((categoria: any) => {
                 if (gCategoria.id === categoria.id) {
                   encontro = true;
 
@@ -63,15 +71,15 @@ export class ViewComparadorCategoiras extends Component {
 
     //console.log(nRespuestas);
 
-    let viewList = [];
+    let viewList: any[] = [];
     nRespuestas.forEach((res, i) => {
       let viewPoderacion = [];
 
       for (let index = 0; index < res.ponderacion.length; index++) {
         let pon = res.ponderacion[index];
 
-        let viewUsuario = [];
-        pon.usuarios.forEach(user => {
+        let viewUsuario: any[] = [];
+        pon.usuarios.forEach((user: any) => {
           viewUsuario.push(
             <div
               onClick={() => {
@@ -111,8 +119,8 @@ export class ViewComparadorCategoiras extends Component {
         );
       }
 
-      let viewMaximos = [];
-      res.maximo.forEach(m => {
+      let viewMaximos: any[] = [];
+      res.maximo.forEach((m: any) => {
         viewMaximos.push(
           <div className="horizontal">
             <div className="rva__ponderacion__maximos__id">{m.id + ":"}</div>
@@ -170,23 +178,24 @@ export class ViewComparadorCategoiras extends Component {
   }
 }
 
-export class ViewAcumulada extends Component {
-  constructor() {
-    super();
-    this.comunicador = comunicador;
-    //this.globalResult = this.comunicador.getPropiedadActual(Names.dataUser);
-  }
+interface IPropsViewAcumulada {
+  pruebas: any;
+  maximo?: any;
+}
+
+export class ViewAcumulada extends Component<IPropsViewAcumulada> {
+  pruebas: any;
 
   render() {
     this.pruebas = Object.assign([], this.props.pruebas);
     let max = Object.assign([], this.props.maximo);
 
     // console.log(max);
-    let maximosGlobal = [];
-    let categoriaGlobal = [];
+    let maximosGlobal: any[] = [];
+    let categoriaGlobal: any[] = [];
 
-    this.pruebas.forEach(p => {
-      p.maximos.forEach(maximo => {
+    this.pruebas.forEach((p: any) => {
+      p.maximos.forEach((maximo: any) => {
         let encontro = false;
         maximosGlobal.forEach(maximoG => {
           if (maximo.id === maximoG.id) {
@@ -199,7 +208,7 @@ export class ViewAcumulada extends Component {
         }
       });
 
-      p.result.forEach(categoria => {
+      p.result.forEach((categoria: any) => {
         let encontro = false;
         categoriaGlobal.forEach(categoriaG => {
           if (categoria.id === categoriaG.id) {
@@ -213,7 +222,7 @@ export class ViewAcumulada extends Component {
       });
     });
 
-    let consolidado = [];
+    let consolidado: any[] = [];
 
     maximosGlobal.forEach(maximo => {
       let encontro = false;
@@ -240,13 +249,13 @@ export class ViewAcumulada extends Component {
       }
     });
 
-    let viewList = [];
+    let viewList: any[] = [];
 
     consolidado.forEach(c => {
       c.porcetaje = (c.categoria.valor / c.maximo.valor) * 100;
     });
 
-    consolidado.sort(function(a, b) {
+    consolidado.sort(function (a, b) {
       return b.porcetaje - a.porcetaje;
     });
 
@@ -254,7 +263,7 @@ export class ViewAcumulada extends Component {
       let m = 0;
       let por = 0;
       if (max != null) {
-        max.forEach(ma => {
+        max.forEach((ma: any) => {
           if (ma.id === c.maximo.id) {
             m = ma.valor;
           }
@@ -301,7 +310,7 @@ export class ViewAcumulada extends Component {
       <div className="rva__ponderacion__global">
         <h1>Analisis Acumulativo</h1>
         <div className="rva__acumulado">
-          <table border="1px">
+          <table style={{ border: "1px solid black" }}>
             <tbody>
               <tr>
                 <td>Categoria:</td>
@@ -321,16 +330,20 @@ export class ViewAcumulada extends Component {
   }
 }
 
-export class ViewComparadorOpciones extends Component {
+interface IPropsViewComparadorOpciones {
+  prueba: GResultados;
+}
+
+export class ViewComparadorOpciones extends Component<IPropsViewComparadorOpciones> {
   render() {
     let prueba = this.props.prueba;
 
     let { opciones } = prueba;
 
-    let filas = [];
+    let filas: any[] = [];
     opciones.forEach(opcion => {
-      let viewOpcion = [];
-      let viewOpcionM = [];
+      let viewOpcion: any[] = [];
+      let viewOpcionM: any[] = [];
       let className = "";
       if (opcion.validacion == true) {
         className = "seleccionado";
@@ -369,10 +382,10 @@ export class ViewComparadorOpciones extends Component {
     });
 
     return (
-      <div className="rva__ponderacion__global max-width" style={{padding:"10px"}}>
+      <div className="rva__ponderacion__global max-width" style={{ padding: "10px" }}>
         <h1>Analisis De Opciones</h1>
 
-        <table className="rva__comparador__respuesta" border="1">
+        <table className="rva__comparador__respuesta" style={{ border: "1px solid black" }}>
           <tbody>
             <tr>
               <td><strong>Acción</strong></td>

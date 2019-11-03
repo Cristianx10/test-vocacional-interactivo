@@ -1,4 +1,4 @@
-import React, { Component, ReactChild, ReactNode } from 'react';
+import React, { Component, ReactChild, ReactNode, Children } from 'react';
 import Timer from '../../utilidades/timer';
 import Navegador from '../Navegador/Navegador';
 import NavegadorContext from '../../comunicacion/NavegadorContext';
@@ -7,6 +7,7 @@ import ManagerStyle from '../../utilidades/AutoClases';
 import { IONavegable } from '../../comunicacion/utilEvents';
 import { pantallaToImg } from '../../utilidades/utils';
 import { tags } from '../../configuraciones/dato';
+import "./Pantalla.scss";
 
 interface IETitular {
     type: string;
@@ -16,7 +17,7 @@ interface IETitular {
 interface IPropsPantalla {
     fondo?: string;
     imagen?: string;
-    children?: Array<ReactChild> | ReactChild;
+    children?: ReactChild | Array<ReactChild> | any;
     time?: string | number;
     onInicial?: Function;
     onFinal?: Function;
@@ -107,7 +108,7 @@ export class Pantalla extends Component<IPropsPantalla> {
             }
 
             if (this.props.onInicial) {
-                this.props.onInicial().bind(this);
+                this.props.onInicial();
             }
 
             this.eventsObject.forEach(propiedad => {
@@ -134,7 +135,7 @@ export class Pantalla extends Component<IPropsPantalla> {
 
 
             if (this.props.onFinal) {
-                this.props.onFinal().bind(this);
+                this.props.onFinal();
             }
 
             this.eventsObject.forEach(propiedad => {
@@ -148,11 +149,13 @@ export class Pantalla extends Component<IPropsPantalla> {
         this.onInicial();
         if (this.style.contenedor && this.navegador) {
             this.style.contenedor.classList.remove("ocultar");
+
             this.navegador.style.appendChild(this.style.contenedor);
         }
     }
 
     ocultar() {
+        console.log("Oculto")
         if (this.style.contenedor && this.navegador) {
             this.style.contenedor.classList.add("ocultar");
             this.navegador.style.removeChild(this.style.contenedor);
@@ -211,11 +214,12 @@ export class Pantalla extends Component<IPropsPantalla> {
         return (
             <div ref="contenedor" className="pantalla">
                 <div className={className} style={style}>
-                    {React.Children.map(this.props.children, (view, index) => {
-                        // return <div className="pantalla__bloque">{view}</div>;
-
-                        return view;
-                    })}
+                    {this.props.children ?
+                        Array.isArray(this.props.children) ?
+                            Children.map(this.props.children, (view, index) => { return view; })
+                            : this.props.children
+                        : ""
+                    }
                 </div>
             </div>
         );

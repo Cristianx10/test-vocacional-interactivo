@@ -1,6 +1,11 @@
 import React, { Component } from "react";
+import { GResultados } from '../resultados/resultados';
 
-export class ViewATarjetas extends Component {
+interface IPropsViewATarjetas {
+  prueba: GResultados;
+}
+
+export class ViewATarjetas extends Component<IPropsViewATarjetas> {
   render() {
     let prueba = this.props.prueba;
 

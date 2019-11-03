@@ -1,39 +1,48 @@
 import React, { Component } from "react";
-import { resultados, resultados2 } from "../resultados/resultados";
+import { resultados, resultados2 } from '../resultados/resultados';
 import { ViewPregunta, ViewPreguntaEscritura } from "../analisis/ViewPregunta";
 
 import { UnificarResultados } from "../resultados/unificador";
-import comunicador from "../comunicacion/Comunicacion";
-import Names from "../comunicacion/Names";
+
 import { ViewComparadorCategoiras } from "../analisis/ViewCompatorCategorias";
 import { ViewARelacion } from "../analisis/ViewARelacion";
 import { ViewATarjetas } from "../analisis/ViewATarjetas";
 import { ViewAClasificar } from "../analisis/ViewClasificar";
+import { registroContext } from '../comunicacion/RegistroContext';
+import RegistroContext from '../comunicacion/RegistroContext';
 
-export class Viewregistro extends Component {
-  constructor() {
-    super();
-    this.comunicador = comunicador;
-    this.comunicador.add(Names.dataUser).push(this);
+export class RegistroActividad extends Component {
 
-    this.envioData = null;
+  registroContext = RegistroContext;
+  envioData?: HTMLInputElement;
+  resultados: UnificarResultados;
+
+  constructor(props: {}) {
+    super(props);
+
+    this.registroContext.setRegistro(this);
+
     this.resultados = new UnificarResultados();
   }
 
-  enviarUsuario(userUID) {
-    this.envioData = this.refs.envioData;
-    this.envioData.value = JSON.stringify(this.resultados.getUID(userUID));
+  enviarUsuario(userUID: string) {
+    let inputInfo: any = this.refs.envioData;
+    let formulario: any = this.refs.formadmin;
+    this.envioData = inputInfo;
 
-    this.refs.formadmin.submit();
-    this.envioData.value = "";
+    if (this.envioData) {
+      this.envioData.value = JSON.stringify(this.resultados.getUID(userUID));
+      formulario.submit();
+      this.envioData.value = "";
+    }
   }
 
-  onSubmit(event) {
+  onSubmit(event: React.FormEvent) {
     //event.preventDefault();
     console.log("dato tomado");
   }
 
-  leerArchivo(e) {
+  leerArchivo(e: any) {
     var archivos = e.target.files;
 
     for (let i = 0; i < archivos.length; i++) {
@@ -46,7 +55,7 @@ export class Viewregistro extends Component {
       let lector = new FileReader();
       lector.readAsText(archivo);
 
-      lector.onload = e => {
+      lector.onload = (e: any) => {
         let contenido = e.target.result;
         let datos = JSON.parse(contenido);
         this.resultados.agregar(datos);
@@ -143,3 +152,6 @@ export class Viewregistro extends Component {
     );
   }
 }
+
+
+export default RegistroActividad;

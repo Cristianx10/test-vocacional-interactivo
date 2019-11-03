@@ -1,0 +1,57 @@
+.view__resultados {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    width: 100%;
+    color: white;
+}
+
+.view__resultado {
+    display: flex;
+    width: 300px;
+
+    background: rgba(173, 216, 230, 0.411);
+    border-radius: 20px;
+    padding: 20px;
+    margin: 20px;
+
+
+
+    &__grafica {
+        position: relative;
+
+        &__view {
+            height: 100px;
+            width: 100px;
+        }
+
+        &__value {
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+        }
+
+
+    }
+
+    &__informacion {
+        padding-left: 20px;
+
+        &__carrera {
+            font-size: 1.5em;
+        }
+
+        &__valor {
+            font-size: 1.3em;
+        }
+    }
+
+
+}

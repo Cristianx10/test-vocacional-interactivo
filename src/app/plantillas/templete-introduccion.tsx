@@ -1,8 +1,14 @@
 import React from "react";
-import { Pantalla, Continuar } from "../componentes/Navegador/Navegador";
-import Contenedor from "../componentes/Contenedor/Contenedor";
 
-export class TIntroduccion extends React.Component {
+import Contenedor from "../componentes/Contenedor/Contenedor";
+import Pantalla from '../componentes/Pantalla/Pantalla';
+import Continuar from '../componentes/Continuar/Continuar';
+
+interface IPropsTIntroduccion {
+  fondo?: string;
+}
+
+export class TIntroduccion extends React.Component<IPropsTIntroduccion> {
   render() {
     let view = null;
 

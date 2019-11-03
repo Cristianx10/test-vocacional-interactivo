@@ -1,6 +1,13 @@
 .formulario__registro {
 
+    width: 100%;
+
     color: white;
+
+    .error{
+        color: red;
+        font-size: .6em;
+    }
 
     form {
 

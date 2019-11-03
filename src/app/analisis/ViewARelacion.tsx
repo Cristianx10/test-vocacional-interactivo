@@ -1,6 +1,11 @@
 import React, { Component } from "react";
+import { GResultados } from '../resultados/resultados';
 
-export class ViewARelacion extends Component {
+interface IPropsViewARelacion {
+  prueba: GResultados;
+}
+
+export class ViewARelacion extends Component<IPropsViewARelacion> {
   render() {
     let prueba = this.props.prueba;
     let { propiedades } = prueba;
@@ -15,11 +20,11 @@ export class ViewARelacion extends Component {
       nOpciones
     } = propiedades;
 
-    let viewListado = [];
+    let viewListado: any[] = [];
 
-    palabras.forEach(palabra => {
-      let viewList = [];
-      palabra.forEach(p => {
+    palabras.forEach((palabra: any) => {
+      let viewList: any[] = [];
+      palabra.forEach((p: any) => {
         viewList.push(
           <div style={{ display: "flex" }}>
             <div
@@ -61,7 +66,7 @@ export class ViewARelacion extends Component {
 
     return (
       <div>
-        <div style={{alignItems:"center"}} className="horizontal">
+        <div style={{ alignItems: "center" }} className="horizontal">
           <div>
             <h2>Captura de pantalla</h2>
             <img src={captura} alt="Captura pantalla" />

@@ -13,7 +13,7 @@ import Pantalla from '../Pantalla/Pantalla';
 
 
 export interface IPropsNavegador {
-  children: Array<ReactChild>;
+  children: Array<ReactChild> | any;
 
   /* Clases de ManagerStyle */
   style?: Object;
@@ -88,20 +88,21 @@ export class Navegador extends Component<IPropsNavegador> {
     if (this.isImprimiendoPantalla == false) {
       this.pantallas[this.actual].ocultar();
 
-      if (this.actual + 1 < this.props.children.length) {
+      if (this.actual + 1 < this.pantallas.length) {
         this.actual += 1;
 
         this.pantallas[this.actual].onChange();
         this.pantallas[this.actual].mostrar();
-      } else if (this.actual < this.props.children.length) {
+      } else if (this.actual < this.pantallas.length) {
         this.actual += 1;
       }
+    
     }
   }
 
   atras() {
 
-    if (this.actual < this.props.children.length) {
+    if (this.actual < this.pantallas.length) {
       this.pantallas[this.actual].ocultar();
     }
 
@@ -110,6 +111,7 @@ export class Navegador extends Component<IPropsNavegador> {
     }
     this.pantallas[this.actual].onChange();
     this.pantallas[this.actual].mostrar();
+    
   }
 
   componentDidMount() {
@@ -120,6 +122,8 @@ export class Navegador extends Component<IPropsNavegador> {
       pantalla.ocultar();
     });
 
+    console.log("Las vistas", this.pantallas)
+  
     this.pantallas[this.actual].mostrar();
     this.pantallas[this.actual].onChange();
   }
@@ -132,9 +136,9 @@ export class Navegador extends Component<IPropsNavegador> {
 
     return (
       <div ref="contenedor" className={className} style={style}>
-        {Children.map(this.props.children, views => {
-          return views;
-        })}
+
+        {Children.map(this.props.children, (view, index) => { return view })}
+
       </div>
     );
   }

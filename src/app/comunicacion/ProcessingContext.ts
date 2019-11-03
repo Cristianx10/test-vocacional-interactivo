@@ -1,4 +1,3 @@
-import Pollo from '../processing/Pollo/Pollo';
 import Processing from '../componentes/Processing/Processing';
 
 export class processingContext {

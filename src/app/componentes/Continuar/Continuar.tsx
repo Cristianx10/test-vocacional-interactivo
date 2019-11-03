@@ -8,6 +8,8 @@ import './Continuar.scss';
 interface IProsContinuar {
     children?: ReactChild;
     disabled?: boolean;
+    url?: string;
+    onClick?: Function;
 
     /* Clases de ManagerStyle */
     style?: Object;
@@ -62,8 +64,12 @@ export class Continuar extends Component<IProsContinuar, IStateContinuar> {
     }
 
     continuar() {
-        if (this.navegador) {
-            this.navegador.continuar();
+        if (this.props.onClick == null) {
+            if (this.navegador) {
+                this.navegador.continuar();
+            }
+        } else {
+            this.props.onClick();
         }
     }
 
@@ -75,10 +81,11 @@ export class Continuar extends Component<IProsContinuar, IStateContinuar> {
         return (
             <div ref="a" className={className} style={style}>
                 {this.state.habilitar ?
-                    <button className="btn__nav"
-                        onClick={this.continuar.bind(this)}>
-                        {this.props.children ? this.props.children : "Continuar"}
-                    </button>
+                    <a href={this.props.url}>
+                        <button className="btn__nav" onClick={this.continuar.bind(this)}>
+                            {this.props.children ? this.props.children : "Continuar"}
+                        </button>
+                    </a>
                     :
                     <button className="btn__nav" disabled>
                         {this.props.children ? this.props.children : "Continuar"}

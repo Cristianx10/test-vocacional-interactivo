@@ -8,9 +8,17 @@ import "./datosUsuario.scss";
 import { ViewARelacion } from "./ViewARelacion";
 import { ViewATarjetas } from "./ViewATarjetas";
 
-export class ViewUsuario extends Component {
-  constructor() {
-    super();
+interface IPropsViewUsuario {
+
+}
+
+declare var globalDataUser: any;
+
+
+export class ViewUsuario extends Component<IPropsViewUsuario> {
+  data: any;
+  constructor(props: IPropsViewUsuario) {
+    super(props);
     this.data = globalDataUser;
   }
 
@@ -25,16 +33,16 @@ export class ViewUsuario extends Component {
     let { pruebas, usuario, tiempo } = this.data;
 
 
-    pruebas = pruebas.sort((a,b)=>{
-      return a.UID-b.UID;
+    pruebas = pruebas.sort((a: any, b: any) => {
+      return a.UID - b.UID;
     });
 
-    let views = [];
-    let acumuladoTotal = [];
+    let views: any[] = [];
+    let acumuladoTotal: any[] = [];
 
-    let maximosGlobal = [];
-    pruebas.forEach(p => {
-      p.maximos.forEach(maximo => {
+    let maximosGlobal: any[] = [];
+    pruebas.forEach((p: any) => {
+      p.maximos.forEach((maximo: any) => {
         let encontro = false;
         maximosGlobal.forEach(maximoG => {
           if (maximo.id === maximoG.id) {
@@ -48,7 +56,7 @@ export class ViewUsuario extends Component {
       });
     });
 
-    pruebas.forEach(prueba => {
+    pruebas.forEach((prueba: any) => {
       acumuladoTotal.push(prueba);
       let view = <div>Categoria no encontrada</div>;
       let id = prueba.id;
@@ -67,11 +75,11 @@ export class ViewUsuario extends Component {
       } else if (id === "Relacionar_Palabras") {
         viewTitulo = <h2>Pregunta Relaciona Palabras</h2>;
         viewPrueba = <ViewARelacion prueba={prueba} />;
-      }else if (id === "Tarjetas__relacion") {
+      } else if (id === "Tarjetas__relacion") {
         viewTitulo = <h2>Tarjetas escondidas</h2>;
         viewPrueba = <ViewATarjetas prueba={prueba} />;
       }
-     
+
 
       view = (
         <div className="rv__prueba">
@@ -145,10 +153,14 @@ export class ViewUsuario extends Component {
   }
 }
 
-export class ViewUserData extends Component {
+interface IPropsViewUserData {
+  usuario: any;
+}
+
+export class ViewUserData extends Component<IPropsViewUserData> {
   render() {
     let usuario = this.props.usuario;
-    
+
     return (
       <div className="horizontal">
         <div>
@@ -160,14 +172,14 @@ export class ViewUserData extends Component {
           <h2>Edad: {usuario.edad}</h2>
           <h2>Mano: {usuario.mano}</h2>
           <h2>Carrera: {usuario.carrera}</h2>
-         
+
         </div>
       </div>
     );
   }
 }
 
-function cambiarEspacios(texto) {
+function cambiarEspacios(texto: any) {
   var contenido = "";
   let palabra = texto;
   for (let i = 0; i < palabra.length; i++) {
