@@ -7,6 +7,8 @@ import TLikertPregunta from "../plantillas/template-likert/TLikertPregunta";
 import { shuffle } from '../utilidades/utils';
 import { TIntroduccion } from '../plantillas/templete-introduccion';
 import { routes } from '../router';
+import Processing from "../componentes/Processing/Processing";
+import Hablame from "../processing/Hablame/Hablame";
 
 /**Seccion A */
 
@@ -39,6 +41,10 @@ export class SeccionG extends Component<{}> {
 
     }
 
+    configHablame(){
+        
+    }
+
     render() {
 
         let preguntasA = this.formularioPreguntas(120);
@@ -57,6 +63,11 @@ export class SeccionG extends Component<{}> {
             })}
 
              {/**Humanidades 1 */}
+             <Pantalla>
+                 <Processing UID="G1" config={this.configHablame}>
+                     <Hablame></Hablame>
+                 </Processing>
+             </Pantalla>
 
             {Children.map(preguntasB, view => {
                 return <Pantalla width="80%" fondo="/includes/background/claro.png">{view}</Pantalla>;

@@ -70,10 +70,11 @@ export class SeccionE extends Component<{}> {
 
             {/**Salud */}
 
-
-            <Processing UID="E1" config={this.configOperando}>
-                <Operando></Operando>
-            </Processing>
+            <Pantalla>
+                <Processing UID="E1" config={this.configOperando}>
+                    <Operando></Operando>
+                </Processing>
+            </Pantalla>
 
 
             {Children.map(preguntasB, view => {

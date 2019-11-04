@@ -7,6 +7,8 @@ import TLikertPregunta from "../plantillas/template-likert/TLikertPregunta";
 import { shuffle } from '../utilidades/utils';
 import { TIntroduccion } from '../plantillas/templete-introduccion';
 import { routes } from '../router';
+import Processing from "../componentes/Processing/Processing";
+import Economia from "../processing/Economia/Economia";
 
 /**Seccion A */
 
@@ -35,8 +37,8 @@ export class SeccionF extends Component<{}> {
         return preguntas;
     }
 
-    componentDidMount() {
-
+    configEconomia(){
+        
     }
 
     render() {
@@ -57,6 +59,12 @@ export class SeccionF extends Component<{}> {
             })}
 
             {/**Ingenieria */}
+
+            <Pantalla>
+                <Processing UID="F1" config={this.configEconomia}>
+                    <Economia></Economia>
+                </Processing>
+            </Pantalla>
 
             {Children.map(preguntasB, view => {
                 return <Pantalla width="80%" fondo="/includes/background/claro.png">{view}</Pantalla>;

@@ -8,6 +8,8 @@ import { shuffle } from '../utilidades/utils';
 import { TIntroduccion } from '../plantillas/templete-introduccion';
 import { routes } from '../router';
 import Formulario, { FormInput } from '../componentes/Formulario/Formulario';
+import Tuberias, { Ficha } from '../actividades/Tuberias/Tuberias';
+import Contenedor from "../componentes/Contenedor/Contenedor";
 
 /**Seccion A */
 
@@ -36,8 +38,16 @@ export class SeccionH extends Component<{}> {
         return preguntas;
     }
 
+    mensaje__tuberia1: HTMLElement | any;
     componentDidMount() {
+        this.mensaje__tuberia1 = this.refs.mensaje__tuberia1;
 
+    }
+    configTuberia(propiedades: any, acciones: any) {
+        acciones.setValidacion(() => {
+            acciones.habilitar();
+            this.mensaje__tuberia1.innerHTML = "Buen trabajo, Ahora continuemos";
+        });
     }
 
     render() {
@@ -46,10 +56,6 @@ export class SeccionH extends Component<{}> {
         let preguntasB = this.formularioPreguntas(150);
 
         return (<Navegador>
-
-
-
-
 
             <TIntroduccion fondo="/includes/background/oscuro-personajes.png">
                 <h1>Orientacion vocacional</h1>
@@ -60,7 +66,40 @@ export class SeccionH extends Component<{}> {
                 return <Pantalla width="80%" fondo="/includes/background/claro.png">{view}</Pantalla>;
             })}
 
-                    {/**Diseño */}
+            {/**Diseño */}
+            <Pantalla orientacion="horizontal">
+                <Contenedor>
+                    <Tuberias
+                        UID="H1" config={this.configTuberia.bind(this)}
+                        url="/img/pizarra/tabla_tutorial.png"
+                        width={110}
+                        height={110}
+                        filas={3}
+                        columnas={5}
+                    >
+                        <Ficha static />
+                        <Ficha down static inicio />
+                        <Ficha static />
+                        <Ficha up left />
+                        <Ficha up down />
+                        <Ficha left right />
+                        <Ficha up down />
+                        <Ficha down left />
+                        <Ficha lider />
+                        <Ficha down left />
+                        <Ficha up down />
+                        <Ficha down right />
+                        <Ficha static />
+                        <Ficha up static final />
+                        <Ficha static />
+                    </Tuberias>
+                    <Continuar disabled></Continuar>
+                </Contenedor>
+                <Contenedor>
+                    <h1 ref="mensaje__tuberia1"></h1>
+                </Contenedor>
+
+            </Pantalla>
 
             {Children.map(preguntasB, view => {
                 return <Pantalla width="80%" fondo="/includes/background/claro.png">{view}</Pantalla>;

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, ReactChild } from "react";
 
 import { matrixImagen } from "../../utilidades/matrices";
 import "./Tuberias.scss";
@@ -6,6 +6,7 @@ import { ICategoria, GResultados, resultados } from '../../resultados/resultados
 import APizarra from './TS-Tuberias';
 import Pantalla from '../../componentes/Pantalla/Pantalla';
 import NavegadorContext from '../../comunicacion/NavegadorContext';
+import ManagerStyle from '../../utilidades/AutoClases';
 
 
 interface IPropsTuberias {
@@ -14,7 +15,7 @@ interface IPropsTuberias {
   height: number;
   filas: number;
   columnas: number;
-  children: Ficha[];
+  children?: ReactChild[];
   config: Function;
   UID?: string | number;
 }
@@ -23,6 +24,8 @@ interface IActionTuberias {
   validar: Function;
   setIntento: Function;
   setValidacion: Function;
+  continuar: Function;
+  habilitar: Function;
 }
 
 export class Tuberias extends Component<IPropsTuberias> {
@@ -32,10 +35,11 @@ export class Tuberias extends Component<IPropsTuberias> {
   acciones: IActionTuberias;
   pantalla?: Pantalla;
   registro?: GResultados;
+  style: ManagerStyle;
 
   constructor(props: IPropsTuberias) {
     super(props);
-
+    this.style = new ManagerStyle(props, "actividad__tuberias");
 
     this.tuberias = new APizarra();
     this.propiedades = this.tuberias.propiedades;
@@ -56,6 +60,19 @@ export class Tuberias extends Component<IPropsTuberias> {
     this.acciones.setValidacion = (acciones: any) => {
       this.tuberias.setValidacion(acciones);
     };
+
+    this.acciones.continuar = () => {
+      if (this.pantalla) {
+        this.pantalla.continuar();
+      }
+    }
+
+    
+    this.acciones.habilitar = () => {
+      if (this.pantalla) {
+        this.pantalla.habilitarContinuar();
+      }
+    }
   }
 
   componentDidMount() {
@@ -73,7 +90,7 @@ export class Tuberias extends Component<IPropsTuberias> {
     let final = 0;
     let lider = 0;
 
-    React.Children.map(this.props.children, (view, index) => {
+    React.Children.map(this.props.children, (view: any, index) => {
       let left = false;
       let right = false;
       let up = false;
@@ -119,17 +136,6 @@ export class Tuberias extends Component<IPropsTuberias> {
       this.props.config(this.propiedades, this.acciones);
     }
 
-    this.tuberias.setValidacion(() => {
-      console.log("Validado");
-      let e = document.querySelector("#tuberia_info");
-      //e.innerText = "¡Perfecto! Has completado la tuberia. Dale click a siguiente y probemos tu habilidad";
-      //siguiente.disabled = false;
-    });
-
-    this.tuberias.setIntentoFallo(() => {
-      console.log("Intento");
-    });
-
     this.tuberias.incluirEn(contenedor);
   }
 
@@ -156,23 +162,34 @@ export class Tuberias extends Component<IPropsTuberias> {
   }
 
   render() {
-    return <div ref="contenedor"></div>;
+    let className = this.style.getClass();
+
+
+    return <div ref="contenedor" className={className} ></div>;
   }
 }
 
 interface IPropsFicha {
-  inicio: number;
-  final: number;
-  lider: number;
-  left: boolean;
-  right: boolean;
-  up: boolean;
-  down: boolean;
-  static: boolean;
+  inicio?: boolean;
+  final?: boolean;
+  lider?: boolean;
+  left?: boolean;
+  right?: boolean;
+  up?: boolean;
+  down?: boolean;
+  static?: boolean;
 }
 
 export class Ficha extends Component<IPropsFicha> {
+
+  constructor(props: IPropsFicha) {
+    super(props)
+  }
+
   render() {
     return <div></div>;
   }
 }
+
+
+export default Tuberias;

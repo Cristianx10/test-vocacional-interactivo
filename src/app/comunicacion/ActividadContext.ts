@@ -4,6 +4,7 @@ import Cortes from '../actividades/Cortes/Cortes';
 import { Relacionar } from '../actividades/Relacionar/Relacionar';
 import { TarjetasR } from '../actividades/TarjetasR/TarjetasR';
 import { Pollitos } from '../processing/Pollo/Pollitos';
+import Intentos from '../componentes/Intentos/Intentos';
 
 export class actividadContext {
 
@@ -12,6 +13,7 @@ export class actividadContext {
     relacionar?: Relacionar;
     tarjetasR?: TarjetasR
     pollitos?: Pollitos;
+    intentos?:Intentos;
 
     setClasificar(clasificar: Clasificar) {
         this.clasificar = clasificar;
@@ -31,6 +33,10 @@ export class actividadContext {
 
     setPollitos(pollitos: Pollitos) {
         this.pollitos = pollitos;
+    }
+
+    setIntentos(intentos: Intentos){
+        this.intentos = intentos;
     }
 }
 

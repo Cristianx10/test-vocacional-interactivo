@@ -7,6 +7,7 @@ import ActividadContext, { actividadContext } from '../../comunicacion/Actividad
 import { IONavegable } from '../../comunicacion/utilEvents';
 import ManagerStyle from '../../utilidades/AutoClases';
 import APollitos from "./src/Logica";
+import Intentos from '../../componentes/Intentos/Intentos';
 
 interface IPropsPollitos {
     config: Function;
@@ -23,7 +24,6 @@ export class Pollitos extends Component<IPropsPollitos> implements IONavegable {
     pantalla?: Pantalla;
     acciones: any = {};
 
-
     escenario: APollitos;
     propiedades: any;
     opciones: { tipo: string, categoria: string }[] = [];
@@ -31,11 +31,17 @@ export class Pollitos extends Component<IPropsPollitos> implements IONavegable {
 
     registro: GResultados;
 
+    intentos?: Intentos;
+
     constructor(props: IPropsPollitos) {
         super(props);
 
         this.navegadorContext = NavegadorContext;
         this.actividadContext = ActividadContext;
+        if (this.actividadContext) {
+            this.intentos = this.actividadContext.intentos;
+
+        }
 
         this.escenario = new APollitos();
 
@@ -66,6 +72,26 @@ export class Pollitos extends Component<IPropsPollitos> implements IONavegable {
 
             setValidacion: (acciones: any) => {
                 this.escenario.setValidacion(acciones);
+            },
+            reset: () => {
+                this.escenario.reset();
+            },
+
+            setIntentos: (val: number) => {
+                if (this.intentos) {
+                    this.intentos.setIntentos(val);
+                }
+            },
+
+            continuar: () => {
+                if (this.pantalla) {
+                    this.pantalla.continuar();
+                }
+            },
+            menosVidas: () => {
+                if (this.intentos) {
+                    this.intentos.menosVidas();
+                }
             }
         };
 
@@ -96,6 +122,8 @@ export class Pollitos extends Component<IPropsPollitos> implements IONavegable {
             this.escenario.incluirEn(this.style.contenedor);
         }
 
+        this.style.setStyle("fondo", "/img/2019/pollo/img/fondo.png");
+
     }
 
     onInicial() {
@@ -123,6 +151,7 @@ export class Pollitos extends Component<IPropsPollitos> implements IONavegable {
     render() {
 
         let style = this.style.getStyle();
+        style.backgroundSize = "cover";
         let className = this.style.getClass();
 
         return <div ref="contenedor" className={className} style={style}></div>;
