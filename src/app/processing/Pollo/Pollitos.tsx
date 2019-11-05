@@ -97,6 +97,7 @@ export class Pollitos extends Component<IPropsPollitos> implements IONavegable {
 
 
         this.registro = this.escenario.registro;
+        this.registro.setId("Pollitos");
 
         this.propiedades = this.escenario.propiedades;
 

@@ -131,7 +131,14 @@ export class ClasificarRopa extends Component {
       <>
         <Pantalla fondo="#020963">
           <Contenedor height="100%" width="100%">
-            <img style={{ height: "80%" }} src="/img/2019/diseno/partes/instrucciones.png"></img>
+            <img style={{ height: "80%" }} src="/img/2019/diseno/partes/instrucciones-1.png"></img>
+            <Continuar></Continuar>
+          </Contenedor>
+        </Pantalla>
+
+        <Pantalla fondo="#020963">
+          <Contenedor height="100%" width="100%">
+            <img style={{ height: "80%" }} src="/img/2019/diseno/partes/instrucciones-2.png"></img>
             <Continuar></Continuar>
           </Contenedor>
         </Pantalla>
@@ -149,9 +156,9 @@ export class ClasificarRopa extends Component {
         </Pantalla>
 
         <Pantalla time="75">
-        
+
           <Contenedor height="100%" orientacion="vertical">
-          <RelojContador pos="25px -22px"></RelojContador>
+            <RelojContador pos="25px -22px"></RelojContador>
             <h1>¿Erez capaz de recordar todo?</h1>
 
             <div id="correcto" className="pregunta__pintura">
@@ -166,14 +173,14 @@ export class ClasificarRopa extends Component {
                   </h2>
               </div>
             </div>
-          
+
           </Contenedor>
           <Contenedor on width="100%" height="100%">
             <Clasificar UID="A1" width="100%" height="100%" config={this.configClasificiar.bind(this)}>
 
               <Almacen tipo="cabello" pos="225px 60px" id="cabello" height="90px" width="150px" style={{ background: "#add8e652" }} reset={(e: HTMLElement) => { e.style.background = "" }} />
 
-              <Almacen tipo="ojos" id="ojos" pos="315px 60px" width="150px" height="40px" style={{ background: "#add8e652", display: "flex", justifyContent: "center" }} reset={(e: HTMLElement) => {
+              <Almacen tipo="ojos" id="ojos" pos="325px 60px" width="150px" height="40px" style={{ background: "#add8e652", display: "flex", justifyContent: "center" }} reset={(e: HTMLElement) => {
                 e.style.background = "";
               }} />
 
@@ -209,19 +216,19 @@ export class ClasificarRopa extends Component {
               </Almacen>
 
               <Almacen capacidad={4} tipo="boca" id="contenedorBoca" pos="150px 810px" height="200px" width="60px">
-                <Zona style={{ position: "" }} tipo="boca" categoria="bocaNo1" width="90px" height="40px"><img
+                <Zona style={{ position: "", display: "flex", alignItems: "center" }} tipo="boca" categoria="bocaNo1" width="90px" height="40px"><img
                   className="ima__opcion"
                   src="/img/2019/diseno/partes/boca1.png"
                   alt=""
                 />
                 </Zona>
-                <Zona style={{ position: "" }} tipo="boca" categoria="bocaNo2" width="90px" height="40px"><img
+                <Zona style={{ position: "", display: "flex", alignItems: "center" }} tipo="boca" categoria="bocaNo2" width="90px" height="40px"><img
                   className="ima__opcion"
                   src="/img/2019/diseno/partes/boca2.png"
                   alt=""
                 />
                 </Zona>
-                <Zona style={{ position: "" }} tipo="boca" categoria="boca" width="90px" height="40px"><img
+                <Zona style={{ position: "", display: "flex", alignItems: "center" }} tipo="boca" categoria="boca" width="90px" height="40px"><img
                   className="ima__opcion"
                   src="/img/2019/diseno/partes/boca3.png"
                   alt=""
@@ -316,13 +323,17 @@ export class ClasificarRopa extends Component {
 
               <Almacen capacidad={3} tipo="cabello" id="contenedorCabellos" pos="149px 536px" height="425px" width="150px">
 
-                <Zona style={{ position: "" }} tipo="cabello" categoria="cabelloNo" width="146px" height="120px" >
+                <Zona style={{ position: "" }} tipo="cabello" categoria="cabelloNo" width="146px" height="120px" reset={(e: HTMLElement) => {
+                  e.style.position = "relative";
+                  e.style.top = "10px";
+                  e.style.left = "5px";
+                }} >
                   <img className="ima__opcion" src="/img/2019/diseno/partes/cabello1.png" alt="" />
                 </Zona>
 
                 <Zona style={{ position: "" }} tipo="cabello" categoria="cabello" width="146px" height="120px" reset={(e: HTMLElement) => {
                   e.style.position = "relative";
-                  e.style.top = "10px";
+                  e.style.top = "20px";
                   e.style.left = "5px";
                 }}>
                   <img
@@ -333,7 +344,7 @@ export class ClasificarRopa extends Component {
                 </Zona>
                 <Zona style={{ position: "" }} tipo="cabello" categoria="cabelloNo" width="146px" height="120px" reset={(e: HTMLElement) => {
                   e.style.position = "relative";
-                  e.style.top = "25px";
+                  e.style.top = "30px";
                 }}>
                   <img
                     className="ima__opcion"

@@ -62,7 +62,7 @@ export class SeccionA extends Component<{}> {
             {/**Diseño */}
             <ClasificarRopa></ClasificarRopa>
 
-            <TLikertPruebaBefore titulo="Mezclando Compuestos" UID="A11" />
+            <TLikertPruebaBefore titulo="Clasificar la Ropa" UID="A11" />
 
             {Children.map(preguntasB, view => {
                 return <Pantalla width="80%" fondo="/includes/background/claro.png">{view}</Pantalla>;

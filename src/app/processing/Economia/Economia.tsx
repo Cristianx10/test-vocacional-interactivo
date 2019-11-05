@@ -42,7 +42,7 @@ export default class Economia extends Component implements AppProcessing {
 
     setup() {
         if (this.processing) {
-            this.processing.size(1280, 720);
+            this.processing.size(1000, 500);
         }
         if (this.app) {
             this.logica = new Logica(this.app);

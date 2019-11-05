@@ -94,8 +94,7 @@ export class SeccionB extends Component<{}> {
         let preguntasB = this.formularioPreguntas(30);
 
         return (<Navegador >
-
-
+            
 
             <Pantalla style={{ position: "relative" }} image="/img/2019/ciencias/imgs/instrucciones.png" fondo="#56988D">
                 <Continuar pos="550px 1000px"></Continuar>
@@ -113,7 +112,6 @@ export class SeccionB extends Component<{}> {
             </Pantalla>
 
             <TLikertPruebaBefore titulo="Mezclando Compuestos" UID="B11" />
-
 
 
             {Children.map(preguntasA, view => {

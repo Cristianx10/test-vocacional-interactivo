@@ -246,6 +246,7 @@ export class Logica {
 
                 }
                 this.resultados();
+               
                 break;
         }
     }
@@ -462,6 +463,9 @@ export class Logica {
             }
             console.log("medicina + " + this.puntaje);
             this.propiedades.puntuacion = this.puntaje;
+            if(this.processing){
+                this.processing.continuar();
+            }
             return this.puntaje;
 
             //agregar el cambio de pantalla

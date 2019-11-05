@@ -96,7 +96,7 @@ export class SeccionH extends Component<{}> {
                     <Continuar disabled></Continuar>
                 </Contenedor>
                 <Contenedor>
-                    <h1 ref="mensaje__tuberia1"></h1>
+                    <h1 ref="mensaje__tuberia1">Mueves las fichas para completar la secuencia</h1>
                 </Contenedor>
 
             </Pantalla>
