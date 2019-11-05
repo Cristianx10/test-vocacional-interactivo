@@ -15,6 +15,7 @@ import Pregunta, { Opcion } from "../componentes/Preguntas/Preguntas";
 import D from '../configuraciones/dato';
 import Likert from '../componentes/Preguntas/Likert/Likert';
 import Contenedor from "../componentes/Contenedor/Contenedor";
+import formularioPreguntas from './FormPreguntas';
 
 /**Seccion A */
 
@@ -25,22 +26,6 @@ export class SeccionB extends Component<{}> {
     constructor(props: {}) {
         super(props);
 
-    }
-
-    formularioPreguntas(indexIniti: number) {
-        let numberQuestion = 10;
-        let preguntas: ReactChild[] = [];
-        let preguntasArray: number[] = [];
-        for (let index = 1 + numberQuestion; index <= 10 + numberQuestion; index++) {
-            preguntasArray.push(index);
-        }
-        shuffle(preguntasArray);
-        for (let index = 0; index < preguntasArray.length; index++) {
-            let i = preguntasArray[index];
-            let view = <TLikertPregunta UID={i + ""}></TLikertPregunta>;
-            preguntas.push(view);
-        }
-        return preguntas;
     }
 
     componentDidMount() {
@@ -91,8 +76,8 @@ export class SeccionB extends Component<{}> {
 
     render() {
 
-        let preguntasA = this.formularioPreguntas(20);
-        let preguntasB = this.formularioPreguntas(30);
+        let preguntasA = formularioPreguntas(20);
+        let preguntasB = formularioPreguntas(30);
 
         return (<Navegador >
             

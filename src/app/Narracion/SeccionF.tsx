@@ -11,6 +11,7 @@ import Processing from "../componentes/Processing/Processing";
 import Economia from "../processing/Economia/Economia";
 import { Re } from '../resultados/resultados';
 import { TLikertPruebaBefore } from '../plantillas/template-likert/TLikertPregunta';
+import formularioPreguntas from './FormPreguntas';
 
 /**Seccion A */
 
@@ -23,21 +24,6 @@ export class SeccionF extends Component<{}> {
 
     }
 
-    formularioPreguntas(indexIniti: number) {
-        let numberQuestion = 10;
-        let preguntas: ReactChild[] = [];
-        let preguntasArray: number[] = [];
-        for (let index = 1 + numberQuestion; index <= 10 + numberQuestion; index++) {
-            preguntasArray.push(index);
-        }
-        shuffle(preguntasArray);
-        for (let index = 0; index < preguntasArray.length; index++) {
-            let i = preguntasArray[index];
-            let view = <TLikertPregunta UID={i + ""}></TLikertPregunta>;
-            preguntas.push(view);
-        }
-        return preguntas;
-    }
 
     configEconomia(propiedades: any, acciones: any) {
     
@@ -49,8 +35,8 @@ export class SeccionF extends Component<{}> {
 
     render() {
 
-        let preguntasA = this.formularioPreguntas(100);
-        let preguntasB = this.formularioPreguntas(110);
+        let preguntasA = formularioPreguntas(100);
+        let preguntasB = formularioPreguntas(110);
 
         return (<Navegador>
 

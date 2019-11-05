@@ -10,6 +10,7 @@ import { routes } from '../router';
 import Processing from "../componentes/Processing/Processing";
 import Culpable from '../processing/Culpable/Culpable';
 import { Re } from '../resultados/resultados';
+import formularioPreguntas from './FormPreguntas';
 
 /**Seccion A */
 
@@ -20,22 +21,6 @@ export class SeccionD extends Component<{}> {
     constructor(props: {}) {
         super(props);
 
-    }
-
-    formularioPreguntas(indexIniti: number) {
-        let numberQuestion = 10;
-        let preguntas: ReactChild[] = [];
-        let preguntasArray: number[] = [];
-        for (let index = 1 + numberQuestion; index <= 10 + numberQuestion; index++) {
-            preguntasArray.push(index);
-        }
-        shuffle(preguntasArray);
-        for (let index = 0; index < preguntasArray.length; index++) {
-            let i = preguntasArray[index];
-            let view = <TLikertPregunta UID={i + ""}></TLikertPregunta>;
-            preguntas.push(view);
-        }
-        return preguntas;
     }
 
     componentDidMount() {
@@ -52,8 +37,8 @@ export class SeccionD extends Component<{}> {
 
     render() {
 
-        let preguntasA = this.formularioPreguntas(60);
-        let preguntasB = this.formularioPreguntas(70);
+        let preguntasA = formularioPreguntas(60);
+        let preguntasB = formularioPreguntas(70);
 
         return (<Navegador>
 

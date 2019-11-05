@@ -11,6 +11,7 @@ import Formulario, { FormInput } from '../componentes/Formulario/Formulario';
 import Tuberias, { Ficha } from '../actividades/Tuberias/Tuberias';
 import Contenedor from "../componentes/Contenedor/Contenedor";
 import { Re } from '../resultados/resultados';
+import formularioPreguntas from './FormPreguntas';
 
 /**Seccion A */
 
@@ -23,21 +24,6 @@ export class SeccionH extends Component<{}> {
 
     }
 
-    formularioPreguntas(indexIniti: number) {
-        let numberQuestion = 10;
-        let preguntas: ReactChild[] = [];
-        let preguntasArray: number[] = [];
-        for (let index = 1 + numberQuestion; index <= 10 + numberQuestion; index++) {
-            preguntasArray.push(index);
-        }
-        shuffle(preguntasArray);
-        for (let index = 0; index < preguntasArray.length; index++) {
-            let i = preguntasArray[index];
-            let view = <TLikertPregunta UID={i + ""}></TLikertPregunta>;
-            preguntas.push(view);
-        }
-        return preguntas;
-    }
 
     mensaje__tuberia1: HTMLElement | any;
     componentDidMount() {
@@ -67,8 +53,8 @@ export class SeccionH extends Component<{}> {
 
     render() {
 
-        let preguntasA = this.formularioPreguntas(140);
-        let preguntasB = this.formularioPreguntas(150);
+        let preguntasA = formularioPreguntas(140);
+        let preguntasB = formularioPreguntas(150);
 
         return (<Navegador>
 

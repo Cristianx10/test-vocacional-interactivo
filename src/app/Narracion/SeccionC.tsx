@@ -16,6 +16,7 @@ import Contenedor from "../componentes/Contenedor/Contenedor";
 import Intentos from '../componentes/Intentos/Intentos';
 import RelojContador from '../componentes/Navegador/RelojContador';
 import { TLikertPruebaBefore } from '../plantillas/template-likert/TLikertPregunta';
+import formularioPreguntas from './FormPreguntas';
 
 
 /**Seccion A */
@@ -27,22 +28,6 @@ export class SeccionC extends Component<{}> {
     constructor(props: {}) {
         super(props);
 
-    }
-
-    formularioPreguntas(indexIniti: number) {
-        let numberQuestion = 10;
-        let preguntas: ReactChild[] = [];
-        let preguntasArray: number[] = [];
-        for (let index = 1 + numberQuestion; index <= 10 + numberQuestion; index++) {
-            preguntasArray.push(index);
-        }
-        shuffle(preguntasArray);
-        for (let index = 0; index < preguntasArray.length; index++) {
-            let i = preguntasArray[index];
-            let view = <TLikertPregunta UID={i + ""}></TLikertPregunta>;
-            preguntas.push(view);
-        }
-        return preguntas;
     }
 
 
@@ -92,8 +77,8 @@ export class SeccionC extends Component<{}> {
 
     render() {
 
-        let preguntasA = this.formularioPreguntas(40);
-        let preguntasB = this.formularioPreguntas(50);
+        let preguntasA = formularioPreguntas(40);
+        let preguntasB = formularioPreguntas(50);
 
         return (<Navegador>
 

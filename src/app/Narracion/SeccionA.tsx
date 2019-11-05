@@ -9,6 +9,7 @@ import { TIntroduccion } from '../plantillas/templete-introduccion';
 import { routes } from '../router';
 import ClasificarRopa from '../processing/ClasificarRopa/ClasificarRopa';
 import { TLikertPruebaBefore } from '../plantillas/template-likert/TLikertPregunta';
+import formularioPreguntas from './FormPreguntas';
 
 /**Seccion A */
 
@@ -21,21 +22,7 @@ export class SeccionA extends Component<{}> {
 
     }
 
-    formularioPreguntas(indexIniti: number) {
-        let numberQuestion = 10;
-        let preguntas: ReactChild[] = [];
-        let preguntasArray: number[] = [];
-        for (let index = 1 + numberQuestion; index <= 10 + numberQuestion; index++) {
-            preguntasArray.push(index);
-        }
-        shuffle(preguntasArray);
-        for (let index = 0; index < preguntasArray.length; index++) {
-            let i = preguntasArray[index];
-            let view = <TLikertPregunta UID={i + ""}></TLikertPregunta>;
-            preguntas.push(view);
-        }
-        return preguntas;
-    }
+    
 
     componentDidMount() {
 
@@ -43,8 +30,8 @@ export class SeccionA extends Component<{}> {
 
     render() {
 
-        let preguntasA = this.formularioPreguntas(0);
-        let preguntasB = this.formularioPreguntas(10);
+        let preguntasA = formularioPreguntas(0);
+        let preguntasB = formularioPreguntas(10);
 
         return (<Navegador>
 
