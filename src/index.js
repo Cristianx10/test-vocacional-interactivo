@@ -4,6 +4,7 @@ const path = require("path");
 
 const app = express();
 
+
 // Db connection
 const { mongoose } = require("./database");
 
