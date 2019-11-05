@@ -1,5 +1,7 @@
 import p5 from "p5";
 import ProcessingImg from "../../../componentes/Processing/ProcessingImg";
+import Processing from "../../../componentes/Processing/Processing";
+import ProcessingContext from '../../../comunicacion/ProcessingContext';
 
 class Logica {
 
@@ -80,9 +82,18 @@ class Logica {
     img: ProcessingImg;
     app: p5;
 
+    processing?: Processing;
+    propiedades: any;
+
     constructor(app: p5) {
         this.app = app;
         this.img = new ProcessingImg(this.app);
+
+        this.processing = ProcessingContext.actividad;
+        if (this.processing) {
+            this.propiedades = this.processing.propiedades;
+            this.propiedades.empatia = 0;
+        }
 
         this.escenaFEM = this.img.loadImage("/img/2019/hablame/escena final si es empatico.jpg");
         this.escenaFSIM = this.img.loadImage("/img/2019/hablame/escena final si es simpatico.jpg");
@@ -528,6 +539,7 @@ class Logica {
 
 
         }
+        this.propiedades.empatia = this.empatia;
     }
 
 
@@ -839,6 +851,7 @@ class Logica {
 
         }
     }
+    
 }
 
 export default Logica;

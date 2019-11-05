@@ -10,6 +10,7 @@ import { routes } from '../router';
 import Formulario, { FormInput } from '../componentes/Formulario/Formulario';
 import Tuberias, { Ficha } from '../actividades/Tuberias/Tuberias';
 import Contenedor from "../componentes/Contenedor/Contenedor";
+import { Re } from '../resultados/resultados';
 
 /**Seccion A */
 
@@ -44,10 +45,24 @@ export class SeccionH extends Component<{}> {
 
     }
     configTuberia(propiedades: any, acciones: any) {
+
         acciones.setValidacion(() => {
+            console.log(propiedades)
             acciones.habilitar();
             this.mensaje__tuberia1.innerHTML = "Buen trabajo, Ahora continuemos";
         });
+    }
+
+    configTuberiasA(propiedades: any, acciones: any) {
+        acciones.setValidacion(() => {
+            acciones.habilitar();
+        });
+
+        acciones.validar("completado", (p: any, a: any) => {
+            if (p.valido) {
+                return true;
+            }
+        }, "Completo todo", [{ id: Re.ingenieria, valor: 20 }]);
     }
 
     render() {
@@ -100,6 +115,93 @@ export class SeccionH extends Component<{}> {
                 </Contenedor>
 
             </Pantalla>
+
+            <Pantalla orientacion="vertical">
+                <Tuberias
+                    UID="H2" config={this.configTuberiasA.bind(this)}
+                    url="/img/pizarra/tabla.png"
+                    width={110}
+                    height={110}
+                    filas={5}
+                    columnas={4}
+                >
+                    <Ficha static />
+                    <Ficha static />
+                    <Ficha static />
+                    <Ficha static down inicio />
+                    <Ficha static />
+                    <Ficha static />
+                    <Ficha down right />
+                    <Ficha left right />
+                    <Ficha up down />
+                    <Ficha down left />
+                    <Ficha static />
+                    <Ficha down right />
+                    <Ficha left right />
+                    <Ficha up down />
+                    <Ficha up left />
+                    <Ficha right static final />
+                    <Ficha up left />
+                    <Ficha left right />
+                    <Ficha up left />
+                    <Ficha lider />
+                </Tuberias>
+                <Continuar disabled></Continuar>
+            </Pantalla>
+
+
+            <Pantalla orientacion="vertical">
+                <Tuberias
+                    UID="H2" config={this.configTuberiasA.bind(this)}
+                    url="/img/pizarra/tabla2.png"
+                    width={110}
+                    height={110}
+                    filas={6}
+                    columnas={3}
+                >
+
+                    <Ficha static />
+                    <Ficha up left />
+                    <Ficha up right />
+                  
+                    <Ficha up left />
+                   
+                    <Ficha up right />
+                  
+                    <Ficha static />
+                 
+                    <Ficha final right static />
+                  
+                    <Ficha left right />
+                
+                    <Ficha down right />
+                 
+                    <Ficha left right />
+                 
+                    <Ficha left right />
+                 
+                    <Ficha inicio left static />
+                  
+                    <Ficha static />
+                  
+                    <Ficha up left />
+                   
+                    <Ficha lider />
+                 
+                    <Ficha left right />
+               
+                    <Ficha down right />
+                   
+                    <Ficha static />
+ 
+                </Tuberias>
+                <Continuar disabled></Continuar>
+            </Pantalla>
+
+
+
+
+
 
             {Children.map(preguntasB, view => {
                 return <Pantalla width="80%" fondo="/includes/background/claro.png">{view}</Pantalla>;

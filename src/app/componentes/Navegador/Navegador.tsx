@@ -53,13 +53,17 @@ export class Navegador extends Component<IPropsNavegador> {
 
 
     document.addEventListener("keypress", e => {
-      if (e.key === "a" || e.key === "A") {
-        this.atras();
+      console.log(e.ctrlKey, e)
+      if (e.ctrlKey) {
+        if (e.code === "KeyB" || e.code === "Keyb") {
+          this.atras();
+        }
+
+        if (e.code === "KeyM" || e.code === "Keyms") {
+          this.continuar();
+        }
       }
 
-      if (e.key === "s" || e.key === "S") {
-        this.continuar();
-      }
 
       if (e.key === "q" || e.key === "Q") {
         //console.log(this.comunicador);
@@ -97,7 +101,7 @@ export class Navegador extends Component<IPropsNavegador> {
       } else if (this.actual < this.pantallas.length) {
         this.actual += 1;
       }
-    
+
     }
   }
 
@@ -112,7 +116,7 @@ export class Navegador extends Component<IPropsNavegador> {
     }
     this.pantallas[this.actual].onChange();
     this.pantallas[this.actual].mostrar();
-    
+
   }
 
   componentDidMount() {
@@ -124,7 +128,7 @@ export class Navegador extends Component<IPropsNavegador> {
     });
 
     //console.log("Las vistas", this.pantallas)
-  
+
     this.pantallas[this.actual].mostrar();
     this.pantallas[this.actual].onChange();
   }

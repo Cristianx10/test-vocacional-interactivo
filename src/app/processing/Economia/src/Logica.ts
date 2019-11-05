@@ -60,15 +60,15 @@ export default class Logica {
     tacanio: p5.Image;
 
     propiedades: any;
+    processing?: Processing;
 
 
     constructor(app: p5) {
         if (ProcessingContext.actividad) {
-            this.propiedades = ProcessingContext.actividad.propiedades;
+            this.processing = ProcessingContext.actividad;
+            this.propiedades = this.processing.propiedades;
             this.propiedades.puntuacion = 0;
         }
-
-
 
         this.app = app;
         this.finalMalo = false;
@@ -677,5 +677,9 @@ export default class Logica {
         }
 
         this.propiedades.puntuacion = this.puntuacion;
+        if(this.processing){
+            this.processing.continuar();
+        }
+
     }
 }

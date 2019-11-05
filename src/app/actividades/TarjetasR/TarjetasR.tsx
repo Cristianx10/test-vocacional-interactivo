@@ -12,7 +12,7 @@ import ManagerStyle from '../../utilidades/AutoClases';
 
 interface IPropsTarjetasR {
   config: Function;
-  UID?: string | number;
+  UID: string | number;
 }
 
 interface IActionTarjetasR {
@@ -21,6 +21,7 @@ interface IActionTarjetasR {
   setIntentoAcierto: Function;
   setIntentoFallo: Function;
   setValidacion: Function;
+  habilitar: Function;
 }
 
 /* Clase encargada de la navegación entre actividades*/
@@ -61,6 +62,12 @@ export class TarjetasR extends Component<IPropsTarjetasR> {
 
       setIntento: (acciones: any) => {
         this.tablero.setIntento(acciones);
+      },
+
+      habilitar: () => {
+        if(this.pantalla){
+          this.pantalla.habilitarContinuar();
+        }
       },
 
       setIntentoAcierto: (acciones: any) => {

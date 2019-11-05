@@ -105,8 +105,8 @@ class Casilla {
 
             if (this.padre.final != null && this.padre.final.validado) {
                
-                this.padre.doValidacion();
                 this.padre.propiedades.valido = true;
+                this.padre.doValidacion();
                /*
                 if (this.padre.validacion != null) {
                     this.padre.validacion();

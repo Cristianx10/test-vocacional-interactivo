@@ -9,6 +9,9 @@ import { TIntroduccion } from '../plantillas/templete-introduccion';
 import { routes } from '../router';
 import Processing from "../componentes/Processing/Processing";
 import Hablame from "../processing/Hablame/Hablame";
+import RelojContador from "../componentes/Navegador/RelojContador";
+import { Re } from '../resultados/resultados';
+import { TLikertPruebaBefore } from '../plantillas/template-likert/TLikertPregunta';
 
 /**Seccion A */
 
@@ -41,8 +44,12 @@ export class SeccionG extends Component<{}> {
 
     }
 
-    configHablame(){
+    configHablame(propiedades: any, acciones: any) {
         
+        acciones.evaluar("Empatia", (p: any, a: any) => {
+            a.setValor(Re.humanidades, p.empatia);
+            return true;
+        }, "Puntuacion Obtendida", [{ id: Re.humanidades, valor: 100 }]);
     }
 
     render() {
@@ -62,12 +69,15 @@ export class SeccionG extends Component<{}> {
                 return <Pantalla width="80%" fondo="/includes/background/claro.png">{view}</Pantalla>;
             })}
 
-             {/**Humanidades 1 */}
-             <Pantalla>
-                 <Processing UID="G1" config={this.configHablame}>
-                     <Hablame></Hablame>
-                 </Processing>
-             </Pantalla>
+            {/**Humanidades 1 */}
+            <Pantalla time="300">
+                <Processing UID="G1" config={this.configHablame}>
+                    <Hablame></Hablame>
+                </Processing>
+                <RelojContador></RelojContador>
+            </Pantalla>
+
+            <TLikertPruebaBefore titulo="Hablando con el señor osos" UID="G11" />
 
             {Children.map(preguntasB, view => {
                 return <Pantalla width="80%" fondo="/includes/background/claro.png">{view}</Pantalla>;

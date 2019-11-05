@@ -9,6 +9,8 @@ import { TIntroduccion } from '../plantillas/templete-introduccion';
 import { routes } from '../router';
 import Processing from "../componentes/Processing/Processing";
 import Economia from "../processing/Economia/Economia";
+import { Re } from '../resultados/resultados';
+import { TLikertPruebaBefore } from '../plantillas/template-likert/TLikertPregunta';
 
 /**Seccion A */
 
@@ -37,8 +39,12 @@ export class SeccionF extends Component<{}> {
         return preguntas;
     }
 
-    configEconomia(){
-        
+    configEconomia(propiedades: any, acciones: any) {
+    
+        acciones.evaluar("Puntos", (p: any, a: any) => {
+            a.setValor(Re.economia, p.puntuacion);
+            return true;
+        }, "Puntuacion Obtendida", [{ id: Re.economia, valor: 100 }]);
     }
 
     render() {
@@ -65,6 +71,8 @@ export class SeccionF extends Component<{}> {
                     <Economia></Economia>
                 </Processing>
             </Pantalla>
+            
+            <TLikertPruebaBefore titulo="Manejar el presupuesto" UID="F11" />
 
             {Children.map(preguntasB, view => {
                 return <Pantalla width="80%" fondo="/includes/background/claro.png">{view}</Pantalla>;

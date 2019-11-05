@@ -15,6 +15,7 @@ import { Pollitos } from "../processing/Pollo/Pollitos";
 import Contenedor from "../componentes/Contenedor/Contenedor";
 import Intentos from '../componentes/Intentos/Intentos';
 import RelojContador from '../componentes/Navegador/RelojContador';
+import { TLikertPruebaBefore } from '../plantillas/template-likert/TLikertPregunta';
 
 
 /**Seccion A */
@@ -114,7 +115,7 @@ export class SeccionC extends Component<{}> {
             </Pantalla>
 
 
-
+            <TLikertPruebaBefore titulo="Pollitos" UID="C11" />
 
 
 
@@ -147,10 +148,12 @@ export class SeccionC extends Component<{}> {
                     <Revoltosos></Revoltosos>
                 </Processing>
             </Pantalla>
+
             <Pantalla image="/img/2019/revoltosos/data/FINAL.png" fondo="#FFF97C">
                 <Continuar pos="370px 930px">Siguiente</Continuar>
             </Pantalla>
 
+            <TLikertPruebaBefore titulo="Revoltosos" UID="C21" />
 
             {Children.map(preguntasB, view => {
                 return <Pantalla width="80%" fondo="/includes/background/claro.png">{view}</Pantalla>;
