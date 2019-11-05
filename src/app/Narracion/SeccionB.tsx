@@ -48,7 +48,7 @@ export class SeccionB extends Component<{}> {
     }
 
     configRickMezclas(propiedades: any, acciones: any) {
-
+/*
         acciones.evaluar("Intentos", (p: any, a: any) => {
             if (p.vidas >= 3) {
                 return true;
@@ -78,6 +78,7 @@ export class SeccionB extends Component<{}> {
             }
         }, "Fallo 3 veces y perdio", []);
 
+        */
         acciones.evaluar("Puntaje", (p: any, a: any) => {
 
             a.setValor(Re.ciencias, p.puntaje);
