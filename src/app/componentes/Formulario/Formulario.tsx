@@ -106,7 +106,7 @@ export class Formulario extends Component<IPropsFormulario> {
                         break;
 
                     case "Ocupación":
-                        resultados.usuario.genero = input.getValue();
+                        resultados.usuario.carrera = input.getValue();
                         break;
                 }
             }
