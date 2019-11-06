@@ -4,6 +4,7 @@ import Contenedor from "../../componentes/Contenedor/Contenedor";
 import Continuar from "../../componentes/Continuar/Continuar";
 import RelojContador from "../../componentes/Navegador/RelojContador";
 import { IPropClasificar } from '../../actividades/Clasificar/Clasificar';
+import { Re } from '../../resultados/resultados';
 
 import Clasificar, {
   Almacen,
@@ -29,7 +30,7 @@ export class ClasificarRopa extends Component {
 
       });
       return value;
-    }, "Escogio cabello correcto", [{ id: "", valor: 14 }]);
+    }, "Escogio cabello correcto", [{ id: Re.diseno, valor: 14 }]);
 
     acciones.validar("ojos", (p: IPropClasificar) => {
       let value = false
@@ -44,7 +45,7 @@ export class ClasificarRopa extends Component {
       });
       return value;
 
-    }, "Escogio ojos correcto", [{ id: "", valor: 14 }]);
+    }, "Escogio ojos correcto", [{ id: Re.diseno, valor: 14 }]);
 
     acciones.validar("boca", (p: IPropClasificar) => {
       let value = false
@@ -59,7 +60,7 @@ export class ClasificarRopa extends Component {
       });
       return value;
 
-    }, "Escogio boca correcto", [{ id: "", valor: 14 }]);
+    }, "Escogio boca correcto", [{ id: Re.diseno, valor: 14 }]);
 
     acciones.validar("moño", (p: IPropClasificar) => {
       let value = false
@@ -74,7 +75,7 @@ export class ClasificarRopa extends Component {
       });
       return value;
 
-    }, "Escogio cabello correcto", [{ id: "", valor: 14 }]);
+    }, "Escogio cabello correcto", [{ id: Re.diseno, valor: 14 }]);
 
     acciones.validar("carpeta", (p: IPropClasificar) => {
       let value = false
@@ -89,7 +90,7 @@ export class ClasificarRopa extends Component {
       });
       return value;
 
-    }, "Escogio carpeta correcto", [{ id: "", valor: 14 }]);
+    }, "Escogio carpeta correcto", [{ id: Re.diseno, valor: 14 }]);
 
     acciones.validar("pistola", (p: IPropClasificar) => {
       let value = false
@@ -104,7 +105,7 @@ export class ClasificarRopa extends Component {
       });
       return value;
 
-    }, "Escogio pistola correcto", [{ id: "", valor: 14 }]);
+    }, "Escogio pistola correcto", [{ id: Re.diseno, valor: 14 }]);
 
     acciones.validar("tipografia", (p: IPropClasificar) => {
       let value = false
@@ -119,7 +120,7 @@ export class ClasificarRopa extends Component {
       });
       return value;
 
-    }, "Escogio pistola correcto", [{ id: "", valor: 14 }]);
+    }, "Escogio pistola correcto", [{ id: Re.diseno, valor: 14 }]);
 
 
 
