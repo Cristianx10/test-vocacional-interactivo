@@ -31,7 +31,7 @@ export class SeccionG extends Component<{}> {
     }
 
     configHablame(propiedades: any, acciones: any) {
-        
+
         acciones.evaluar("Empatia", (p: any, a: any) => {
             a.setValor(Re.humanidades, p.empatia);
             return true;
@@ -46,6 +46,18 @@ export class SeccionG extends Component<{}> {
         return (<Navegador>
 
 
+            {/**Humanidades 1 */}
+            <Pantalla time="200">
+                <Processing UID="G1" config={this.configHablame}>
+                    <Hablame></Hablame>
+                </Processing>
+                <RelojContador></RelojContador>
+               
+            </Pantalla>
+
+            
+            <TLikertPruebaBefore titulo="Hablando con el señor osos" UID="G11" />
+
             <TIntroduccion fondo="/includes/background/oscuro-personajes.png">
                 <h1>Orientacion vocacional</h1>
                 <p>Bienvenido a nuestro test vocacional. Rellena todas las preguntas a conciencia, recuerda que es con el proposito de analizar tus habilidades</p>
@@ -55,15 +67,8 @@ export class SeccionG extends Component<{}> {
                 return <Pantalla width="80%" fondo="/includes/background/claro.png">{view}</Pantalla>;
             })}
 
-            {/**Humanidades 1 */}
-            <Pantalla time="300">
-                <Processing UID="G1" config={this.configHablame}>
-                    <Hablame></Hablame>
-                </Processing>
-                <RelojContador></RelojContador>
-            </Pantalla>
 
-            <TLikertPruebaBefore titulo="Hablando con el señor osos" UID="G11" />
+
 
             {Children.map(preguntasB, view => {
                 return <Pantalla width="80%" fondo="/includes/background/claro.png">{view}</Pantalla>;

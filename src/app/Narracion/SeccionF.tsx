@@ -26,7 +26,7 @@ export class SeccionF extends Component<{}> {
 
 
     configEconomia(propiedades: any, acciones: any) {
-    
+
         acciones.evaluar("Puntos", (p: any, a: any) => {
             a.setValor(Re.economia, p.puntuacion);
             return true;
@@ -41,6 +41,17 @@ export class SeccionF extends Component<{}> {
         return (<Navegador>
 
 
+            {/**Ingenieria */}
+
+            <Pantalla>
+                <Processing UID="F1" config={this.configEconomia}>
+                    <Economia></Economia>
+                </Processing>
+            </Pantalla>
+
+            <TLikertPruebaBefore titulo="Manejar el presupuesto" UID="F11" />
+
+
             <TIntroduccion fondo="/includes/background/oscuro-personajes.png">
                 <h1>Orientacion vocacional</h1>
                 <p>Bienvenido a nuestro test vocacional. Rellena todas las preguntas a conciencia, recuerda que es con el proposito de analizar tus habilidades</p>
@@ -50,15 +61,7 @@ export class SeccionF extends Component<{}> {
                 return <Pantalla width="80%" fondo="/includes/background/claro.png">{view}</Pantalla>;
             })}
 
-            {/**Ingenieria */}
 
-            <Pantalla>
-                <Processing UID="F1" config={this.configEconomia}>
-                    <Economia></Economia>
-                </Processing>
-            </Pantalla>
-            
-            <TLikertPruebaBefore titulo="Manejar el presupuesto" UID="F11" />
 
             {Children.map(preguntasB, view => {
                 return <Pantalla width="80%" fondo="/includes/background/claro.png">{view}</Pantalla>;
