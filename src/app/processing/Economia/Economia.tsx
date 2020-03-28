@@ -8,8 +8,6 @@ import Logica from "./src/Logica";
 
 interface IPropsEconomia {
     puntuacion: number;
-
-
 }
 
 export interface IPropEconomia {

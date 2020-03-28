@@ -64,6 +64,7 @@ export default class Logica {
 
 
     constructor(app: p5) {
+        
         if (ProcessingContext.actividad) {
             this.processing = ProcessingContext.actividad;
             this.propiedades = this.processing.propiedades;

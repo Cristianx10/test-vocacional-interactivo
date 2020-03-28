@@ -7,6 +7,8 @@ export var Re = {
     medicina: "medicina",
     economia: "economia",
     ciencias: "ciencias",
+    psicologia: "psicologia",
+
 }
 
 

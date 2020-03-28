@@ -149,35 +149,20 @@ export class SeccionH extends Component<{}> {
                     <Ficha static />
                     <Ficha up left />
                     <Ficha up right />
-                  
                     <Ficha up left />
-                   
                     <Ficha up right />
-                  
                     <Ficha static />
-                 
                     <Ficha final right static />
-                  
                     <Ficha left right />
-                
                     <Ficha down right />
-                 
                     <Ficha left right />
-                 
                     <Ficha left right />
-                 
                     <Ficha inicio left static />
-                  
                     <Ficha static />
-                  
                     <Ficha up left />
-                   
                     <Ficha lider />
-                 
                     <Ficha left right />
-               
                     <Ficha down right />
-                   
                     <Ficha static />
  
                 </Tuberias>

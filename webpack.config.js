@@ -1,6 +1,5 @@
 var webpack = require("webpack");
 var path = require("path");
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 
 module.exports = {
   mode: "development",
@@ -44,7 +43,5 @@ module.exports = {
       "window.jQuery": "jquery"
     })
   ],
-  optimization: {
-    minimizer: [new UglifyJsPlugin()]
-  }
+  
 };

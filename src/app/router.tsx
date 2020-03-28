@@ -14,6 +14,9 @@ import SeccionF from './Narracion/SeccionF';
 import SeccionG from './Narracion/SeccionG';
 import SeccionH from './Narracion/SeccionH';
 import VResultados from './Narracion/Resultados/VResultados';
+import S20 from './Narracion/S20';
+import S22 from './Narracion/S22';
+import S21 from './Narracion/S21';
 
 
 
@@ -57,6 +60,10 @@ export class Router extends React.Component {
           <Route exact path={routes.resultados} component={VResultados} />
 
           <Route exact path={routes.descargar} component={Descargar} />
+
+          <Route exact path="/actividad1" component={S20} />
+          <Route exact path="/actividad2" component={S21} />
+          <Route exact path="/actividad3" component={S22} />
 
           <Route exact path={routes.registro} component={RegistroActividad} />
           <Route path="/datos_usuario" component={ViewUsuario} />
