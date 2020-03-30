@@ -104,7 +104,7 @@ export default class Logica {
         this.iden = undefined;
 
         //PANTALLAS
-        this.fuente = this.app.loadFont("/img/2020/Gusanito/fuentes/Montserrat-SemiBold.otf");
+        this.fuente = this.app.loadFont("/img/2020/Gusanito/font/Montserrat-SemiBold.otf");
         this.inicio = this.app.loadImage("/img/2020/Gusanito/data/Inicio.jpg");
         this.instrucciones = this.app.loadImage("/img/2020/Gusanito/data/Instrucciones.jpg");
         this.previo = this.app.loadImage("/img/2020/Gusanito/data/Previo.jpg");
