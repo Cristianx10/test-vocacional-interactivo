@@ -44,6 +44,7 @@ export class Tuberias extends Component<IPropsTuberias> {
     this.tuberias = new APizarra();
     this.propiedades = this.tuberias.propiedades;
     this.acciones = this.tuberias.acciones;
+    
     if (NavegadorContext.navegador) {
       this.pantalla = NavegadorContext.navegador.getAddPantalla();
       this.pantalla.addEventos(this);

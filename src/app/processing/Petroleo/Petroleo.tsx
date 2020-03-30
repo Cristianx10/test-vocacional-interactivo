@@ -4,6 +4,7 @@ import p5 from "p5";
 import Processing from "../../componentes/Processing/Processing";
 import { AppProcessing } from '../../componentes/Processing/Processing';
 import { Logica } from './src/Logica';
+import { GResultados } from '../../resultados/resultados';
 
 interface IPetroleo {
 
@@ -16,6 +17,7 @@ export default class Petroleo extends Component implements AppProcessing {
     app?: p5;
     logica?: Logica;
     propiedades: any;
+    registro?: GResultados;
 
 
     constructor(props: IPetroleo) {
@@ -26,6 +28,8 @@ export default class Petroleo extends Component implements AppProcessing {
             this.processing.juego = this;
             this.app = this.processing.app;
             this.propiedades = this.processing.propiedades;
+            this.registro = this.processing.registro;
+            this.registro.setId("Petroleo")
         }
 
 

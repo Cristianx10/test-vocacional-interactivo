@@ -51,9 +51,11 @@ export default class Elemento {
     }
 
     pintar() {
-        if (this.url != "" && this.parte) {
+        if (this.url != "") {
             this.app.imageMode(this.app.CENTER);
-            this.app.image(this.parte, this.pos.x, this.pos.y);
+            if (this.parte) {
+                this.app.image(this.parte, this.pos.x, this.pos.y);
+            }
         }
     }
 

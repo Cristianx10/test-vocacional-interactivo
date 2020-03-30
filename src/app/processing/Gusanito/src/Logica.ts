@@ -100,47 +100,48 @@ export default class Logica {
         this.app = app;
         this.run = this.run.bind(this);
         this.pantalla = 0;
-        this.tiempo = 0;
+        this.tiempo = 480;
+        this.iden = undefined;
 
         //PANTALLAS
-        this.fuente = this.app.loadFont("/img/2020/Gusanito/font/Montserrat-SemiBold.otf");
-        this.inicio = this.app.loadImage("./img/2020/Gusanito/data/Inicio.jpg");
-        this.instrucciones = this.app.loadImage("./img/2020/Gusanito/data/Instrucciones.jpg");
-        this.previo = this.app.loadImage("./img/2020/Gusanito/data/Previo.jpg");
-        this.juego = this.app.loadImage("./img/2020/Gusanito/data/Juego.jpg");
-        this.resultados = this.app.loadImage("./img/2020/Gusanito/data/Resultados.jpg");
-        this.escuhar = new Elemento(this.app, "./img/2020/Gusanito/data/escuchar.png", 319, 93);
-        this.escuhar2 = new Elemento(this.app, "./img/2020/Gusanito/data/escuchar.png", 319, 409);
-        this.escuhar3 = new Elemento(this.app, "./img/2020/Gusanito/data/escuchar.png", 967, 93);
+        this.fuente = this.app.loadFont("/img/2020/Gusanito/fuentes/Montserrat-SemiBold.otf");
+        this.inicio = this.app.loadImage("/img/2020/Gusanito/data/Inicio.jpg");
+        this.instrucciones = this.app.loadImage("/img/2020/Gusanito/data/Instrucciones.jpg");
+        this.previo = this.app.loadImage("/img/2020/Gusanito/data/Previo.jpg");
+        this.juego = this.app.loadImage("/img/2020/Gusanito/data/Juego.jpg");
+        this.resultados = this.app.loadImage("/img/2020/Gusanito/data/Resultados.jpg");
+        this.escuhar = new Elemento(this.app, "/img/2020/Gusanito/data/escuchar.png", 319, 93);
+        this.escuhar2 = new Elemento(this.app, "/img/2020/Gusanito/data/escuchar.png", 319, 409);
+        this.escuhar3 = new Elemento(this.app, "/img/2020/Gusanito/data/escuchar.png", 967, 93);
 
-        this.alegria = new Elemento(this.app, "./img/2020/Gusanito/data/alegria.png", 850, 468);
-        this.asco = new Elemento(this.app, "./img/2020/Gusanito/data/asco.png", 1167, 468);
-        this.ira = new Elemento(this.app, "./img/2020/Gusanito/data/ira.png", 1087, 468);
-        this.miedo = new Elemento(this.app, "./img/2020/Gusanito/data/miedo.png", 772, 468);
-        this.sorpresa = new Elemento(this.app, "./img/2020/Gusanito/data/sorpresa.png", 927, 468);
-        this.tristeza = new Elemento(this.app, "./img/2020/Gusanito/data/tristeza.png", 1007, 468);
-        this.intentosimg = new Elemento(this.app, "./img/2020/Gusanito/data/intentos.png", 570, 120);
+        this.alegria = new Elemento(this.app, "/img/2020/Gusanito/data/alegria.png", 850, 468);
+        this.asco = new Elemento(this.app, "/img/2020/Gusanito/data/asco.png", 1167, 468);
+        this.ira = new Elemento(this.app, "/img/2020/Gusanito/data/ira.png", 1087, 468);
+        this.miedo = new Elemento(this.app, "/img/2020/Gusanito/data/miedo.png", 772, 468);
+        this.sorpresa = new Elemento(this.app, "/img/2020/Gusanito/data/sorpresa.png", 927, 468);
+        this.tristeza = new Elemento(this.app, "/img/2020/Gusanito/data/tristeza.png", 1007, 468);
+        this.intentosimg = new Elemento(this.app, "/img/2020/Gusanito/data/intentos.png", 570, 120);
 
-        this.caso1 = loadSound("./img/2020/Gusanito/data/audios/caso1.mpeg");
-        this.caso2 = loadSound("./img/2020/Gusanito/data/audios/caso2.mpeg");
-        this.caso3 = loadSound("./img/2020/Gusanito/data/audios/caso3.mpeg");
+        this.caso1 = loadSound("/img/2020/Gusanito/data/audios/caso1.mpeg");
+        this.caso2 = loadSound("/img/2020/Gusanito/data/audios/caso2.mpeg");
+        this.caso3 = loadSound("/img/2020/Gusanito/data/audios/caso3.mpeg");
 
-        this.unocasouno = new Elemento(this.app, "./img/2020/Gusanito/data/1caso1.png", 179, 197);
-        this.doscasouno = new Elemento(this.app, "./img/2020/Gusanito/data/2caso1.png", 283, 187);
-        this.trescasouno = new Elemento(this.app, "./img/2020/Gusanito/data/3caso1.png", 389, 197);
+        this.unocasouno = new Elemento(this.app, "/img/2020/Gusanito/data/1caso1.png", 179, 197);
+        this.doscasouno = new Elemento(this.app, "/img/2020/Gusanito/data/2caso1.png", 283, 187);
+        this.trescasouno = new Elemento(this.app, "/img/2020/Gusanito/data/3caso1.png", 389, 197);
 
-        this.unocasodos = new Elemento(this.app, "./img/2020/Gusanito/data/1caso2.png", 282, 490);
-        this.doscasodos = new Elemento(this.app, "./img/2020/Gusanito/data/2caso2.png", 390, 500);
+        this.unocasodos = new Elemento(this.app, "/img/2020/Gusanito/data/1caso2.png", 282, 490);
+        this.doscasodos = new Elemento(this.app, "/img/2020/Gusanito/data/2caso2.png", 390, 500);
 
-        this.unocasotres = new Elemento(this.app, "./img/2020/Gusanito/data/1caso3.png", 890, 205);
-        this.doscasotres = new Elemento(this.app, "./img/2020/Gusanito/data/2caso3.png", 997, 196);
-        this.trescasotres = new Elemento(this.app, "./img/2020/Gusanito/data/3caso3.png", 1100, 205);
+        this.unocasotres = new Elemento(this.app, "/img/2020/Gusanito/data/1caso3.png", 890, 205);
+        this.doscasotres = new Elemento(this.app, "/img/2020/Gusanito/data/2caso3.png", 997, 196);
+        this.trescasotres = new Elemento(this.app, "/img/2020/Gusanito/data/3caso3.png", 1100, 205);
 
         this.intentos = 5;
 
         this.emocion = "";
 
-        this.seleccion = undefined;
+        this.seleccion;
         this.seleccionado = false;
 
         this.unocasounoestado = false;
@@ -160,6 +161,8 @@ export default class Logica {
         this.caso2resultado = ['', ''];
         this.caso3resultado = ['', '', ''];
         this.puntaje = 0;
+
+
 
         if (ProcessingContext.actividad) {
             this.processing = ProcessingContext.actividad;
@@ -232,6 +235,7 @@ export default class Logica {
                 for (let i = 0; i < this.intentos; i++) {
                     this.intentosimg.pintar()
                     this.intentosimg.setposx(590 + (i * 30));
+
                 }
 
 
@@ -251,6 +255,7 @@ export default class Logica {
                 }
                 if (this.trescasounoestado === true && this.icono3) {
                     this.app.image(this.icono3, 394, 200, 93, 93);
+
                 }
 
 
@@ -282,6 +287,18 @@ export default class Logica {
                 }
 
 
+                //condicio de tiempo
+
+                if (this.tiempo <= 0) {
+                    this.caso1.stop();
+                    this.caso2.stop();
+                    this.caso3.stop();
+                    this.stop();
+                    this.pantalla = 4;
+
+                }
+
+
 
 
                 this.alegria.pintar();
@@ -297,7 +314,7 @@ export default class Logica {
                 this.app.textFont(this.fuente);
                 this.app.textSize(50);
                 this.app.fill(0);
-                this.app.text("Tiempo:" + this.tiempo + "s", 830, 580);
+                this.app.text("Tiempo:" + this.tiempo + "s", 810, 580);
 
 
 
@@ -367,10 +384,10 @@ export default class Logica {
 
                 this.propiedades.intentos = this.intentos;
 
-
                 //Area sensible Eliminar vidas
                 if (this.app.mouseX > 300 && this.app.mouseX < 350 && this.app.mouseY > 67 &&
                     this.app.mouseY < 110) {
+
                 }
 
 
@@ -428,26 +445,25 @@ export default class Logica {
                     let caso1rescorrect = 'sorpresa,tristeza,miedo';
                     let caso2rescorrect = 'alegria,ira';
                     let caso3rescorrect = 'tristeza,sorpresa,asco';
-
+                    ;
 
                     //evaluacion caso 1
                     if (this.caso1resultado.join() === caso1rescorrect) {
                         this.puntaje += 75;
                         this.propiedades.puntaje1 += 75;
+                    } if (this.caso1resultado.join() != caso1rescorrect && this.caso1resultado.includes('sorpresa') && this.caso1resultado.includes('tristeza') && this.caso1resultado.includes('miedo')) {
+                        this.puntaje += 15;
+                        this.propiedades.puntaje1 += 15;
                     }
 
-                    if (this.caso1resultado.join() != caso1rescorrect && this.caso1resultado.includes('sorpresa') && this.caso1resultado.includes('tristeza') && this.caso1resultado.includes('miedo')) {
-                        this.puntaje += 36;
-                        this.propiedades.puntaje1 += 36;
-                    }
 
                     //evaluacion caso 2
                     if (this.caso2resultado.join() === caso2rescorrect) {
                         this.puntaje += 50;
                         this.propiedades.puntaje2 += 50;
                     } if (this.caso2resultado.join() != caso2rescorrect && this.caso2resultado.includes('alegria') && this.caso2resultado.includes('ira')) {
-                        this.puntaje += 24;
-                        this.propiedades.puntaje2 += 24;
+                        this.puntaje += 10;
+                        this.propiedades.puntaje2 += 10;
                     }
 
 
@@ -457,17 +473,17 @@ export default class Logica {
                         this.puntaje += 75;
                         this.propiedades.puntaje3 += 75;
                     } if (this.caso3resultado.join() != caso3rescorrect && this.caso3resultado.includes('tristeza') && this.caso3resultado.includes('sorpresa') && this.caso3resultado.includes('asco')) {
-                        this.puntaje += 36;
-                        this.propiedades.puntaje3 += 36;
+                        this.puntaje += 15;
+                        this.propiedades.puntaje3 += 15;
                     }
 
                     this.caso3.stop();
                     this.caso1.stop();
                     this.caso2.stop();
 
-                    console.log(this.puntaje);
-
                     this.propiedades.puntuacion = this.puntaje;
+
+                    console.log(this.puntaje);
 
                     setTimeout(() => {
                         if (this.processing) {
@@ -478,7 +494,6 @@ export default class Logica {
                 }
 
                 break;
-
         }
 
 
@@ -500,7 +515,7 @@ export default class Logica {
         if (this.seleccion != null && this.unocasouno.isSobre()) {
             this.caso1resultado.splice(0, 1, this.emocion);
             console.log(this.caso1resultado);
-            this.icono = this.app.loadImage("./img/2020/Gusanito/data/" + this.emocion + ".png");
+            this.icono = this.app.loadImage("/img/2020/Gusanito/data/" + this.emocion + ".png");
             this.unocasounoestado = true;
         }
 
@@ -508,7 +523,7 @@ export default class Logica {
         if (this.seleccion != null && this.doscasouno.isSobre()) {
             this.caso1resultado.splice(1, 1, this.emocion);
             console.log(this.caso1resultado);
-            this.icono2 = this.app.loadImage("./img/2020/Gusanito/data/" + this.emocion + ".png");
+            this.icono2 = this.app.loadImage("/img/2020/Gusanito/data/" + this.emocion + ".png");
             this.doscasounoestado = true;
 
         }
@@ -517,7 +532,7 @@ export default class Logica {
         if (this.seleccion != null && this.trescasouno.isSobre()) {
             this.caso1resultado.splice(2, 1, this.emocion);
             console.log(this.caso1resultado);
-            this.icono3 = this.app.loadImage("./img/2020/Gusanito/data/" + this.emocion + ".png");
+            this.icono3 = this.app.loadImage("/img/2020/Gusanito/data/" + this.emocion + ".png");
             this.trescasounoestado = true;
 
         }
@@ -528,16 +543,20 @@ export default class Logica {
         if (this.seleccion != null && this.unocasodos.isSobre()) {
             this.caso2resultado.splice(0, 1, this.emocion);
             console.log(this.caso2resultado);
-            this.icono1_2 = this.app.loadImage("./img/2020/Gusanito/data/" + this.emocion + ".png");
+            this.icono1_2 = this.app.loadImage("/img/2020/Gusanito/data/" + this.emocion + ".png");
             this.unocasodosestado = true;
+
+
+
         }
 
 
         if (this.seleccion != null && this.doscasodos.isSobre()) {
             this.caso2resultado.splice(1, 1, this.emocion);
             console.log(this.caso2resultado);
-            this.icono2_2 = this.app.loadImage("./img/2020/Gusanito/data/" + this.emocion + ".png");
+            this.icono2_2 = this.app.loadImage("/img/2020/Gusanito/data/" + this.emocion + ".png");
             this.doscasodosestado = true;
+
         }
 
 
@@ -545,7 +564,7 @@ export default class Logica {
         if (this.seleccion != null && this.unocasotres.isSobre()) {
             this.caso3resultado.splice(0, 1, this.emocion);
             console.log(this.caso3resultado);
-            this.icono1_3 = this.app.loadImage("./img/2020/Gusanito/data/" + this.emocion + ".png");
+            this.icono1_3 = this.app.loadImage("/img/2020/Gusanito/data/" + this.emocion + ".png");
             this.unocasotresestado = true;
 
 
@@ -556,7 +575,7 @@ export default class Logica {
         if (this.seleccion != null && this.doscasotres.isSobre()) {
             this.caso3resultado.splice(1, 1, this.emocion);
             console.log(this.caso3resultado);
-            this.icono2_3 = this.app.loadImage("./img/2020/Gusanito/data/" + this.emocion + ".png");
+            this.icono2_3 = this.app.loadImage("/img/2020/Gusanito/data/" + this.emocion + ".png");
             this.doscasotresestado = true;
 
         }
@@ -565,16 +584,13 @@ export default class Logica {
         if (this.seleccion != null && this.trescasotres.isSobre()) {
             this.caso3resultado.splice(2, 1, this.emocion);
             console.log(this.caso3resultado);
-            this.icono3_3 = this.app.loadImage("./img/2020/Gusanito/data/" + this.emocion + ".png");
+            this.icono3_3 = this.app.loadImage("/img/2020/Gusanito/data/" + this.emocion + ".png");
             this.trescasotresestado = true;
 
         }
 
-
-
-
         this.seleccionado = false;
-        if (this.seleccion != undefined) {
+        if (this.seleccion != null && this.seleccion != undefined) {
             this.seleccion.resetPosicion();
             this.seleccion = undefined;
         }
@@ -588,7 +604,7 @@ export default class Logica {
     }
 
     run() {
-        this.tiempo++;
+        this.tiempo--;
     }
 
     stop() {

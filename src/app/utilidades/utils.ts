@@ -1,4 +1,5 @@
 import html2canvas from "html2canvas";
+
 import { resultados } from '../resultados/resultados';
 import Navegador from '../componentes/Navegador/Navegador';
 
@@ -28,6 +29,7 @@ export function degrees(radians: number) {
 // Desordena una lista de elementos o que este en un objeto de tipo Array
 export function shuffle(array: any) {
     array.sort(function () { return Math.random() - 0.5; });
+    return array;
 }
 
 // Crea un numero ramdon entre un minimo y un maximo 
