@@ -6,9 +6,8 @@ export default function formularioPreguntas(indexIniti: number) {
     let numberQuestion = indexIniti;
     let preguntas: ReactChild[] = [];
     let preguntasArray: number[] = [];
-    for (let index = 1 + numberQuestion; index <= 10 + numberQuestion; index++) {
+    for (let index = 1 + numberQuestion; index <= 5 + numberQuestion; index++) {
         preguntasArray.push(index);
-
     }
     shuffle(preguntasArray);
     for (let index = 0; index < preguntasArray.length; index++) {

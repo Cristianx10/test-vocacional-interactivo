@@ -35,8 +35,8 @@ export class SeccionF extends Component<{}> {
 
     render() {
 
-        let preguntasA = formularioPreguntas(100);
-        let preguntasB = formularioPreguntas(110);
+        let preguntasA = formularioPreguntas(50);
+        let preguntasB = formularioPreguntas(55);
 
         return (<Navegador>
 
