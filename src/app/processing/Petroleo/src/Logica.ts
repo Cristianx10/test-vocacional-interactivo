@@ -24,8 +24,6 @@ export class Logica {
     modal4: p5.Image;
     modal5: p5.Image;
 
-    instrucciones: p5.Image;
-
     meses: p5.Image;
     mes1: p5.Image;
     mes2: p5.Image;
@@ -64,7 +62,7 @@ export class Logica {
     dinero: number;
     cantidadBarriles: number;
     precioBarril: number | any;
-    dineroTotal: number;
+    dineroTotal: number | Number | any;
 
     compra: boolean;
     barrilesComprados: number;
@@ -75,6 +73,20 @@ export class Logica {
     contar = false;
 
     porcentaje = 0;
+
+    instruccion1: p5.Image;
+    instruccion2: p5.Image;
+    flechaRoja: p5.Image;
+    flechaVerde: p5.Image;
+
+    btnSiguiente: Elemento;
+
+    dineroTxt: string;
+    dineroTotalTxt: string;
+    cantidadBarrilesTxt: string;
+
+    text = "";
+    largo = 0;
 
 
     constructor(app: p5) {
@@ -87,92 +99,97 @@ export class Logica {
 
         this.pantalla = 0;
 
-        this.inicio = app.loadImage("/img/2020/Petroleo/PantallaInicial.png");
-        this.intro = app.loadImage("/img/2020/Petroleo/Introducción.png");
-        this.intro3 = app.loadImage("/img/2020/Petroleo/Introduccióntres.png");
-        this.intro4 = app.loadImage("/img/2020/Petroleo/Introduccióncuatro.png");
-        this.intro5 = app.loadImage("/img/2020/Petroleo/Introduccióncinco.png");
-        this.intro6 = app.loadImage("/img/2020/Petroleo/Introducciónseis.png");
-        this.final = app.loadImage("/img/2020/Petroleo/PantallaFinal.png");
+        this.inicio = app.loadImage("/img/2020/Petroleo/img/PantallaInicial.png");
+        this.intro = app.loadImage("/img/2020/Petroleo/img/Introducción.png");
+        this.intro3 = app.loadImage("/img/2020/Petroleo/img/Introduccióntres.png");
+        this.intro4 = app.loadImage("/img/2020/Petroleo/img/Introduccióncuatro.png");
+        this.intro5 = app.loadImage("/img/2020/Petroleo/img/Introduccióncinco.png");
+        this.intro6 = app.loadImage("/img/2020/Petroleo/img/Introducciónseis.png");
+        this.final = app.loadImage("/img/2020/Petroleo/img/PantallaFinal.png");
 
-        this.btnNext = new Elemento(this.app, ("/img/2020/Petroleo/BotonPasar.png"), 1149, 654);
+        this.btnNext = new Elemento(this.app, ("/img/2020/Petroleo/img/BotonPasar.png"), 1149, 654);
 
-        this.modal1 = app.loadImage("/img/2020/Petroleo/modal.png");
-        this.modal2 = app.loadImage("/img/2020/Petroleo/modal2.png");
-        this.modal3 = app.loadImage("/img/2020/Petroleo/modal3.png");
-        this.modal4 = app.loadImage("/img/2020/Petroleo/modal4.png");
-        this.modal5 = app.loadImage("/img/2020/Petroleo/modal5.png");
+        this.modal1 = app.loadImage("/img/2020/Petroleo/img/modal.png");
+        this.modal2 = app.loadImage("/img/2020/Petroleo/img/modal2.png");
+        this.modal3 = app.loadImage("/img/2020/Petroleo/img/modal3.png");
+        this.modal4 = app.loadImage("/img/2020/Petroleo/img/modal4.png");
+        this.modal5 = app.loadImage("/img/2020/Petroleo/img/modal5.png");
 
-        this.instrucciones = app.loadImage("/img/2020/Petroleo/Instrucciones.png");
+        this.instruccion1 = app.loadImage("/img/2020/Petroleo/img/Instrucciones1.png");
+        this.instruccion2 = app.loadImage("/img/2020/Petroleo/img/Instrucciones2.png");
 
-        this.meses = app.loadImage("/img/2020/Petroleo/Meses.png");
-        this.mes1 = app.loadImage("/img/2020/Petroleo/Mes1.png");
-        this.mes2 = app.loadImage("/img/2020/Petroleo/Mes2.png");
-        this.mes3 = app.loadImage("/img/2020/Petroleo/Mes3.png");
-        this.mes4 = app.loadImage("/img/2020/Petroleo/Mes4.png");
-        this.mes5 = app.loadImage("/img/2020/Petroleo/Mes5.png");
-        this.mes6 = app.loadImage("/img/2020/Petroleo/Mes6.png");
-        this.mes7 = app.loadImage("/img/2020/Petroleo/Mes7.png");
-        this.mes8 = app.loadImage("/img/2020/Petroleo/Mes8.png");
-        this.mes9 = app.loadImage("/img/2020/Petroleo/Mes9.png");
+        this.meses = app.loadImage("/img/2020/Petroleo/img/Meses.png");
+        this.mes1 = app.loadImage("/img/2020/Petroleo/img/Mes1.png");
+        this.mes2 = app.loadImage("/img/2020/Petroleo/img/Mes2.png");
+        this.mes3 = app.loadImage("/img/2020/Petroleo/img/Mes3.png");
+        this.mes4 = app.loadImage("/img/2020/Petroleo/img/Mes4.png");
+        this.mes5 = app.loadImage("/img/2020/Petroleo/img/Mes5.png");
+        this.mes6 = app.loadImage("/img/2020/Petroleo/img/Mes6.png");
+        this.mes7 = app.loadImage("/img/2020/Petroleo/img/Mes7.png");
+        this.mes8 = app.loadImage("/img/2020/Petroleo/img/Mes8.png");
+        this.mes9 = app.loadImage("/img/2020/Petroleo/img/Mes9.png");
 
-        this.comprar = app.loadImage("/img/2020/Petroleo/ModalparaComprar.png");
-        this.vender = app.loadImage("/img/2020/Petroleo/ModalparaVender.png");
+        this.comprar = app.loadImage("/img/2020/Petroleo/img/ModalparaComprar.png");
+        this.vender = app.loadImage("/img/2020/Petroleo/img/ModalparaVender.png");
 
-        this.fuente = app.loadFont("/img/2020/Petroleo/font/RobotoCondensed-Bold.ttf");
-        this.fuente2 = app.loadFont("/img/2020/Petroleo/font/RobotoCondensed-Regular.ttf");
+        this.flechaRoja = app.loadImage("/img/2020/Petroleo/img/flecha1.png");
+        this.flechaVerde = app.loadImage("/img/2020/Petroleo/img/flecha2.png");
 
-        this.btnVenderActivado = app.loadImage("/img/2020/Petroleo/BotonVenderActivado.png");
-        this.btnVenderDesactivado = app.loadImage("/img/2020/Petroleo/BotonVenderDesactivado.png");
-        this.btnComprarActivado = app.loadImage("/img/2020/Petroleo/BotonComprarActivado.png");
-        this.btnComprarDesactivado = app.loadImage("/img/2020/Petroleo/BotonComprarDesactivado.png");
+        this.fuente = app.loadFont("/img/2020/Petroleo/fonts/RobotoCondensed-Bold.ttf");
+        this.fuente2 = app.loadFont("/img/2020/Petroleo/fonts/RobotoCondensed-Regular.ttf");
 
-        this.btnJugar = new Elemento(this.app, ("/img/2020/Petroleo/BotonJugar.png"), 640, 652);
+        this.btnVenderActivado = app.loadImage("/img/2020/Petroleo/img/BotonVenderActivado.png");
+        this.btnVenderDesactivado = app.loadImage("/img/2020/Petroleo/img/BotonVenderDesactivado.png");
+        this.btnComprarActivado = app.loadImage("/img/2020/Petroleo/img/BotonComprarActivado.png");
+        this.btnComprarDesactivado = app.loadImage("/img/2020/Petroleo/img/BotonComprarDesactivado.png");
+
+        this.btnSiguiente = new Elemento(this.app, ("/img/2020/Petroleo/img/BotonSiguiente.png"), 640, 652);
+        this.btnJugar = new Elemento(this.app, ("/img/2020/Petroleo/img/BotonJugar.png"), 640, 652);
 
         this.botonesActivados = [
-            new Elemento(this.app, "/img/2020/Petroleo/btn100.png", 184, 209),
-            new Elemento(this.app, "/img/2020/Petroleo/btn200.png", 324, 209),
-            new Elemento(this.app, "/img/2020/Petroleo/btn300.png", 466, 209),
-            new Elemento(this.app, "/img/2020/Petroleo/btn400.png", 607, 209),
-            new Elemento(this.app, "/img/2020/Petroleo/btn500.png", 184, 281),
-            new Elemento(this.app, "/img/2020/Petroleo/btn600.png", 324, 281),
-            new Elemento(this.app, "/img/2020/Petroleo/btn700.png", 466, 281),
-            new Elemento(this.app, "/img/2020/Petroleo/btn800.png", 607, 281),
-            new Elemento(this.app, "/img/2020/Petroleo/btn900.png", 184, 353),
-            new Elemento(this.app, "/img/2020/Petroleo/btn1000.png", 324, 353),
-            new Elemento(this.app, "/img/2020/Petroleo/btn1100.png", 466, 353),
-            new Elemento(this.app, "/img/2020/Petroleo/btn1200.png", 607, 353),
-            new Elemento(this.app, "/img/2020/Petroleo/btn1300.png", 184, 425),
-            new Elemento(this.app, "/img/2020/Petroleo/btn1400.png", 324, 425),
-            new Elemento(this.app, "/img/2020/Petroleo/btn1500.png", 466, 425),
-            new Elemento(this.app, "/img/2020/Petroleo/btn1600.png", 607, 425),
-            new Elemento(this.app, "/img/2020/Petroleo/btn1700.png", 184, 497),
-            new Elemento(this.app, "/img/2020/Petroleo/btn1800.png", 324, 497),
-            new Elemento(this.app, "/img/2020/Petroleo/btn1900.png", 466, 497),
-            new Elemento(this.app, "/img/2020/Petroleo/btn2000.png", 607, 497)
+            new Elemento(this.app, "/img/2020/Petroleo/img/btn100.png", 184, 209),
+            new Elemento(this.app, "/img/2020/Petroleo/img/btn200.png", 324, 209),
+            new Elemento(this.app, "/img/2020/Petroleo/img/btn300.png", 466, 209),
+            new Elemento(this.app, "/img/2020/Petroleo/img/btn400.png", 607, 209),
+            new Elemento(this.app, "/img/2020/Petroleo/img/btn500.png", 184, 281),
+            new Elemento(this.app, "/img/2020/Petroleo/img/btn600.png", 324, 281),
+            new Elemento(this.app, "/img/2020/Petroleo/img/btn700.png", 466, 281),
+            new Elemento(this.app, "/img/2020/Petroleo/img/btn800.png", 607, 281),
+            new Elemento(this.app, "/img/2020/Petroleo/img/btn900.png", 184, 353),
+            new Elemento(this.app, "/img/2020/Petroleo/img/btn1000.png", 324, 353),
+            new Elemento(this.app, "/img/2020/Petroleo/img/btn1100.png", 466, 353),
+            new Elemento(this.app, "/img/2020/Petroleo/img/btn1200.png", 607, 353),
+            new Elemento(this.app, "/img/2020/Petroleo/img/btn1300.png", 184, 425),
+            new Elemento(this.app, "/img/2020/Petroleo/img/btn1400.png", 324, 425),
+            new Elemento(this.app, "/img/2020/Petroleo/img/btn1500.png", 466, 425),
+            new Elemento(this.app, "/img/2020/Petroleo/img/btn1600.png", 607, 425),
+            new Elemento(this.app, "/img/2020/Petroleo/img/btn1700.png", 184, 497),
+            new Elemento(this.app, "/img/2020/Petroleo/img/btn1800.png", 324, 497),
+            new Elemento(this.app, "/img/2020/Petroleo/img/btn1900.png", 466, 497),
+            new Elemento(this.app, "/img/2020/Petroleo/img/btn2000.png", 607, 497)
         ];
 
         this.botonesDesactivados = [
-            new Elemento(this.app, "/img/2020/Petroleo/btn100B.png", 184, 209),
-            new Elemento(this.app, "/img/2020/Petroleo/btn200B.png", 324, 209),
-            new Elemento(this.app, "/img/2020/Petroleo/btn300B.png", 466, 209),
-            new Elemento(this.app, "/img/2020/Petroleo/btn400B.png", 607, 209),
-            new Elemento(this.app, "/img/2020/Petroleo/btn500B.png", 184, 281),
-            new Elemento(this.app, "/img/2020/Petroleo/btn600B.png", 324, 281),
-            new Elemento(this.app, "/img/2020/Petroleo/btn700B.png", 466, 281),
-            new Elemento(this.app, "/img/2020/Petroleo/btn800B.png", 607, 281),
-            new Elemento(this.app, "/img/2020/Petroleo/btn900B.png", 184, 353),
-            new Elemento(this.app, "/img/2020/Petroleo/btn1000B.png", 324, 353),
-            new Elemento(this.app, "/img/2020/Petroleo/btn1100B.png", 466, 353),
-            new Elemento(this.app, "/img/2020/Petroleo/btn1200B.png", 607, 353),
-            new Elemento(this.app, "/img/2020/Petroleo/btn1300B.png", 184, 425),
-            new Elemento(this.app, "/img/2020/Petroleo/btn1400B.png", 324, 425),
-            new Elemento(this.app, "/img/2020/Petroleo/btn1500B.png", 466, 425),
-            new Elemento(this.app, "/img/2020/Petroleo/btn1600B.png", 607, 425),
-            new Elemento(this.app, "/img/2020/Petroleo/btn1700B.png", 184, 497),
-            new Elemento(this.app, "/img/2020/Petroleo/btn1800B.png", 324, 497),
-            new Elemento(this.app, "/img/2020/Petroleo/btn1900B.png", 466, 497),
-            new Elemento(this.app, "/img/2020/Petroleo/btn2000B.png", 607, 497)
+            new Elemento(this.app, "/img/2020/Petroleo/img/btn100B.png", 184, 209),
+            new Elemento(this.app, "/img/2020/Petroleo/img/btn200B.png", 324, 209),
+            new Elemento(this.app, "/img/2020/Petroleo/img/btn300B.png", 466, 209),
+            new Elemento(this.app, "/img/2020/Petroleo/img/btn400B.png", 607, 209),
+            new Elemento(this.app, "/img/2020/Petroleo/img/btn500B.png", 184, 281),
+            new Elemento(this.app, "/img/2020/Petroleo/img/btn600B.png", 324, 281),
+            new Elemento(this.app, "/img/2020/Petroleo/img/btn700B.png", 466, 281),
+            new Elemento(this.app, "/img/2020/Petroleo/img/btn800B.png", 607, 281),
+            new Elemento(this.app, "/img/2020/Petroleo/img/btn900B.png", 184, 353),
+            new Elemento(this.app, "/img/2020/Petroleo/img/btn1000B.png", 324, 353),
+            new Elemento(this.app, "/img/2020/Petroleo/img/btn1100B.png", 466, 353),
+            new Elemento(this.app, "/img/2020/Petroleo/img/btn1200B.png", 607, 353),
+            new Elemento(this.app, "/img/2020/Petroleo/img/btn1300B.png", 184, 425),
+            new Elemento(this.app, "/img/2020/Petroleo/img/btn1400B.png", 324, 425),
+            new Elemento(this.app, "/img/2020/Petroleo/img/btn1500B.png", 466, 425),
+            new Elemento(this.app, "/img/2020/Petroleo/img/btn1600B.png", 607, 425),
+            new Elemento(this.app, "/img/2020/Petroleo/img/btn1700B.png", 184, 497),
+            new Elemento(this.app, "/img/2020/Petroleo/img/btn1800B.png", 324, 497),
+            new Elemento(this.app, "/img/2020/Petroleo/img/btn1900B.png", 466, 497),
+            new Elemento(this.app, "/img/2020/Petroleo/img/btn2000B.png", 607, 497)
         ];
 
         this.booleansBotones = [
@@ -208,17 +225,22 @@ export class Logica {
         this.dinero = 100000;
         this.cantidadBarriles = 1000;
         this.precioBarril = 50;
-        this.dineroTotal = this.dinero + ((this.cantidadBarriles * this.precioBarril.toFixed(0)) / 100);
+        this.dineroTotal = this.dinero + (this.cantidadBarriles * this.precioBarril);
         this.precioBarril.toFixed(0);
+        this.dineroTxt = "";
+        this.dineroTotalTxt = "";
+        this.cantidadBarrilesTxt = "";
 
         this.compra = false;
         this.barrilesComprados = 0;
         this.vende = false;
         this.barrilesVendidos = 0;
         this.pasa = false;
+
+        this.porcentaje = 0;
     }
 
-    mouseClicked() {
+    mouse() {
 
         for (let i = 0; i < 20; i++) {
             if (this.compra) {
@@ -257,9 +279,16 @@ export class Logica {
                 break;
 
             case 6:
+                if (this.btnSiguiente.isSobre()) {
+                    this.pantalla = 17;
+                }
+                break;
+
+            case 17:
                 if (this.btnJugar.isSobre()) {
+                    this.dineroTotal = this.dinero + (this.cantidadBarriles * this.precioBarril.toFixed(0));
+                    this.pantalla = 6;
                     this.pasa = true;
-                    this.precioBarril += ((this.precioBarril * this.porcentaje) / 100);
                 }
                 break;
 
@@ -277,10 +306,9 @@ export class Logica {
             }
 
             if (this.app.mouseX > 508 && this.app.mouseX < 757 && this.app.mouseY > 632 && this.app.mouseY < 702) {
-                this.pasa = true;
-                this.precioBarril += ((this.precioBarril * this.porcentaje) / 100);
-                this.dinero += (this.precioBarril * this.barrilesVendidos);
+                this.precioBarril += ((this.precioBarril.toFixed(0) * this.porcentaje) / 100);
                 this.dineroTotal = this.dinero + (this.cantidadBarriles * this.precioBarril.toFixed(0));
+                this.pasa = true;
             }
 
             if (this.vende || this.compra) {
@@ -293,27 +321,27 @@ export class Logica {
 
                 if (this.vende && this.barrilesVendidos != 0) {
                     if (this.app.mouseX > 684 && this.app.mouseX < 934 && this.app.mouseY > 567 && this.app.mouseY < 637) {
-                        this.pasa = true;
+                        this.precioBarril += ((this.precioBarril.toFixed(0) * this.porcentaje) / 100);
+                        this.precioBarril.toFixed(0);
                         this.cantidadBarriles -= this.barrilesVendidos;
                         this.dinero += (this.precioBarril.toFixed(0) * this.barrilesVendidos);
                         this.dineroTotal = this.dinero + (this.cantidadBarriles * this.precioBarril.toFixed(0));
                         this.barrilesVendidos = 0;
                         this.vende = false;
-                        this.precioBarril += ((this.precioBarril.toFixed(0) * this.porcentaje) / 100);
-                        this.precioBarril.toFixed(0);
+                        this.pasa = true;
                     }
                 }
 
                 if (this.compra && this.barrilesComprados != 0) {
                     if (this.app.mouseX > 684 && this.app.mouseX < 934 && this.app.mouseY > 567 && this.app.mouseY < 637) {
-                        this.pasa = true;
+                        this.precioBarril += ((this.precioBarril.toFixed(0) * this.porcentaje) / 100);
+                        this.precioBarril.toFixed(0);
                         this.cantidadBarriles += this.barrilesComprados;
                         this.dinero -= (this.precioBarril.toFixed(0) * this.barrilesComprados);
                         this.dineroTotal = this.dinero + (this.cantidadBarriles * this.precioBarril.toFixed(0));
                         this.barrilesComprados = 0;
                         this.compra = false;
-                        this.precioBarril += ((this.precioBarril.toFixed(0) * this.porcentaje) / 100);
-                        this.precioBarril.toFixed(0);
+                        this.pasa = true;
                     }
                 }
                 for (let i = 0; i < 20; i++) {
@@ -321,10 +349,17 @@ export class Logica {
                 }
             }
         }
+        this.dineroTxt = this.convertNumToString(this.dinero);
+        this.dineroTotalTxt = this.convertNumToString(this.dineroTotal.toFixed(0));
+        this.cantidadBarrilesTxt = this.convertNumToString(this.cantidadBarriles);
     }
 
 
-    draw() {
+
+
+
+    pintar() {
+
         this.app.textFont(this.fuente2);
         this.app.textAlign(this.app.LEFT);
         this.app.textSize(24);
@@ -405,49 +440,49 @@ export class Logica {
 
             case 6:
                 this.contar = false;
-                this.app.image(this.instrucciones, 0, 0);
-                this.btnJugar.pintar();
+                this.app.image(this.instruccion1, 0, 0);
+                this.btnSiguiente.pintar();
                 break;
 
             case 7:
                 this.contar = false;
                 this.app.image(this.mes1, 0, 0);
-                this.precio = 2;
+                this.precio = 1;
                 break;
 
             case 8:
                 this.app.image(this.mes2, 0, 0);
-                this.precio = 3;
+                this.precio = 2;
                 break;
 
             case 9:
                 this.app.image(this.mes3, 0, 0);
-                this.precio = 4;
+                this.precio = 3;
                 break;
 
             case 10:
                 this.app.image(this.mes4, 0, 0);
-                this.precio = 5;
+                this.precio = 4;
                 break;
 
             case 11:
                 this.app.image(this.mes5, 0, 0);
-                this.precio = 6;
+                this.precio = 5;
                 break;
 
             case 12:
                 this.app.image(this.mes6, 0, 0);
-                this.precio = 7;
+                this.precio = 6;
                 break;
 
             case 13:
                 this.app.image(this.mes7, 0, 0);
-                this.precio = 8;
+                this.precio = 7;
                 break;
 
             case 14:
                 this.app.image(this.mes8, 0, 0);
-                this.precio = 9;
+                this.precio = 8;
                 break;
 
             case 15:
@@ -457,33 +492,30 @@ export class Logica {
             case 16:
                 this.app.image(this.final, 0, 0);
                 this.app.textSize(40);
-                this.app.text(150000 + " " + "USD", 270, 570);
+                this.app.text("150.000" + " " + "USD", 270, 570);
                 if (this.dineroTotal < 150000) {
                     this.app.fill('rgb(164,2,0)');
                 } else if (this.dineroTotal > 150000) {
                     this.app.fill('rgb(0,152,6)');
                 }
-                this.app.text(this.dineroTotal.toFixed(0) + " " + "USD", 840, 570);
+                this.app.text(this.dineroTotalTxt + " " + "USD", 840, 570);
                 this.app.fill(0);
 
-                if (this.dineroTotal < 150000) {
+                if (this.dineroTotal <= 150000) {
                     this, this.puntaje = 0;
                 }
 
-                if (this.dineroTotal > 150000 && this.dineroTotal < 190000) {
-                    this, this.puntaje = 5;
+                if (this.dineroTotal > 150000 && this.dineroTotal < 250000) {
+                    this, this.puntaje = ((((this.dineroTotal - 150000) * 100) / 100000) * 200) / 100;
                 }
 
-                if (this.dineroTotal > 190000 && this.dineroTotal < 220000) {
-                    this, this.puntaje = 10;
+                if (this.dineroTotal >= 250000) {
+                    this, this.puntaje = 200;
                 }
-
-                if (this.dineroTotal > 22000 && this.dineroTotal < 250000) {
-                    this, this.puntaje = 15;
-                }
-                if (this.dineroTotal > 250000) {
-                    this, this.puntaje = 20;
-                }
+                break;
+            case 17:
+                this.app.image(this.instruccion2, 0, 0);
+                this.btnJugar.pintar();
                 break;
 
             default:
@@ -505,7 +537,7 @@ export class Logica {
                 break;
 
             case 4:
-                this.porcentaje = +30;
+                this.porcentaje = 30;
                 break;
 
             case 5:
@@ -513,11 +545,11 @@ export class Logica {
                 break;
 
             case 6:
-                this.porcentaje = +40;
+                this.porcentaje = 40;
                 break;
 
             case 7:
-                this.porcentaje = +22;
+                this.porcentaje = 22;
                 break;
 
             case 8:
@@ -561,13 +593,62 @@ export class Logica {
         }
 
         if (this.pantalla == 7 || this.pantalla == 8 || this.pantalla == 9 || this.pantalla == 10 || this.pantalla == 11 || this.pantalla == 12 || this.pantalla == 13 || this.pantalla == 14 || this.pantalla == 15) {
-            this.dineroTotal = this.dinero + (this.cantidadBarriles * this.precioBarril.toFixed(0));
             this.app.image(this.meses, 0, 0);
-            this.app.text(": " + this.precioBarril.toFixed(0) + " " + "USD", 230, 55);
-            this.app.text(": x " + this.cantidadBarriles, 485, 55);
-            this.app.text(": " + this.dinero + " " + "USD", 775, 55);
-            this.app.text(": " + this.dineroTotal.toFixed(0) + " " + "USD", 1030, 55);
+            this.app.textFont(this.fuente);
+            this.app.textSize(18);
+            this.app.fill('rgb(36,36,36)');
+            switch (this.pantalla) {
+                case 7:
+                    this.app.fill('rgb(36,36,36)');
+                    this.app.text("Diciembre", 210, 93);
+                    break;
+                case 8:
+                    this.app.fill('rgb(0,152,6)');
+                    this.app.text("Enero", 210, 93);
+                    this.app.image(this.flechaVerde, 360, 37);
+                    break;
+                case 9:
+                    this.app.fill('rgb(36,36,36)');
+                    this.app.text("Febrero", 210, 93);
+                    break;
+                case 10:
+                    this.app.fill('rgb(164,2,0)');
+                    this.app.text("Marzo", 210, 93);
+                    this.app.image(this.flechaRoja, 360, 37);
+                    break;
+                case 11:
+                    this.app.fill('rgb(0,152,6)');
+                    this.app.text("Abril", 210, 93);
+                    this.app.image(this.flechaVerde, 360, 37);
+                    break;
+                case 12:
+                    this.app.fill('rgb(164,2,0)');
+                    this.app.text("Mayo", 210, 93);
+                    this.app.image(this.flechaRoja, 360, 37);
+                    break;
+                case 13:
+                    this.app.fill('rgb(0,152,6)');
+                    this.app.text("Junio", 210, 93);
+                    this.app.image(this.flechaVerde, 360, 37);
+                    break;
+                case 14:
+                    this.app.fill('rgb(0,152,6)');
+                    this.app.text("Julio", 210, 93);
+                    this.app.image(this.flechaVerde, 360, 37);
+                    break;
+                case 15:
+                    this.app.fill('rgb(36,36,36)');
+                    this.app.text("Agosto", 210, 93);
+                    break;
 
+                default:
+                    break;
+            }
+            this.app.fill('rgb(36,36,36)');
+            this.app.text(": " + this.precioBarril.toFixed(0) + " " + "USD por barril", 220, 55);
+            this.app.text(": x " + this.cantidadBarrilesTxt, 500, 55);
+            this.app.text(": " + this.dineroTxt + " " + "USD", 775, 55);
+            this.app.text(": " + this.dineroTotalTxt + " " + "USD", 1030, 55);
             if (this.compra || this.vende) {
 
                 //Ver que botones sirven para la compra
@@ -617,6 +698,30 @@ export class Logica {
             }
         }
         //this.app.text("X:" + this.app.mouseX + " " + "Y:" + this.app.mouseY, this.app.mouseX, this.app.mouseY);
+    }
+
+    numPunto = 0;
+    newText = "";
+
+    convertNumToString(num: number) {
+        this.text = num.toString();
+        this.largo = this.text.length;
+        if (this.largo > 3) {
+            this.numPunto = this.text.length - 3;
+            this.newText = "";
+            for (let i = 0; i < this.text.length; i++) {
+                if (i == 0) {
+                    this.newText = this.text.charAt(i);
+                }
+                if (this.numPunto == i) {
+                    this.newText = this.newText + ".";
+                }
+                if (i != 0) {
+                    this.newText = this.newText + this.text.charAt(i);
+                }
+            }
+        }
+        return this.newText;
     }
 }
 

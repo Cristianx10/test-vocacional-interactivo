@@ -50,13 +50,13 @@ export default class Petroleo extends Component implements AppProcessing {
 
     draw() {
         if (this.logica){
-            this.logica.draw();
+            this.logica.pintar();
         }
     }
 
     mousePressed() {
         if (this.logica)
-            this.logica.mouseClicked();
+            this.logica.mouse();
     }
 
     render() {
