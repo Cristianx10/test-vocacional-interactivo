@@ -1,10 +1,80 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import "./Narrativa.scss";
 import "./animate.css";
+import { resultados, GResultados, ICategoria } from '../../resultados/resultados';
+import NavegadorContext from '../../comunicacion/NavegadorContext';
+import Pantalla from "../../componentes/Pantalla/Pantalla";
+import { IONavegable } from '../../comunicacion/utilEvents';
 
-const Narrativa = () => {
+class TS_Narrativa implements IONavegable {
+    registro: GResultados;
+    propiedades: any;
+    acciones: any;
+    pantalla?: Pantalla;
+
+    constructor() {
+
+        if (NavegadorContext.navegador) {
+            this.pantalla = NavegadorContext.navegador.getAddPantalla();
+            this.pantalla.addEventos(this);
+        }
+
+
+        this.registro = resultados.agregar(this);
+        this.registro.setId("Narrativa");
+
+
+        this.propiedades = this.registro.propiedades;
+
+        this.propiedades.total = 0;
+
+        this.acciones = {
+            validar: (id: string, accion: Function, descripcion: string, valorMaximo: Array<ICategoria>) => {
+                this.validar(id, accion, descripcion, valorMaximo);
+            }
+        };
+    }
+
+    componetDidMount(props: INarrativa) {
+        props.config(this.propiedades, this.acciones);
+
+        this.registro.setUID(props.UID);
+    }
+
+    onInicial() {
+
+    }
+
+    onFinal() {
+        resultados.evaluar(this);
+    }
+
+    onProgress?() {
+
+    }
+
+
+    validar(id: string, accion: Function, descripcion: string, valorMaximo: Array<ICategoria>) {
+        if (this.registro !== undefined) {
+            this.registro.agregarCondicion(id, accion, descripcion, valorMaximo, this);
+        }
+    }
+
+}
+
+interface INarrativa {
+    config: Function;
+    UID: string;
+}
+
+const Narrativa = (props: INarrativa) => {
+
+    var [narrativa] = useState(new TS_Narrativa());
+
 
     useEffect(() => {
+
+        narrativa.componetDidMount(props);
 
         let openTitle = document.querySelector(".openTitle") as HTMLElement;
         let openTitleLogo = document.querySelector(".openTitle>div") as HTMLElement;
@@ -86,7 +156,7 @@ const Narrativa = () => {
                 juegoNivel2[0].style.display = "flex"
                 board.classList.add("blur")
 
-                setTimeout(function () {
+                setTimeout(() => {
                     openTitle.style.opacity = "0"
 
                 }, 300)
@@ -124,15 +194,15 @@ const Narrativa = () => {
         }
         for (let index = 0; index < instruccionesBtn.length; index++) {
 
-            instruccionesBtn[index].addEventListener("pointerdown", function () {
+            instruccionesBtn[index].addEventListener("pointerdown", () => {
                 instrucciones[nivel - 1].classList.add("slideOutUp")
                 poolWords.classList.remove("fadeIn")
 
-                setTimeout(function () {
+                setTimeout(() => {
                     instrucciones[nivel - 1].style.opacity = "0";
                 }, 200)
 
-                setTimeout(function () {
+                setTimeout(() => {
                     instrucciones[nivel - 1].style.display = "none";
                     board.classList.remove("blur")
                     poolWords.classList.add("fadeIn")
@@ -172,7 +242,7 @@ const Narrativa = () => {
             wordCards = document.querySelectorAll(".wordCard") as any;
             for (let i = 0; i < wordCards.length; i++) {
 
-                wordCards[i].addEventListener("pointerdown", function () {
+                wordCards[i].addEventListener("pointerdown", () => {
 
                     if (game.classList.contains("blur") == false) {
                         if (wordCards[i].classList.contains("poolCard")) {
@@ -230,7 +300,7 @@ const Narrativa = () => {
             if (nivel == 2) {
                 for (let index = 0; index < inicioWords.length; index++) {
 
-                    inicioWords[index].addEventListener("pointerdown", function () {
+                    inicioWords[index].addEventListener("pointerdown", () => {
 
                         inicioWords[index].classList.remove(index + "")
 
@@ -242,7 +312,7 @@ const Narrativa = () => {
             if (nivel == 3) {
                 for (let index = 0; index < desenlaceWords.length; index++) {
 
-                    desenlaceWords[index].addEventListener("pointerdown", function () {
+                    desenlaceWords[index].addEventListener("pointerdown", () => {
 
                         desenlaceWords[index].classList.remove(index + "")
 
@@ -264,7 +334,7 @@ const Narrativa = () => {
                 btnArrow.src = "/img/2020/Narrativa/data/btnUp.png"
                 board.style.height = "550px"
                 pool.style.height = "150px"
-                setTimeout(function () {
+                setTimeout(() => {
                     poolOpened = false;
                     poolClosed = true;
                 }, 500)
@@ -274,7 +344,7 @@ const Narrativa = () => {
                 btnArrow.src = "/img/2020/Narrativa/data/btnDown.png"
                 board.style.height = "25%"
                 pool.style.height = "75%"
-                setTimeout(function () {
+                setTimeout(() => {
                     poolOpened = true;
                     poolClosed = false;
                 }, 500)
@@ -340,7 +410,7 @@ const Narrativa = () => {
                 game.classList.add("blur")
                 gameOver.style.display = "flex"
 
-                setTimeout(function () {
+                setTimeout(() => {
                     gameOver.style.opacity = "1"
 
                 }, 1)
@@ -357,13 +427,13 @@ const Narrativa = () => {
             }
         }
 
-        gameOverBtn.addEventListener("pointerdown", function () {
+        gameOverBtn.addEventListener("pointerdown", () => {
 
             cardsCreated = false;
             game.classList.remove("blur")
             gameOver.style.opacity = "0"
 
-            setTimeout(function () {
+            setTimeout(() => {
                 gameOver.style.display = "none"
             }, 500)
 
@@ -384,11 +454,11 @@ const Narrativa = () => {
                 openTitle.classList.remove("slideOutUp")
 
 
-                setTimeout(function () {
+                setTimeout(() => {
                     openTitle.classList.add("slideInDown")
                 }, 1)
 
-                setTimeout(function () {
+                setTimeout(() => {
 
                     instrucciones[nivel - 1].style.display = "flex"
                 }, 1000)
@@ -400,13 +470,13 @@ const Narrativa = () => {
                 board.style.opacity = "0"
                 pool.style.opacity = "0"
 
-                setTimeout(function () {
+                setTimeout(() => {
                     board.style.display = "flex"
                     pool.style.display = "flex"
 
                 }, 1)
 
-                setTimeout(function () {
+                setTimeout(() => {
                     board.style.opacity = "1"
                     pool.style.opacity = "1"
 
@@ -436,7 +506,7 @@ const Narrativa = () => {
                 if (cardsCreated == false) {
                     createCards();
                 }
-                setTimeout(function () {
+                setTimeout(() => {
                     juegoNivel2[1].style.opacity = "1"
                 }, 1)
             } else if (nivel == 3) {
@@ -465,7 +535,7 @@ const Narrativa = () => {
 
         const christian = () => {
             total = parseInt(total + "");
-
+            narrativa.propiedades.total = total;
 
             setTimeout(() => {
 
@@ -474,7 +544,9 @@ const Narrativa = () => {
 
                 console.log(total)
 
-
+                if (narrativa.pantalla) {
+                    narrativa.pantalla.continuar();
+                }
 
 
             }, 3000)
@@ -491,6 +563,11 @@ const Narrativa = () => {
             <article className="body animated fadeIn">
 
                 <main className="game">
+
+
+
+
+
 
                     <section className="board blur">
 
@@ -523,7 +600,7 @@ const Narrativa = () => {
                                 <p>Al ver la cama, pensó que lo mejor sería ir a dormir y si alguien venía explicar lo que
                                 había pasado. Una vez acostado, se dio cuenta que había muchas pinturas extrañas: eran
                                 rostros deformados con ojos rojos que le miraban. Intentó ignorarlos, cerró los ojos y se
-                        durmió.</p>
+                durmió.</p>
 
                             </div>
 
@@ -537,7 +614,7 @@ const Narrativa = () => {
                                 <p>Al ver la cama, pensó que lo mejor sería ir a dormir y si alguien venía explicar lo que
                                 había pasado. Una vez acostado, se dio cuenta que había muchas pinturas extrañas: eran
                                 rostros deformados con ojos rojos que le miraban. Intentó ignorarlos, cerró los ojos y se
-                        durmió.</p>
+                durmió.</p>
 
                             </div>
 
@@ -592,20 +669,19 @@ const Narrativa = () => {
                                     <div>
 
                                         <img src="/img/2020/Narrativa/data/instruccion1Left.png" />
-                                        <p>A continuación contaras con un inventario de recuadros que contienen las partes de una
-                                        historia, tu tendrás que ordenar cada fragmento para que dicha historia este completa y
-                                        sus
-                                partes tengan cohesión. <br />
-                                                                                    Usa la esfera roja para cambiar entre las zonas de juego.
-                            </p>
+                                        <p>A continuación contarás con un inventario de recuadros que contienen las partes de una
+                                        historia, tú tendrás que ordenar cada fragmento para que dicha historia esté completa y
+                        sus partes tengan cohesión. <br />
+                                                Usa la esfera roja para cambiar entre las zonas de juego.
+                    </p>
                                     </div>
                                     <div>
                                         <img src="/img/2020/Narrativa/data/instruccion1Right.png" />
                                         <p>Da click sobre cada una para hacer que haga parte del tablero principal, si te
                                         equivocaste da
-                                click sobre el recuadro para que vuelva al inventario.<br /> Cuando hayas puesto la ultima
-                                                                                        tarjeta, el juego habrá terminado
-                            </p>
+                        click sobre el recuadro para que vuelva al inventario.<br /> Cuando hayas puesto la última
+                                                tarjeta, el juego habrá terminado.
+                    </p>
                                     </div>
                                 </div>
                                 <h1 className="btn btnHelp">¡EMPEZAR!</h1>
@@ -616,35 +692,35 @@ const Narrativa = () => {
 
                             <div className="instructions instructionsLvl2 animated">
                                 <h1>INSTRUCCIONES</h1>
-                                <p>Las historias estan constituidas por un inicio, un nudo y un desenlace. </p>
+                                <p>Las historias están constituidas por un inicio, un nudo y un desenlace. </p>
                                 <div className="instructionsCards">
                                     <div>
                                         <h1>INICIO</h1>
                                         <p>___________________________________________________<br />___________________________________________________<br />___________________________________________________
-                            </p>
+                    </p>
                                     </div>
                                     <div>
                                         <h1>NUDO</h1>
                                         <p>___________________________________________________<br />___________________________________________________<br />___________________________________________________
-                            </p>
+                    </p>
                                     </div>
 
                                     <div>
                                         <h1>DESENLACE</h1>
                                         <p>___________________________________________________<br />___________________________________________________<br />___________________________________________________
-                            </p>
+                    </p>
                                     </div>
 
                                 </div>
                                 <div className="instructionsSections">
                                     <div>
-                                        <p>A continuación contarás solo con el nudo de la historia, pero le falta el inicio y el
-                                desenlace!</p>
+                                        <p>!A continuación contarás solo con el nudo de la historia, ¡Pero le falta el inicio y el
+                        desenlace!</p>
                                         <img src="/img/2020/Narrativa/data/instruccion2Left.png" />
                                     </div>
                                     <div>
                                         <p>¡Escoge del inventario el inicio y desenlace que creas más pertinente, y ayuda a esta
-                                historia a ser una narración completa de nuevo!. </p>
+                        historia a ser una narración completa de nuevo!</p>
                                         <img src="/img/2020/Narrativa/data/instruccion2Right.png" />
 
                                     </div>
@@ -689,8 +765,8 @@ const Narrativa = () => {
 
                 <main className="gameOver">
                     <div>
-                        <img />
-                        <h1>CANTIDAD DE ERRORES</h1>
+                        <img></img>
+                        <h1></h1>
 
                     </div>
                     <h1 className="btn btnGameOver">SIGUIENTE</h1>

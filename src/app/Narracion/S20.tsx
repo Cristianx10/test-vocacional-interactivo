@@ -33,7 +33,7 @@ const S20 = () => {
     return <Navegador>
 
         <Pantalla>
-            <Processing config={configGusanito} UID="2020-1">
+            <Processing config={configGusanito} UID="2020E1">
                 <Gusanito />
             </Processing>
         </Pantalla>

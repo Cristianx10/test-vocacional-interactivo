@@ -119,7 +119,6 @@ class Secuencia extends Component<ISecuencia, SSecuencia> implements IONavegable
 
     onFinal() {
         resultados.evaluar(this);
-
     }
 
     onProgress() {
