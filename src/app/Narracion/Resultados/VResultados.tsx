@@ -122,8 +122,6 @@ class ViewResultado extends Component<IPropsViewResultado> {
 
         graficaContenedor.appendChild(grafico);
 
-
-
         //<input id="${simpli[0]}" class="porcentaje" type="text" value="${this.valor}" data-linecap=round data-angleOffset = "${this.init}">
     }
 

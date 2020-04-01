@@ -3,12 +3,10 @@ import Navegador from '../componentes/Navegador/Navegador';
 import Pantalla from '../componentes/Pantalla/Pantalla';
 import Continuar from '../componentes/Continuar/Continuar';
 
-import TLikertPregunta from "../plantillas/template-likert/TLikertPregunta";
-import { shuffle } from '../utilidades/utils';
+
 import { TIntroduccion } from '../plantillas/templete-introduccion';
 import { routes } from '../router';
 import Processing from "../componentes/Processing/Processing";
-import Pollo from "../processing/Pollo/Pollo";
 import Revoltosos from "../processing/Revoltosos/Revoltosos";
 import { Re } from '../resultados/resultados';
 import { Pollitos } from "../processing/Pollo/Pollitos";
@@ -17,7 +15,6 @@ import Intentos from '../componentes/Intentos/Intentos';
 import RelojContador from '../componentes/Navegador/RelojContador';
 import { TLikertPruebaBefore } from '../plantillas/template-likert/TLikertPregunta';
 import formularioPreguntas from './FormPreguntas';
-
 
 /**Seccion A */
 
@@ -81,6 +78,8 @@ export class SeccionC extends Component<{}> {
         let preguntasB = formularioPreguntas(25);
 
         return (<Navegador>
+
+           
 
             {/**Ingenieria */}
             <Pantalla image="/img/2019/pollo/img/inicio.png" fondo="/img/2019/pollo/img/inicio.png">

@@ -11,6 +11,7 @@ import Processing from "../componentes/Processing/Processing";
 import Culpable from '../processing/Culpable/Culpable';
 import { Re } from '../resultados/resultados';
 import formularioPreguntas from './FormPreguntas';
+import Petroleo from '../processing/Petroleo/Petroleo';
 
 /**Seccion A */
 
@@ -27,13 +28,14 @@ export class SeccionD extends Component<{}> {
 
     }
 
+    /*
     configCulpable(propiedades: any, acciones: any) {
         console.log(propiedades, acciones)
         acciones.evaluar("Puntuacion", (p: any, a: any) => {
             a.setValor(Re.derecho, p.puntuacion);
             return true;
         }, "puntuacion Obtendida", [{ id: Re.derecho, valor: 100 }]);
-    }
+    }*/
 
     render() {
 
@@ -44,16 +46,24 @@ export class SeccionD extends Component<{}> {
 
 
 
-            <TIntroduccion fondo="/includes/background/oscuro-personajes.png">
-                <h1>Orientacion vocacional</h1>
-                <p>Bienvenido a nuestro test vocacional. Rellena todas las preguntas a conciencia, recuerda que es con el proposito de analizar tus habilidades</p>
-            </TIntroduccion>
+
+            <Pantalla>
+                <Processing config={(p: any, a: any) => {
+                    console.log(p, a);
+                    a.validar("Validacion", () => {
+                        a.setValor(Re.economia, p.puntuacion);
+                        return true
+                    }, "Porcetaje validado", [])
+                }} UID="2020-1">
+                    <Petroleo />
+                </Processing>
+            </Pantalla>
 
             {Children.map(preguntasA, view => {
                 return <Pantalla width="80%" fondo="/includes/background/claro.png">{view}</Pantalla>;
             })}
 
-            {/**Derecho */}
+            {/**Derecho
             <Pantalla>
                 <Processing UID="D1" config={this.configCulpable}>
                     <Culpable></Culpable>
@@ -61,7 +71,7 @@ export class SeccionD extends Component<{}> {
             </Pantalla>
 
             <TLikertPruebaBefore UID="D11" titulo="Culpable"></TLikertPruebaBefore>
-
+ */}
             {Children.map(preguntasB, view => {
                 return <Pantalla width="80%" fondo="/includes/background/claro.png">{view}</Pantalla>;
             })}

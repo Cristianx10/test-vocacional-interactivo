@@ -167,6 +167,7 @@ export class Processing extends Component<IPropsProcessing> implements IONavegab
         this.propiedades.captura = imagen;
       });
     }
+    
     resultados.evaluar(this);
   }
 

@@ -1,5 +1,8 @@
 import p5 from 'p5';
 
+import ProcessingContext from '../../../comunicacion/ProcessingContext';
+import Processing from '../../../componentes/Processing/Processing';
+
 import { Elemento } from './Elemento';
 
 export class Logica {
@@ -87,6 +90,9 @@ export class Logica {
 
     text = "";
     largo = 0;
+
+    processing?: Processing;
+    propiedades: any = {};
 
 
     constructor(app: p5) {
@@ -238,6 +244,15 @@ export class Logica {
         this.pasa = false;
 
         this.porcentaje = 0;
+
+        if (ProcessingContext.actividad) {
+            this.processing = ProcessingContext.actividad;
+            this.propiedades = this.processing.propiedades;
+        }
+
+        this.propiedades.porcentaje = this.porcentaje;
+        this.propiedades.puntaje = this.puntaje;
+
     }
 
     mouse() {
@@ -309,6 +324,15 @@ export class Logica {
                 this.precioBarril += ((this.precioBarril.toFixed(0) * this.porcentaje) / 100);
                 this.dineroTotal = this.dinero + (this.cantidadBarriles * this.precioBarril.toFixed(0));
                 this.pasa = true;
+                if (this.pantalla === 15) {
+
+                    setTimeout(() => {
+                        if (this.processing) {
+                            this.processing.continuar();
+                        }
+                    }, 5000);
+
+                }
             }
 
             if (this.vende || this.compra) {
@@ -369,15 +393,16 @@ export class Logica {
 
         this.contar = true;
 
-        console.log(this.contador);
-        console.log(this.pantalla);
-        console.log(this.dinero);
+        //console.log(this.contador);
+        //console.log(this.pantalla);
+        //console.log(this.dinero);
 
         this.app.imageMode(this.app.CORNER);
         if (this.pasa) {
             this.pantalla++;
             this.pasa = false;
         }
+
         switch (this.pantalla) {
             case 0:
                 if (this.contador > 300) {
@@ -512,10 +537,16 @@ export class Logica {
                 if (this.dineroTotal >= 250000) {
                     this, this.puntaje = 200;
                 }
+
+
+                this.propiedades.puntaje = this.puntaje;
+
+
                 break;
             case 17:
                 this.app.image(this.instruccion2, 0, 0);
                 this.btnJugar.pintar();
+
                 break;
 
             default:

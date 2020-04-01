@@ -1,4 +1,5 @@
 export var Re = {
+    /*
     derecho: "derecho",
     ingenieria: "ingenieria",
     humanidades: "humanidades",
@@ -8,8 +9,19 @@ export var Re = {
     economia: "economia",
     ciencias: "ciencias",
     psicologia: "psicologia",
+*/
+    medicina:"medicina",
+    ingenieria:"ingenieria",
+    diseno:"diseno",
+    comunicacion:"comunicacion",
+    psicologia:"psicología",
+    ciencias:"ciencias",
+    economia:"economia",
+    licenciatura:"licenciatura"
 
 }
+
+
 
 
 export interface IORestulados {

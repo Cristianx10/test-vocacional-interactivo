@@ -7,7 +7,9 @@ const S22 = () => {
     return <Navegador>
         <Pantalla>
             <Narrativa UID="2020G1" config={(p: any, a: any) => {
-                console.log(p, a);
+                a.evaluar(()=>{
+                    
+                });
             }} />
         </Pantalla>
         <Pantalla>

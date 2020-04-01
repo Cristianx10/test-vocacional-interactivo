@@ -13,7 +13,7 @@ class TS_Narrativa implements IONavegable {
     pantalla?: Pantalla;
 
     constructor() {
-
+ 
         if (NavegadorContext.navegador) {
             this.pantalla = NavegadorContext.navegador.getAddPantalla();
             this.pantalla.addEventos(this);
