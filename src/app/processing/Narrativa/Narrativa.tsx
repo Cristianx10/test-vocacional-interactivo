@@ -84,6 +84,7 @@ const Narrativa = (props: INarrativa) => {
         let instruccionesBtn = document.querySelectorAll(".btnHelp") as any;
 
 
+
         let nivel = 0
 
         let story = `Una chica ha planeado un viaje con su novio, han quedado de encontrarse en la finca de su familia al sur de la ciudad.. Entusiasmada emprende el viaje, al llegar se da cuenta de que su novio se ha retrasado y que deberá esperar.. Por lo que decide aprovechar el tiempo y prepararle una sorpresa.. Al entrar la casa empieza a recordar momentos en su infancia, se queda mirando fijamente a ventana.... pero se sorprende al encontrar un hombre realmente apuesto observándola de lejos.. El hombre se acerca y le tiende la mano, ella amablemente lo saluda y le explica su situación.. El hombre no deja de mirarla con intensidad y se acerca a sus labios,. ella no puede alejarse y pasan la noche juntos.. Al día siguiente se levanta en la cama de un hospital como única sobreviviente de un accidente de carretera.. Su pronóstico es reservado, acaba de escuchar que el doctor le dice a su colega.... "no me quiero imaginar lo que hubiese pasado si ella no hubiese llevado cinturón".`
@@ -116,10 +117,20 @@ const Narrativa = (props: INarrativa) => {
         let mistakes = 0
         let success = 0
         let boardCards: HTMLElement[] = [];
-        let tarjetonInicio
+        let tarjetonInicio;
+        let widthMax = "75%";
+        let widthMin = "25%";
 
 
         openTitleBtn.addEventListener("pointerdown", () => {
+            console.log("lever", nivel);
+            if (nivel === 1 || nivel == 2) {
+                game.classList.add("instruccion");
+                game.classList.remove("actividad");
+                board.style.width = "";
+                pool.style.width = "";
+            }
+
             openTitleLogo.classList.add("slideOutUp")
 
 
@@ -165,36 +176,19 @@ const Narrativa = (props: INarrativa) => {
 
 
 
-
-
-
-
-
         for (let index = 0; index < instruccionesBtn.length; index++) {
-
             instruccionesBtn[index].addEventListener("pointerdown", () => {
-                instrucciones[nivel - 1].classList.add("slideOutUp")
-                poolWords.classList.remove("fadeIn")
+                console.log("Ootoritor", nivel);
 
-                setTimeout(() => {
-                    instrucciones[nivel - 1].style.opacity = "0";
-                }, 200)
+                game.classList.remove("instruccion");
+                game.classList.add("actividad");
 
-                setTimeout(() => {
-                    instrucciones[nivel - 1].style.display = "none";
-                    board.classList.remove("blur")
-                    poolWords.classList.add("fadeIn")
+                if (nivel == 2) {
+                    board.style.width = widthMax;
+                    pool.style.width = widthMin;
+                }
 
-                    if (cardsCreated == false) {
-                        createCards();
-                    }
 
-                }, 700)
-            })
-        }
-        for (let index = 0; index < instruccionesBtn.length; index++) {
-
-            instruccionesBtn[index].addEventListener("pointerdown", () => {
                 instrucciones[nivel - 1].classList.add("slideOutUp")
                 poolWords.classList.remove("fadeIn")
 
@@ -243,6 +237,24 @@ const Narrativa = (props: INarrativa) => {
             for (let i = 0; i < wordCards.length; i++) {
 
                 wordCards[i].addEventListener("pointerdown", () => {
+
+                    if (nivel === 1) {
+                        var cardsselects = game.querySelectorAll(".board .wordCard");
+                        if (cardsselects.length === 3) {
+                            widthMin = "50%";
+                            widthMax = "50%";
+
+                            board.style.width = widthMax;
+                            pool.style.width = widthMin;
+                        } else if (cardsselects.length >= 6) {
+                            widthMin = "25%";
+                            widthMax = "75%";
+
+                            board.style.width = widthMax;
+                            pool.style.width = widthMin;
+                        }
+                    }
+
 
                     if (game.classList.contains("blur") == false) {
                         if (wordCards[i].classList.contains("poolCard")) {
@@ -332,8 +344,8 @@ const Narrativa = (props: INarrativa) => {
 
             if (poolOpened) {
                 btnArrow.src = "/img/2020/Narrativa/data/btnUp.png"
-                board.style.height = "550px"
-                pool.style.height = "150px"
+                board.style.width = widthMax;
+                pool.style.width = widthMin;
                 setTimeout(() => {
                     poolOpened = false;
                     poolClosed = true;
@@ -342,8 +354,8 @@ const Narrativa = (props: INarrativa) => {
 
             if (poolClosed) {
                 btnArrow.src = "/img/2020/Narrativa/data/btnDown.png"
-                board.style.height = "25%"
-                pool.style.height = "75%"
+                board.style.width = widthMin;
+                pool.style.width = widthMax;
                 setTimeout(() => {
                     poolOpened = true;
                     poolClosed = false;
@@ -564,16 +576,11 @@ const Narrativa = (props: INarrativa) => {
 
                 <main className="game">
 
-
-
-
-
-
                     <section className="board blur">
 
                         <div className="juegoNivel2">
 
-                            <div className="inicioDiv">
+                            <div style={{ width: "50%" }} className="inicioDiv">
                                 <h1>INICIO</h1>
                                 <div className="inicioWords">
                                     <h1>1)</h1>
@@ -583,7 +590,7 @@ const Narrativa = (props: INarrativa) => {
                                 </div>
                             </div>
 
-                            <div className="inicioDiv">
+                            <div style={{ width: "50%" }} className="inicioDiv">
                                 <h1>INICIO</h1>
                                 <div className="inicioWords">
                                     <h1>3)</h1>
@@ -593,32 +600,20 @@ const Narrativa = (props: INarrativa) => {
                                 </div>
                             </div>
 
-
-                            <div className="nudo">
+                            <div style={{ width: "100%", height: "200px" }} className="nudo">
                                 <h1>NUDO</h1>
-
-                                <p>Al ver la cama, pensó que lo mejor sería ir a dormir y si alguien venía explicar lo que
-                                había pasado. Una vez acostado, se dio cuenta que había muchas pinturas extrañas: eran
-                                rostros deformados con ojos rojos que le miraban. Intentó ignorarlos, cerró los ojos y se
-                durmió.</p>
-
+                                <p>Al ver la cama, pensó que lo mejor sería ir a dormir y si alguien venía explicar lo que había pasado. Una vez acostado, se dio cuenta que había muchas pinturas extrañas: eran rostros deformados con ojos rojos que le miraban. Intentó ignorarlos, cerró los ojos y se durmió.</p>
                             </div>
 
                         </div>
 
                         <div className="juegoNivel2">
-
-                            <div className="nudo">
+                            <div style={{ width: "100%", height: "150px" }} className="nudo">
                                 <h1>NUDO</h1>
-
-                                <p>Al ver la cama, pensó que lo mejor sería ir a dormir y si alguien venía explicar lo que
-                                había pasado. Una vez acostado, se dio cuenta que había muchas pinturas extrañas: eran
-                                rostros deformados con ojos rojos que le miraban. Intentó ignorarlos, cerró los ojos y se
-                durmió.</p>
-
+                                <p>Al ver la cama, pensó que lo mejor sería ir a dormir y si alguien venía explicar lo que había pasado. Una vez acostado, se dio cuenta que había muchas pinturas extrañas: eran rostros deformados con ojos rojos que le miraban. Intentó ignorarlos, cerró los ojos y se durmió.</p>
                             </div>
 
-                            <div className="desenlaceDiv">
+                            <div style={{ width: "50%", height: "560px" }} className="desenlaceDiv">
                                 <h1>DESENLACE</h1>
                                 <div className="desenlaceWords">
                                     <h1>1)</h1>
@@ -628,7 +623,7 @@ const Narrativa = (props: INarrativa) => {
                                 </div>
                             </div>
 
-                            <div className="desenlaceDiv">
+                            <div style={{ width: "50%", height: "560px" }} className="desenlaceDiv">
                                 <h1>DESENLACE</h1>
                                 <div className="desenlaceWords">
                                     <h1>3)</h1>
@@ -637,113 +632,60 @@ const Narrativa = (props: INarrativa) => {
                                     <h1>4)</h1>
                                 </div>
                             </div>
-
                         </div>
-
-
                     </section>
 
-
-
-
-
                     <section className="pool">
-
                         <div className="btnPool">
                             <img src="/img/2020/Narrativa/data/btnDown.png" alt="" />
                         </div>
-
                         <div className="poolWords animated">
-
-
-
-
-
-
-
                             <div className=" instructions instructionsLvl1">
-
                                 <h1>INSTRUCCIONES</h1>
-
                                 <div>
                                     <div>
-
                                         <img src="/img/2020/Narrativa/data/instruccion1Left.png" />
-                                        <p>A continuación contarás con un inventario de recuadros que contienen las partes de una
-                                        historia, tú tendrás que ordenar cada fragmento para que dicha historia esté completa y
-                        sus partes tengan cohesión. <br />
-                                                Usa la esfera roja para cambiar entre las zonas de juego.
-                    </p>
+                                        <p>A continuación contarás con un inventario de recuadros que contienen las partes de una historia, tú tendrás que ordenar cada fragmento para que dicha historia esté completa y sus partes tengan cohesión. <br /> Usa la esfera roja para cambiar entre las zonas de juego.</p>
                                     </div>
                                     <div>
                                         <img src="/img/2020/Narrativa/data/instruccion1Right.png" />
-                                        <p>Da click sobre cada una para hacer que haga parte del tablero principal, si te
-                                        equivocaste da
-                        click sobre el recuadro para que vuelva al inventario.<br /> Cuando hayas puesto la última
-                                                tarjeta, el juego habrá terminado.
-                    </p>
+                                        <p>Da click sobre cada una para hacer que haga parte del tablero principal, si te equivocaste da click sobre el recuadro para que vuelva al inventario.<br /> Cuando hayas puesto la última tarjeta, el juego habrá terminado.</p>
                                     </div>
                                 </div>
                                 <h1 className="btn btnHelp">¡EMPEZAR!</h1>
-
                             </div>
-
-
-
                             <div className="instructions instructionsLvl2 animated">
                                 <h1>INSTRUCCIONES</h1>
                                 <p>Las historias están constituidas por un inicio, un nudo y un desenlace. </p>
-                                <div className="instructionsCards">
+                                <div style={{ flexDirection: "row" }} className="instructionsCards">
                                     <div>
                                         <h1>INICIO</h1>
-                                        <p>___________________________________________________<br />___________________________________________________<br />___________________________________________________
-                    </p>
+                                        <p>___________________________________________________<br />___________________________________________________<br />___________________________________________________</p>
                                     </div>
                                     <div>
                                         <h1>NUDO</h1>
-                                        <p>___________________________________________________<br />___________________________________________________<br />___________________________________________________
-                    </p>
+                                        <p>___________________________________________________<br />___________________________________________________<br />___________________________________________________</p>
                                     </div>
-
                                     <div>
                                         <h1>DESENLACE</h1>
-                                        <p>___________________________________________________<br />___________________________________________________<br />___________________________________________________
-                    </p>
+                                        <p>___________________________________________________<br />___________________________________________________<br />___________________________________________________</p>
                                     </div>
-
                                 </div>
                                 <div className="instructionsSections">
                                     <div>
-                                        <p>!A continuación contarás solo con el nudo de la historia, ¡Pero le falta el inicio y el
-                        desenlace!</p>
+                                        <p>!A continuación contarás solo con el nudo de la historia, ¡Pero le falta el inicio y el desenlace!</p>
                                         <img src="/img/2020/Narrativa/data/instruccion2Left.png" />
                                     </div>
                                     <div>
-                                        <p>¡Escoge del inventario el inicio y desenlace que creas más pertinente, y ayuda a esta
-                        historia a ser una narración completa de nuevo!</p>
+                                        <p>¡Escoge del inventario el inicio y desenlace que creas más pertinente, y ayuda a esta historia a ser una narración completa de nuevo!</p>
                                         <img src="/img/2020/Narrativa/data/instruccion2Right.png" />
-
                                     </div>
                                 </div>
                                 <h1 className="btn btnHelp">¡EMPEZAR!</h1>
                             </div>
-
-
-
-
-
-
-
                         </div>
 
                     </section>
-
-
-
-
-
-
-
                     <main className="openTitle animated ">
 
                         <div className="animated">
