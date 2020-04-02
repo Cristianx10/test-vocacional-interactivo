@@ -284,7 +284,7 @@ export class FormInput extends Component<IFromInput> {
         return <div ref="contenedor" className={className} style={style}>
             {this.props.type ? this.props.type == "boton"
                 ? <>
-                    <h2>{this.props.label}: <span ref="error" className="error"></span></h2>
+                    <h2>{this.props.label == "Genero" ? "Género" : this.props.label }: <span ref="error" className="error"></span></h2>
                     <div ref="opciones" className="horizontal">
                         {this.opciones.map((opcion, indice) => {
                             return <label key={indice}>
