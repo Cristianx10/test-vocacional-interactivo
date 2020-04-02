@@ -114,11 +114,6 @@ export class SeccionE extends Component<{}> {
 
             <TLikertPruebaBefore titulo="Operando" UID="E15" />
 
-            <TIntroduccion fondo="/includes/background/oscuro-personajes.png">
-                <h1>Orientacion vocacional</h1>
-                <p>Bienvenido a nuestro test vocacional. Rellena todas las preguntas a conciencia, recuerda que es con el proposito de analizar tus habilidades</p>
-            </TIntroduccion>
-
 
             {Children.map(preguntasA, view => {
                 return <Pantalla width="80%" fondo="/includes/background/claro.png">{view}</Pantalla>;
@@ -194,7 +189,7 @@ export class SeccionE extends Component<{}> {
             })}
 
             <Pantalla>
-                <h1>Ahora, continuemos con la siguiente seccion. Haz click en continuar</h1>
+                <h1>Ahora, continuemos con la siguiente sección. Haz click en continuar</h1>
                 <Continuar url={routes.cuetionarioF}></Continuar>
             </Pantalla>
 

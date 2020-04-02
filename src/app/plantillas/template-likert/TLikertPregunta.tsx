@@ -107,7 +107,7 @@ export default TLikertPregunta;
 export function TLikertPruebaBefore(props: { UID: string, titulo: string }) {
   return <Pantalla fondo="/includes/background/claro.png">
     <Contenedor height="70%" padding="20px">
-      <h1><D t>¿Cómo te sentiste con esta pruebas de {props.titulo}?</D></h1>
+      <h1><D t>¿Cómo te sentiste con esta prueba de {props.titulo}?</D></h1>
       <Pregunta UID={props.UID}>
         <Likert min="Mal" max="Bien">
           <Opcion><D>1</D></Opcion>

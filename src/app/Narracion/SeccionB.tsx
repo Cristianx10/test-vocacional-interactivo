@@ -127,18 +127,11 @@ export class SeccionB extends Component<{}> {
                 <RelojContador style={{ position: "absolute", right: "555px", width: "auto" }} />
             </Pantalla>
 
-            <TLikertPruebaBefore titulo="Pollitos" UID="2020M11" />
-
-            <TIntroduccion fondo="/includes/background/oscuro-personajes.png">
-                <h1>Orientacion vocacional</h1>
-                <p>Bienvenido a nuestro test vocacional. Rellena todas las preguntas a conciencia, recuerda que es con el proposito de analizar tus habilidades</p>
-            </TIntroduccion>
+            <TLikertPruebaBefore titulo="Bomba" UID="2020M11" />
 
             {Children.map(preguntasB, view => {
                 return <Pantalla width="80%" fondo="/includes/background/claro.png">{view}</Pantalla>;
             })}
-
-
 
             <Pantalla>
                 <h1>Ahora, continuemos con la siguiente sección. Haz click en continuar</h1>

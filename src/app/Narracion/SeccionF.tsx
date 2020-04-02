@@ -14,6 +14,7 @@ import { TLikertPruebaBefore } from '../plantillas/template-likert/TLikertPregun
 import formularioPreguntas from './FormPreguntas';
 import Petroleo from '../processing/Petroleo/Petroleo';
 import Narrativa from '../processing/Narrativa/Narrativa';
+import ClasificarRopa from '../processing/ClasificarRopa/ClasificarRopa';
 
 /**Seccion A */
 
@@ -67,7 +68,7 @@ export class SeccionF extends Component<{}> {
                 }} />
             </Pantalla>
 
-            <TLikertPruebaBefore titulo="Narraiva" UID="2020G2" />
+            <TLikertPruebaBefore titulo="Narrativa" UID="2020G2" />
 
 
             <TIntroduccion fondo="/includes/background/oscuro-personajes.png">
@@ -79,14 +80,16 @@ export class SeccionF extends Component<{}> {
                 return <Pantalla width="80%" fondo="/includes/background/claro.png">{view}</Pantalla>;
             })}
 
+            <ClasificarRopa></ClasificarRopa>
 
+            <TLikertPruebaBefore titulo="Clasificar la Ropa" UID="A11" />
 
             {Children.map(preguntasB, view => {
                 return <Pantalla width="80%" fondo="/includes/background/claro.png">{view}</Pantalla>;
             })}
 
             <Pantalla>
-                <h1>Ahora, continuemos con la siguiente seccion. Haz click en continuar</h1>
+                <h1>Ahora, continuemos con la siguiente sección. Haz click en continuar</h1>
                 <Continuar url={routes.cuetionarioG}></Continuar>
             </Pantalla>
 

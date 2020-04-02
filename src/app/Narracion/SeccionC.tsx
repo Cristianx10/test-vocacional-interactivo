@@ -61,7 +61,7 @@ export class SeccionC extends Component<{}> {
                 </Processing>
             </Pantalla>
 
-
+            <TLikertPruebaBefore titulo="Economia petrolera" UID="2020-1r" />
 
             {/**
             
@@ -76,11 +76,6 @@ export class SeccionC extends Component<{}> {
              */}
 
 
-            <TIntroduccion fondo="/includes/background/oscuro-personajes.png">
-                <h1>Orientacion vocacional</h1>
-                <p>Bienvenido a nuestro test vocacional. Rellena todas las preguntas a conciencia, recuerda que es con el proposito de analizar tus habilidades</p>
-            </TIntroduccion>
-
             {Children.map(preguntasA, view => {
                 return <Pantalla width="80%" fondo="/includes/background/claro.png">{view}</Pantalla>;
             })}
@@ -93,6 +88,8 @@ export class SeccionC extends Component<{}> {
                 </Processing>
             </Pantalla>
 
+            <TLikertPruebaBefore titulo="Niños revoltosos" UID="C222" />
+
             <Pantalla image="/img/2019/revoltosos/data/FINAL.png" fondo="#FFF97C">
                 <Continuar pos="370px 930px">Siguiente</Continuar>
             </Pantalla>
@@ -104,7 +101,7 @@ export class SeccionC extends Component<{}> {
             })}
 
             <Pantalla>
-                <h1>Ahora, continuemos con la siguiente seccion. Haz click en continuar</h1>
+                <h1>Ahora, continuemos con la siguiente sección. Haz click en continuar</h1>
                 <Continuar url={routes.cuetionarioD}></Continuar>
             </Pantalla>
 

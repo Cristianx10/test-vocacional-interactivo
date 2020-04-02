@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { resultados, ICategoria } from '../../resultados/resultados';
+import { resultados, ICategoria, Re } from '../../resultados/resultados';
 import { random } from '../../utilidades/utils';
 import Pantalla from "../../componentes/Pantalla/Pantalla";
 import Navegador from '../../componentes/Navegador/Navegador';
@@ -35,9 +35,6 @@ export class VResultados extends Component<IPropsVResultados> {
         carreras.sort((a: ICategoria, b: ICategoria) => {
             return b.valor - a.valor;
         })
-
-
-
 
         return <Navegador image="/includes/background/oscuro-personajes.png">
             <Pantalla style={{ color: "white" }} padding="40px 80px" onFinal={() => { resultados.descargar() }}>
@@ -79,23 +76,23 @@ class ViewResultado extends Component<IPropsViewResultado> {
         this.refNumber = numResultCounter;
 
 
-        this.colores["derecho"] = "#5BC5D3";
-        this.colores["ingenieria"] = "#6883E4";
-        this.colores["humanidades"] = "#FDF441";
-        this.colores["licenciatura"] = "#FF7373";
-        this.colores["diseno"] = "#BA76F0";
-        this.colores["medicina"] = "#FFBF74";
-        this.colores["economia"] = "#EF6BAA";
-        this.colores["ciencias"] = "#63D1B7";
+        this.colores[Re.comunicacion] = "#5BC5D3";
+        this.colores[Re.ingenieria] = "#6883E4";
+        this.colores[Re.licenciatura] = "#FDF441";
+        this.colores[Re.psicologia] = "#FF7373";
+        this.colores[Re.diseno] = "#BA76F0";
+        this.colores[Re.medicina] = "#FFBF74";
+        this.colores[Re.economia] = "#EF6BAA";
+        this.colores[Re.ciencias] = "#63D1B7";
 
-        this.iconos["derecho"] = "/includes/iconos/educacion.svg";
-        this.iconos["ingenieria"] = "/includes/iconos/ingenieria.svg";
-        this.iconos["humanidades"] = "/includes/iconos/deporte.svg";
-        this.iconos["licenciatura"] = "/includes/iconos/fuerzaspublicas.svg";
-        this.iconos["diseno"] = "/includes/iconos/diseno.svg";
-        this.iconos["medicina"] = "/includes/iconos/salud.svg";
-        this.iconos["economia"] = "/includes/iconos/arte.svg";
-        this.iconos["ciencias"] = "/includes/iconos/ciencias.svg";
+        this.iconos[Re.comunicacion] = "/includes/iconos/educacion.svg";
+        this.iconos[Re.ingenieria] = "/includes/iconos/ingenieria.svg";
+        this.iconos[Re.licenciatura] = "/includes/iconos/deporte.svg";
+        this.iconos[Re.psicologia] = "/includes/iconos/fuerzaspublicas.svg";
+        this.iconos[Re.diseno] = "/includes/iconos/diseno.svg";
+        this.iconos[Re.medicina] = "/includes/iconos/salud.svg";
+        this.iconos[Re.economia] = "/includes/iconos/arte.svg";
+        this.iconos[Re.ciencias] = "/includes/iconos/ciencias.svg";
     }
 
     componentDidMount() {
@@ -126,6 +123,10 @@ class ViewResultado extends Component<IPropsViewResultado> {
     }
 
     MayusPrimera(palabra: string) {
+        palabra = palabra == "comunicacion" ? "comunicación" : palabra;
+        palabra = palabra == "economia" ? "economía" : palabra;
+        palabra = palabra == "ingenieria" ? "ingeniería" : palabra;
+        palabra = palabra == "diseno" ? "diseño" : palabra;
         return palabra.charAt(0).toUpperCase() + palabra.slice(1);
     }
 

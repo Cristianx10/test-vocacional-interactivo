@@ -14,6 +14,7 @@ import { Re } from '../resultados/resultados';
 import { TLikertPruebaBefore } from '../plantillas/template-likert/TLikertPregunta';
 import formularioPreguntas from './FormPreguntas';
 import Gusanito from "../processing/Gusanito/Gusanito";
+import Cuadros from '../actividades/Cuadros/Cuadros';
 
 /**Seccion A */
 
@@ -45,10 +46,26 @@ export class SeccionG extends Component<{}> {
         let preguntasA = formularioPreguntas(60);
         let preguntasB = formularioPreguntas(65);
 
+        const configCuadros = (p: any, action: any) => {
+ 
+            action.validar("Acerto", (props: any, a: any) => {
+                if (p.fallos < p.aciertos && p.aciertos >= p.totalAcierto) {
+                    return true;
+                }
+            }, "Acerto en todas", [{ id: Re.diseno, valor: 33 }]);
+    
+            action.validar("Intento", (props: any, a: any) => {
+                if (p.fallos < p.aciertos && p.aciertos >= (p.totalAcierto/2) && p.aciertos < p.totalAcierto) {
+                    return true;
+                }
+            }, "Acerto en la mitad de los objetivos, con mas aciertos que fallos", [{ id: Re.diseno, valor: 10 }]);
+    
+        }
+
         return (<Navegador>
 
 
-            
+
 
 
             {/**Humanidades 1 
@@ -72,6 +89,20 @@ export class SeccionG extends Component<{}> {
             })}
 
 
+            <Pantalla time="30">
+                <RelojContador />
+                <Cuadros UID="2020S1" config={configCuadros} level={1} />
+            </Pantalla>
+
+            <Pantalla time="40">
+                <RelojContador />
+                <Cuadros UID="2020S2" config={configCuadros} level={2} />
+            </Pantalla>
+
+            <Pantalla time="50">
+                <RelojContador />
+                <Cuadros UID="2020S3" config={configCuadros} level={3} />
+            </Pantalla>
 
 
             {Children.map(preguntasB, view => {
@@ -79,7 +110,7 @@ export class SeccionG extends Component<{}> {
             })}
 
             <Pantalla>
-                <h1>Ahora, continuemos con la siguiente seccion. Haz click en continuar</h1>
+                <h1>Ahora, continuemos con la siguiente sección. Haz click en continuar</h1>
                 <Continuar url={routes.cuetionarioH}></Continuar>
             </Pantalla>
 

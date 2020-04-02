@@ -75,7 +75,7 @@ export class ClasificarRopa extends Component {
       });
       return value;
 
-    }, "Escogio cabello correcto", [{ id: Re.diseno, valor: 14 }]);
+    }, "Escogio moño correcto", [{ id: Re.diseno, valor: 14 }]);
 
     acciones.validar("carpeta", (p: IPropClasificar) => {
       let value = false
@@ -156,7 +156,7 @@ export class ClasificarRopa extends Component {
           </div>
         </Pantalla>
 
-        <Pantalla time="75">
+        <Pantalla time="50">
 
           <Contenedor height="100%" orientacion="vertical">
             <RelojContador pos="25px -22px"></RelojContador>
@@ -174,6 +174,8 @@ export class ClasificarRopa extends Component {
                   </h2>
               </div>
             </div>
+
+            
 
           </Contenedor>
           <Contenedor on width="100%" height="100%">
@@ -356,6 +358,7 @@ export class ClasificarRopa extends Component {
               </Almacen>
 
             </Clasificar>
+            <Continuar pos="650px 300px" style={{left:"1200"}}/>
           </Contenedor>
         </Pantalla>
       </>

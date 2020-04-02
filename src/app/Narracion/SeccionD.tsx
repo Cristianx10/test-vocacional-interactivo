@@ -85,6 +85,7 @@ export class SeccionD extends Component<{}> {
                 }} />
             </Pantalla>
 
+            <TLikertPruebaBefore titulo="Laberintos" UID="2020E11" />
             {/**Derecho
             <Pantalla>
                 <Processing UID="D1" config={this.configCulpable}>
@@ -99,7 +100,7 @@ export class SeccionD extends Component<{}> {
             })}
 
             <Pantalla>
-                <h1>Ahora, continuemos con la siguiente seccion. Haz click en continuar</h1>
+                <h1>Ahora, continuemos con la siguiente sección. Haz click en continuar</h1>
                 <Continuar url={routes.cuetionarioE}></Continuar>
             </Pantalla>
 
