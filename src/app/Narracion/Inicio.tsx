@@ -30,8 +30,8 @@ export class Inicio extends Component<{}> {
 
 
             <TIntroduccion fondo="/includes/background/oscuro-personajes.png">
-                <h1>Orientacion vocacional</h1>
-                <p>Bienvenido a nuestro test vocacional. Rellena todas las preguntas a conciencia, recuerda que es con el proposito de analizar tus habilidades</p>
+                <h1>Orientación vocacional</h1>
+                <p>Bienvenido a nuestro test vocacional. Rellena todas las preguntas a conciencia, recuerda que es con el propósito de analizar tus habilidades.</p>
             </TIntroduccion>
 
 
@@ -49,7 +49,7 @@ export class Inicio extends Component<{}> {
             </Pantalla>
 
             <Pantalla style={{ color: "white" }}>
-                <h1>Ahora, continuemos con la siguiente seccion. Haz click en continuar</h1>
+                <h1>Ahora, continuemos con la siguiente sección. Haz click en continuar</h1>
                 <Continuar url={routes.cuetionarioA}></Continuar>
             </Pantalla>
 

@@ -48,7 +48,7 @@ export class SeccionH extends Component<{}> {
             if (p.valido) {
                 return true;
             }
-        }, "Completo todo", [{ id: Re.ingenieria, valor: 20 }]);
+        }, "Completo todo", [{ id: Re.ingenieria, valor: 40 }]);
     }
 
     render() {

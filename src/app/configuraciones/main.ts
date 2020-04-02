@@ -1,4 +1,5 @@
 import * as createjs from 'createjs-module';
+
 import { IObjectValidable, GResultados, ICategoria, resultados } from '../resultados/resultados';
 
 
@@ -201,7 +202,8 @@ export class Actividad implements IObjectValidable {
         this.canvas.height = height;
     }
 
-    incluirEn(lugar: HTMLElement) {
+    incluirEn(lugar?: HTMLElement) {
+        if(lugar)
         lugar.append(this.elemento);
         this.update();
     }

@@ -6,6 +6,10 @@ import Gusanito from '../processing/Gusanito/Gusanito';
 import { Re } from '../resultados/resultados';
 import Secuencia from "../actividades/Secuencia/Secuencia";
 import { TIntroduccion } from "../plantillas/templete-introduccion";
+import Bomba from "../actividades/Bomba/Bomba";
+import RelojContador from '../componentes/Navegador/RelojContador';
+import { position } from 'html2canvas/dist/types/css/property-descriptors/position';
+import Laberinto from "../actividades/Laberinto/Laberinto";
 
 
 const S20 = () => {
@@ -15,7 +19,7 @@ const S20 = () => {
         action.evaluar("Puntaje", (p: any, a: any) => {
             a.setValor(Re.psicologia, p.puntaje);
             return true;
-        }, "Puntuacion del juego", [{ id: Re.psicologia, valor: 100 }]);
+        }, "Puntuacion del juego", [{ id: Re.psicologia, valor: 200 }]);
 
     }
 
@@ -24,8 +28,16 @@ const S20 = () => {
             if (p.aciertos >= p.cartas) {
                 return true
             }
-        }, "Acerto en todas los compuestos", [
-            { id: Re.ingenieria, valor: 35 }
+        }, "Acertó en todas los compuestos", [
+            { id: Re.ciencias, valor: 33 }
+        ]);
+
+        a.validar("aciertos", () => {
+            if (p.aciertos >= (p.cartas / 2) && p.aciertos < p.cartas) {
+                return true;
+            }
+        }, "Acertó a la mitad de los compuestos", [
+            { id: Re.ciencias, valor: 10 }
         ]);
     }
 
@@ -33,9 +45,56 @@ const S20 = () => {
     return <Navegador>
 
         <Pantalla>
-            <Processing config={configGusanito} UID="2020E1">
+            <Processing config={(props: any, action: any) => {
+
+                action.evaluar("Puntaje", (p: any, a: any) => {
+                    a.setValor(Re.psicologia, p.puntaje);
+                    return true;
+                }, "Puntuacion del juego", [{ id: Re.psicologia, valor: 200 }]);
+
+            }} UID="2020E1">
                 <Gusanito />
             </Processing>
+        </Pantalla>
+
+
+        <Pantalla>
+            <Laberinto UID="2020N1" config={(props: any, action: any) => {
+                console.log(props, action)
+
+                action.validar("Una vida", (p: any, a: any) => {
+                    if (p.vidas == 1 && p.completo == true) { return true }
+                }, "Gano sin fallos", [{ id: Re.medicina, valor: 20 }])
+
+                action.validar("Dos vidas", (p: any, a: any) => {
+                    if (p.vidas == 2 && p.completo == true) { return true }
+                }, "Gano con 1 fallos", [{ id: Re.medicina, valor: 40 }])
+
+                action.validar("Tres vidas", (p: any, a: any) => {
+                    if (p.vidas == 3 && p.completo == true) { return true }
+                }, "Gano con 2 fallos", [{ id: Re.medicina, valor: 100 }])
+
+            }} />
+        </Pantalla>
+
+        <Pantalla time="20">
+            <Bomba UID="2020M1" config={(props: any, action: any) => {
+                console.log(props, action)
+
+                action.validar("Gano", (p: any, a: any) => {
+                    if (p.aciertos >= 5) {
+                        return true;
+                    }
+                }, "Corto todos los cables", [{ id: Re.licenciatura, valor: 100 }]);
+
+                action.validar("intento", (p: any, a: any) => {
+                    if (p.aciertos >= 3 && p.aciertos < 5) {
+                        return true;
+                    }
+                }, "Corto 3 de los cables", [{ id: Re.licenciatura, valor: 50 }]);
+
+            }} />
+            <RelojContador style={{ position: "absolute", right: "555px", width: "auto" }} />
         </Pantalla>
 
 

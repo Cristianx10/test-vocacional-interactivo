@@ -169,6 +169,7 @@ export class Processing extends Component<IPropsProcessing> implements IONavegab
     }
     
     resultados.evaluar(this);
+    console.log("evaluando...........")
   }
 
   continuar() {

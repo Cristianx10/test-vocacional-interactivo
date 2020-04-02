@@ -12,6 +12,8 @@ import Culpable from '../processing/Culpable/Culpable';
 import { Re } from '../resultados/resultados';
 import formularioPreguntas from './FormPreguntas';
 import Petroleo from '../processing/Petroleo/Petroleo';
+import Gusanito from "../processing/Gusanito/Gusanito";
+import Laberinto from "../actividades/Laberinto/Laberinto";
 
 /**Seccion A */
 
@@ -44,24 +46,44 @@ export class SeccionD extends Component<{}> {
 
         return (<Navegador>
 
-
-
-
             <Pantalla>
-                <Processing config={(p: any, a: any) => {
-                    console.log(p, a);
-                    a.validar("Validacion", () => {
-                        a.setValor(Re.economia, p.puntuacion);
-                        return true
-                    }, "Porcetaje validado", [])
-                }} UID="2020-1">
-                    <Petroleo />
+                <Processing config={(props: any, action: any) => {
+
+                    action.evaluar("Puntaje", (p: any, a: any) => {
+                        a.setValor(Re.psicologia, p.puntaje);
+                        return true;
+                    }, "Puntuacion del juego", [{ id: Re.psicologia, valor: 200 }]);
+
+                }} UID="2020E1">
+                    <Gusanito />
                 </Processing>
             </Pantalla>
+
+            <TLikertPruebaBefore titulo="Gusanito de las emociones" UID="2020E11" />
+
 
             {Children.map(preguntasA, view => {
                 return <Pantalla width="80%" fondo="/includes/background/claro.png">{view}</Pantalla>;
             })}
+
+            <Pantalla>
+                <Laberinto UID="2020N1" config={(props: any, action: any) => {
+                    console.log(props, action)
+
+                    action.validar("Una vida", (p: any, a: any) => {
+                        if (p.vidas == 1 && p.completo == true) { return true }
+                    }, "Gano sin fallos", [{ id: Re.medicina, valor: 20 }])
+
+                    action.validar("Dos vidas", (p: any, a: any) => {
+                        if (p.vidas == 2 && p.completo == true) { return true }
+                    }, "Gano con 1 fallos", [{ id: Re.medicina, valor: 40 }])
+
+                    action.validar("Tres vidas", (p: any, a: any) => {
+                        if (p.vidas == 3 && p.completo == true) { return true }
+                    }, "Gano con 2 fallos", [{ id: Re.medicina, valor: 100 }])
+
+                }} />
+            </Pantalla>
 
             {/**Derecho
             <Pantalla>

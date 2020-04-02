@@ -13,6 +13,7 @@ import RelojContador from "../componentes/Navegador/RelojContador";
 import { Re } from '../resultados/resultados';
 import { TLikertPruebaBefore } from '../plantillas/template-likert/TLikertPregunta';
 import formularioPreguntas from './FormPreguntas';
+import Gusanito from "../processing/Gusanito/Gusanito";
 
 /**Seccion A */
 
@@ -47,6 +48,9 @@ export class SeccionG extends Component<{}> {
         return (<Navegador>
 
 
+            
+
+
             {/**Humanidades 1 
             <Pantalla time="200">
                 <Processing UID="G1" config={this.configHablame}>
@@ -57,7 +61,6 @@ export class SeccionG extends Component<{}> {
             </Pantalla>
 
             
-            <TLikertPruebaBefore titulo="Hablando con el señor osos" UID="G11" />
 */}
             <TIntroduccion fondo="/includes/background/oscuro-personajes.png">
                 <h1>Orientacion vocacional</h1>

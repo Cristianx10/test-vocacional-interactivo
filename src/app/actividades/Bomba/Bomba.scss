@@ -1,0 +1,15 @@
+.Bomba{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 1280px;
+    height: 720px;
+
+    background: darkgray;
+
+    .instruccion{
+        font-size: 3em;
+    }
+}

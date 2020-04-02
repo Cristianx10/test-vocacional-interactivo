@@ -15,6 +15,7 @@ import Intentos from '../componentes/Intentos/Intentos';
 import RelojContador from '../componentes/Navegador/RelojContador';
 import { TLikertPruebaBefore } from '../plantillas/template-likert/TLikertPregunta';
 import formularioPreguntas from './FormPreguntas';
+import Petroleo from '../processing/Petroleo/Petroleo';
 
 /**Seccion A */
 
@@ -29,40 +30,7 @@ export class SeccionC extends Component<{}> {
 
 
 
-    configPollo(propiedades: any, acciones: any) {
-        console.log(propiedades, acciones)
-
-        acciones.setIntentos(3);
-
-        acciones.setIntentoFallo(() => {
-            //acciones.reset();
-            acciones.menosVidas();
-        });
-
-        acciones.setValidacion(() => {
-            //acciones.reset();
-            acciones.continuar();
-        });
-
-        acciones.validar("Gano", (p: any, a: any) => {
-            if (p.validado && p.fallos == 0) {
-                return true;
-            }
-        }, "Gano con 0 intentos", [{ id: Re.ingenieria, valor: 100 }]);
-
-        acciones.validar("Gano", (p: any, a: any) => {
-            if (p.validado && p.fallos == 1) {
-                return true;
-            }
-        }, "Gano con 1 intento", [{ id: Re.ingenieria, valor: 75 }]);
-
-        acciones.validar("Gano", (p: any, a: any) => {
-            if (p.validado && p.fallos == 2) {
-                return true;
-            }
-        }, "Gano con 2 intento", [{ id: Re.ingenieria, valor: 50 }]);
-
-    }
+   
 
     configRevoltosos(propiedades: any, acciones: any) {
         console.log(propiedades, acciones)
@@ -79,27 +47,19 @@ export class SeccionC extends Component<{}> {
 
         return (<Navegador>
 
-           
 
-            {/**Ingenieria */}
-            <Pantalla image="/img/2019/pollo/img/inicio.png" fondo="/img/2019/pollo/img/inicio.png">
-                <Continuar pos="630px 550px"></Continuar>
+            <Pantalla>
+                <Processing config={(props: any, accion: any) => {
+
+                    accion.evaluar("Validacion", (p: any, a: any) => {
+                        a.setValor(Re.economia, p.puntaje);
+                        return true;
+                    }, "Porcetaje validado", [{ id: Re.economia, valor: 200 }]);
+
+                }} UID="2020-1">
+                    <Petroleo />
+                </Processing>
             </Pantalla>
-
-            <Pantalla image="/img/2019/pollo/img/instruc.png" fondo="#020963">
-                <Continuar pos="630px 550px"></Continuar>
-            </Pantalla>
-
-            <Pantalla fondo="/img/2019/pollo/img/fondo.png" time="120">
-                <Contenedor on>
-                    <Intentos ref="intentoPollos" pos="100px 100px"></Intentos>
-                    <RelojContador pos="100px -70px"></RelojContador>
-                    <Pollitos UID="C1" width={1280} height={720} config={this.configPollo}></Pollitos>
-                </Contenedor>
-            </Pantalla>
-
-
-            <TLikertPruebaBefore titulo="Pollitos" UID="C11" />
 
 
 

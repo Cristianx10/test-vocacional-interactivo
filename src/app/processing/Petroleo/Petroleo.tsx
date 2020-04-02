@@ -29,7 +29,8 @@ export default class Petroleo extends Component implements AppProcessing {
             this.app = this.processing.app;
             this.propiedades = this.processing.propiedades;
             this.registro = this.processing.registro;
-            this.registro.setId("Petroleo")
+            this.registro.setId("Petroleo");
+            this.registro.setMultiple(true);
         }
 
 

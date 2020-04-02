@@ -12,6 +12,8 @@ import Economia from "../processing/Economia/Economia";
 import { Re } from '../resultados/resultados';
 import { TLikertPruebaBefore } from '../plantillas/template-likert/TLikertPregunta';
 import formularioPreguntas from './FormPreguntas';
+import Petroleo from '../processing/Petroleo/Petroleo';
+import Narrativa from '../processing/Narrativa/Narrativa';
 
 /**Seccion A */
 
@@ -41,15 +43,31 @@ export class SeccionF extends Component<{}> {
         return (<Navegador>
 
 
-            {/**Ingenieria */}
+            {/**Ingenieria 
+             * 
 
             <Pantalla>
                 <Processing UID="F1" config={this.configEconomia}>
                     <Economia></Economia>
                 </Processing>
             </Pantalla>
-
             <TLikertPruebaBefore titulo="Manejar el presupuesto" UID="F11" />
+            */}
+
+
+
+            <Pantalla>
+                <Narrativa UID="2020G1" config={(prop: any, accion: any) => {
+                    console.log(prop, accion)
+                    accion.validar("Validacion", (p: any, a: any) => {
+                        a.setValor(Re.comunicacion, p.total);
+                        return true;
+                    }, "Porcetaje validado", [{ id: Re.comunicacion, valor: 200 }]);
+
+                }} />
+            </Pantalla>
+
+            <TLikertPruebaBefore titulo="Narraiva" UID="2020G2" />
 
 
             <TIntroduccion fondo="/includes/background/oscuro-personajes.png">

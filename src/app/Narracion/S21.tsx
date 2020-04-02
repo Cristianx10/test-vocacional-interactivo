@@ -8,10 +8,9 @@ import { Re } from '../resultados/resultados';
 const S21 = () => {
     return <Navegador>
         <Pantalla>
-            <Processing config={(p: any, a: any) => {
-                console.log(p, a);
+            <Processing config={(props: any, accion: any) => {
 
-                a.evaluar("Validacion", () => {
+                accion.evaluar("Validacion", (p: any, a: any) => {
                     a.setValor(Re.economia, p.puntaje);
                     return true;
                 }, "Porcetaje validado", [{ id: Re.economia, valor: 200 }]);

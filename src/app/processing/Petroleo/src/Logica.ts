@@ -751,8 +751,9 @@ export class Logica {
                     this.newText = this.newText + this.text.charAt(i);
                 }
             }
+            return this.newText;
         }
-        return this.newText;
+        return this.text;
     }
 }
 

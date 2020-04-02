@@ -70,7 +70,7 @@ class Secuencia extends Component<ISecuencia, SSecuencia> implements IONavegable
         }
 
         this.registro = resultados.agregar(this);
-        this.registro.setMultiple(true);
+
         this.registro.setId("Secuencia")
 
         this.propiedades = this.registro.propiedades;
@@ -114,11 +114,19 @@ class Secuencia extends Component<ISecuencia, SSecuencia> implements IONavegable
             // this.siguiente(this.objetos[0].time);
         }
 
+        if (this.props.UID) {
+            this.registro.setUID(this.props.UID);
+        }
 
     }
 
     onFinal() {
+        if (this.pantalla) {
+            resultados.setTiempo(this, this.pantalla.timer.tiempo + "");
+        }
+        this.registro.agregar();
         resultados.evaluar(this);
+        console.log("valuando...............")
     }
 
     onProgress() {
@@ -132,7 +140,7 @@ class Secuencia extends Component<ISecuencia, SSecuencia> implements IONavegable
     }
 
     componentDidMount() {
-        this.registro.setUID(this.props.UID);
+
         this.props.config(this.propiedades, this.acciones);
     }
 

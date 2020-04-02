@@ -46,6 +46,10 @@ class TS_Narrativa implements IONavegable {
     }
 
     onFinal() {
+        if(this.pantalla){
+            resultados.setTiempo(this, this.pantalla.timer.tiempo + "");
+        }
+        this.registro.agregar();
         resultados.evaluar(this);
     }
 

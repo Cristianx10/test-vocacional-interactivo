@@ -262,7 +262,7 @@
     },
     {
         "id": "49",
-        "titulares": "Estoy más cómodo siguiendo metodos cientificos que metodos no comprobados ",
+        "titulares": "Estoy más cómodo siguiendo métodos cientificos que métodos no comprobados ",
         "minimo": "Poco",
         "maximo": "Mucho",
         "opciones": [
@@ -1882,7 +1882,7 @@
     },
     {
         "id": "38",
-        "titulares": "Tengo afinidad con manifestaciones artisticas, galerias de arte y obras audiovisuales.",
+        "titulares": "Tengo afinidad con manifestaciones artísticas, galerias de arte y obras audiovisuales.",
         "minimo": "Poco",
         "maximo": "Mucho",
         "opciones": [
@@ -3696,7 +3696,7 @@
     },
     {
         "id": "29",
-        "titulares": "Me interesa tomar inicativas en proyectos para el cambio social desde una perspectiva comunicativa",
+        "titulares": "Me interesa tomar iniciativas en proyectos para el cambio social desde una perspectiva comunicativa",
         "minimo": "Desacuerdo",
         "maximo": "De acuerdo",
         "opciones": [

@@ -12,6 +12,12 @@ import Operando from "../processing/Operando/Operando";
 import { Re } from '../resultados/resultados';
 import { TarjetasR, Carta } from '../actividades/TarjetasR/TarjetasR';
 import formularioPreguntas from './FormPreguntas';
+import Contenedor from '../componentes/Contenedor/Contenedor';
+import Intentos from '../componentes/Intentos/Intentos';
+import RelojContador from '../componentes/Navegador/RelojContador';
+import { Pollitos } from '../processing/Pollo/Pollitos';
+import { TLikertPruebaBefore } from '../plantillas/template-likert/TLikertPregunta';
+import Bomba from "../actividades/Bomba/Bomba";
 
 /**Seccion A */
 
@@ -21,6 +27,41 @@ export class SeccionE extends Component<{}> {
 
     constructor(props: {}) {
         super(props);
+
+    }
+
+    configPollo(propiedades: any, acciones: any) {
+        console.log(propiedades, acciones)
+
+        acciones.setIntentos(3);
+
+        acciones.setIntentoFallo(() => {
+            //acciones.reset();
+            acciones.menosVidas();
+        });
+
+        acciones.setValidacion(() => {
+            //acciones.reset();
+            acciones.continuar();
+        });
+
+        acciones.validar("Gano", (p: any, a: any) => {
+            if (p.validado && p.fallos == 0) {
+                return true;
+            }
+        }, "Gano con 0 intentos", [{ id: Re.ingenieria, valor: 100 }]);
+
+        acciones.validar("Gano", (p: any, a: any) => {
+            if (p.validado && p.fallos == 1) {
+                return true;
+            }
+        }, "Gano con 1 intento", [{ id: Re.ingenieria, valor: 75 }]);
+
+        acciones.validar("Gano", (p: any, a: any) => {
+            if (p.validado && p.fallos == 2) {
+                return true;
+            }
+        }, "Gano con 2 intento", [{ id: Re.ingenieria, valor: 50 }]);
 
     }
 
@@ -63,7 +104,6 @@ export class SeccionE extends Component<{}> {
 
         return (<Navegador>
 
-
             {/**Salud */}
 
             <Pantalla>
@@ -71,6 +111,8 @@ export class SeccionE extends Component<{}> {
                     <Operando></Operando>
                 </Processing>
             </Pantalla>
+
+            <TLikertPruebaBefore titulo="Operando" UID="E15" />
 
             <TIntroduccion fondo="/includes/background/oscuro-personajes.png">
                 <h1>Orientacion vocacional</h1>
@@ -82,6 +124,31 @@ export class SeccionE extends Component<{}> {
                 return <Pantalla width="80%" fondo="/includes/background/claro.png">{view}</Pantalla>;
             })}
 
+
+
+            {/**Ingenieria */}
+            <Pantalla image="/img/2019/pollo/img/inicio.png" fondo="/img/2019/pollo/img/inicio.png">
+                <Continuar pos="630px 550px"></Continuar>
+            </Pantalla>
+
+            <Pantalla image="/img/2019/pollo/img/instruc.png" fondo="#020963">
+                <Continuar pos="630px 550px"></Continuar>
+            </Pantalla>
+
+            <Pantalla fondo="/img/2019/pollo/img/fondo.png" time="120">
+                <Contenedor on>
+                    <Intentos ref="intentoPollos" pos="100px 100px"></Intentos>
+                    <RelojContador pos="100px -70px"></RelojContador>
+                    <Pollitos UID="C1" width={1280} height={720} config={this.configPollo}></Pollitos>
+                </Contenedor>
+            </Pantalla>
+
+
+            <TLikertPruebaBefore titulo="Pollitos" UID="C11" />
+
+
+            
+            {/**
 
             <Pantalla fondo="/includes/background/claro.png">
                 <TarjetasR UID="E3" config={this.configTarjetas}>
@@ -120,7 +187,8 @@ export class SeccionE extends Component<{}> {
             </Pantalla>
 
 
-
+ * 
+ */}
             {Children.map(preguntasB, view => {
                 return <Pantalla width="80%" fondo="/includes/background/claro.png">{view}</Pantalla>;
             })}
