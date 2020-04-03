@@ -40,7 +40,6 @@ export class Pollitos extends Component<IPropsPollitos> implements IONavegable {
         this.actividadContext = ActividadContext;
         if (this.actividadContext) {
             this.intentos = this.actividadContext.intentos;
-
         }
 
         this.escenario = new APollitos();

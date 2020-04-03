@@ -48,7 +48,7 @@ export class SeccionC extends Component<{}> {
         return (<Navegador>
 
 
-            <Pantalla>
+            <Pantalla fondo="/img/2020/Petroleo/img/fondo.png">
                 <Processing config={(props: any, accion: any) => {
 
                     accion.evaluar("Validacion", (p: any, a: any) => {

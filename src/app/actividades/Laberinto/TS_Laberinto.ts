@@ -1,5 +1,6 @@
 import * as createjs from 'createjs-module';
 
+import ActividadContext from '../../comunicacion/ActividadContext';
 import NavegadorContext from '../../comunicacion/NavegadorContext';
 import { Actividad } from '../../configuraciones/main';
 import { resultados } from '../../resultados/resultados';
@@ -139,6 +140,10 @@ export default class TS_Laberinto extends Actividad {
             this.pantalla = NavegadorContext.navegador.getAddPantalla();
             this.pantalla.addEventos(this);
         }
+
+        if(ActividadContext.intentos){
+            ActividadContext.intentos.setVidas(this.propiedades.vidas)
+        }
     }
 
     crearLaberinto(url: string, width: number, height: number, cont: number, speed?: number) {
@@ -218,6 +223,11 @@ export default class TS_Laberinto extends Actividad {
                         //this.detener();
                         this.propiedades.vidas -= 1;
                         this.propiedades.fallos += 1;
+
+                        if(ActividadContext.intentos){
+                            ActividadContext.intentos.setVidas(this.propiedades.vidas)
+                        }
+                        
                         if (this.intentoFallo != null) {
                             this.intentoFallo();
                         }

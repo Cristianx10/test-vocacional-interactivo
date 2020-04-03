@@ -14,6 +14,7 @@ import formularioPreguntas from './FormPreguntas';
 import Petroleo from '../processing/Petroleo/Petroleo';
 import Gusanito from "../processing/Gusanito/Gusanito";
 import Laberinto from "../actividades/Laberinto/Laberinto";
+import Intentos from "../componentes/Intentos/Intentos";
 
 /**Seccion A */
 
@@ -46,7 +47,7 @@ export class SeccionD extends Component<{}> {
 
         return (<Navegador>
 
-            <Pantalla>
+            <Pantalla fondo="/img/2020/Gusanito/data/fondo.jpg">
                 <Processing config={(props: any, action: any) => {
 
                     action.evaluar("Puntaje", (p: any, a: any) => {
@@ -67,6 +68,7 @@ export class SeccionD extends Component<{}> {
             })}
 
             <Pantalla>
+               
                 <Laberinto UID="2020N1" config={(props: any, action: any) => {
                     console.log(props, action)
 
@@ -83,6 +85,7 @@ export class SeccionD extends Component<{}> {
                     }, "Gano con 2 fallos", [{ id: Re.medicina, valor: 100 }])
 
                 }} />
+                 <Intentos />
             </Pantalla>
 
             <TLikertPruebaBefore titulo="Laberintos" UID="2020E11" />

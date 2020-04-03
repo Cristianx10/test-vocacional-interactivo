@@ -57,7 +57,7 @@ export class SeccionF extends Component<{}> {
 
 
 
-            <Pantalla>
+            <Pantalla fondo="#E5F6FC">
                 <Narrativa UID="2020G1" config={(prop: any, accion: any) => {
                     console.log(prop, accion)
                     accion.validar("Validacion", (p: any, a: any) => {

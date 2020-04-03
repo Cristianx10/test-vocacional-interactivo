@@ -106,7 +106,7 @@ export class SeccionE extends Component<{}> {
 
             {/**Salud */}
 
-            <Pantalla>
+            <Pantalla fondo="#EBEBEB">
                 <Processing UID="E1" config={this.configOperando}>
                     <Operando></Operando>
                 </Processing>
