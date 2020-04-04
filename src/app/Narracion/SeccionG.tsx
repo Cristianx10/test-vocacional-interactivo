@@ -47,19 +47,19 @@ export class SeccionG extends Component<{}> {
         let preguntasB = formularioPreguntas(65);
 
         const configCuadros = (p: any, action: any) => {
- 
+
             action.validar("Acerto", (props: any, a: any) => {
                 if (p.fallos < p.aciertos && p.aciertos >= p.totalAcierto) {
                     return true;
                 }
             }, "Acerto en todas", [{ id: Re.diseno, valor: 33 }]);
-    
+
             action.validar("Intento", (props: any, a: any) => {
-                if (p.fallos < p.aciertos && p.aciertos >= (p.totalAcierto/2) && p.aciertos < p.totalAcierto) {
+                if (p.fallos < p.aciertos && p.aciertos >= (p.totalAcierto / 2) && p.aciertos < p.totalAcierto) {
                     return true;
                 }
             }, "Acerto en la mitad de los objetivos, con mas aciertos que fallos", [{ id: Re.diseno, valor: 10 }]);
-    
+
         }
 
         return (<Navegador>
@@ -79,14 +79,18 @@ export class SeccionG extends Component<{}> {
 
             
 */}
-        
+
 
             {Children.map(preguntasA, view => {
                 return <Pantalla width="80%" fondo="/includes/background/claro.png">{view}</Pantalla>;
             })}
 
+            <TIntroduccion fondo="/includes/background/oscuro-personajes.png">
+                <h1>Distingue los colores</h1>
+                <p>Encuentra los colores que no concuerdan con las secuencias y haz click sobre ellos.</p>
+            </TIntroduccion>
 
-            <Pantalla time="30">
+            <Pantalla time="30" fondo="/includes/background/claro.png">
                 <RelojContador />
                 <Cuadros UID="2020S1" config={configCuadros} level={1} />
             </Pantalla>
@@ -100,6 +104,8 @@ export class SeccionG extends Component<{}> {
                 <RelojContador />
                 <Cuadros UID="2020S3" config={configCuadros} level={3} />
             </Pantalla>
+
+            <TLikertPruebaBefore UID="2020S31" titulo="Distingue los colores" />
 
 
             {Children.map(preguntasB, view => {

@@ -130,7 +130,7 @@ export class SeccionE extends Component<{}> {
                 <Continuar pos="630px 550px"></Continuar>
             </Pantalla>
 
-            <Pantalla fondo="/img/2019/pollo/img/fondo.png" time="120">
+            <Pantalla fondo="/img/2019/pollo/img/fondo.png" time="180">
                 <Contenedor on>
                     <Intentos ref="intentoPollos" pos="100px 100px"></Intentos>
                     <RelojContador pos="100px -70px"></RelojContador>

@@ -1,20 +1,18 @@
-import React, { Component, ReactChild, Children } from "react";
+import React, { Component, Children } from "react";
 import Navegador from '../componentes/Navegador/Navegador';
 import Pantalla from '../componentes/Pantalla/Pantalla';
 import Continuar from '../componentes/Continuar/Continuar';
 
-import TLikertPregunta, { TLikertPruebaBefore } from "../plantillas/template-likert/TLikertPregunta";
-import { shuffle } from '../utilidades/utils';
-import { TIntroduccion } from '../plantillas/templete-introduccion';
+import { TLikertPruebaBefore } from "../plantillas/template-likert/TLikertPregunta";
 import { routes } from '../router';
 import Processing from "../componentes/Processing/Processing";
-import Culpable from '../processing/Culpable/Culpable';
 import { Re } from '../resultados/resultados';
 import formularioPreguntas from './FormPreguntas';
-import Petroleo from '../processing/Petroleo/Petroleo';
+
 import Gusanito from "../processing/Gusanito/Gusanito";
 import Laberinto from "../actividades/Laberinto/Laberinto";
 import Intentos from "../componentes/Intentos/Intentos";
+import { TIntroduccion } from '../plantillas/templete-introduccion';
 
 /**Seccion A */
 
@@ -67,8 +65,14 @@ export class SeccionD extends Component<{}> {
                 return <Pantalla width="80%" fondo="/includes/background/claro.png">{view}</Pantalla>;
             })}
 
-            <Pantalla>
-               
+
+            <TIntroduccion fondo="/includes/background/oscuro-personajes.png">
+                <h1>Laberinto</h1>
+                <p>Haz click en el punto y sigue el recorrido sin salirse del borde, ten cuidado solo tienes tres vidas.</p>
+            </TIntroduccion>
+
+            <Pantalla fondo="/includes/background/claro.png">
+
                 <Laberinto UID="2020N1" config={(props: any, action: any) => {
                     console.log(props, action)
 
@@ -85,7 +89,7 @@ export class SeccionD extends Component<{}> {
                     }, "Gano con 2 fallos", [{ id: Re.medicina, valor: 100 }])
 
                 }} />
-                 <Intentos />
+                <Intentos />
             </Pantalla>
 
             <TLikertPruebaBefore titulo="Laberintos" UID="2020E11" />

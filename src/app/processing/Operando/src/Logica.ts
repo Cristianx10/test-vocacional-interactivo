@@ -1,7 +1,8 @@
-import ProcessingImg from '../../../componentes/Processing/ProcessingImg';
 import p5 = require("p5");
-import Processing from '../../../componentes/Processing/Processing';
+
 import ProcessingContext from '../../../comunicacion/ProcessingContext';
+import Processing from '../../../componentes/Processing/Processing';
+import ProcessingImg from '../../../componentes/Processing/ProcessingImg';
 
 export class Logica {
     app: p5;
@@ -452,7 +453,7 @@ export class Logica {
             return this.puntaje;
             //agregar el cambio de pantalla
         }
-        if (this.segundos == 70) {
+        if (this.segundos >= 90) {
             if (this.time != null) {
                 clearInterval(this.time);
                 this.time = null;

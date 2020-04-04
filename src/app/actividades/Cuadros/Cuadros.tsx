@@ -126,7 +126,7 @@ const Cuadros = (props: ICuadros) => {
 
     return <div className="Cuadros">
         <div className="Cuadros__titulo">
-            <h1>Selecciona los cuadros que no sigan la secuencia</h1>
+            <h1>Selecciona los cuadros que notes diferentes en la secuencia de colores.</h1>
         </div>
         <div className="Cuadros__container">
             <div ref={container} className={"Cuadros__container__board" + " level" + props.level}>

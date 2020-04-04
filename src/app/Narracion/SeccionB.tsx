@@ -107,6 +107,11 @@ export class SeccionB extends Component<{}> {
                 return <Pantalla width="80%" fondo="/includes/background/claro.png">{view}</Pantalla>;
             })}
 
+            <TIntroduccion fondo="/includes/background/oscuro-personajes.png">
+                <h1>Desactiva la bomba</h1>
+                <p>Corta los cables que indican las instrucciones para evitar que la bomba estalle.</p>
+            </TIntroduccion>
+
             <Pantalla time="20">
                 <Bomba UID="2020M1" config={(props: any, action: any) => {
                     console.log(props, action)

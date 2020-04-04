@@ -88,13 +88,11 @@ export class SeccionC extends Component<{}> {
                 </Processing>
             </Pantalla>
 
-            <TLikertPruebaBefore titulo="Niños revoltosos" UID="C222" />
-
             <Pantalla image="/img/2019/revoltosos/data/FINAL.png" fondo="#FFF97C">
                 <Continuar pos="370px 930px">Siguiente</Continuar>
             </Pantalla>
 
-            <TLikertPruebaBefore titulo="Revoltosos" UID="C21" />
+            <TLikertPruebaBefore titulo="Niños revoltosos" UID="C222" />
 
             {Children.map(preguntasB, view => {
                 return <Pantalla width="80%" fondo="/includes/background/claro.png">{view}</Pantalla>;

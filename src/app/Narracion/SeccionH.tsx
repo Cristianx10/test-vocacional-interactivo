@@ -12,6 +12,7 @@ import Tuberias, { Ficha } from '../actividades/Tuberias/Tuberias';
 import Contenedor from "../componentes/Contenedor/Contenedor";
 import { Re } from '../resultados/resultados';
 import formularioPreguntas from './FormPreguntas';
+import { TLikertPruebaBefore } from '../plantillas/template-likert/TLikertPregunta';
 
 /**Seccion A */
 
@@ -63,11 +64,17 @@ export class SeccionH extends Component<{}> {
                 return <Pantalla width="80%" fondo="/includes/background/claro.png">{view}</Pantalla>;
             })}
 
+
+            <TIntroduccion fondo="/includes/background/oscuro-personajes.png">
+                <h1>Tuberías</h1>
+                <p>Une las tuberías de forma secuencial, para llevar el liquido del inicio al final. Haz click sobre los cuadrados que están alrededor del cuadrado guía para desplazarlos. Buena suerte.</p>
+            </TIntroduccion>
+
             {/**Diseño */}
-            <Pantalla orientacion="horizontal">
+            <Pantalla orientacion="horizontal" fondo="/includes/background/claro.png">
                 <Contenedor>
                     <Tuberias
-                        UID="H1" config={this.configTuberia.bind(this)}
+                        UID="H11" config={this.configTuberia.bind(this)}
                         url="/img/pizarra/tabla_tutorial.png"
                         width={110}
                         height={110}
@@ -93,14 +100,15 @@ export class SeccionH extends Component<{}> {
                     <Continuar disabled></Continuar>
                 </Contenedor>
                 <Contenedor>
-                    <h1 ref="mensaje__tuberia1">Mueves las fichas para completar la secuencia</h1>
+                    <h1 ref="mensaje__tuberia1">Mueves las fichas para completar la secuencia.</h1>
+                    <h2>Haz click sobre los cuadrados que están alrededor del cuadro guía.</h2>
                 </Contenedor>
 
             </Pantalla>
 
             <Pantalla orientacion="vertical">
                 <Tuberias
-                    UID="H2" config={this.configTuberiasA.bind(this)}
+                    UID="H12" config={this.configTuberiasA.bind(this)}
                     url="/img/pizarra/tabla.png"
                     width={110}
                     height={110}
@@ -134,7 +142,7 @@ export class SeccionH extends Component<{}> {
 
             <Pantalla orientacion="vertical">
                 <Tuberias
-                    UID="H2" config={this.configTuberiasA.bind(this)}
+                    UID="H13" config={this.configTuberiasA.bind(this)}
                     url="/img/pizarra/tabla2.png"
                     width={110}
                     height={110}
@@ -160,13 +168,13 @@ export class SeccionH extends Component<{}> {
                     <Ficha left right />
                     <Ficha down right />
                     <Ficha static />
- 
+
                 </Tuberias>
                 <Continuar disabled></Continuar>
             </Pantalla>
 
 
-
+            <TLikertPruebaBefore UID="H144" titulo="Distingue los colores" />
 
 
 
